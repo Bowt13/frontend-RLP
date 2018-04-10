@@ -4,8 +4,7 @@
    { Component }
   from 'react';
   import './App.css';
-  import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
-
+  import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom'
 
 //CONTAINERS
   import InternalContactOverview from './containers/internalContactOverview'
@@ -16,16 +15,23 @@
   //PROVIDER
     import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 
+//Components
+  import ContactPage from './components/ContactPage'
+
 class App extends Component {
   render() {
     return (
       <Router>
-      <div>
-        <Route exact path="/login" component={LoginPage} />
-        <Route exact path="/signup" component={SignupPage} />
-      </div>
+      <MuiThemeProvider>
+        <div className="App">
+          <Route exact path="/login" component={LoginPage} />
+          <Route exact path="/signup" component={SignupPage} />
+          <Route exact path="/flexicon/users/:usersId" component={ContactPage}/>
+          <Route exact path="/" render={ () => <Redirect to="/flexicon/users/:usersId" /> } />
+        </div>
+      </MuiThemeProvider>
       </Router>
-    );
+    )
   }
 }
 
