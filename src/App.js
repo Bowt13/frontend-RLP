@@ -1,6 +1,8 @@
 //DEPENDENCIES
-  import React, { Component } from 'react';
-  import logo from './logo.svg';
+  import
+    React,
+   { Component }
+  from 'react';
   import './App.css';
 
 //CONTAINERS
@@ -8,7 +10,7 @@
 
 //MATERIALUI
   //PROVIDER
-    import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+    import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 
 class App extends Component {
   render() {
@@ -18,7 +20,7 @@ class App extends Component {
           <InternalContactOverview/>
         </div>
       </MuiThemeProvider>
-    );
+    )
   }
 }
 
