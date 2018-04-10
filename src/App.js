@@ -1,6 +1,8 @@
 //DEPENDENCIES
-  import React, { Component } from 'react';
-  import logo from './logo.svg';
+  import
+    React,
+   { Component }
+  from 'react';
   import './App.css';
   import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom'
 
@@ -9,7 +11,7 @@
 
 //MATERIALUI
   //PROVIDER
-    import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+    import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 
 //Components
   import ContactPage from './components/ContactPage'
@@ -26,7 +28,7 @@ class App extends Component {
         </div>
       </MuiThemeProvider>
       </Router>
-    );
+    )
   }
 }
 
