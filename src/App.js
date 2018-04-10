@@ -5,6 +5,7 @@
 
 //CONTAINERS
   import InternalContactOverview from './containers/internalContactOverview'
+  import ForgotPassword from './containers/forgotPassword'
 
 //MATERIALUI
   //PROVIDER
@@ -15,7 +16,7 @@ class App extends Component {
     return (
       <MuiThemeProvider>
         <div className="App">
-          <InternalContactOverview/>
+          <ForgotPassword/>
         </div>
       </MuiThemeProvider>
     );
