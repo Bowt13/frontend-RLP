@@ -5,7 +5,7 @@
 
 //CONTAINERS
   import InternalContactOverview from './containers/internalContactOverview'
-
+  import ShippingLabel from './containers/shippingTemplate'
 //MATERIALUI
   //PROVIDER
     import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
@@ -15,7 +15,8 @@ class App extends Component {
     return (
       <MuiThemeProvider>
         <div className="App">
-          <InternalContactOverview/>
+          
+          <ShippingLabel />
         </div>
       </MuiThemeProvider>
     );
