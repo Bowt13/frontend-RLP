@@ -1,9 +1,20 @@
-import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
-import LoginPage from './components/LoginPage'
-import SignupPage from './components/SignupPage'
-import logo from './logo.svg';
-import './App.css';
+//DEPENDENCIES
+  import
+    React,
+   { Component }
+  from 'react';
+  import './App.css';
+  import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
+
+
+//CONTAINERS
+  import InternalContactOverview from './containers/internalContactOverview'
+  import LoginPage from './components/LoginPage'
+  import SignupPage from './components/SignupPage'
+
+//MATERIALUI
+  //PROVIDER
+    import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 
 class App extends Component {
   render() {
