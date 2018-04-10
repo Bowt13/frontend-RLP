@@ -22,8 +22,6 @@ import {connect} from 'react-redux'
 //Components
 
 
-//CSS
-import './ContactPage.css'
 
 //HArdCode
 const user = {
