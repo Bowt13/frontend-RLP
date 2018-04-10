@@ -1,24 +1,38 @@
 //DEPENDENCIES
-  import React, { Component } from 'react';
-  import logo from './logo.svg';
-  import './App.css';
+import React, { Component } from "react";
+import "./App.css";
+import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
 
 //CONTAINERS
-  import InternalContactOverview from './containers/internalContactOverview'
-  import ShippingLabel from './containers/shippingTemplate'
+import InternalContactOverview from "./containers/internalContactOverview";
+import ShippingLabel from "./containers/shippingTemplate";
 //MATERIALUI
-  //PROVIDER
-    import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+//PROVIDER
+import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
+
+//Components
+import ContactPage from "./components/ContactPage";
 
 class App extends Component {
   render() {
     return (
-      <MuiThemeProvider>
-        <div className="App">
-          
-          <ShippingLabel />
-        </div>
-      </MuiThemeProvider>
+      <Router>
+        <MuiThemeProvider>
+          <div className="App">
+            <Route
+              exact
+              path="/flexicon/users/:usersId"
+              component={ContactPage}
+            />
+            <Route exact path="/flexicon/shipment" component={ShippingLabel} />
+            <Route
+              exact
+              path="/"
+              render={() => <Redirect to="/flexicon/users/:usersId" />}
+            />
+          </div>
+        </MuiThemeProvider>
+      </Router>
     );
   }
 }
