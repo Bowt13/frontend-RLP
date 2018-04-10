@@ -21,8 +21,9 @@ class App extends Component {
   render() {
     return (
       <Router>
+      <MuiThemeProvider>
         <div className="App">
-          <Route exact path="/flexicon/forgotpassword" component={ ForgotPassword }
+          <Route exact path="/flexicon/forgotpassword" component={ ForgotPassword }/>
           <Route exact path="/flexicon/users/:usersId" component={ContactPage}/>
           <Route exact path="/" render={ () => <Redirect to="/flexicon/users/:usersId" /> } />
         </div>
