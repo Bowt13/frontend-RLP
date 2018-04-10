@@ -5,6 +5,9 @@ import { connect } from 'react-redux'
 //Components
 import ForgotForm from '../components/forgotForm'
 
+//Image
+import logo from './logo.png'
+
 //Actions
 import { forgotPassword } from '../actions/forgotPassword'
 
@@ -22,7 +25,8 @@ class ForgotPassword extends PureComponent {
     return (
 			<div className="ForgotPassword">
 
-				<header className="Header">
+				<header className="Header" style={{ backgroundColor: '#5e5d5e', height: 100, }}>
+          <img src={ logo } style={{ margin: 10, }}/>
 				</header>
 
         <Paper
@@ -31,7 +35,7 @@ class ForgotPassword extends PureComponent {
             height: 350,
             width: 450,
             padding: 20,
-            margin: 30,
+            margin: 50,
             textAlign: 'center',
             lineHeight: 1.6,
           }}
