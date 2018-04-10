@@ -1,8 +1,5 @@
 //DEPENDENCIES
-  import
-    React,
-   { Component }
-  from 'react';
+  import React, {Component} from 'react';
   import './App.css';
   import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom'
 
@@ -26,6 +23,7 @@ class App extends Component {
         <div className="App">
           <Route exact path="/login" component={LoginPage} />
           <Route exact path="/signup" component={SignupPage} />
+          <Route exact path="/InternalContactOverview" component={InternalContactOverview} />
           <Route exact path="/flexicon/users/:usersId" component={ContactPage}/>
           <Route exact path="/" render={ () => <Redirect to="/flexicon/users/:usersId" /> } />
         </div>
