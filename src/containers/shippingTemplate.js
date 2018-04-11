@@ -15,14 +15,18 @@ import IconButton from "material-ui/IconButton";
 import Subheader from "material-ui/Subheader";
 import { List, ListItem } from "material-ui/List";
 import Divider from "material-ui/Divider";
+
 //Colors
+
+import logo from "./logo.png";
 
 const faktuuradres = [
   {
     streetname: "Bloemendalerweg",
     streetnumber: 7,
     postcode: "1382 KB",
-    city: "Weesp"
+    city: "Weesp",
+    telefoonnummer: "083 445 6623"
   }
 ];
 
@@ -44,7 +48,8 @@ const orderDetails = [
   {
     nr: 1,
     product: 1234,
-    invoiceNr: 445
+    invoiceNr: 445,
+    remark: "Good to go"
   }
 ];
 
@@ -56,12 +61,13 @@ const styles = [
       justifyContent: "space-around"
     },
     gridList: {
-      width: 500,
-      height: 500,
+      width: "auto",
+      height: "auto",
       overflowY: "auto"
     }
   }
 ];
+
 //Components
 
 class ShippingLabel extends PureComponent {
@@ -76,17 +82,25 @@ class ShippingLabel extends PureComponent {
     return (
       <div>
         <Paper>
+          <header
+            className="Header"
+            style={{ backgroundColor: "#5e5d5e", height: 100 }}
+          >
+            <img src={logo} style={{ margin: 10 }} />
+          </header>
           <div style={styles.root}>
-            <GridList cellHeight="180" style={styles.gridList}>
+            <GridList cellHeight= "auto" style={styles.gridList}>
               <div>
                 {" "}
                 {faktuuradres.map(y => (
                   <GridTile>
                     <TextField
+                      floatingLabelText="Van: "
                       defaultValue={`
-                    ${y.streetname}
-                    ${y.streetnumber}
+                    Flexicon
+                    ${y.streetname} ${y.streetnumber}
                     ${y.city}
+                    ${y.telefoonnummer}
                     `}
                       multiLine={true}
                     />
@@ -97,11 +111,11 @@ class ShippingLabel extends PureComponent {
                 <div>
                   {afleverInformasie.map(y => (
                     <TextField
+                      floatingLabelText="Naar: "
                       defaultValue={`
                       ${y.contactpersoon}
                       ${y.addres_regel_1}
-                      ${y.addres_regel_2}
-                      ${y.streetnumber}
+                      ${y.addres_regel_2} ${y.streetnumber}
                       ${y.plaats}
                       ${y.telefoonnummer}`}
                       multiLine={true}
@@ -114,18 +128,39 @@ class ShippingLabel extends PureComponent {
                 {orderDetails.map(y => (
                   <GridTile>
                     <TextField
-                      defaultValue={`
-                      ${y.nr}
-                      ${y.invoiceNr}
-                      ${y.product}
-                      `}
-                      multiLine={true}
+                      floatingLabelText="Afleverdatum: "
+                      defaultValue={new Date().toDateString()}
+                    />
+                    <br />
+                    <TextField
+                      floatingLabelText="Bon Nummer: "
+                      defaultValue={y.invoiceNr}
+                    />
+                    <br />
+                    <TextField
+                      floatingLabelText="Order Nummer: "
+                      defaultValue={y.nr}
+                    />
+                  </GridTile>
+                ))}
+              </div>
+              <div>
+                {" "}
+                {orderDetails.map(y => (
+                  <GridTile>
+                    <TextField
+                      floatingLabelText="Remark: "
+                      defaultValue={y.remark}
                     />
                   </GridTile>
                 ))}
               </div>
             </GridList>
           </div>
+          <TextField
+            floatingLabelText="Op al onze werkzaamhede en leveringen zijn de algemene voorwaarden van de sector Kunstoffen Industrie van toepassing. Reclames binnen 8 dagen."
+            fullWidth={true}
+          />
         </Paper>
       </div>
     );
