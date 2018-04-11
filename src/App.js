@@ -5,8 +5,8 @@
 
 //CONTAINERS
   import InternalContactOverview from './containers/internalContactOverview'
-  import LoginPage from './components/LoginPage'
-  import SignupPage from './components/SignupPage'
+  import LoginPage from './containers/LoginPage'
+  import SignupPage from './containers/SignupPage'
   import ForgotPassword from './containers/ForgotPassword'
 
 //MATERIALUI
@@ -28,7 +28,7 @@ class App extends Component {
           <Route exact path="/werkbon" component={WerkBon} />
           <Route exact path="/signup" component={SignupPage} />
           <Route exact path="/InternalContactOverview" component={InternalContactOverview} />
-          <Route exact path="/flexicon/forgotpassword" component={ ForgotPassword }/>
+          <Route exact path="/forgotpassword" component={ ForgotPassword }/>
           <Route exact path="/flexicon/users/:usersId" component={ContactPage}/>
           <Route exact path="/" render={ () => <Redirect to="/login" /> } />
         </div>

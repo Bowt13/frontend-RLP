@@ -2,7 +2,7 @@ import React, {PureComponent} from 'react'
 import {connect} from 'react-redux'
 import {signup} from '../actions/users'
 import {Redirect} from 'react-router-dom'
-import SignupForm from './SignupForm'
+import SignupForm from '../components/SignupForm'
 
 //MaterialUI
   //Components

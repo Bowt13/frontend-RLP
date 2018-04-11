@@ -2,7 +2,10 @@ import React, {PureComponent} from 'react'
 import {connect} from 'react-redux'
 import {login} from '../actions/users'
 import {Redirect} from 'react-router-dom'
-import LoginForm from './LoginForm'
+import LoginForm from '../components/LoginForm'
+
+//Image
+import logo from './logo.png'
 
 //MaterialUI
   //Components
@@ -22,16 +25,20 @@ class LoginPage extends PureComponent {
 
 		return (
 			<div className='login-page'>
+
+				<header className="Header" style={{ backgroundColor: '#5e5d5e', height: 100, }}>
+					<img src={ logo } style={{ margin: 10, }}/>
+				</header>
+
 				<Paper style={{
-					position: 'relative',
-					top: 80,
-					botom: 10,
-					left: '25%',
-					width: '50%',
-					overflow: 'scroll',
-					padding: '20px',
-				}}>
-					<h2>Login</h2>
+					display: 'inline-block',
+					margin: 50,
+					width: '30%',
+					padding: 20,
+				}}
+				zDepth={2}
+				>
+					<h2>Inloggen</h2>
 					<LoginForm onSubmit={this.handleSubmit} />
 			    {this.props.error && <p style={{color:'red'}}>{this.props.error}</p>}
 				</Paper>
