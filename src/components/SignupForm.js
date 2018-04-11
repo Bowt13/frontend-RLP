@@ -87,7 +87,7 @@ export default class SignupForm extends PureComponent {
 					this.state.Password &&
 					this.state.ConfirmPassword &&
 					this.state.Password !== this.state.ConfirmPassword &&
-					<p style={{color:'red'}}>De wachtwoorden komen niet overeen!</p>
+					<p style={{color:'red', fontSize: 14, margin: 0,}}>De wachtwoorden komen niet overeen!</p>
 				}
 
 				<RaisedButton
