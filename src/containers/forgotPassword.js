@@ -3,7 +3,7 @@ import React, { PureComponent } from "react";
 import { connect } from "react-redux";
 
 //Components
-import ForgotForm from "../components/ForgotForm";
+import ForgotForm from '../components/ForgotForm'
 
 //Image
 import logo from "./logo.png";
