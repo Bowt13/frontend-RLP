@@ -27,6 +27,7 @@ class App extends Component {
           <Route exact path="/login" component={LoginPage} />
           <Route exact path="/werkbon" component={WerkBon} />
           <Route exact path="/signup" component={SignupPage} />
+          <Route exact path="/InternalContactOverview" component={InternalContactOverview} />
           <Route exact path="/flexicon/forgotpassword" component={ ForgotPassword }/>
           <Route exact path="/flexicon/users/:usersId" component={ContactPage}/>
           <Route exact path="/" render={ () => <Redirect to="/flexicon/users/:usersId" /> } />
