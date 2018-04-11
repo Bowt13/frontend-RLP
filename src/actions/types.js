@@ -8,4 +8,3 @@ export const USER_LOGOUT = 'USER_LOGOUT'
 
 //password
 export const FORGOT_PASSWORD = 'FORGOT_PASSWORD'
-
