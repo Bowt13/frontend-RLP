@@ -5,7 +5,7 @@
 
 //CONTAINERS
   import InternalContactOverview from './containers/internalContactOverview'
-  import ForgotPassword from './containers/ForgotPassword'
+  import ForgotPassword from './containers/forgotPassword'
 
 //MATERIALUI
   //PROVIDER
