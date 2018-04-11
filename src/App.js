@@ -10,7 +10,7 @@
   import InternalContactOverview from './containers/internalContactOverview'
   import LoginPage from './components/LoginPage'
   import SignupPage from './components/SignupPage'
-  import ForgotPassword from './containers/forgotPassword'
+  import ForgotPassword from './containers/ForgotPassword'
 
 //MATERIALUI
   //PROVIDER
@@ -29,7 +29,7 @@ class App extends Component {
           <Route exact path="/signup" component={SignupPage} />
           <Route exact path="/flexicon/forgotpassword" component={ ForgotPassword }/>
           <Route exact path="/flexicon/users/:usersId" component={ContactPage}/>
-          <Route exact path="/" render={ () => <Redirect to="/flexicon/users/:usersId" /> } />
+          <Route exact path="/" render={ () => <Redirect to="/login" /> } />
         </div>
       </MuiThemeProvider>
       </Router>

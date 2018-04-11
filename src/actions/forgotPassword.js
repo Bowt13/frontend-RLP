@@ -1,9 +1,8 @@
 import * as request from 'superagent'
+import { baseUrl } from '../constants'
 
 //actions
 import { FORGOT_PASSWORD } from './types'
-
-const baseUrl = 'http://localhost:4001'
 
 export const forgotPassword = (email) => (dispatch) =>
   request
