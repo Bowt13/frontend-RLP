@@ -15,7 +15,8 @@
   import LoginPage from './components/LoginPage'
   import SignupPage from './components/SignupPage'
   import ContactPage from './components/ContactPage'
-  import WerkBon from './components/WerkBon'
+
+
 
 
 class App extends Component {
@@ -25,7 +26,6 @@ class App extends Component {
       <MuiThemeProvider>
         <div className="App">
           <Route exact path="/login" component={LoginPage} />
-          <Route exact path="/werkbon" component={WerkBon} />
           <Route exact path="/signup" component={SignupPage} />
           <Route exact path="/InternalContactOverview" component={InternalContactOverview} />
           <Route exact path="/flexicon/forgotpassword" component={ ForgotPassword }/>
