@@ -1,8 +1,11 @@
 import React, {PureComponent} from 'react'
 import {connect} from 'react-redux'
 import {signup} from '../actions/users'
-import {Redirect} from 'react-router-dom'
+import { Redirect } from 'react-router-dom'
 import SignupForm from '../components/SignupForm'
+
+//Image
+import logo from './logo.png'
 
 //MaterialUI
   //Components
@@ -12,26 +15,34 @@ import SignupForm from '../components/SignupForm'
 class SignupPage extends PureComponent {
 
 	handleSubmit = (data) => {
-		this.props.postSignup(data.email, data.password)
+		this.props.postSignup(data.password)
 	}
 
 	render() {
 		if (this.props.signup.success) return (
-			<Redirect to="/" />
+			<Redirect to="/create/order" />
 		)
 
 		return (
 			<div className='signup-page'>
+
+				<header className="Header" style={{ backgroundColor: '#5e5d5e', height: 100, }}>
+					<img src={ logo } style={{ margin: 10, }}/>
+				</header>
+
 				<Paper style={{
-					position: 'relative',
-					top: 80,
-					botom: 10,
-					left: '25%',
-					width: '50%',
-					overflow: 'scroll',
-					padding: '20px',
-				}}>
-					<h2>Signup</h2>
+					display: 'inline-block',
+					margin: 50,
+					width: 450,
+					height: 430,
+					padding: 20,
+					textAlign: 'center',
+					lineHeight: 1.6,
+				}}
+				zDepth={2}
+				>
+					<h2>Welkom bij de Flexicon Klanten Order Admin tool!</h2>
+					<p>Kies alsteblieft een wachtwoord om de registratie van je account te voltooien.</p>
 					<SignupForm onSubmit={this.handleSubmit} />
 			    {this.props.signup.error && <p style={{color:'red'}}>{this.props.signup.error}</p>}
 				</Paper>
