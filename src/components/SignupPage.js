@@ -1,11 +1,16 @@
-
 import React, {PureComponent} from 'react'
 import {connect} from 'react-redux'
 import {signup} from '../actions/users'
-import SignupForm from './SignupForm'
 import {Redirect} from 'react-router-dom'
+import SignupForm from './SignupForm'
+
+//MaterialUI
+  //Components
+	import Paper from 'material-ui/Paper'
+
 
 class SignupPage extends PureComponent {
+
 	handleSubmit = (data) => {
 		this.props.postSignup(data.email, data.password)
 	}
@@ -16,12 +21,20 @@ class SignupPage extends PureComponent {
 		)
 
 		return (
-			<div>
-				<h2>Sign up</h2>
-
-				<SignupForm onSubmit={this.handleSubmit} />
-
-				<p style={{color:'red'}}>{ this.props.signup.error }</p>
+			<div className='signup-page'>
+				<Paper style={{
+					position: 'relative',
+					top: 80,
+					botom: 10,
+					left: '25%',
+					width: '50%',
+					overflow: 'scroll',
+					padding: '20px',
+				}}>
+					<h2>Signup</h2>
+					<SignupForm onSubmit={this.handleSubmit} />
+			    {this.props.signup.error && <p style={{color:'red'}}>{this.props.signup.error}</p>}
+				</Paper>
 			</div>
 		)
 	}
