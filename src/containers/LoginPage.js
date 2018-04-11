@@ -33,7 +33,7 @@ class LoginPage extends PureComponent {
 				<Paper style={{
 					display: 'inline-block',
 					margin: 50,
-					width: '35%',
+					width: 400,
 					height: 380,
 					padding: 20,
 				}}
@@ -43,7 +43,7 @@ class LoginPage extends PureComponent {
 					<LoginForm onSubmit={this.handleSubmit} />
 			    {this.props.error && <p style={{color:'red'}}>{this.props.error}</p>}
 
-					<Link to="/forgotpassword" style={{ position: 'relative', top: 10, fontSize: 14,}}>
+					<Link to="/forgotpassword" style={{ position: 'relative', top: 10, fontSize: 14, color: '#5e5d5e'}}>
 						Wachtwoord vergeten?
 					</Link>
 				</Paper>

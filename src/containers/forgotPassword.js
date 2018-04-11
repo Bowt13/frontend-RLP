@@ -33,7 +33,7 @@ class ForgotPassword extends PureComponent {
           style={{
             display: 'inline-block',
             height: 350,
-            width: '35%',
+            width: 450,
             padding: 20,
             margin: 50,
             textAlign: 'center',
