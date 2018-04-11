@@ -34,7 +34,7 @@ export default class LoginForm extends PureComponent {
             style={
               {
                 position: 'relative',
-                top: -15,
+                top: -8,
               }
             }
 						floatingLabelStyle= {{
@@ -60,7 +60,7 @@ export default class LoginForm extends PureComponent {
             style={
               {
                 position: 'relative',
-                top: -15,
+                top: -8,
               }
             }
 						floatingLabelStyle= {{

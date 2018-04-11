@@ -33,7 +33,7 @@ export default class ForgotForm extends PureComponent {
             }}
             floatingLabelStyle={{
               color: '#9A9A98',
-            }} 
+            }}
             floatingLabelFocusStyle={{
               color: '#F09517',
             }}

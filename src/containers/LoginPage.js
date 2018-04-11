@@ -1,7 +1,7 @@
 import React, {PureComponent} from 'react'
 import {connect} from 'react-redux'
 import {login} from '../actions/users'
-import {Redirect} from 'react-router-dom'
+import { Redirect, Link } from 'react-router-dom'
 import LoginForm from '../components/LoginForm'
 
 //Image
@@ -33,7 +33,8 @@ class LoginPage extends PureComponent {
 				<Paper style={{
 					display: 'inline-block',
 					margin: 50,
-					width: '30%',
+					width: '35%',
+					height: 380,
 					padding: 20,
 				}}
 				zDepth={2}
@@ -41,6 +42,10 @@ class LoginPage extends PureComponent {
 					<h2>Inloggen</h2>
 					<LoginForm onSubmit={this.handleSubmit} />
 			    {this.props.error && <p style={{color:'red'}}>{this.props.error}</p>}
+
+					<Link to="/forgotpassword" style={{ position: 'relative', top: 10, fontSize: 14,}}>
+						Wachtwoord vergeten?
+					</Link>
 				</Paper>
 			</div>
 		)
