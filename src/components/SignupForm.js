@@ -1,16 +1,23 @@
 import React, {PureComponent} from 'react'
 
+
+//MaterialUI
+  //Components
+	import TextField from 'material-ui/TextField'
+	import RaisedButton from 'material-ui/RaisedButton'
+
+
 export default class SignupForm extends PureComponent {
+
 	state = {}
 
-	handleSubmit = (e) => {
-		e.preventDefault()
+	handleSubmit = (event) => {
+		event.preventDefault()
 		this.props.onSubmit(this.state)
 	}
 
 	handleChange = (event) => {
     const {name, value} = event.target
-
     this.setState({
       [name]: value
     })
@@ -18,29 +25,75 @@ export default class SignupForm extends PureComponent {
 
 	render() {
 		return (
-			<form onSubmit={this.handleSubmit}>
+			<form>
 				<div>
-					<label htmlFor="password">Password</label>
-					<input type="password" name="password" id="password" value={
-						this.state.password || ''
-					} onChange={ this.handleChange } />
+					<TextField
+						floatingLabelText="Email"
+						value={this.state.Email || ''}
+						name='Email'
+						type='Email'
+						style={
+							{
+								position: 'relative',
+								left: 15,
+							}
+						}
+						onChange={this.handleChange}
+					/>
 				</div>
 
 				<div>
-					<label htmlFor="confirmPassword">Confirm password</label>
-					<input type="password" name="confirmPassword" id="confirmPassword" value={
-						this.state.confirmPassword || ''
-					} onChange={ this.handleChange } />
+					<TextField
+						floatingLabelText="Password"
+						value={this.state.Password || ''}
+						name='Password'
+						type='Password'
+						style={
+							{
+								position: 'relative',
+								left: 15,
+							}
+						}
+						onChange={this.handleChange}
+					/>
+				</div>
+
+				<div>
+					<TextField
+						floatingLabelText="Confirm Password"
+						value={this.state.ConfirmPassword || ''}
+						name='ConfirmPassword'
+						type='Password'
+						style={
+							{
+								position: 'relative',
+								left: 15,
+							}
+						}
+						onChange={this.handleChange}
+					/>
 				</div>
 
 				{
-					this.state.password &&
-					this.state.confirmPassword &&
-					this.state.password !== this.state.confirmPassword &&
+					this.state.Password &&
+					this.state.ConfirmPassword &&
+					this.state.Password !== this.state.ConfirmPassword &&
 					<p style={{color:'red'}}>The passwords do not match!</p>
 				}
 
-				<button type="submit">Sign up</button>
+				<RaisedButton
+          label="Signup"
+          backgroundColor='#616161'
+          labelColor='#ffffff'
+          style={
+            {
+              width:'10%',
+              position: 'relative',
+              left: 15,
+            }
+          }
+          onClick={this.handleSubmit}
+        />
 			</form>
 		)
 	}
