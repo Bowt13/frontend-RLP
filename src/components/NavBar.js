@@ -11,6 +11,7 @@ import logo from './logo.png'
     import AppBar from 'material-ui/AppBar'
     import Avatar from 'material-ui/Avatar'
     import IconButton from 'material-ui/IconButton'
+    import MenuItem from 'material-ui/MenuItem'
   //Icons
     import NavigationChevronRight from 'material-ui/svg-icons/navigation/chevron-right'
     import NavigationChevronLeft from 'material-ui/svg-icons/navigation/chevron-left'
@@ -23,7 +24,16 @@ class NavBar extends PureComponent {
     currentUser: {
       firstName: 'Nigel',
       lastName: 'Brown',
-      company: 'Codaisseur'
+      company: {
+        name: 'Codaisseur',
+        address: {
+          street: 'Burgerweeshuispad 201',
+          extra: 'Tripolis, building 200',
+          city: '1076 GR Amsterdam',
+          country: 'The Netherlands'
+        }
+      },
+      role: 'internal'
     },
   }
 
@@ -87,14 +97,18 @@ class NavBar extends PureComponent {
             }}
             onRightIconButtonClick={_=> this.setState({drawer: !this.state.drawer})}
           />
-          <Avatar
-            src='https://www.watsonmartin.com/wp-content/uploads/2016/03/default-profile-picture.jpg'
-            size={150}
+          <h3>{`${this.state.currentUser.company.name}`}</h3>
+          <div
             style={{
-              position: 'relative',
-              top: 20,
+              lineHeight: 0.7,
+              fontSize: 14,
             }}
-          />
+          >
+            <p>{`${this.state.currentUser.company.address.street}`}</p>
+            <p>{`${this.state.currentUser.company.address.extra}`}</p>
+            <p>{`${this.state.currentUser.company.address.city}`}</p>
+            <p>{`${this.state.currentUser.company.address.country}`}</p>
+          </div>
         </Drawer>
       </div>
     )
