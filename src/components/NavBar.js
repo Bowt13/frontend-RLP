@@ -11,11 +11,14 @@ import logo from './logo.png'
     import AppBar from 'material-ui/AppBar'
     import Avatar from 'material-ui/Avatar'
     import IconButton from 'material-ui/IconButton'
-    import MenuItem from 'material-ui/MenuItem'
+    import { List, ListItem } from 'material-ui/List';
     import Divider from 'material-ui/Divider'
   //Icons
     import NavigationChevronRight from 'material-ui/svg-icons/navigation/chevron-right'
     import NavigationChevronLeft from 'material-ui/svg-icons/navigation/chevron-left'
+    import FeaturedPlayList from 'material-ui/svg-icons/av/featured-play-list'
+    import Email from 'material-ui/svg-icons/communication/email'
+    import Person from 'material-ui/svg-icons/social/person'
 
 
 class NavBar extends PureComponent {
@@ -37,6 +40,7 @@ class NavBar extends PureComponent {
       role: 'internal'
     },
   }
+
 
   render() {
 
@@ -106,7 +110,7 @@ class NavBar extends PureComponent {
             style={{
               lineHeight: 0.7,
               fontSize: 14,
-              marginBottom: 30,
+              margin: 30,
             }}
           >
             <p>{`${this.state.currentUser.company.address.street}`}</p>
@@ -115,6 +119,24 @@ class NavBar extends PureComponent {
             <p>{`${this.state.currentUser.company.address.country}`}</p>
           </div>
           <Divider />
+          <List
+            style={{
+              textAlign: 'left',
+              marginTop: 20,
+              marginLeft: 10,
+              hoverColor:'#F09517',
+            }}
+          >
+            <ListItem primaryText="Je bestellingen"
+              leftIcon={<FeaturedPlayList  />}
+            />
+            <ListItem primaryText="Berichten"
+              leftIcon={<Email />}
+            />
+            <ListItem primaryText="Gegevens bewerken"
+              leftIcon={<Person />}
+            />
+          </List>
         </Drawer>
       </div>
     )
