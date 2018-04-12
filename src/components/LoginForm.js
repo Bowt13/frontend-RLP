@@ -27,49 +27,70 @@ export default class LoginForm extends PureComponent {
       <form>
         <div>
           <TextField
-            floatingLabelText="Email"
+            floatingLabelText="E-mailadres"
             value={this.state.Email || ''}
             name='Email'
             type='Email'
             style={
               {
                 position: 'relative',
-                left: 15,
+                top: -8,
               }
             }
+						floatingLabelStyle= {{
+							color: '#9A9A98',
+						}}
+						floatingLabelFocusStyle={{
+							color: '#F09517',
+						}}
+						underlineStyle={{
+							borderColor: '#F09517',
+						}}
+						underlineFocusStyle={{
+							borderColor: '#F09517',
+						}}
             onChange={this.handleChange}
           />
-        </div>
 
-        <div>
           <TextField
-            floatingLabelText="Password"
+            floatingLabelText="Wachtwoord"
             value={this.state.Password || ''}
             name='Password'
             type='Password'
             style={
               {
                 position: 'relative',
-                left: 15,
+                top: -15,
               }
             }
+						floatingLabelStyle= {{
+							color: '#9A9A98',
+						}}
+						floatingLabelFocusStyle={{
+							color: '#F09517',
+						}}
+						underlineStyle={{
+							borderColor: '#F09517',
+						}}
+						underlineFocusStyle={{
+							borderColor: '#F09517',
+						}}
             onChange={this.handleChange}
           />
-        </div>
+					</div>
 
-        <RaisedButton
-          label="Login"
-          backgroundColor='#616161'
-          labelColor='#ffffff'
-          style={
-            {
-              width:'10%',
-              position: 'relative',
-              left: 15,
-            }
-          }
-          onClick={this.handleSubmit}
-        />
+	        <RaisedButton
+	          label="Inloggen"
+	          style={
+	            {
+	              position: 'relative',
+	              margin: 30,
+								backgroundColor:'#9A9A98',
+								marginTop: 10,
+	            }
+	          }
+	          type="submit"
+	        />
       </form>
     )
   }
