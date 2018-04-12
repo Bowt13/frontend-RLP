@@ -1,5 +1,6 @@
 //Dependencies
-import React, {PureComponent} from 'react'
+import React, { PureComponent } from 'react'
+import { Link } from 'react-router-dom'
 
 //MaterialUI
 import TextField from 'material-ui/TextField'
@@ -15,12 +16,18 @@ export default class ForgotForm extends PureComponent {
 	}
 
 	handleChange = (event) => {
-    const {name, value} = event.target
+    const { name, value } = event.target
 
     this.setState({
       [name]: value
     })
   }
+
+	handleClick = () => {
+		console.log(this.props);
+		const { history } = this.props
+		history.push(`/login`)
+	}
 
 	render() {
 		return (
@@ -55,14 +62,26 @@ export default class ForgotForm extends PureComponent {
 
           <RaisedButton
             label="Verzenden"
+						backgroundColor='#F09517'
             style={{
               postion: 'relative',
               margin: 30,
-              marginTop: -5,
+              marginTop: 5,
               backgroundColor: '#9A9A98',
             }}
             type="submit"
           />
+
+					<RaisedButton
+	          label="Terug naar inloggen"
+	          style={
+	            {
+								backgroundColor:'#9A9A98',
+	            }
+	          }
+						href='/login'
+	        />
+
         </div>
 			</form>
 		)
