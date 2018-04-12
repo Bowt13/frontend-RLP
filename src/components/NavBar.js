@@ -10,6 +10,11 @@ import logo from './logo.png'
     import Drawer from 'material-ui/Drawer'
     import AppBar from 'material-ui/AppBar'
     import Avatar from 'material-ui/Avatar'
+    import IconButton from 'material-ui/IconButton'
+  //Icons
+    import NavigationChevronRight from 'material-ui/svg-icons/navigation/chevron-right'
+    import NavigationChevronLeft from 'material-ui/svg-icons/navigation/chevron-left'
+
 
 class NavBar extends PureComponent {
 
@@ -41,7 +46,18 @@ class NavBar extends PureComponent {
           titleStyle={{
             position: 'center',
           }}
-          iconClassNameRight="muidocs-icon-navigation-expand-more"
+          iconElementLeft={
+            <IconButton
+              style={{
+                position: 'relative',
+                bottom: 5,
+              }}
+            >
+              <NavigationChevronRight
+                viewBox='0 0 17 17'
+              />
+            </IconButton>
+          }
           style={{
             position: 'fixed',
             width: '100%',
@@ -52,12 +68,24 @@ class NavBar extends PureComponent {
         <Drawer width={300} open={this.state.drawer} >
           <AppBar
             title={`${this.state.currentUser.firstName} ${this.state.currentUser.lastName}`}
-            iconClassNameRight="muidocs-icon-navigation-expand-more"
+            showMenuIconButton={ false }
+            iconElementRight={
+              <IconButton
+                style={{
+                  position: 'relative',
+                  bottom: 5,
+                }}
+              >
+                <NavigationChevronLeft
+                  viewBox='0 0 17 17'
+                />
+              </IconButton>
+            }
             style={{
               width: '100%',
               backgroundColor:'#5e5d5e',
             }}
-            onLeftIconButtonClick={_=> this.setState({drawer: !this.state.drawer})}
+            onRightIconButtonClick={_=> this.setState({drawer: !this.state.drawer})}
           />
           <Avatar
             src='https://www.watsonmartin.com/wp-content/uploads/2016/03/default-profile-picture.jpg'
