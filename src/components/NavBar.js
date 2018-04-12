@@ -12,8 +12,9 @@ import logo from './logo.png'
     import AppBar from 'material-ui/AppBar'
     import Avatar from 'material-ui/Avatar'
     import IconButton from 'material-ui/IconButton'
-    import { List, ListItem } from 'material-ui/List';
+    import { List, ListItem } from 'material-ui/List'
     import Divider from 'material-ui/Divider'
+    import RaisedButton from 'material-ui/RaisedButton'
   //Icons
     import NavigationChevronRight from 'material-ui/svg-icons/navigation/chevron-right'
     import NavigationChevronLeft from 'material-ui/svg-icons/navigation/chevron-left'
@@ -77,6 +78,20 @@ class NavBar extends PureComponent {
                 viewBox='0 0 17 17'
               />
             </IconButton>
+          }
+          iconElementRight={
+            <RaisedButton
+  	          label="Afmelden"
+              backgroundColor= '#F09517'
+  	          style={
+  	            {
+                  position: 'relative',
+                  top: 4,
+                  right: 20,
+  								backgroundColor:'#9A9A98',
+  	            }
+  	          }
+  	        />
           }
           style={{
             position: 'fixed',
