@@ -3,10 +3,10 @@ import {baseUrl} from '../constants'
 import {ADD_ORDER} from './types'
 
 
-export const addOrder = (order,addresses) => (dispatch, getState) =>
+export const addOrder = (order,addresses) => (dispatch, getState) => {
   const state = getState()
   const jwt = state.currentUser.jwt
-  
+
   request
 		.post(`${baseUrl}/orders`)
 		.send({ order, addresses })
@@ -18,3 +18,4 @@ export const addOrder = (order,addresses) => (dispatch, getState) =>
 			})
 		})
 		.catch(err => console.log(err))
+  }
