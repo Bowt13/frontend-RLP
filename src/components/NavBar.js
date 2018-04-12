@@ -128,7 +128,7 @@ class NavBar extends PureComponent {
             }}
           >
             <ListItem primaryText="Je bestellingen"
-              leftIcon={<FeaturedPlayList  />}
+              leftIcon={<FeaturedPlayList />}
             />
             <ListItem primaryText="Berichten"
               leftIcon={<Email />}
