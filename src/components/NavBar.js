@@ -12,6 +12,7 @@ import logo from './logo.png'
     import Avatar from 'material-ui/Avatar'
     import IconButton from 'material-ui/IconButton'
     import MenuItem from 'material-ui/MenuItem'
+    import Divider from 'material-ui/Divider'
   //Icons
     import NavigationChevronRight from 'material-ui/svg-icons/navigation/chevron-right'
     import NavigationChevronLeft from 'material-ui/svg-icons/navigation/chevron-left'
@@ -78,6 +79,9 @@ class NavBar extends PureComponent {
         <Drawer width={300} open={this.state.drawer} >
           <AppBar
             title={`${this.state.currentUser.firstName} ${this.state.currentUser.lastName}`}
+            titleStyle={{
+              color: '#F09517',
+            }}
             showMenuIconButton={ false }
             iconElementRight={
               <IconButton
@@ -102,6 +106,7 @@ class NavBar extends PureComponent {
             style={{
               lineHeight: 0.7,
               fontSize: 14,
+              marginBottom: 30,
             }}
           >
             <p>{`${this.state.currentUser.company.address.street}`}</p>
@@ -109,6 +114,7 @@ class NavBar extends PureComponent {
             <p>{`${this.state.currentUser.company.address.city}`}</p>
             <p>{`${this.state.currentUser.company.address.country}`}</p>
           </div>
+          <Divider />
         </Drawer>
       </div>
     )
