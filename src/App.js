@@ -30,7 +30,7 @@ class App extends Component {
           <Route exact path="/InternalContactOverview" component={InternalContactOverview} />
           <Route exact path="/flexicon/forgotpassword" component={ ForgotPassword }/>
           <Route exact path="/flexicon/users/:usersId" component={ContactPage}/>
-          <Route exact path="/" render={ () => <Redirect to="/flexicon/users/:usersId" /> } />
+          <Route exact path="/" render={ () => <Redirect to="/login" /> } />
         </div>
       </MuiThemeProvider>
       </Router>
