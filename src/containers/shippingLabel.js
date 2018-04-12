@@ -77,7 +77,13 @@ class ShippingLabel extends PureComponent {
   };
 
   handleToggle = () => this.setState({ open: !this.state.open });
+///delivery address prominent in middle
+//date, number = smaller
+//also delivery type...
+//html =
+//every thing not interactive
 
+//user CardText = see material-ui = card
   render() {
     return (
       <div>
