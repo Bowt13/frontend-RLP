@@ -5,6 +5,8 @@
 
 //CONTAINERS
   import InternalContactOverview from './containers/internalContactOverview'
+  import LoginPage from './containers/LoginPage'
+  import SignupPage from './containers/SignupPage'
   import ForgotPassword from './containers/forgotPassword'
 
 //MATERIALUI
@@ -12,8 +14,6 @@
     import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 
 //Components
-  import LoginPage from './components/LoginPage'
-  import SignupPage from './components/SignupPage'
   import ContactPage from './components/ContactPage'
 
 
@@ -28,9 +28,9 @@ class App extends Component {
           <Route exact path="/login" component={LoginPage} />
           <Route exact path="/signup" component={SignupPage} />
           <Route exact path="/InternalContactOverview" component={InternalContactOverview} />
-          <Route exact path="/flexicon/forgotpassword" component={ ForgotPassword }/>
+          <Route exact path="/forgotpassword" component={ ForgotPassword }/>
           <Route exact path="/flexicon/users/:usersId" component={ContactPage}/>
-          <Route exact path="/" render={ () => <Redirect to="/flexicon/users/:usersId" /> } />
+          <Route exact path="/" render={ () => <Redirect to="/login" /> } />
         </div>
       </MuiThemeProvider>
       </Router>
