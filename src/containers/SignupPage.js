@@ -19,6 +19,33 @@ class SignupPage extends PureComponent {
 	}
 
 	render() {
+
+		const { authenticated } = this.props
+
+		if(!authenticated) return (
+			<div>
+				<header className="Header" style={{ backgroundColor: '#5e5d5e', height: 100, }}>
+					<img src={ logo } style={{ margin: 10, }}/>
+				</header>
+
+				<Paper style={{
+					display: 'inline-block',
+					margin: 50,
+					width: 450,
+					height: 300,
+					padding: 20,
+					textAlign: 'center',
+					lineHeight: 1.6,
+				}}
+				zDepth={2}
+				>
+					<h2>Het lijkt erop dat je geen geregistreerde klant bent.</h2>
+					<p>Als je een uitnodiging van Flexicon hebt gekregen en de link je naar deze pagina brengt,
+						neem alsjeblieft contact op met de contactpersoon in de e-mail.</p>
+				</Paper>
+		</div>
+	)
+
 		if (this.props.signup.success) return (
 			<Redirect to="/create/order" />
 		)
@@ -42,7 +69,7 @@ class SignupPage extends PureComponent {
 				zDepth={2}
 				>
 					<h2>Welkom bij de Flexicon Klanten Order Admin tool!</h2>
-					<p>Kies alsteblieft een wachtwoord om de registratie van je account te voltooien.</p>
+					<p>Kies alsjeblieft een wachtwoord om de registratie van je account te voltooien.</p>
 					<SignupForm onSubmit={this.handleSubmit} />
 			    {this.props.signup.error && <p style={{color:'red'}}>{this.props.signup.error}</p>}
 				</Paper>
@@ -53,6 +80,7 @@ class SignupPage extends PureComponent {
 
 const mapStateToProps = function (state) {
 	return {
+		authenticated: state.user !== null,
 		signup: state.signup
 	}
 }

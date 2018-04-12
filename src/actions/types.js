@@ -8,3 +8,13 @@ export const USER_LOGOUT = 'USER_LOGOUT'
 
 //password
 export const FORGOT_PASSWORD = 'FORGOT_PASSWORD'
+
+
+//ORDERS
+export const ADD_ORDER = 'ADD_ORDER'
+export const GET_ORDERS = 'GET_ORDERS'
+export const GET_ORDER = 'GET_ORDER'
+
+//DELIVERIES
+export const GET_DELIVERIES = 'GET_DELIVERIES'
+export const ADD_DELIVERY = 'ADD_DELIVERY'
