@@ -7,10 +7,11 @@
   import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom'
 
 //CONTAINERS
-  import InternalContactOverview from './containers/internalContactOverview'
+  import InternalContactOverview from './containers/InternalContactOverview'
   import LoginPage from './components/LoginPage'
   import SignupPage from './components/SignupPage'
-  import ForgotPassword from './containers/forgotPassword'
+  import ForgotPassword from './containers/ForgotPassword'
+  import OrderCreator from './containers/OrderCreatorPage'
 
 //MATERIALUI
   //PROVIDER
@@ -25,10 +26,12 @@ class App extends Component {
       <Router>
       <MuiThemeProvider>
         <div className="App">
-          <Route exact path="/login" component={LoginPage} />
-          <Route exact path="/signup" component={SignupPage} />
+          <Route exact path="/login" component={ LoginPage } />
+          <Route exact path="/signup" component={ SignupPage } />
+          <Route exact path="/create/order" component={ OrderCreator } />
+          <Route exact path="/create/InternalContactOverview" component={ InternalContactOverview } />
           <Route exact path="/flexicon/forgotpassword" component={ ForgotPassword }/>
-          <Route exact path="/flexicon/users/:usersId" component={ContactPage}/>
+          <Route exact path="/flexicon/users/:usersId" component={ ContactPage }/>
           <Route exact path="/" render={ () => <Redirect to="/flexicon/users/:usersId" /> } />
         </div>
       </MuiThemeProvider>

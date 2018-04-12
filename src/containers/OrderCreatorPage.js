@@ -6,16 +6,9 @@ import {Redirect} from 'react-router-dom'
 
 //MaterialUI
   //Components
-    import Drawer from 'material-ui/Drawer';
-    import AppBar from 'material-ui/AppBar'
+    import TextField from 'material-ui/TextField'
     import RaisedButton from 'material-ui/RaisedButton'
-    import Avatar from 'material-ui/Avatar';
     import Paper from 'material-ui/Paper';
-    import
-      {List,
-      ListItem}
-    from 'material-ui/List';
-    import Subheader from 'material-ui/Subheader';
     import Divider from 'material-ui/Divider';
     import Business from 'material-ui/svg-icons/communication/business'
   //Colors
@@ -25,6 +18,9 @@ import {Redirect} from 'react-router-dom'
 
 
 //Components
+  import OrderInfo from '../components/orders/OrderInfo'
+  import OrderAdressForm from '../components/orders/OrderAdressForm'
+  import OrderRemarkForm from '../components/orders/OrderRemarkForm'
 
 //companies
   const companies = [
@@ -280,105 +276,34 @@ import {Redirect} from 'react-router-dom'
     },
   ]
 
-class InternalContactOverview extends PureComponent {
+class OrderCreator extends PureComponent {
   state = {
-    drawer: true,
-    currentUser: {
-      firstName: 'Nigel',
-      lastName: 'Brown',
-      picture: 'https://www.watsonmartin.com/wp-content/uploads/2016/03/default-profile-picture.jpg',
-      company: 'Codasseur',
-    },
   }
 
-  handleToggle = () => this.setState({drawer: !this.state.drawer});
+  handleChange = (event) => {
+    const {name, value} = event.target
+    this.setState({
+      [name]: value
+    })
+  }
 
   componentWillMount() {
-    let employelist = {x: 'placeholder'}
   }
 
 	render() {
-
 		return (
       <div style={{
         textAlign: 'center',
       }}>
-        <AppBar
-          title="Flexicon"
-          iconClassNameRight="muidocs-icon-navigation-expand-more"
-          style={{
-            position: 'fixed',
-            width: '100%',
-            backgroundColor:'#616161',
-          }}
-          onLeftIconButtonClick={_=> this.setState({drawer: !this.state.drawer})}
-        />
-        <Drawer width={300} open={this.state.drawer} >
-          <AppBar
-            title={`${this.state.currentUser.firstName} ${this.state.currentUser.lastName}`}
-            iconClassNameRight="muidocs-icon-navigation-expand-more"
-            style={{
-              width: '100%',
-              backgroundColor:'#616161',
-            }}
-            onLeftIconButtonClick={_=> this.setState({drawer: !this.state.drawer})}
-          />
-          <Avatar
-            src= {this.state.currentUser.picture}
-            size={200}
-            style={{
-              position: 'relative',
-              top: 20,
-            }}
-          />
-        </Drawer>
+
         <Paper
           style={{
-            position: 'relative',
-            top: 80,
-            botom: 10,
-            left: '25%',
-            width: '50%',
+            width: '100%',
           }}
         >
-          <List
-            style={{
-              position: 'relative',
-              height: 550,
-              overflow: 'scroll',
-              }}
-          >
-            <Subheader
-              style={{
-                fontSize: 40,
-              }}
-            >Companies</Subheader>
-            <Divider
-              style={{
-                padding: 5,
-                marginBottom: 5,
-              }}
-            />
-            <Divider />
-            {companies.map((company) => (
-              <div>
-              <ListItem
-                value={company.id}
-                primaryText={`${company.companyName}`}
-                leftAvatar={<Avatar src={`${company.companyLogo}`} />}
-                nestedItems={[
-                  <ListItem
-                    value={2}
-                    primaryText="Grace Ng"
-                    leftAvatar={<Avatar src='https://www.watsonmartin.com/wp-content/uploads/2016/03/default-profile-picture.jpg'/>}
-                  />,
-                ]}
-              />
-              <Divider />
-              </div>
-            ))
-            }
-          </List>
+          <OrderInfo />
+          <OrderAdressForm />
+          <OrderRemarkForm />
         </Paper>
       </div>
 		)
@@ -390,4 +315,4 @@ const mapStateToProps = function (state) {
 	}
 }
 
-export default connect(mapStateToProps)(InternalContactOverview)
+export default connect(mapStateToProps)(OrderCreator)
