@@ -23,8 +23,8 @@ class App extends Component {
     return (
       <Router>
       <MuiThemeProvider>
-      <NavBar />
         <div className="App">
+          <NavBar />
           <Route exact path="/login" component={LoginPage} />
           <Route exact path="/signup" component={SignupPage} />
           <Route exact path="/forgotpassword" component={ ForgotPassword } />

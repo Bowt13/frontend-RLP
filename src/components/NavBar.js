@@ -1,6 +1,7 @@
 //Dependencies
 import React, { PureComponent } from 'react'
 import { connect } from 'react-redux'
+import { withRouter } from 'react-router'
 
 //Image
 import logo from './logo.png'
@@ -44,8 +45,12 @@ class NavBar extends PureComponent {
 
   render() {
 
-    const { currentUser } = this.props
-
+    const { currentUser, history, location } = this.props
+    if (location.pathname.indexOf('flexicon') <= 0 ) return(
+      <header className="Header" style={{ backgroundColor: '#5e5d5e', height: 100, }}>
+        <img src={ logo } style={{ margin: 10, }}/>
+      </header>
+    )
     return(
       <div style={{
         textAlign: 'center',
@@ -149,4 +154,4 @@ const mapStateToProps = function (state) {
 	}
 }
 
-export default connect(mapStateToProps)(NavBar)
+export default withRouter(connect(mapStateToProps)(NavBar))
