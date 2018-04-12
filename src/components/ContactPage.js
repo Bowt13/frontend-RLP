@@ -8,8 +8,10 @@ import {connect} from 'react-redux'
     import RaisedButton from 'material-ui/RaisedButton'
     import Paper from 'material-ui/Paper';
     import Avatar from 'material-ui/Avatar'
-    import {List,
-      ListItem} from 'material-ui/List';
+    import {
+      List,
+      ListItem
+    } from 'material-ui/List';
     import Subheader from 'material-ui/Subheader';
     import Divider from 'material-ui/Divider';
     import Business from 'material-ui/svg-icons/communication/business'

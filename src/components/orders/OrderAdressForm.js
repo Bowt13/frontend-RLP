@@ -2,7 +2,7 @@
 import React, {PureComponent} from 'react'
 import {connect} from 'react-redux'
 import {Redirect} from 'react-router-dom'
-
+import PropTypes from 'prop-types'
 
 //MaterialUI
   //Components
@@ -23,6 +23,9 @@ import {Redirect} from 'react-router-dom'
 
 
 class OrderAdressForm extends PureComponent {
+  static propTypes = {
+    onChange: PropTypes.func.isRequired,
+  }
   state = {
     factuurAdres: false,
     afleverAdres: false,
@@ -47,11 +50,26 @@ class OrderAdressForm extends PureComponent {
     });
   }
 
-  componentWillMount() {
+  handleChange = (type, state) => {
+    console.log(type)
+    this.setState({
+      [type]: state
+    })
+    console.log(this.state)
+  }
+
+  onClick = () => {
+    this.bezoekAdresForm.handleSubmit()
+    console.log('OrderAdres', this.state)
+    this.props.onChange('OrderAdres', this.state)
+  }
+
+  componentDidMount() {
+    this.props.onRef(this)
   }
 
 	render() {
-
+    const {handleChange} = this
 		return (
       <div style={{
         display: 'inline-block',
@@ -66,7 +84,7 @@ class OrderAdressForm extends PureComponent {
             width: 350,
            }}
         >
-          <BezoekAdresForm/>
+          <BezoekAdresForm onChange={handleChange} onRef={ref => (this.bezoekAdresForm = ref)}/>
           <Checkbox
           label="Bezoekadres is ook het factuuradres en afleveradres?"
           labelPosition="left"
@@ -91,7 +109,7 @@ class OrderAdressForm extends PureComponent {
             width: 350,
            }}
         >
-          <FactuurAdresForm/>
+          <FactuurAdresForm onChange={handleChange}/>
           <Checkbox
           label="Factuuradres is ook het afleveradres?"
           labelPosition="left"
@@ -129,7 +147,7 @@ class OrderAdressForm extends PureComponent {
             width: 350,
            }}
         >
-          <AfleverAdresForm/>
+          <AfleverAdresForm onChange={handleChange}/>
         </Paper>}
 
         {!this.state.afleverAdres &&
