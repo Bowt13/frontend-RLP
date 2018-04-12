@@ -4,16 +4,17 @@
   import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom'
 
 //CONTAINERS
-  import InternalContactOverview from './containers/internalContactOverview'
-  import ForgotPassword from './containers/forgotPassword'
+  import InternalContactOverview from './containers/InternalContactOverview'
+  import LoginPage from './containers/LoginPage'
+  import SignupPage from './containers/SignupPage'
+  import ForgotPassword from './containers/ForgotPassword'
+  import OrderCreator from './containers/OrderCreatorPage'
 
 //MATERIALUI
   //PROVIDER
     import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 
 //Components
-  import LoginPage from './components/LoginPage'
-  import SignupPage from './components/SignupPage'
   import ContactPage from './components/ContactPage'
 
 
@@ -26,12 +27,13 @@ class App extends Component {
       <Router>
       <MuiThemeProvider>
         <div className="App">
-          <Route exact path="/login" component={LoginPage} />
-          <Route exact path="/signup" component={SignupPage} />
-          <Route exact path="/InternalContactOverview" component={InternalContactOverview} />
-          <Route exact path="/flexicon/forgotpassword" component={ ForgotPassword }/>
-          <Route exact path="/flexicon/users/:usersId" component={ContactPage}/>
-          <Route exact path="/" render={ () => <Redirect to="/flexicon/users/:usersId" /> } />
+          <Route exact path="/login" component={ LoginPage } />
+          <Route exact path="/signup" component={ SignupPage } />
+          <Route exact path="flexicon/create/order" component={ OrderCreator } />
+          <Route exact path="flexicon/InternalContactOverview" component={ InternalContactOverview } />
+          <Route exact path="/forgotpassword" component={ ForgotPassword }/>
+          <Route exact path="/flexicon/users/:usersId" component={ ContactPage }/>
+          <Route exact path="/" render={ () => <Redirect to="/login" /> } />
         </div>
       </MuiThemeProvider>
       </Router>

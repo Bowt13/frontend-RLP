@@ -26,50 +26,59 @@ export default class SignupForm extends PureComponent {
 	render() {
 		return (
 			<form>
-				<div>
-					<TextField
-						floatingLabelText="Email"
-						value={this.state.Email || ''}
-						name='Email'
-						type='Email'
-						style={
-							{
-								position: 'relative',
-								left: 15,
-							}
-						}
-						onChange={this.handleChange}
-					/>
-				</div>
 
 				<div>
 					<TextField
-						floatingLabelText="Password"
+						floatingLabelText="Wachtwoord"
 						value={this.state.Password || ''}
 						name='Password'
 						type='Password'
 						style={
 							{
 								position: 'relative',
-								left: 15,
+								top: -8,
 							}
 						}
+						floatingLabelStyle= {{
+							color: '#9A9A98',
+						}}
+						floatingLabelFocusStyle={{
+							color: '#F09517',
+						}}
+						underlineStyle={{
+							borderColor: '#F09517',
+						}}
+						underlineFocusStyle={{
+							borderColor: '#F09517',
+						}}
 						onChange={this.handleChange}
 					/>
 				</div>
 
 				<div>
 					<TextField
-						floatingLabelText="Confirm Password"
+						floatingLabelText="Wachtwoord opnieuw"
 						value={this.state.ConfirmPassword || ''}
 						name='ConfirmPassword'
 						type='Password'
 						style={
 							{
 								position: 'relative',
-								left: 15,
+								top: -15,
 							}
 						}
+						floatingLabelStyle= {{
+							color: '#9A9A98',
+						}}
+						floatingLabelFocusStyle={{
+							color: '#F09517',
+						}}
+						underlineStyle={{
+							borderColor: '#F09517',
+						}}
+						underlineFocusStyle={{
+							borderColor: '#F09517',
+						}}
 						onChange={this.handleChange}
 					/>
 				</div>
@@ -78,18 +87,17 @@ export default class SignupForm extends PureComponent {
 					this.state.Password &&
 					this.state.ConfirmPassword &&
 					this.state.Password !== this.state.ConfirmPassword &&
-					<p style={{color:'red'}}>The passwords do not match!</p>
+					<p style={{color:'red', fontSize: 14, margin: 0,}}>De wachtwoorden komen niet overeen!</p>
 				}
 
 				<RaisedButton
-          label="Signup"
-          backgroundColor='#616161'
-          labelColor='#ffffff'
+          label="Wachtwoord instellen"
           style={
             {
-              width:'10%',
-              position: 'relative',
-              left: 15,
+							position: 'relative',
+							margin: 30,
+							backgroundColor:'#9A9A98',
+							marginTop: 8,
             }
           }
           onClick={this.handleSubmit}
