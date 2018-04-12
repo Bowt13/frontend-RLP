@@ -40,8 +40,8 @@ class SignupPage extends PureComponent {
 				zDepth={2}
 				>
 					<h2>Het lijkt erop dat je geen geregistreerde klant bent.</h2>
-					<p>Als je een uitnodiging van Flexicon hebt gekregen een de link je naar deze pagina brengt:
-						neem alsteblieft contact met de contactpersoon in de e-mail op.</p>
+					<p>Als je een uitnodiging van Flexicon hebt gekregen en de link je naar deze pagina brengt,
+						neem alsjeblieft contact op met de contactpersoon in de e-mail.</p>
 				</Paper>
 		</div>
 	)
@@ -69,7 +69,7 @@ class SignupPage extends PureComponent {
 				zDepth={2}
 				>
 					<h2>Welkom bij de Flexicon Klanten Order Admin tool!</h2>
-					<p>Kies alsteblieft een wachtwoord om de registratie van je account te voltooien.</p>
+					<p>Kies alsjeblieft een wachtwoord om de registratie van je account te voltooien.</p>
 					<SignupForm onSubmit={this.handleSubmit} />
 			    {this.props.signup.error && <p style={{color:'red'}}>{this.props.signup.error}</p>}
 				</Paper>
