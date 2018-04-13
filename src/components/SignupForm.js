@@ -85,9 +85,15 @@ export default class SignupForm extends PureComponent {
 
 				{
 					this.state.password &&
+					this.state.password.length >= 8 &&
 					this.state.confirmPassword &&
 					this.state.password !== this.state.confirmPassword &&
 					<p style={{color:'red', fontSize: 14, margin: 0,}}>De wachtwoorden komen niet overeen!</p>
+				}
+
+				{ this.state.password &&
+					this.state.password.length < 8 &&
+					<p style={{color:'red', fontSize: 14, margin: 0,}}>Wachtwoord moet minstens 8 tekens lang zijn.</p>
 				}
 
 				<RaisedButton
