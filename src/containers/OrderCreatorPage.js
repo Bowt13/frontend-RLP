@@ -301,6 +301,8 @@ class OrderCreator extends PureComponent {
 		return (
       <div
         style={{
+          position: 'relative',
+          top: 55,
           textAlign: 'center',
         }}
       >
