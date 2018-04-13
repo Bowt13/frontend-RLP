@@ -22,7 +22,7 @@ class SignupPage extends PureComponent {
 
 		const { authenticated } = this.props
 
-		if(authenticated) return (
+		if(!authenticated) return (
 			<div>
 				<Paper style={{
 					display: 'inline-block',
@@ -48,10 +48,6 @@ class SignupPage extends PureComponent {
 
 		return (
 			<div className='signup-page'>
-
-				<header className="Header" style={{ backgroundColor: '#5e5d5e', height: 100, }}>
-					<img src={ logo } style={{ margin: 10, }}/>
-				</header>
 
 				<Paper style={{
 					display: 'inline-block',

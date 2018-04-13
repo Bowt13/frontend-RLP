@@ -6,6 +6,9 @@ import { withRouter } from 'react-router'
 //Image
 import logo from './logo.png'
 
+//actions
+import { logout } from '../actions/users'
+
 //MaterialUI
   //Components
     import Drawer from 'material-ui/Drawer'
@@ -43,6 +46,10 @@ class NavBar extends PureComponent {
     },
   }
 
+  handleClick = () => {
+    // this.props.logout()
+    this.props.history.push('/login')
+  }
 
   render() {
 
@@ -83,6 +90,7 @@ class NavBar extends PureComponent {
             <RaisedButton
   	          label="Afmelden"
               backgroundColor= '#F09517'
+              onClick={ this.handleClick }
   	          style={
   	            {
                   position: 'relative',
