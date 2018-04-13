@@ -285,12 +285,15 @@ class OrderCreator extends PureComponent {
     this.setState({
       [type]: state
     })
-    console.log(this.state)
+    console.log('handleChange')
   }
 
   handleSubmit = () => {
+    this.orderInfo.onClick()
     this.orderAdressForm.onClick()
-    console.log(this.state)
+    this.orderRemarkForm.onClick()
+    this.orderAfleverInfo.onClick()
+    setTimeout(() => console.log(this.state), 10)
   }
 
   componentWillMount() {
@@ -311,10 +314,10 @@ class OrderCreator extends PureComponent {
             width: '100%',
           }}
         >
-          <OrderInfo onChange={handleChange}/>
+          <OrderInfo onChange={handleChange} onRef={ref => (this.orderInfo = ref)}/>
           <OrderAdressForm onChange={handleChange} onRef={ref => (this.orderAdressForm = ref)}/>
-          <OrderRemarkForm onChange={handleChange}/>
-          <OrderAfleverInfo onChange={handleChange}/>
+          <OrderRemarkForm onChange={handleChange} onRef={ref => (this.orderRemarkForm = ref)}/>
+          <OrderAfleverInfo onChange={handleChange} onRef={ref => (this.orderAfleverInfo = ref)}/>
         </Paper>
         <RaisedButton
           onClick={_ => this.handleSubmit()}
