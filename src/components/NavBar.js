@@ -47,9 +47,30 @@ class NavBar extends PureComponent {
   }
 
   handleClick = () => {
-    console.log(this.props);
     this.props.logout()
     this.props.history.push('/login')
+  }
+
+  handleDrawerClick = (type) => {
+    switch (type) {
+      case "GegevensBewerken":
+        this.setState({drawer: false})
+        console.log(type);
+        this.props.history.push('/flexicon/users/:usersId/changedetails')
+        break;
+      case "NieuweBestelling":
+        this.setState({drawer: false})
+        console.log(type);
+        this.props.history.push('/flexicon/create/order')
+        break;
+      case "JeBestellingen":
+        this.setState({drawer: false})
+        console.log(type);
+        this.props.history.push('/flexicon/users/:usersId/orders')
+        break;
+      default:
+
+    }
   }
 
   render() {
@@ -158,15 +179,15 @@ class NavBar extends PureComponent {
           >
             <ListItem primaryText="Je bestellingen"
               leftIcon={<FeaturedPlayList color='#F09517'/>}
-              onClick={ () => history.push('/flexicon/users/:usersId/orders') }
+              onClick={_ => this.handleDrawerClick("JeBestellingen")}
             />
             <ListItem primaryText="Nieuwe bestelling"
               leftIcon={<ShoppingCart color='#F09517'/>}
-              onClick={ () => history.push('/flexicon/create/order') }
+              onClick={_ => this.handleDrawerClick("NieuweBestelling")}
             />
             <ListItem primaryText="Gegevens bewerken"
               leftIcon={<Person color='#F09517'/>}
-              onClick={ () => history.push('/flexicon/users/:usersId/changedetails') }
+              onClick={_ => this.handleDrawerClick("GegevensBewerken")}
             />
           </List>
         </Drawer>
