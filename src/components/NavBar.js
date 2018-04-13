@@ -156,13 +156,13 @@ class NavBar extends PureComponent {
             }}
           >
             <ListItem primaryText="Je bestellingen"
-              leftIcon={<FeaturedPlayList />}
+              leftIcon={<FeaturedPlayList color='#F09517'/>}
             />
             <ListItem primaryText="Berichten"
-              leftIcon={<Email />}
+              leftIcon={<Email color='#F09517'/>}
             />
             <ListItem primaryText="Gegevens bewerken"
-              leftIcon={<Person />}
+              leftIcon={<Person color='#F09517'/>}
             />
           </List>
         </Drawer>
