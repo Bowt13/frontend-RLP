@@ -31,7 +31,7 @@ class OrderRemarkForm extends PureComponent {
   }
 
   previewFile = () => {
-    let preview = document.querySelector('img'); //selects the query named img
+    let preview = document.querySelector('img')
     let file    = this.state.picture
     let reader  = new FileReader()
     reader.onloadend = function () {
@@ -45,7 +45,7 @@ class OrderRemarkForm extends PureComponent {
   }
 
   loading = () => {
-    this.timer = setTimeout(() => this.progress(this.state.completed), 10)
+    this.timer = setTimeout(() => this.progress(this.state.completed), 1000)
   }
 
   progress(completed) {
@@ -54,11 +54,11 @@ class OrderRemarkForm extends PureComponent {
         completed: 100,
         showImage: true,
       })
-      setTimeout(_ => this.previewFile(), 100)
+      this.previewFile()
     } else {
       this.setState({completed});
-      const diff = 1;
-      this.timer = setTimeout(() => this.progress(completed + diff), 10);
+      const diff = 100;
+      this.timer = setTimeout(() => this.progress(this.state.completed + diff), 1000);
     }
   }
 
@@ -86,6 +86,8 @@ class OrderRemarkForm extends PureComponent {
   }
 
 	render() {
+    let file    = this.state.picture
+    let reader  = new FileReader()
 
 		return (
       <div style={{
@@ -223,7 +225,11 @@ class OrderRemarkForm extends PureComponent {
                   src=""
                   height="200"
                   width="auto"
-                  alt="Geen afbeelding..."/>
+                  alt="Geen afbeelding..."
+                  style={{
+                    display: 'inline-block',
+                  }}
+                />
               }
               {!this.state.showImage &&
                 <div

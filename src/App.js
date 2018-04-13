@@ -28,8 +28,8 @@ class App extends Component {
         <div className="App">
           <Route exact path="/login" component={ LoginPage } />
           <Route exact path="/signup" component={ SignupPage } />
-          <Route exact path="flexicon/create/order" component={ OrderCreator } />
-          <Route exact path="flexicon/InternalContactOverview" component={ InternalContactOverview } />
+          <Route exact path="/flexicon/create/order" component={ OrderCreator } />
+          <Route exact path="/flexicon/InternalContactOverview" component={ InternalContactOverview } />
           <Route exact path="/forgotpassword" component={ ForgotPassword }/>
           <Route exact path="/flexicon/users/:usersId" component={ ContactPage }/>
           <Route exact path="/" render={ () => <Redirect to="/login" /> } />
