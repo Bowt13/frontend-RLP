@@ -10,6 +10,7 @@ import logo from './logo.png'
 //MaterialUI
   //Components
 	import Paper from 'material-ui/Paper'
+	import Dialog from 'material-ui/Dialog'
 
 
 class LoginPage extends PureComponent {

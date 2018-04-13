@@ -311,6 +311,7 @@ class OrderCreator extends PureComponent {
       >
         <Paper
           style={{
+            height: 1800,
             width: '100%',
           }}
         >
@@ -318,10 +319,16 @@ class OrderCreator extends PureComponent {
           <OrderAdressForm onChange={handleChange} onRef={ref => (this.orderAdressForm = ref)}/>
           <OrderRemarkForm onChange={handleChange} onRef={ref => (this.orderRemarkForm = ref)}/>
           <OrderAfleverInfo onChange={handleChange} onRef={ref => (this.orderAfleverInfo = ref)}/>
+          <br/>
+          <RaisedButton
+            style={{
+              width: 500,
+            }}
+            onClick={_ => this.handleSubmit()}
+          >
+          Verstuur Order
+          </RaisedButton>
         </Paper>
-        <RaisedButton
-          onClick={_ => this.handleSubmit()}
-        />
       </div>
 		)
 	}
