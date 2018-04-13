@@ -47,7 +47,8 @@ class NavBar extends PureComponent {
   }
 
   handleClick = () => {
-    // this.props.logout()
+    console.log(this.props);
+    this.props.logout()
     this.props.history.push('/login')
   }
 
@@ -180,4 +181,4 @@ const mapStateToProps = function (state) {
 	}
 }
 
-export default withRouter(connect(mapStateToProps)(NavBar))
+export default withRouter(connect(mapStateToProps, {  logout })(NavBar))
