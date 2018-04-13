@@ -24,12 +24,12 @@ export default class LoginForm extends PureComponent {
 
   render() {
     return (
-      <form>
+      <form onSubmit={this.handleSubmit}>
         <div>
           <TextField
             floatingLabelText="E-mailadres"
-            value={this.state.Email || ''}
-            name='Email'
+            value={this.state.email || ''}
+            name='email'
             type='Email'
             style={
               {
@@ -54,8 +54,8 @@ export default class LoginForm extends PureComponent {
 
           <TextField
             floatingLabelText="Wachtwoord"
-            value={this.state.Password || ''}
-            name='Password'
+            value={this.state.password || ''}
+            name='password'
             type='Password'
             style={
               {

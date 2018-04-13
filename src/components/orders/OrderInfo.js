@@ -2,7 +2,7 @@
 import React, {PureComponent} from 'react'
 import {connect} from 'react-redux'
 import {Redirect} from 'react-router-dom'
-
+import PropTypes from 'prop-types'
 
 //MaterialUI
   //Components
@@ -22,6 +22,9 @@ import {Redirect} from 'react-router-dom'
 //Components
 
 class OrderInfo extends PureComponent {
+  static propTypes = {
+    onChange: PropTypes.func.isRequired,
+  }
   state = {
   }
 
@@ -32,14 +35,22 @@ class OrderInfo extends PureComponent {
     })
   }
 
+  formatDate = ( date ) => {
+    console.log(date)
+    var d = date.getDate();
+    var m = date.getMonth() + 1;
+    var y = date.getFullYear();
+    return ('' + (d <= 9 ? '0' + d : d) + '-' + (m<=9 ? '0' + m : m) + '-' + y)
+  }
+
   componentWillMount() {
     this.setState({
-      Bonnummer: 876534567890
+      Bonnummer: 876534567890,
+      currentDate: JSON.stringify(this.formatDate(new Date())).substr(1,10).split('T', 1)
     })
   }
 
 	render() {
-    const currentDate = JSON.stringify(new Date()).substr(1).split('T', 1)
 		return (
       <div style={{
         textAlign: 'center',
@@ -77,7 +88,7 @@ class OrderInfo extends PureComponent {
           />
           <TextField
             floatingLabelText="Datum:"
-            value={`${currentDate}`}
+            value={`${this.state.currentDate}`}
             style={{
               position: 'relative',
               left: -200,

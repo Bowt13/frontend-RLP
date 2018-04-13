@@ -21,6 +21,7 @@ import {Redirect} from 'react-router-dom'
   import OrderInfo from '../components/orders/OrderInfo'
   import OrderAdressForm from '../components/orders/OrderAdressForm'
   import OrderRemarkForm from '../components/orders/OrderRemarkForm'
+  import OrderAfleverInfo from '../components/orders/OrderAfleverInfo'
 
 //companies
   const companies = [
@@ -280,31 +281,44 @@ class OrderCreator extends PureComponent {
   state = {
   }
 
-  handleChange = (event) => {
-    const {name, value} = event.target
+  handleChange = (type, state) => {
     this.setState({
-      [name]: value
+      [type]: state
     })
+    console.log(this.state)
+  }
+
+  handleSubmit = () => {
+    this.orderAdressForm.onClick()
+    console.log(this.state)
   }
 
   componentWillMount() {
   }
 
 	render() {
+    const {handleChange} = this
 		return (
-      <div style={{
-        textAlign: 'center',
-      }}>
-
+      <div
+        style={{
+          position: 'relative',
+          top: 55,
+          textAlign: 'center',
+        }}
+      >
         <Paper
           style={{
             width: '100%',
           }}
         >
-          <OrderInfo />
-          <OrderAdressForm />
-          <OrderRemarkForm />
+          <OrderInfo onChange={handleChange}/>
+          <OrderAdressForm onChange={handleChange} onRef={ref => (this.orderAdressForm = ref)}/>
+          <OrderRemarkForm onChange={handleChange}/>
+          <OrderAfleverInfo onChange={handleChange}/>
         </Paper>
+        <RaisedButton
+          onClick={_ => this.handleSubmit()}
+        />
       </div>
 		)
 	}

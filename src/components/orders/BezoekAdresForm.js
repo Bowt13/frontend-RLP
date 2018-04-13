@@ -2,7 +2,7 @@
 import React, {PureComponent} from 'react'
 import {connect} from 'react-redux'
 import {Redirect} from 'react-router-dom'
-
+import PropTypes from 'prop-types'
 
 //MaterialUI
   //Components
@@ -26,6 +26,9 @@ import {Redirect} from 'react-router-dom'
 
 
 class BezoekAdresForm extends PureComponent {
+  static propTypes = {
+    onChange: PropTypes.func.isRequired,
+  }
   state = {
   }
 
@@ -36,7 +39,13 @@ class BezoekAdresForm extends PureComponent {
     })
   }
 
-  componentWillMount() {
+  handleSubmit = () => {
+    console.log('BezoekAdresForm.handleSubmit')
+    this.props.onChange('BezoekAdres', this.state)
+  }
+
+  componentDidMount() {
+    this.props.onRef(this)
   }
 
 	render() {
