@@ -22,7 +22,7 @@ class SignupPage extends PureComponent {
 
 		const { authenticated } = this.props
 
-		if(!authenticated) return (
+		if(authenticated) return (
 			<div>
 				<header className="Header" style={{ backgroundColor: '#5e5d5e', height: 100, }}>
 					<img src={ logo } style={{ margin: 10, }}/>

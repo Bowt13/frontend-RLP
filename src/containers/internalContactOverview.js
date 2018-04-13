@@ -303,61 +303,29 @@ class InternalContactOverview extends PureComponent {
       <div style={{
         textAlign: 'center',
       }}>
-        <AppBar
-          title="Flexicon"
-          iconClassNameRight="muidocs-icon-navigation-expand-more"
-          style={{
-            position: 'fixed',
-            width: '100%',
-            backgroundColor:'#616161',
-          }}
-          onLeftIconButtonClick={_=> this.setState({drawer: !this.state.drawer})}
-        />
-        <Drawer width={300} open={this.state.drawer} >
-          <AppBar
-            title={`${this.state.currentUser.firstName} ${this.state.currentUser.lastName}`}
-            iconClassNameRight="muidocs-icon-navigation-expand-more"
-            style={{
-              width: '100%',
-              backgroundColor:'#616161',
-            }}
-            onLeftIconButtonClick={_=> this.setState({drawer: !this.state.drawer})}
-          />
-          <Avatar
-            src= {this.state.currentUser.picture}
-            size={200}
-            style={{
-              position: 'relative',
-              top: 20,
-            }}
-          />
-        </Drawer>
-        <Paper
-          style={{
-            position: 'relative',
-            top: 80,
-            botom: 10,
-            left: '25%',
-            width: '50%',
-          }}
-        >
-          <List
-            style={{
-              position: 'relative',
-              height: 550,
-              overflow: 'scroll',
-              }}
-          >
-            <Subheader
-              style={{
-                fontSize: 40,
-              }}
-            >Companies</Subheader>
-            <Divider
-              style={{
-                padding: 5,
-                marginBottom: 5,
-              }}
+        <Paper style={{
+          position: 'relative',
+          top: 80,
+          botom: 10,
+          left: '25%',
+          width: '50%',
+          overflow: 'scroll',
+        }}>
+        <List>
+          <Subheader style={{
+            fontSize: 40,
+          }}>Companies</Subheader>
+          <Divider style={{
+            padding: 5,
+            marginBottom: 5,
+          }}/>
+          <Divider />
+          {companies.map((company) => (
+            <div>
+            <ListItem
+              primaryText={`${company.companyName}`}
+              leftAvatar={<Avatar src={`${company.companyLogo}`} />}
+              rightIcon={<Business />}
             />
             <Divider />
             {companies.map((company) => (
