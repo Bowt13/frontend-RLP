@@ -74,7 +74,6 @@ class NavBar extends PureComponent {
   }
 
   render() {
-
     const { currentUser, history, location } = this.props
     if (location.pathname.indexOf('flexicon') <= 0 ) return(
       <header className="Header" style={{ backgroundColor: '#5e5d5e', height: 100, }}>
