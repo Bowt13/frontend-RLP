@@ -22,7 +22,7 @@ import { logout } from '../actions/users'
     import NavigationChevronRight from 'material-ui/svg-icons/navigation/chevron-right'
     import NavigationChevronLeft from 'material-ui/svg-icons/navigation/chevron-left'
     import FeaturedPlayList from 'material-ui/svg-icons/av/featured-play-list'
-    import Email from 'material-ui/svg-icons/communication/email'
+    import ShoppingCart from 'material-ui/svg-icons/action/shopping-cart'
     import Person from 'material-ui/svg-icons/social/person'
 
 
@@ -94,7 +94,7 @@ class NavBar extends PureComponent {
   	          style={
   	            {
                   position: 'relative',
-                  top: 4,
+                  top: 5,
                   right: 20,
   								backgroundColor:'#9A9A98',
   	            }
@@ -158,8 +158,9 @@ class NavBar extends PureComponent {
             <ListItem primaryText="Je bestellingen"
               leftIcon={<FeaturedPlayList color='#F09517'/>}
             />
-            <ListItem primaryText="Berichten"
-              leftIcon={<Email color='#F09517'/>}
+            <ListItem primaryText="Nieuwe bestelling"
+              leftIcon={<ShoppingCart color='#F09517'/>}
+              onClick={ () => history.push('/flexicon/create/order') }
             />
             <ListItem primaryText="Gegevens bewerken"
               leftIcon={<Person color='#F09517'/>}
