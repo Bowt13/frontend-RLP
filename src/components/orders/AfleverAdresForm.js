@@ -37,6 +37,7 @@ class AfleverAdresForm extends PureComponent {
     this.setState({
       [name]: value
     })
+    this.props.onChange('AfleverAdres', this.state)
   }
 
   handleSubmit = () => {

@@ -67,6 +67,16 @@ class OrderRemarkForm extends PureComponent {
     this.setState({
       [name]: value
     })
+    console.log(this.state)
+  }
+
+  handleFileChange = (e) => {
+    this.setState({
+      picture: e.target.files[0],
+      completed: 0,
+      showImage: false,
+    })
+    this.loading()
   }
 
   handleFileChange = (e) => {
