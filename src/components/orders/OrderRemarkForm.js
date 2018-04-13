@@ -79,7 +79,21 @@ class OrderRemarkForm extends PureComponent {
     this.loading()
   }
 
+  handleFileChange = (e) => {
+    this.setState({
+      picture: e.target.files[0],
+      completed: 0,
+      showImage: false,
+    })
+    this.loading()
+  }
+
+  onClick = () => {
+    this.props.onChange('OrderRemarkForm', this.state)
+  }
+
   componentWillMount() {
+    this.props.onRef(this)
     this.setState({
       KorteOmschrijving: []
     })

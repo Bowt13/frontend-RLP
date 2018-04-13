@@ -41,7 +41,16 @@ class OrderRemarkForm extends PureComponent {
     this.setState({
       [name]: value
     })
-    console.log(this.state);
+  }
+
+  handleChangeRadio = (name, value) => {
+    this.setState({
+      [name]: value
+    })
+  }
+
+  onClick = () => {
+    this.props.onChange('OrderAfleverInfo', this.state)
   }
 
   formatDate = ( date ) => {
@@ -56,13 +65,19 @@ class OrderRemarkForm extends PureComponent {
   }
 
   componentWillMount() {
-  }
-
-	render() {
     const {DeliveryTime} = this.state
     const CurrentDate = new Date()
     const MinimalDeliveryDate = new Date(Date.parse(CurrentDate) + (DeliveryTime * 86400000))
+    this.props.onRef(this)
+    this.setState({
+      LeverDatum: new Date(Date.parse(CurrentDate) + (DeliveryTime * 86400000))
+    })
+  }
 
+	render() {
+    const {DeliveryTime, LeverDatum} = this.state
+    const CurrentDate = new Date()
+    const MinimalDeliveryDate = LeverDatum
 		return (
       <div style={{
         width: 1150,
@@ -125,11 +140,13 @@ class OrderRemarkForm extends PureComponent {
                 }}
               >
                 <RadioButton
+                  name= 'DeliveryType'
                   value="PakketDienst"
                   label="Pakketdienst € 29,50 - bij schade kosteloos herstel."
                   style={{
                     marginBottom: 10,
                   }}
+                  onClick={_ => this.handleChangeRadio('DeliveryType', 'PakketDienst')}
                 />
                 <RadioButton
                   value="PostNL"
@@ -137,6 +154,7 @@ class OrderRemarkForm extends PureComponent {
                   style={{
                     marginBottom: 10,
                   }}
+                  onClick={_ => this.handleChangeRadio('DeliveryType', 'PostNL')}
                 />
                 <RadioButton
                   value="DirecteKoerier"
@@ -147,6 +165,7 @@ class OrderRemarkForm extends PureComponent {
                     width: 900,
                     marginBottom: 10,
                   }}
+                  onClick={_ => this.handleChangeRadio('DeliveryType', 'DirecteKoerier')}
                 />
               </RadioButtonGroup>
               <br/>

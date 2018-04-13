@@ -40,7 +40,13 @@ class AfleverAdresForm extends PureComponent {
     this.props.onChange('AfleverAdres', this.state)
   }
 
-  componentWillMount() {
+  handleSubmit = () => {
+    console.log('AfleverAdresForm.handleSubmit')
+    this.props.onChange('AfleverAdres', this.state)
+  }
+
+  componentDidMount() {
+    this.props.onRef(this)
   }
 
 	render() {

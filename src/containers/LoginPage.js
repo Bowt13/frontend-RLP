@@ -19,9 +19,11 @@ class LoginPage extends PureComponent {
 	}
 
 	render() {
+
 		if (this.props.currentUser) return (
-			<Redirect to="/somewhereElse" />
+			<Redirect to="/flexicon/create/order" />
 	  )
+
 		return (
 			<div className='login-page'>
 				<Paper style={{
@@ -35,11 +37,11 @@ class LoginPage extends PureComponent {
 				>
 					<h2>Inloggen</h2>
 					<LoginForm onSubmit={this.handleSubmit} />
-			    {this.props.error && <p style={{color:'red'}}>{this.props.error}</p>}
 
 					<Link to="/forgotpassword" style={{ position: 'relative', top: 10, fontSize: 14, color: '#5e5d5e'}}>
 						Wachtwoord vergeten?
 					</Link>
+					{this.props.error && <p style={{color:'red'}}>{this.props.error}</p>}
 				</Paper>
 			</div>
 		)
