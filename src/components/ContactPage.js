@@ -36,13 +36,28 @@ const user = {
 
 const orders = [
   {
-    name: 'order 1'
+    number: 'order 0707',
+    type: 'Secretary of the Year',
+    description: '3D crystal glass',
+    user: 'Johnny Bravo'
   },
   {
-    name: 'order 2'
+    number: 'order 0808',
+    type: 'Manager of the Month',
+    description: 'Award Tombstone Rectangle',
+    user: 'Annette Whilmore'
   },
   {
-    name: 'order 3'
+    number: 'order 0909',
+    type: 'Coffee Maker of the Week',
+    description: 'Award in Metal and Wood',
+    user: 'Stuart Belleville'
+  },
+  {
+    number: 'order 1010',
+    type: 'Colleague of the Day',
+    description: 'Plexiglass Star Shape',
+    user: 'Johnny Bravo'
   }
 ]
 
@@ -56,63 +71,56 @@ class ContactPage extends PureComponent {
     console.log(this.state.openProfile))
   }
 
-
-  renderProfile = () => {
-    if (this.state.openProfile)
-      return (
-      <Card style={{position: 'relative', maxWidth: '80%', height:'200px',
-                    transform:'translate(-50%,0)', left:'50%',
-                    margin: '25px 0 0 0'}} className='contactCard'
-        onClick={this.handleToggle}>
-        <CardText style={{position:'absolute',
-                          left:'0',
-                          transform: 'translate(0,-50%)',
-                          top: '50%',
-                          textAlign: 'left'}}>
-          <p>
-            <span>Name: </span>
-            {`${user.firstName +' ' + user.lastName}`}
-          </p>
-          <p>
-            <span>Email: </span>
-            {`${user.email}`}
-          </p>
-          <p>
-            <span>Phone: </span>
-            {`${user.phone}`}
-          </p>
-        </CardText>
-        <CardText style={{position:'absolute',
-                          transform: 'translate(0,-50%)',
-                          left:'50%',
-                          top:'50%'}}>
-          <p>
-            <span>Company: </span>
-            {`${user.company}`}
-          </p>
-          <RaisedButton>
-            Edit Profile
-          </RaisedButton>
-
-        </CardText>
-      </Card>
-    )
-  }
+  // TO HAVE PROFILE IN THE TOP BAR (FOR NOW WE DON'T WANT IT)
+  // renderProfile = () => {
+  //   if (this.state.openProfile)
+  //     return (
+  //     <Card style={{position: 'relative', maxWidth: '80%', height:'200px',
+  //                   transform:'translate(-50%,0)', left:'50%',
+  //                   margin: '25px 0 0 0'}} className='contactCard'
+  //       onClick={this.handleToggle}>
+  //       <CardText style={{position:'absolute',
+  //                         left:'0',
+  //                         transform: 'translate(0,-50%)',
+  //                         top: '50%',
+  //                         textAlign: 'left'}}>
+  //         <p>
+  //           <span>Name: </span>
+  //           {`${user.firstName +' ' + user.lastName}`}
+  //         </p>
+  //         <p>
+  //           <span>Email: </span>
+  //           {`${user.email}`}
+  //         </p>
+  //         <p>
+  //           <span>Phone: </span>
+  //           {`${user.phone}`}
+  //         </p>
+  //
+  //
+  //       </CardText>
+  //       <CardText style={{position:'absolute',
+  //                         transform: 'translate(0,-50%)',
+  //                         left:'50%',
+  //                         top:'50%'}}>
+  //         <p>
+  //           <span>Company: </span>
+  //           {`${user.company}`}
+  //         </p>
+  //         <RaisedButton>
+  //           Edit Profile
+  //         </RaisedButton>
+  //
+  //       </CardText>
+  //     </Card>
+  //   )
+  // }
 
 	render() {
     let windowWidth = window.screen.availWidth
     console.log(windowWidth);
 		return (
       <div>
-        <Card className='contactHeader'>
-          <CardHeader
-            avatar={<Avatar
-              onClick={this.handleToggle}>{`${user.firstName.slice(0,1)}${user.lastName.slice(0,1)}`}</Avatar>}
-            >
-            {`${user.firstName +' ' + user.lastName}`}
-          </CardHeader>
-        </Card>
-        {this.renderProfile()}
         <Paper style={{
           position: 'relative',
           top: 80,
@@ -131,11 +139,18 @@ class ContactPage extends PureComponent {
           }}/>
           <Divider />
           {orders.map((order) => (
-            <div>
+            <div >
               <ListItem
-                primaryText={`${order.name}`}
-                leftAvatar={<Avatar src={`${''}`} />}
-                rightIcon={<Business />}
+                primaryText={'Order Number: '+`${order.number}`}
+                secondaryText={'Order Description: '+ `${order.description}`}
+                nestedItems={[
+                  <ListItem
+                    value={2}
+                    primaryText={ 'Order Type: ' + `${order.type}`}
+                    secondaryText={'Order by: '+ `${order.user}`}
+                   className='order-row' onClick={_=>window.location.href=`/orders/${order.id}`}
+                  />
+                ]}
               />
               <Divider />
             </div>
