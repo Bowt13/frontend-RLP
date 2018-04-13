@@ -147,7 +147,7 @@ class ContactPage extends PureComponent {
                   <ListItem
                     value={2}
                     primaryText={ 'Order Type: ' + `${order.type}`}
-                    secondaryText={'Order by: '+ `${order.user}`}
+                    secondaryText={'Created by: '+ `${order.user}`}
                    className='order-row' onClick={_=>window.location.href=`/orders/${order.id}`}
                   />
                 ]}
