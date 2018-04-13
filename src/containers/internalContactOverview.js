@@ -303,29 +303,32 @@ class InternalContactOverview extends PureComponent {
       <div style={{
         textAlign: 'center',
       }}>
-        <Paper style={{
-          position: 'relative',
-          top: 80,
-          botom: 10,
-          left: '25%',
-          width: '50%',
-          overflow: 'scroll',
-        }}>
-        <List>
-          <Subheader style={{
-            fontSize: 40,
-          }}>Companies</Subheader>
-          <Divider style={{
-            padding: 5,
-            marginBottom: 5,
-          }}/>
-          <Divider />
-          {companies.map((company) => (
-            <div>
-            <ListItem
-              primaryText={`${company.companyName}`}
-              leftAvatar={<Avatar src={`${company.companyLogo}`} />}
-              rightIcon={<Business />}
+        <Paper
+          style={{
+            position: 'relative',
+            top: 80,
+            botom: 10,
+            left: '25%',
+            width: '50%',
+          }}
+        >
+          <List
+            style={{
+              position: 'relative',
+              height: 550,
+              overflow: 'scroll',
+              }}
+          >
+            <Subheader
+              style={{
+                fontSize: 40,
+              }}
+            >Companies</Subheader>
+            <Divider
+              style={{
+                padding: 5,
+                marginBottom: 5,
+              }}
             />
             <Divider />
             {companies.map((company) => (
