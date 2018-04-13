@@ -1,6 +1,6 @@
 import * as request from 'superagent'
 import {baseUrl} from '../constants'
-import {USER_SIGNUP_SUCCESS, USER_SIGNUP_FAILED, USER_LOGIN_SUCCESS, USER_LOGIN_FAILED, USER_LOGOUT} from './types'
+import {USER_SIGNUP_SUCCESS, USER_SIGNUP_FAILED, USER_LOGIN_SUCCESS, USER_LOGIN_FAILED, USER_LOGOUT, GET_USER} from './types'
 
 
 export const signup = (jwt, password) => (dispatch) => {
@@ -53,3 +53,19 @@ export const login = (email, password) => (dispatch) =>
 export const logout = () => ({
   type: USER_LOGOUT
 })
+
+export const getUser = (userId) => (dispatch, getState) => {
+  const state = getState()
+  const jwt = state.user.jwt
+
+  request
+    .get(`${baseUrl}/users/${userId}`)
+    .set('Authorization', `Bearer ${jwt}`)
+    .then(response => {
+      dispatch({
+        type: GET_USER,
+        payload: response.body
+      })
+    })
+    .catch(err => console.error(err))
+}
