@@ -1,3 +1,3 @@
-export const baseUrl = 'http://localhost:4000'
+export const baseUrl = process.env.SERVER_URL || 'http://localhost:4001'
 
-export const localStorageJwtKey = 'currentUserJwt'
+export const sessionStorageJwtKey = 'currentUserJwt'
