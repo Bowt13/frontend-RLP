@@ -3,13 +3,16 @@ import {baseUrl} from '../constants'
 import {USER_SIGNUP_SUCCESS, USER_SIGNUP_FAILED, USER_LOGIN_SUCCESS, USER_LOGIN_FAILED, USER_LOGOUT} from './types'
 
 
-export const signup = (email, password) => (dispatch) =>
+export const signup = (jwt, password) => (dispatch) => {
+		console.log(jwt);
+		console.log(password);
 	request
-		.post(`${baseUrl}/users`)
-		.send({ email, password })
+		.patch(`${baseUrl}/signup/${jwt}`)
+		.send({ password })
 		.then(result => {
 			dispatch({
-				type: USER_SIGNUP_SUCCESS
+				type: USER_SIGNUP_SUCCESS,
+				payload: result.body
 			})
 		})
 		.catch(err => {
@@ -23,6 +26,7 @@ export const signup = (email, password) => (dispatch) =>
 				console.error(err)
 			}
 		})
+	}
 
 export const login = (email, password) => (dispatch) =>
 	request

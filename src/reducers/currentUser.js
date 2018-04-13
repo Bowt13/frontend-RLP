@@ -1,4 +1,4 @@
-import {USER_LOGIN_SUCCESS, USER_LOGOUT} from '../actions/types'
+import {USER_LOGIN_SUCCESS, USER_LOGOUT, USER_SIGNUP_SUCCESS} from '../actions/types'
 import {sessionStorageJwtKey} from '../constants'
 
 let initialState = null
@@ -16,6 +16,9 @@ export default function (state = initialState, {type, payload}) {
 	switch (type) {
 		case USER_LOGIN_SUCCESS:
 			return payload
+
+    case USER_SIGNUP_SUCCESS:
+      return payload
 
     case USER_LOGOUT:
       return null

@@ -30,8 +30,8 @@ export default class SignupForm extends PureComponent {
 				<div>
 					<TextField
 						floatingLabelText="Wachtwoord"
-						value={this.state.Password || ''}
-						name='Password'
+						value={this.state.password || ''}
+						name='password'
 						type='Password'
 						style={
 							{
@@ -58,8 +58,8 @@ export default class SignupForm extends PureComponent {
 				<div>
 					<TextField
 						floatingLabelText="Wachtwoord opnieuw"
-						value={this.state.ConfirmPassword || ''}
-						name='ConfirmPassword'
+						value={this.state.confirmPassword || ''}
+						name='confirmPassword'
 						type='Password'
 						style={
 							{
@@ -84,9 +84,9 @@ export default class SignupForm extends PureComponent {
 				</div>
 
 				{
-					this.state.Password &&
-					this.state.ConfirmPassword &&
-					this.state.Password !== this.state.ConfirmPassword &&
+					this.state.password &&
+					this.state.confirmPassword &&
+					this.state.password !== this.state.confirmPassword &&
 					<p style={{color:'red', fontSize: 14, margin: 0,}}>De wachtwoorden komen niet overeen!</p>
 				}
 
