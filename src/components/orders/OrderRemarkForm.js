@@ -31,7 +31,7 @@ class OrderRemarkForm extends PureComponent {
   }
 
   previewFile = () => {
-    let preview = document.querySelector('img')
+    let preview = document.querySelector("img[id='previewFile']")
     let file    = this.state.picture
     let reader  = new FileReader()
     reader.onloadend = function () {
@@ -223,6 +223,7 @@ class OrderRemarkForm extends PureComponent {
               {this.state.completed === 100 && this.state.showImage &&
                 <img
                   src=""
+                  id="previewFile"
                   height="200"
                   width="auto"
                   alt="Geen afbeelding..."
@@ -236,13 +237,14 @@ class OrderRemarkForm extends PureComponent {
                   style={{
                     height: 200
                   }}
-                >
+                >{this.state.picture &&
                   <CircularProgress
                     mode="determinate"
                     value={this.state.completed}
                     size={100}
                     thickness={5}
                   />
+                }
                 </div>
               }
               <br/>
