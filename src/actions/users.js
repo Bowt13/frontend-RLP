@@ -56,7 +56,7 @@ export const logout = () => ({
 
 export const getUser = (userId) => (dispatch, getState) => {
   const state = getState()
-  const jwt = state.user.jwt
+  const jwt = state.currentUser.jwt
 
   request
     .get(`${baseUrl}/users/${userId}`)
