@@ -1,9 +1,9 @@
 import {USER_LOGIN_SUCCESS, USER_LOGOUT} from '../actions/types'
-import {localStorageJwtKey} from '../constants'
+import {sessionStorageJwtKey} from '../constants'
 
 let initialState = null
 try {
-  const jwt = localStorage.getItem(localStorageJwtKey)
+  const jwt = sessionStorage.getItem(sessionStorageJwtKey)
   if (jwt) {
     initialState = { jwt }
   }

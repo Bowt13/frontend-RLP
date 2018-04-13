@@ -4,10 +4,10 @@
   import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom'
 
 //CONTAINERS
-  import InternalContactOverview from './containers/InternalContactOverview'
+  import InternalContactOverview from './containers/internalContactOverview'
   import LoginPage from './containers/LoginPage'
   import SignupPage from './containers/SignupPage'
-  import ForgotPassword from './containers/ForgotPassword'
+  import ForgotPassword from './containers/forgotPassword'
   import OrderCreator from './containers/OrderCreatorPage'
 
 //MATERIALUI
