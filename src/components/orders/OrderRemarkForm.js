@@ -67,7 +67,6 @@ class OrderRemarkForm extends PureComponent {
     this.setState({
       [name]: value
     })
-    console.log(this.state)
   }
 
   handleFileChange = (e) => {
@@ -79,7 +78,12 @@ class OrderRemarkForm extends PureComponent {
     this.loading()
   }
 
+  onClick = () => {
+    this.props.onChange('OrderRemarkForm', this.state)
+  }
+
   componentWillMount() {
+    this.props.onRef(this)
     this.setState({
       KorteOmschrijving: []
     })

@@ -35,6 +35,13 @@ class OrderInfo extends PureComponent {
     })
   }
 
+  onClick = () => {
+    this.props.onChange('OrderInfo', {
+      Bonnummer: this.state.Bonnummer,
+      currentDate: this.state.currentDate[0]
+    })
+  }
+
   formatDate = ( date ) => {
     console.log(date)
     var d = date.getDate();
@@ -44,6 +51,7 @@ class OrderInfo extends PureComponent {
   }
 
   componentWillMount() {
+    this.props.onRef(this)
     this.setState({
       Bonnummer: 876534567890,
       currentDate: JSON.stringify(this.formatDate(new Date())).substr(1,10).split('T', 1)

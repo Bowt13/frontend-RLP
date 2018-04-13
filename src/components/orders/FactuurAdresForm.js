@@ -37,10 +37,15 @@ class FactuurAdresForm extends PureComponent {
     this.setState({
       [name]: value
     })
+  }
+
+  handleSubmit = () => {
+    console.log('FactuurAdresForm.handleSubmit')
     this.props.onChange('FactuurAdres', this.state)
   }
 
-  componentWillMount() {
+  componentDidMount() {
+    this.props.onRef(this)
   }
 
 	render() {
