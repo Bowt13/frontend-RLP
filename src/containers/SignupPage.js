@@ -3,6 +3,7 @@ import {connect} from 'react-redux'
 import {signup} from '../actions/users'
 import { Redirect } from 'react-router-dom'
 import SignupForm from '../components/SignupForm'
+import {withRouter} from 'react-router'
 
 //Image
 import logo from './logo.png'
@@ -15,7 +16,7 @@ import logo from './logo.png'
 class SignupPage extends PureComponent {
 
 	handleSubmit = (data) => {
-		this.props.postSignup(data.password)
+		this.props.postSignup(this.props.match.params.jwt, data.password)
 	}
 
 	render() {
@@ -43,7 +44,7 @@ class SignupPage extends PureComponent {
 	)
 
 		if (this.props.signup.success) return (
-			<Redirect to="/create/order" />
+			<Redirect to="/flexicon/create/order" />
 		)
 
 		return (
@@ -77,4 +78,4 @@ const mapStateToProps = function (state) {
 	}
 }
 
-export default connect(mapStateToProps, {postSignup: signup})(SignupPage)
+export default withRouter(connect(mapStateToProps, {postSignup: signup})(SignupPage))
