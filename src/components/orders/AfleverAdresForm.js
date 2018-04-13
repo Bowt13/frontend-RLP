@@ -2,7 +2,7 @@
 import React, {PureComponent} from 'react'
 import {connect} from 'react-redux'
 import {Redirect} from 'react-router-dom'
-
+import PropTypes from 'prop-types'
 
 //MaterialUI
   //Components
@@ -26,6 +26,9 @@ import {Redirect} from 'react-router-dom'
 
 
 class AfleverAdresForm extends PureComponent {
+  static propTypes = {
+    onChange: PropTypes.func.isRequired,
+  }
   state = {
   }
 
@@ -34,6 +37,7 @@ class AfleverAdresForm extends PureComponent {
     this.setState({
       [name]: value
     })
+    this.props.onChange('AfleverAdres', this.state)
   }
 
   componentWillMount() {

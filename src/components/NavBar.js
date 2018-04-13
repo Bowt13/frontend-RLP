@@ -29,7 +29,7 @@ import { logout } from '../actions/users'
 class NavBar extends PureComponent {
 
   state = {
-    drawer: true,
+    drawer: false,
     currentUser: {
       firstName: 'Nigel',
       lastName: 'Brown',
