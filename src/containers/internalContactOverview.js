@@ -303,35 +303,6 @@ class InternalContactOverview extends PureComponent {
       <div style={{
         textAlign: 'center',
       }}>
-        <AppBar
-          title="Flexicon"
-          iconClassNameRight="muidocs-icon-navigation-expand-more"
-          style={{
-            position: 'fixed',
-            width: '100%',
-            backgroundColor:'#616161',
-          }}
-          onLeftIconButtonClick={_=> this.setState({drawer: !this.state.drawer})}
-        />
-        <Drawer width={300} open={this.state.drawer} >
-          <AppBar
-            title={`${this.state.currentUser.firstName} ${this.state.currentUser.lastName}`}
-            iconClassNameRight="muidocs-icon-navigation-expand-more"
-            style={{
-              width: '100%',
-              backgroundColor:'#616161',
-            }}
-            onLeftIconButtonClick={_=> this.setState({drawer: !this.state.drawer})}
-          />
-          <Avatar
-            src= {this.state.currentUser.picture}
-            size={200}
-            style={{
-              position: 'relative',
-              top: 20,
-            }}
-          />
-        </Drawer>
         <Paper
           style={{
             position: 'relative',
