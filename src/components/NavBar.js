@@ -157,6 +157,7 @@ class NavBar extends PureComponent {
           >
             <ListItem primaryText="Je bestellingen"
               leftIcon={<FeaturedPlayList color='#F09517'/>}
+              onClick={ () => history.push('/flexicon/users/:usersId/orders') }
             />
             <ListItem primaryText="Nieuwe bestelling"
               leftIcon={<ShoppingCart color='#F09517'/>}
@@ -164,6 +165,7 @@ class NavBar extends PureComponent {
             />
             <ListItem primaryText="Gegevens bewerken"
               leftIcon={<Person color='#F09517'/>}
+              onClick={ () => history.push('/flexicon/users/:usersId/changedetails') }
             />
           </List>
         </Drawer>
