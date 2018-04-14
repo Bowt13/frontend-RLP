@@ -16,7 +16,6 @@
 
 //Components
   import OrdersPage from './components/OrdersPage'
-  import OrderDetails from './components/OrderDetails'
   import NavBar from './components/NavBar'
 
 
@@ -34,7 +33,6 @@ class App extends Component {
           <Route exact path="/flexicon/InternalContactOverview" component={ InternalContactOverview } />
           <Route exact path="/forgotpassword" component={ ForgotPassword }/>
           <Route exact path="/flexicon/orders" component={ OrdersPage }/>
-          <Route exact path="/flexicon/orders/:orderId" component={ OrderDetails }/>
 
           <Route exact path="/" render={ () => <Redirect to="/login" /> } />
         </div>

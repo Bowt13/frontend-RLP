@@ -125,8 +125,8 @@ class OrdersPage extends PureComponent {
           position: 'relative',
           top: 80,
           botom: 10,
-          left: '15%',
-          width: '70%',
+          left: '25%',
+          width: '50%',
           overflow: 'scroll',
         }}>
         <List>
