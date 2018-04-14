@@ -15,7 +15,7 @@ import {Redirect} from 'react-router-dom'
 
 
 //Actions
-
+  import { getUser } from '../actions/users'
 
 //Components
   import OrderInfo from '../components/orders/OrderInfo'
@@ -297,6 +297,8 @@ class OrderCreator extends PureComponent {
   }
 
   componentWillMount() {
+    const { currentUser } = this.props
+    this.props.getUser(currentUser.id)
   }
 
 	render() {
@@ -329,7 +331,8 @@ class OrderCreator extends PureComponent {
 
 const mapStateToProps = function (state) {
 	return {
+    currentUser: state.currentUser
 	}
 }
 
-export default connect(mapStateToProps)(OrderCreator)
+export default connect(mapStateToProps, { getUser })(OrderCreator)

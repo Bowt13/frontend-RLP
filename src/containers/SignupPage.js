@@ -73,7 +73,7 @@ class SignupPage extends PureComponent {
 
 const mapStateToProps = function (state) {
 	return {
-		authenticated: state.user !== null,
+		authenticated: state.currentUser !== null,
 		signup: state.signup
 	}
 }
