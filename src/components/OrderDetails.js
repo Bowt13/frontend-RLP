@@ -53,8 +53,8 @@ class OrderDetails extends PureComponent {
           overflow: 'scroll',
         }}>
         <h2>Order Details</h2>
-        <div>Hello Eva!</div>
-        <div>I love you Eva</div>
+        <div></div>
+        <div></div>
         </Paper>
       </div>
 		)
