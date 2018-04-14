@@ -16,7 +16,7 @@ import logo from './logo.png'
 	import TextField from 'material-ui/TextField'
 
 //Components
-	import ForgotForm from '../components/ForgotForm'
+
 
 //Actions
 	import { forgotPassword } from '../actions/forgotPassword'

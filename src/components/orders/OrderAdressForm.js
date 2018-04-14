@@ -51,11 +51,9 @@ class OrderAdressForm extends PureComponent {
   }
 
   handleChange = (type, state) => {
-    console.log(type)
     this.setState({
-      [type]: state
+      [type]: state,
     })
-    console.log(this.state)
   }
 
   onClick = () => {

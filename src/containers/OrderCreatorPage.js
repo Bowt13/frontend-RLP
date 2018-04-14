@@ -15,7 +15,7 @@ import {Redirect} from 'react-router-dom'
 
 
 //Actions
-
+  import {addOrder} from '../actions/orders'
 
 //Components
   import OrderInfo from '../components/orders/OrderInfo'
@@ -277,6 +277,7 @@ import {Redirect} from 'react-router-dom'
     },
   ]
 
+
 class OrderCreator extends PureComponent {
   state = {
   }
@@ -285,15 +286,28 @@ class OrderCreator extends PureComponent {
     this.setState({
       [type]: state
     })
-    console.log('handleChange')
   }
 
   handleSubmit = () => {
     this.orderInfo.onClick()
     this.orderAdressForm.onClick()
+    setTimeout(this.orderAdressForm.onClick(), 10)
     this.orderRemarkForm.onClick()
     this.orderAfleverInfo.onClick()
-    setTimeout(() => console.log(this.state), 10)
+    setTimeout(() => console.log(this.state), 30)
+    // setTimeout(() => this.props.addOrder(
+    //   {
+    //     shortDescription: this.state.OrderRemarkForm.KorteOmschrijving,
+    //     description: this.state.OrderRemarkForm.Opdrachtomschrijving,
+    //     amount: this.state.OrderRemarkForm.Aantal,
+    //     orderDate: new Date,
+    //     deliveryDate: this.state.OrderAfleverInfo.LeverDatum,
+    //     paymentType: "",
+    //     delivery: "",
+    //     user: this.props.currentUser,
+    //     addresses: [this.state.],
+    //   }
+    // ), 10)
   }
 
   componentWillMount() {
@@ -339,4 +353,4 @@ const mapStateToProps = function (state) {
 	}
 }
 
-export default connect(mapStateToProps)(OrderCreator)
+export default connect(mapStateToProps, {addOrder})(OrderCreator)
