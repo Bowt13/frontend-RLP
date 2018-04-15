@@ -20,11 +20,12 @@ import './OrderDetails.css'
     import Business from 'material-ui/svg-icons/communication/business'
 
 
-const orderDetails =
+const order =
   {
-  id: '0707',
+  id: 1,
+  orderNumber: '0707',
   shortDescription: '"Secretary of the Year", 3D crystal glass',
-  fullDescription: '3D crystal glass, height: 10cm, width: 5cm, polished: yes, logo: bottom left, wrapping: yes',
+  description: '3D crystal glass, height: 10cm, width: 5cm, polished: yes, logo: bottom left, wrapping: yes',
   amount: 3,
   orderDate: '20-02-2018',
   deliveryDate: '10-03-2018',
@@ -51,6 +52,10 @@ class OrderDetails extends PureComponent {
   render() {
     let windowWidth = window.screen.availWidth
     console.log(windowWidth);
+
+    // const {order} = this.props
+    // if (!order) return "order does not exist!"
+
 		return (
       <div>
         <Paper style={{
@@ -64,40 +69,40 @@ class OrderDetails extends PureComponent {
           <h2>Order Details</h2>
           <table >
             <tr>
-              <td>ID NUMBER</td>
-              <td>{`${orderDetails.id}`}</td>
+              <td>ORDER NUMBER</td>
+              <td>{`${order.orderNumber}`}</td>
             </tr>
             <tr>
               <td>SHORT DESCRIPTION</td>
-              <td>{`${orderDetails.shortDescription}`}</td>
+              <td>{`${order.shortDescription}`}</td>
             </tr>
             <tr>
-              <td>FULL DESCRIPTION</td>
-              <td>{`${orderDetails.fullDescription}`}</td>
+              <td>DESCRIPTION</td>
+              <td>{`${order.description}`}</td>
             </tr>
             <tr>
               <td>AMOUNT</td>
-              <td>{`${orderDetails.amount}`}</td>
+              <td>{`${order.amount}`}</td>
             </tr>
             <tr>
               <td>ORDER DATE</td>
-              <td>{`${orderDetails.orderDate}`}</td>
+              <td>{`${order.orderDate}`}</td>
             </tr>
             <tr>
               <td>DELIVERY DATE</td>
-              <td>{`${orderDetails.deliveryDate}`}</td>
+              <td>{`${order.deliveryDate}`}</td>
             </tr>
             <tr>
               <td>PAYMENT TYPE</td>
-              <td>{`${orderDetails.paymentType}`}</td>
+              <td>{`${order.paymentType}`}</td>
             </tr>
             <tr>
               <td>DELIVERY ID</td>
-              <td>{`${orderDetails.deliveryId}`}</td>
+              <td>{`${order.deliveryId}`}</td>
             </tr>
             <tr>
               <td>USER ID</td>
-              <td>{`${orderDetails.userId}`}</td>
+              <td>{`${order.userId}`}</td>
             </tr>
           </table>
         </Paper>
@@ -108,7 +113,7 @@ class OrderDetails extends PureComponent {
 
 const mapStateToProps = function (state, props) {
 	return {
-    order: state.orders && state.orders.find(order => `${order.id}`===props.match.params.orderId),
+    order: state.orders && state.orders.find(order => `${order.orderNumber}`===props.match.params.orderNumber),
 	}
 }
 

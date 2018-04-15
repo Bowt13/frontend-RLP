@@ -37,25 +37,29 @@ const user = {
 
 const orders = [
   {
-    number: '0707',
+    id: 1,
+    orderNumber: '0707',
     type: 'Secretary of the Year',
     description: '3D crystal glass',
     user: 'Johnny Bravo'
   },
   {
-    number: '0808',
+    id: 2,
+    orderNumber: '0808',
     type: 'Manager of the Month',
     description: 'Award Tombstone Rectangle',
     user: 'Annette Whilmore'
   },
   {
-    number: '0909',
+    id: 3,
+    orderNumber: '0909',
     type: 'Coffee Maker of the Week',
     description: 'Award in Metal and Wood',
     user: 'Stuart Belleville'
   },
   {
-    number: '1010',
+    id: 4,
+    orderNumber: '1010',
     type: 'Colleague of the Day',
     description: 'Plexiglass Star Shape',
     user: 'Johnny Bravo'
@@ -151,8 +155,8 @@ class OrdersPage extends PureComponent {
               <ListItem
               secondaryTextLines={2}
               primaryText={`${order.type}`}
-              secondaryText={<p> <span> {'Nr: '+ `${order.number}`}</span><br/><span>{'Created by: '+ `${order.user}`}</span></p>}
-              className='order-row' onClick={_=>window.location.href=`/flexicon/orders/${order.id}`}
+              secondaryText={<p> <span> {'Nr: '+ `${order.orderNumber}`}</span><br/><span>{'Created by: '+ `${order.user}`}</span></p>}
+              className='order-row' onClick={_=>window.location.href=`/flexicon/orders/${order.orderNumber}`}
 
               />
               <Divider />
