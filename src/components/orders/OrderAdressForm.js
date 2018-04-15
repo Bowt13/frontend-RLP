@@ -51,11 +51,9 @@ class OrderAdressForm extends PureComponent {
   }
 
   handleChange = (type, state) => {
-    console.log(type)
     this.setState({
-      [type]: state
+      [type]: state,
     })
-    console.log(this.state)
   }
 
   onClick = () => {
@@ -66,7 +64,17 @@ class OrderAdressForm extends PureComponent {
     {this.state.afleverAdres &&
       this.afleverAdresForm.handleSubmit()
     }
+    console.log(Object.values(this.state).length)
+    // switch (this.state.length) {
+    //   case expression:
+    //
+    //     break;
+    //   default:
+    //
+    // }
+    //this.props.onChange('OrderAdres', {bezoekAdres: this.bezoekAdresForm.state, factuurAdres: this.factuurAdresForm.state})
     this.props.onChange('OrderAdres', this.state)
+
   }
 
   componentDidMount() {
