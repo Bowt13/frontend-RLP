@@ -2,6 +2,8 @@
 import React, {PureComponent} from 'react'
 import {connect} from 'react-redux'
 
+import './OrderDetails.css'
+
 //MaterialUI
   //Components
     import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText, CardContent} from 'material-ui/Card';
@@ -17,17 +19,19 @@ import {connect} from 'react-redux'
     import Business from 'material-ui/svg-icons/communication/business'
 
 
-const orderDetails = [
+const orderDetails =
   {
   id: '0707',
-  description: '3D crystal glass, height: 10cm, width: 5cm, polished: yes',
+  shortDescription: '"Secretary of the Year", 3D crystal glass',
+  fullDescription: '3D crystal glass, height: 10cm, width: 5cm, polished: yes, logo: bottom left, wrapping: yes',
   amount: 3,
-  date: '20-02-2018',
-  createdBy: 'Johnny Bravo',
+  orderDate: '20-02-2018',
+  deliveryDate: '10-03-2018',
+  paymentType: 'credit card',
   deliveryId: 'GH 142434',
   userId: 'N 987'
-  },
-]
+  }
+
 
 class OrderDetails extends PureComponent {
   state = {
@@ -52,9 +56,45 @@ class OrderDetails extends PureComponent {
           width: '50%',
           overflow: 'scroll',
         }}>
-        <h2>Order Details</h2>
-        <div></div>
-        <div></div>
+          <h2>Order Details</h2>
+          <table >
+            <tr>
+              <td>ID NUMBER</td>
+              <td>{`${orderDetails.id}`}</td>
+            </tr>
+            <tr>
+              <td>SHORT DESCRIPTION</td>
+              <td>{`${orderDetails.shortDescription}`}</td>
+            </tr>
+            <tr>
+              <td>FULL DESCRIPTION</td>
+              <td>{`${orderDetails.fullDescription}`}</td>
+            </tr>
+            <tr>
+              <td>AMOUNT</td>
+              <td>{`${orderDetails.amount}`}</td>
+            </tr>
+            <tr>
+              <td>ORDER DATE</td>
+              <td>{`${orderDetails.orderDate}`}</td>
+            </tr>
+            <tr>
+              <td>DELIVERY DATE</td>
+              <td>{`${orderDetails.deliveryDate}`}</td>
+            </tr>
+            <tr>
+              <td>PAYMENT TYPE</td>
+              <td>{`${orderDetails.paymentType}`}</td>
+            </tr>
+            <tr>
+              <td>DELIVERY ID</td>
+              <td>{`${orderDetails.deliveryId}`}</td>
+            </tr>
+            <tr>
+              <td>USER ID</td>
+              <td>{`${orderDetails.userId}`}</td>
+            </tr>
+          </table>
         </Paper>
       </div>
 		)
