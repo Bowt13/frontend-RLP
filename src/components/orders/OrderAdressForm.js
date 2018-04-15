@@ -35,8 +35,8 @@ class OrderAdressForm extends PureComponent {
     this.setState((oldState) => {
       return {
         factuurAdres: !oldState.factuurAdres,
-      };
-    });
+      }
+    })
     if(this.state.afleverAdres === true) {
       this.updateCheckAA()
     }
@@ -46,22 +46,35 @@ class OrderAdressForm extends PureComponent {
     this.setState((oldState) => {
       return {
         afleverAdres: !oldState.afleverAdres,
-      };
-    });
+      }
+    })
   }
 
   handleChange = (type, state) => {
-    console.log(type)
     this.setState({
-      [type]: state
+      [type]: state,
     })
-    console.log(this.state)
   }
 
   onClick = () => {
     this.bezoekAdresForm.handleSubmit()
-    console.log('OrderAdres', this.state)
+    {this.state.factuurAdres &&
+      this.factuurAdresForm.handleSubmit()
+    }
+    {this.state.afleverAdres &&
+      this.afleverAdresForm.handleSubmit()
+    }
+    console.log(Object.values(this.state).length)
+    // switch (this.state.length) {
+    //   case expression:
+    //
+    //     break;
+    //   default:
+    //
+    // }
+    //this.props.onChange('OrderAdres', {bezoekAdres: this.bezoekAdresForm.state, factuurAdres: this.factuurAdresForm.state})
     this.props.onChange('OrderAdres', this.state)
+
   }
 
   componentDidMount() {
@@ -109,7 +122,7 @@ class OrderAdressForm extends PureComponent {
             width: 350,
            }}
         >
-          <FactuurAdresForm onChange={handleChange}/>
+          <FactuurAdresForm onChange={handleChange} onRef={ref => (this.factuurAdresForm = ref)}/>
           <Checkbox
           label="Factuuradres is ook het afleveradres?"
           labelPosition="left"
@@ -147,7 +160,7 @@ class OrderAdressForm extends PureComponent {
             width: 350,
            }}
         >
-          <AfleverAdresForm onChange={handleChange}/>
+          <AfleverAdresForm onChange={handleChange} onRef={ref => (this.afleverAdresForm = ref)}/>
         </Paper>}
 
         {!this.state.afleverAdres &&

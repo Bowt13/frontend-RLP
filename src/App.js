@@ -4,10 +4,9 @@
   import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom'
 
 //CONTAINERS
-  import InternalContactOverview from './containers/internalContactOverview'
+  import InternalContactOverview from './containers/InternalContactOverview'
   import LoginPage from './containers/LoginPage'
   import SignupPage from './containers/SignupPage'
-  import ForgotPassword from './containers/forgotPassword'
   import OrderCreator from './containers/OrderCreatorPage'
 
 //MATERIALUI
@@ -18,8 +17,6 @@
   import OrdersPage from './components/OrdersPage'
   import NavBar from './components/NavBar'
 
-
-
 class App extends Component {
   render() {
     return (
@@ -28,12 +25,11 @@ class App extends Component {
         <div className="App">
           <NavBar />
           <Route exact path="/login" component={ LoginPage } />
-          <Route exact path="/signup" component={ SignupPage } />
+          <Route exact path="/signup/:jwt" component={ SignupPage } />
           <Route exact path="/flexicon/create/order" component={ OrderCreator } />
           <Route exact path="/flexicon/InternalContactOverview" component={ InternalContactOverview } />
           <Route exact path="/forgotpassword" component={ ForgotPassword }/>
           <Route exact path="/flexicon/orders" component={ OrdersPage }/>
-
           <Route exact path="/" render={ () => <Redirect to="/login" /> } />
         </div>
       </MuiThemeProvider>

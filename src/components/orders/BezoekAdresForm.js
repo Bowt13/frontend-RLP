@@ -37,10 +37,10 @@ class BezoekAdresForm extends PureComponent {
     this.setState({
       [name]: value
     })
+    console.log(this.state)
   }
 
   handleSubmit = () => {
-    console.log('BezoekAdresForm.handleSubmit')
     this.props.onChange('BezoekAdres', this.state)
   }
 
