@@ -9,3 +9,9 @@ export const GET_USER = 'GET_USER'
 
 //password
 export const FORGOT_PASSWORD = 'FORGOT_PASSWORD'
+
+
+//Order types
+export const GET_ORDERS = 'GET_ORDERS'
+export const GET_ORDER = 'ADD_ORDER'
+export const ADD_ORDER = 'ADD_ORDER'

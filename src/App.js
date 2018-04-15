@@ -7,7 +7,6 @@
   import InternalContactOverview from './containers/InternalContactOverview'
   import LoginPage from './containers/LoginPage'
   import SignupPage from './containers/SignupPage'
-  import ForgotPassword from './containers/ForgotPassword'
   import OrderCreator from './containers/OrderCreatorPage'
 
 //MATERIALUI
@@ -17,8 +16,6 @@
 //Components
   import ContactPage from './components/ContactPage'
   import NavBar from './components/NavBar'
-
-
 
 class App extends Component {
   render() {
@@ -31,7 +28,6 @@ class App extends Component {
           <Route exact path="/signup/:jwt" component={ SignupPage } />
           <Route exact path="/flexicon/create/order" component={ OrderCreator } />
           <Route exact path="/flexicon/InternalContactOverview" component={ InternalContactOverview } />
-          <Route exact path="/forgotpassword" component={ ForgotPassword }/>
           <Route exact path="/flexicon/users/:usersId" component={ ContactPage }/>
           <Route exact path="/" render={ () => <Redirect to="/login" /> } />
         </div>
