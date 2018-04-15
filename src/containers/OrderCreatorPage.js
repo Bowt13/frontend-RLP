@@ -292,10 +292,11 @@ class OrderCreator extends PureComponent {
   handleSubmit = () => {
     this.orderInfo.onClick()
     this.orderAdressForm.onClick()
-    setTimeout(this.orderAdressForm.onClick(), 10)
+    setTimeout(() => this.orderAdressForm.onClick(), 10)
     this.orderRemarkForm.onClick()
     this.orderAfleverInfo.onClick()
-    setTimeout(() => console.log(this.state), 30)
+    console.log(this.orderAdressForm.state)
+    setTimeout(() => console.log(this.state), 20)
     // setTimeout(() => this.props.addOrder(
     //   {
     //     shortDescription: this.state.OrderRemarkForm.KorteOmschrijving,
