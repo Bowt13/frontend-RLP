@@ -1,6 +1,7 @@
 //Dependencies
 import React, {PureComponent} from 'react'
 import {connect} from 'react-redux'
+import {getOrders} from '../actions/orders'
 
 import './OrderDetails.css'
 
@@ -36,6 +37,10 @@ const orderDetails =
 class OrderDetails extends PureComponent {
   state = {
     openProfile: false,
+  }
+
+  componentWillMount() {
+    this.props.getOrders()
   }
 
   handleToggle = () => {
@@ -101,9 +106,10 @@ class OrderDetails extends PureComponent {
 	}
 }
 
-const mapStateToProps = function (state) {
+const mapStateToProps = function (state, props) {
 	return {
+    order: state.orders && state.orders.find(order => `${order.id}`===props.match.params.orderId),
 	}
 }
 
-export default connect(mapStateToProps)(OrderDetails)
+export default connect(mapStateToProps, {getOrders})(OrderDetails)

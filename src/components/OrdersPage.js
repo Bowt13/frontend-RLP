@@ -1,6 +1,7 @@
 //Dependencies
 import React, {PureComponent} from 'react'
 import {connect} from 'react-redux'
+import {getOrders} from '../actions/orders'
 
 //MaterialUI
   //Components
@@ -66,6 +67,10 @@ class OrdersPage extends PureComponent {
     openProfile: false,
   }
 
+  componentWillMount() {
+    this.props.getOrders()
+  }
+
   handleToggle = () => {
     this.setState({openProfile: !this.state.openProfile},()=>
     console.log(this.state.openProfile))
@@ -119,6 +124,9 @@ class OrdersPage extends PureComponent {
 	render() {
     let windowWidth = window.screen.availWidth
     console.log(windowWidth);
+
+    // const {orders} = this.props; //enable in order to use with the reducer
+
 		return (
       <div>
         <Paper style={{
@@ -138,7 +146,7 @@ class OrdersPage extends PureComponent {
             marginBottom: 5,
           }}/>
           <Divider />
-          {orders.map((order) => (
+          {orders && orders.map((order) => (
             <div >
               <ListItem
               secondaryTextLines={2}
@@ -158,9 +166,10 @@ class OrdersPage extends PureComponent {
 	}
 }
 
-const mapStateToProps = function (state) {
+const mapStateToProps = function (state, props) {
 	return {
+    orders: state.orders
 	}
 }
 
-export default connect(mapStateToProps)(OrdersPage)
+export default connect(mapStateToProps, {getOrders})(OrdersPage)

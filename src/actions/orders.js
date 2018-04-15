@@ -1,6 +1,6 @@
 import * as request from 'superagent'
 import {baseUrl} from '../constants'
-import {ADD_ORDER, GET_ORDERS} from './types'
+import {ADD_ORDER, GET_ORDERS, GET_ORDER} from './types'
 
 
 export const addOrder = (order,addresses) => (dispatch, getState) => {
@@ -13,7 +13,7 @@ export const addOrder = (order,addresses) => (dispatch, getState) => {
     .set('Authorization', `Bearer ${jwt}`)
 		.then(result => {
 			dispatch({
-				type: ADD_ORDER
+				type: ADD_ORDER,
         payload: result.body
 			})
 		})
@@ -22,14 +22,14 @@ export const addOrder = (order,addresses) => (dispatch, getState) => {
 
 export const getOrders = () => (dispatch, getState) => {
   const state = getState()
-  const jwt = state.currentUser.jwt
+  // const jwt = state.currentUser.jwt
 
   request
 		.get(`${baseUrl}/orders`)
-    .set('Authorization', `Bearer ${jwt}`)
+    // .set('Authorization', `Bearer ${jwt}`)
 		.then(result => {
 			dispatch({
-				type: GET_ORDERS
+				type: GET_ORDERS,
         payload: result.body
 			})
 		})
@@ -45,7 +45,7 @@ export const getOrder = (id) => (dispatch, getState) => {
     .set('Authorization', `Bearer ${jwt}`)
 		.then(result => {
 			dispatch({
-				type: GET_ORDER
+				type: GET_ORDER,
         payload: result.body
 			})
 		})
