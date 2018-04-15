@@ -1,5 +1,4 @@
 // USER TYPES
-
 export const USER_SIGNUP_SUCCESS = 'USER_SIGNUP_SUCCESS'
 export const USER_SIGNUP_FAILED = 'USER_SIGNUP_FAILED'
 export const USER_LOGIN_SUCCESS = 'USER_LOGIN_SUCCESS'
@@ -10,6 +9,8 @@ export const GET_USER = 'GET_USER'
 //password
 export const FORGOT_PASSWORD = 'FORGOT_PASSWORD'
 
+//Socket
+export const MESSAGE_SUCCESS = 'MESSAGE_SUCCESS'
 
 //Order types
 export const GET_ORDERS = 'GET_ORDERS'
