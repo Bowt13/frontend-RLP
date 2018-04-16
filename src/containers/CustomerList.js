@@ -54,7 +54,7 @@ class CustomerList extends PureComponent {
                 <div>
                   <Divider />
                   <ListItem
-                    hoverColor= '#F09517'
+                    hoverColor= '#f4b357'
                     style={{
                       textAlign: 'right',
                     }}

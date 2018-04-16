@@ -129,7 +129,7 @@ class OrdersPage extends PureComponent {
     let windowWidth = window.screen.availWidth
     console.log(windowWidth);
 
-    const {orders} = this.props; //enable in order to use with the reducer
+    const {orders, history} = this.props; //enable in order to use with the reducer
 
 		return (
       <div>
@@ -156,7 +156,7 @@ class OrdersPage extends PureComponent {
               secondaryTextLines={2}
               primaryText={`${order.shortDescription}`}
               secondaryText={<p> <span> {'Bestellingsnummer: '+ `${order.id}`}</span><br/><span>{'Opdrachtgever: '+ `${order.userEmail}`}</span></p>}
-              className='order-row' onClick={_=>window.location.href=`/flexicon/orders/${order.orderNumber}`}
+              className='order-row' onClick={_=> history.push(`/flexicon/orders/${order.orderNumber}`)}
               />
               <Divider />
             </div>
