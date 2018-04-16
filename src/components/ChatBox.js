@@ -68,12 +68,25 @@ class ChatBox extends PureComponent {
   state = {
       // messages: [],
       messages: myMessages,
-      text: "",
+      text: '',
       name: 'eva',
-      name1: ''
   }
 
+  send = () => {
+      myMessages.push({
+          name: this.state.name,
+          message: this.state.text
+      })
+      // this.forceUpdate() //triggers rerender
+      this.setState({text: '' })
+  }
+
+
+
   render() {
+
+    console.log(this.state);
+
 		return (
       <div style={styles.container}>
         <div>
