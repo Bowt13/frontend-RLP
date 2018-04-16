@@ -26,7 +26,7 @@ export const getOrders = () => (dispatch, getState) => {
 
   request
 		.get(`${baseUrl}/orders`)
-    		.set('Authorization', `Bearer ${jwt}`)
+    .set('Authorization', `Bearer ${jwt}`)
 		.then(result => {
 			dispatch({
 				type: GET_ORDERS,

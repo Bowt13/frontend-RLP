@@ -45,6 +45,7 @@ class NavBar extends PureComponent {
   }
 
   handleDrawerClick = (type) => {
+    const { user } = this.props
     switch (type) {
       case "GegevensBewerken":
         this.setState({drawer: false})
@@ -56,7 +57,7 @@ class NavBar extends PureComponent {
         break
       case "JeBestellingen":
         this.setState({drawer: false})
-        this.props.history.push('/flexicon/orders')
+        this.props.history.push(`/flexicon/users/${user.id}/orders`)
         break
       case "Klanten":
         this.setState({drawer: false})

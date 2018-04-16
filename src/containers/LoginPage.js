@@ -44,6 +44,9 @@ class LoginPage extends PureComponent {
 	}
 
 	render() {
+
+		const { user } = this.props
+
 		const actions = [
 			<RaisedButton
 				label="Verzenden"
@@ -62,9 +65,10 @@ class LoginPage extends PureComponent {
 			this.props.getCurrentUser()
 		}
 
-		if (this.props.user && this.props.user.role === 'External') return (
-			<Redirect to="/flexicon/orders" />
-	  )
+		if (this.props.user && this.props.user.role === 'External') {
+			this.props.history.push(`/flexicon/users/${user.id}/orders`)
+			}
+	  
 
 		if (this.props.user && this.props.user.role === 'Internal') return (
 			<Redirect to="/flexicon/customers" />
