@@ -15,6 +15,8 @@ import './OrderDetails.css'
       List,
       ListItem
     } from 'material-ui/List';
+
+    import ActionInfo from 'material-ui/svg-icons/action/info';
     import Subheader from 'material-ui/Subheader';
     import Divider from 'material-ui/Divider';
     import Business from 'material-ui/svg-icons/communication/business'
@@ -82,59 +84,25 @@ class OrderDetails extends PureComponent {
           padding: 5,
           marginBottom: 5,
         }}/>
-
-
-  <Table>
-    <TableBody>
-
-      <TableRow>
-        <TableRowColumn>Order Number</TableRowColumn>
-        <TableRowColumn>{`${order.orderNumber}`}</TableRowColumn>
-      </TableRow>
-
-      <TableRow>
-        <TableRowColumn>Short Description</TableRowColumn>
-        <TableRowColumn>{`${order.shortDescription}`}</TableRowColumn>
-      </TableRow>
-
-      <TableRow>
-        <TableRowColumn>Full Description</TableRowColumn>
-        <TableRowColumn>{`${order.description}`}</TableRowColumn>
-      </TableRow>
-
-      <TableRow>
-        <TableRowColumn>Order Amount</TableRowColumn>
-        <TableRowColumn>{`${order.amount}`}</TableRowColumn>
-      </TableRow>
-
-      <TableRow>
-        <TableRowColumn>Order Date</TableRowColumn>
-        <TableRowColumn>{`${order.orderDate}`}</TableRowColumn>
-      </TableRow>
-
-      <TableRow>
-        <TableRowColumn>Delivery Date</TableRowColumn>
-        <TableRowColumn>{`${order.deliveryDate}`}</TableRowColumn>
-      </TableRow>
-
-      <TableRow>
-        <TableRowColumn>Payment Type</TableRowColumn>
-        <TableRowColumn>{`${order.paymentType}`}</TableRowColumn>
-      </TableRow>
-
-      <TableRow>
-        <TableRowColumn>Delivery ID</TableRowColumn>
-        <TableRowColumn>{`${order.deliveryId}`}</TableRowColumn>
-      </TableRow>
-
-      <TableRow>
-        <TableRowColumn>User ID</TableRowColumn>
-        <TableRowColumn>{`${order.userId}`}</TableRowColumn>
-      </TableRow>
-
-    </TableBody>
-  </Table>
-
+          <List>
+            <ListItem disabled={true} primaryText="Order Number" secondaryText={`${order.orderNumber}`}/>
+            <Divider/>
+            <ListItem disabled={true} primaryText="Starred" />
+            <Divider/>
+            <ListItem disabled={true} primaryText="Sent mail"/>
+            <Divider/>
+            <ListItem disabled={true} primaryText="Drafts"/>
+            <Divider/>
+            <ListItem disabled={true} primaryText="Inbox"/>
+            <Divider/>
+            <ListItem disabled={true} primaryText="All mail"/>
+            <Divider/>
+            <ListItem disabled={true} primaryText="Trash"/>
+            <Divider/>
+            <ListItem disabled={true} primaryText="Spam"/>
+            <Divider/>
+            <ListItem disabled={true} primaryText="Follow up"/>
+          </List>
         </Paper>
       </div>
 		)
