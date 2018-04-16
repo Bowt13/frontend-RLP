@@ -5,10 +5,10 @@ import { connect } from 'react-redux'
 //MaterialUI
   //Components
     // import RaisedButton from 'material-ui/RaisedButton'
-    import Paper from 'material-ui/Paper';
-    import { List, ListItem } from 'material-ui/List';
-    import Subheader from 'material-ui/Subheader';
-    import Divider from 'material-ui/Divider';
+    import Paper from 'material-ui/Paper'
+    import { List, ListItem } from 'material-ui/List'
+    import Subheader from 'material-ui/Subheader'
+    import Divider from 'material-ui/Divider'
 
 //Actions
 import { getCustomers } from '../actions/users'
@@ -22,7 +22,6 @@ class CustomerList extends PureComponent {
 	render() {
 
     const { customers } = this.props
-    console.log(this.props.customers);
 
 		return (
       <div>
@@ -45,16 +44,29 @@ class CustomerList extends PureComponent {
             backgroundColor: '#F09517',
           }}/>
           {customers && customers.map(customer => (
-            <div >
+            <div>
               <Divider />
               <ListItem
+              initiallyOpen={ false }
+              primaryTogglesNestedList={ true }
+              hoverColor= '#F09517'
+              nestedItems={[ customer.orders.map(order => (
+                <div>
+                  <Divider />
+                  <ListItem
+                    hoverColor= '#F09517'
+                    primaryText={`${order.shortDescription}`}
+                    secondaryText={'Besteldatum:' + ' ' + `${order.orderDate}`}
+                  />
+                </div>
+              ))
+            ]}
               style={{
                 textAlign: 'left',
               }}
               secondaryTextLines={2}
               primaryText={`${customer.email}`}
-              secondaryText={<p> <span> {`${customer.companyName}`}</span><br/><span>{`${customer.firstName}`+ `${customer.lastName}`}</span></p>}
-              onClick={_=>window.location.href=`/flexicon/orders/${customer.orderNumber}`}
+              secondaryText={<p> <span> {`${customer.companyName}`}</span><br/><span>{`${customer.firstName}`+ ' ' + `${customer.lastName}`}</span></p>}
               />
             </div>
           ))
