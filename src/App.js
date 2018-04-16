@@ -14,7 +14,7 @@
     import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 
 //Components
-  import ContactPage from './components/ContactPage'
+  import OrdersPage from './components/OrdersPage'
   import NavBar from './components/NavBar'
 
 class App extends Component {
@@ -28,7 +28,8 @@ class App extends Component {
           <Route exact path="/signup/:jwt" component={ SignupPage } />
           <Route exact path="/flexicon/create/order" component={ OrderCreator } />
           <Route exact path="/flexicon/InternalContactOverview" component={ InternalContactOverview } />
-          <Route exact path="/flexicon/users/:usersId" component={ ContactPage }/>
+          <Route exact path="/forgotpassword" component={ ForgotPassword }/>
+          <Route exact path="/flexicon/orders" component={ OrdersPage }/>
           <Route exact path="/" render={ () => <Redirect to="/login" /> } />
         </div>
       </MuiThemeProvider>
