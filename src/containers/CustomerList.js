@@ -21,7 +21,7 @@ class CustomerList extends PureComponent {
 
 	render() {
 
-    const { customers } = this.props
+    const { customers, history } = this.props
 
 		return (
       <div>
@@ -43,7 +43,7 @@ class CustomerList extends PureComponent {
             padding: 1,
             backgroundColor: '#F09517',
           }}/>
-          {customers && customers.map(customer => (
+          { customers && customers.map(customer => (
             <div>
               <Divider />
               <ListItem
@@ -55,8 +55,9 @@ class CustomerList extends PureComponent {
                   <Divider />
                   <ListItem
                     hoverColor= '#F09517'
-                    primaryText={`${order.shortDescription}`}
-                    secondaryText={'Besteldatum:' + ' ' + `${order.orderDate}`}
+                    primaryText={ `${order.shortDescription}` }
+                    secondaryText={ 'Besteldatum:' + ' ' + `${order.orderDate}` }
+                    onClick={ _=> history.push(`/flexicon/orders/${order.orderNumber}`) }
                   />
                 </div>
               ))
@@ -64,9 +65,9 @@ class CustomerList extends PureComponent {
               style={{
                 textAlign: 'left',
               }}
-              secondaryTextLines={2}
-              primaryText={`${customer.email}`}
-              secondaryText={<p> <span> {`${customer.companyName}`}</span><br/><span>{`${customer.firstName}`+ ' ' + `${customer.lastName}`}</span></p>}
+              secondaryTextLines={ 2 }
+              primaryText={ `${customer.email}` }
+              secondaryText={<p> <span> { `${customer.companyName}` }</span><br/><span>{ `${customer.firstName}`+ ' ' + `${customer.lastName}`}</span></p> }
               />
             </div>
           ))
