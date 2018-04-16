@@ -43,6 +43,13 @@ class LoginPage extends PureComponent {
 		this.setState({dialog: false})
 	}
 
+	handleChange = (event) => {
+    const {name, value} = event.target
+    this.setState({
+      [name]: value
+    }, console.log(this.state))
+  }
+
 	render() {
 		const actions = [
 			<RaisedButton
@@ -123,7 +130,7 @@ class LoginPage extends PureComponent {
 				            name="email"
 				            id="email"
 				            value={
-				              this.state.email
+				              this.state.email || ''
 				            }
 				            onChange={ this.handleChange }
 				          />
