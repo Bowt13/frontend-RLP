@@ -65,54 +65,58 @@ class OrderInfo extends PureComponent {
         <Paper
           style={{
             width: '100%',
-            marginBottom: 25,
+            float: 'left',
           }}
         >
-          <Receipt
-            style={{
-              position: 'relative',
-              top: 5,
-              left: -260,
-            }}
-          />
-          <TextField
-            name='Bonnummer'
-            floatingLabelText="Bonnummer:"
-            floatingLabelFixed={true}
-            style={{
-              position: 'relative',
-              left: -250,
-              width: 350,
-            }}
-            value={this.state.Bonnummer}
-            floatingLabelStyle={{
-              fontSize: 30,
-            }}
-            inputStyle={{
-              fontSize: 30,
-            }}
-          />
-          <DateRange
-            style={{
-              position: 'relative',
-              top: 5,
-              left: -210,
-            }}
-          />
-          <TextField
-            floatingLabelText="Datum:"
-            value={`${this.state.currentDate}`}
-            style={{
-              position: 'relative',
-              left: -200,
-            }}
-            floatingLabelStyle={{
-              fontSize: 30,
-            }}
-            inputStyle={{
-              fontSize: 30,
-            }}
-          />
+          <div style={{
+            float: 'left',
+          }}>
+            <Receipt
+              style={{
+                position: 'relative',
+                top: 5,
+                marginRight: 15,
+                marginLeft: 65,
+              }}
+            />
+            <TextField
+              name='Bonnummer'
+              floatingLabelText="Bonnummer:"
+              floatingLabelFixed={true}
+              value={this.state.Bonnummer}
+              style={{
+                position: 'relative',
+              }}
+              floatingLabelStyle={{
+                fontSize: 30,
+              }}
+              inputStyle={{
+                fontSize: 30,
+              }}
+            />
+            <DateRange
+              style={{
+                position: 'relative',
+                top: 5,
+                marginRight: 15,
+                marginLeft: 65,
+              }}
+            />
+            <TextField
+              floatingLabelText="Datum:"
+              floatingLabelFixed={true}
+              value={`${this.state.currentDate}`}
+              style={{
+                position: 'relative',
+              }}
+              floatingLabelStyle={{
+                fontSize: 30,
+              }}
+              inputStyle={{
+                fontSize: 30,
+              }}
+            />
+          </div>
         </Paper>
       </div>
 		)

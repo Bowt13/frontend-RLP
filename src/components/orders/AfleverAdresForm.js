@@ -112,20 +112,6 @@ class AfleverAdresForm extends PureComponent {
           onChange={this.handleChange}
         />
         <br/>
-        <Adres
-          style={{
-            position: 'relative',
-            top: 5,
-            left: -15,
-          }}
-        />
-        <TextField
-          name='Adres2'
-          floatingLabelText="Adres 2:"
-          value={this.state.Adres2 || ''}
-          onChange={this.handleChange}
-        />
-        <br/>
         <City
           style={{
             position: 'relative',

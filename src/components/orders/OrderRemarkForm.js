@@ -15,6 +15,7 @@ import PropTypes from 'prop-types'
     import Description from 'material-ui/svg-icons/action/description'
     import ShoppingCart from 'material-ui/svg-icons/action/add-shopping-cart'
     import Zoom from 'material-ui/svg-icons/action/zoom-in'
+    import Attachment from 'material-ui/svg-icons/file/attachment'
   //Colors
 
 
@@ -40,7 +41,6 @@ class OrderRemarkForm extends PureComponent {
     this.setState({
       files: e.target.files,
     })
-    console.log(this.state.files)
   }
 
   onClick = () => {
@@ -65,8 +65,7 @@ class OrderRemarkForm extends PureComponent {
         textAlign: 'center',
         float: 'left',
         position: 'relative',
-        top: 0,
-        marginLeft: 65,
+        marginLeft: 50,
         marginBottom: 10,
       }}>
       <Paper>
@@ -75,7 +74,7 @@ class OrderRemarkForm extends PureComponent {
             textAlign: 'left',
             position: 'relative',
             top: 10,
-            left: 60,
+            left: 8,
           }}
         >Ordernummer/Kostenplaats</h1>
         <Divider
@@ -146,6 +145,7 @@ class OrderRemarkForm extends PureComponent {
                 rows={1}
                 value={this.state.Opdrachtomschrijving|| ''}
                 onChange={this.handleChange}
+                hintText='Niet nodig.'
                 style={{
                   textAlign: 'left',
                   display: 'inline-block',
@@ -205,8 +205,15 @@ class OrderRemarkForm extends PureComponent {
               {console.log(Object.values(this.state.files))}
               {Object.values(this.state.files).map(file => (
                 <div style={{
-                  textAlign: 'left',
+                  textAlign: 'center',
                 }}>
+                  <Attachment
+                    style={{
+                      position: 'relative',
+                      top: 5,
+                      left: -15,
+                    }}
+                  />
                   <TextField
                     name='Files'
                     key='file'
@@ -214,7 +221,6 @@ class OrderRemarkForm extends PureComponent {
                     value={file.name}
                     style={{
                       position: 'relative',
-                      left: 68,
                       width: '90%',
                     }}
                   />

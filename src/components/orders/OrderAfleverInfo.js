@@ -88,7 +88,7 @@ class OrderRemarkForm extends PureComponent {
         float: 'left',
         position: 'relative',
         top: 0,
-        marginLeft: 65,
+        marginLeft: 50,
         marginBottom: 10,
       }}>
       <Paper>
@@ -97,7 +97,7 @@ class OrderRemarkForm extends PureComponent {
             textAlign: 'left',
             position: 'relative',
             top: 10,
-            left: 60,
+            left: 8,
           }}
         >Aflever informatie</h1>
         <Divider

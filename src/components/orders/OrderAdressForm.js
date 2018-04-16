@@ -55,10 +55,10 @@ class OrderAdressForm extends PureComponent {
 
   onClick = () => {
     this.bezoekAdresForm.handleSubmit()
-    {this.state.factuurAdres &&
+    {!this.state.factuurAdres &&
       this.factuurAdresForm.handleSubmit()
     }
-    {this.state.afleverAdres &&
+    {!this.state.afleverAdres &&
       this.afleverAdresForm.handleSubmit()
     }
     this.props.onChange('OrderAdres', this.state)
@@ -81,9 +81,10 @@ class OrderAdressForm extends PureComponent {
           style={{
             display: 'inline',
             float: 'left',
-            height: 660,
+            height: 585,
             width: 350,
-            marginLeft: 65,
+            marginLeft: 50,
+            marginTop: 25,
            }}
         >
           <BezoekAdresForm onChange={handleChange} onRef={ref => (this.bezoekAdresForm = ref)}/>
@@ -94,8 +95,10 @@ class OrderAdressForm extends PureComponent {
           onCheck={this.updateCheckFA.bind(this)}
           style={{
             position: 'relative',
-            left: -5,
-            margin: 10,
+            marginBottom: 10,
+          }}
+          labelStyle={{
+            marginLeft: 5,
           }}
           />
           <Checkbox
@@ -105,8 +108,9 @@ class OrderAdressForm extends PureComponent {
           onCheck={this.updateCheckAA.bind(this)}
           style={{
             position: 'relative',
-            left: -5,
-            margin: 10,
+          }}
+          labelStyle={{
+            marginLeft: 5,
           }}
           />
         </Paper>
@@ -116,9 +120,10 @@ class OrderAdressForm extends PureComponent {
           style={{
             display: 'inline',
             float: 'left',
-            height: 660,
+            height: 585,
             width: 350,
             marginLeft: 50,
+            marginTop: 25,
            }}
         >
           <FactuurAdresForm onChange={handleChange} onRef={ref => (this.factuurAdresForm = ref)}/>
@@ -129,9 +134,10 @@ class OrderAdressForm extends PureComponent {
           style={{
             display: 'inline',
             float: 'left',
-            height: 660,
+            height: 585,
             width: 350,
             marginLeft: 50,
+            marginTop: 25,
            }}
         >
           <AfleverAdresForm onChange={handleChange} onRef={ref => (this.afleverAdresForm = ref)}/>

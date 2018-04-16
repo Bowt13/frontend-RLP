@@ -292,24 +292,24 @@ class OrderCreator extends PureComponent {
   handleSubmit = () => {
     this.orderInfo.onClick()
     this.orderAdressForm.onClick()
-    setTimeout(() => this.orderAdressForm.onClick(), 10)
+    setTimeout(_ => this.orderAdressForm.onClick(), 10)
     this.orderRemarkForm.onClick()
     this.orderAfleverInfo.onClick()
-    console.log(this.orderAdressForm.state)
-    setTimeout(() => console.log(this.state), 20)
-    // setTimeout(() => this.props.addOrder(
-    //   {
-    //     shortDescription: this.state.OrderRemarkForm.KorteOmschrijving,
-    //     description: this.state.OrderRemarkForm.Opdrachtomschrijving,
-    //     amount: this.state.OrderRemarkForm.Aantal,
-    //     orderDate: new Date,
-    //     deliveryDate: this.state.OrderAfleverInfo.LeverDatum,
-    //     paymentType: "",
-    //     delivery: "",
-    //     user: this.props.currentUser,
-    //     addresses: [this.state.],
-    //   }
-    // ), 10)
+    setTimeout(_ => console.log('ActionDispatch'), 20)
+    setTimeout(() => this.props.addOrder(
+      {
+        shortDescription: this.state.OrderRemarkForm.KorteOmschrijving,
+        description: this.state.OrderRemarkForm.Opdrachtomschrijving,
+        amount: this.state.OrderRemarkForm.Aantal,
+        orderDate: new Date,
+        deliveryDate: this.state.OrderAfleverInfo.LeverDatum,
+        paymentType: "",
+        delivery: "",
+        user: this.props.currentUser,
+      },{
+        adress1: 'oogabooga'
+      }
+    ), 20)
   }
 
   componentWillMount() {
@@ -328,6 +328,8 @@ class OrderCreator extends PureComponent {
           textAlign: 'center',
           height: '100%',
           width: '100%',
+          margin: 0,
+          padding: 0,
         }}
       >
         <Paper
@@ -350,7 +352,7 @@ class OrderCreator extends PureComponent {
                 position: 'relative',
                 float: 'left',
                 width: '90%',
-                marginLeft: 65,
+                marginLeft: 50,
                 marginBottom: 15,
               }}
               onClick={_ => this.handleSubmit()}
