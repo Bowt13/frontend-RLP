@@ -5,13 +5,18 @@
     <title>PakBon</title>
     <style type="text/css">
       body {
-        background-color: white;
+        background-color:#eee;
+
+        margin: 0;
       }
+
+      @page {
+        size: A5 landscape;
+      }
+
       #pakBon {
-        font-family: Roboto, sans-serif;
+        font-family: sans-serif;
         position: relative;
-        width: 18cm;
-        height: 25cm;
         margin: 0 auto;
         border: 1px solid white;
         background-color: white;
@@ -24,31 +29,29 @@
       td {
         text-indent: 5px;
         border: 1px solid gray;
+        font-size: 12px;
       }
       td div {
         text-indent: 0px;
       }
+
       .noBorder {
         border: 0px solid;
       }
+
     </style>
   </head>
 
   <body>
     <div id="pakBon">
-    <br />
-      <div><b>VAN: </b></div>
-      <br />
-      <div>
-        <div>FLEXICON</div>
-        <div>Bloemendalerweg 7 | 1382 KB Weesp</div>
-        <div>T. 0294 - 413775</div>
-        <div>info@flexicon.nl</div>
-        <div>www.flexicon.nl</div>
-      </div>
-      <br/>
-      <div><b>NAAR: </b></div>
-      <br />
+      <h5>VAN: </h5>
+      <font size="1">FLEXICON</font>
+      <font size="1">Bloemendalerweg 7 | 1382 KB Weesp | </font>
+      <font size="1">T. 0294 - 413775 | </font>
+      <font size="1">info@flexicon.nl |</font>
+
+      <font size="1">www.flexicon.nl</font>
+      <h5>NAAR: </h5>
       <table>
         <tr>
           <th style="width:5%"></hd>
@@ -94,37 +97,33 @@
           <td class="noBorder"></td>
         </tr>
     </table>
-    <br/>
+    <br />
     <table>
-      <br />
-      <tr>
-        <td style="width:10%; text-align:center">ORDER NR</td>
+      <tr style="line-height:10px">
+        <td style="width:10%; text-align:center">ORDER</td>
         <td style="width:20%"></td>
-        <td style="width:10%; text-align:center">PAKBON NR</td>
+        <td style="width:10%; text-align:center">PAKBON</td>
         <td style="width:20%"></td>
         <td style="width:10%; text-align:center">LEVERDATUM </td>
         <td style="width:20%"></td>
      </tr>
     </table>
     <br />
-    <br />
     <table>
-      <tr style="line-height:200px">
+      <tr style="line-height:99px">
         <td>
           <div style="display: inline-block; line-height:1">
-          <div>OPMERKING</div>
+          <font size="1">OPMERKING</div>
         </td>
           </div>
         <td style="width:80%"></td>
       </tr>
     </table>
-      <br/>
-      <br/>
-      <div>
+      <font size="1">
         Op al onze werkzaamheden zijn
         de algemene voorwaarden van de sector kunstoffen industrie van toepassing,
         reclameren binnen 8 dagen
-      </div>
+      </font>
     </div>
   </body>
 </html>
