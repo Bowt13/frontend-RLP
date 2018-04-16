@@ -16,55 +16,7 @@ import {getOrders} from '../actions/orders'
     import Subheader from 'material-ui/Subheader';
     import Divider from 'material-ui/Divider';
     import Business from 'material-ui/svg-icons/communication/business'
-  //Colors
 
-
-//Actions
-
-
-//Components
-
-
-
-//HArdCode
-const user = {
-  firstName: 'Safidy',
-  lastName: 'Ratsimbazafy',
-  email: 'safidy@example.com',
-  company: 'SAFISYX CORP.',
-  phone : '06 06060606'
-}
-
-const orders = [
-  {
-    id: 1,
-    orderNumber: '0707',
-    type: 'Secretary of the Year',
-    description: '3D crystal glass',
-    user: 'Johnny Bravo'
-  },
-  {
-    id: 2,
-    orderNumber: '0808',
-    type: 'Manager of the Month',
-    description: 'Award Tombstone Rectangle',
-    user: 'Annette Whilmore'
-  },
-  {
-    id: 3,
-    orderNumber: '0909',
-    type: 'Coffee Maker of the Week',
-    description: 'Award in Metal and Wood',
-    user: 'Stuart Belleville'
-  },
-  {
-    id: 4,
-    orderNumber: '1010',
-    type: 'Colleague of the Day',
-    description: 'Plexiglass Star Shape',
-    user: 'Johnny Bravo'
-  }
-]
 
 class OrdersPage extends PureComponent {
   state = {
@@ -129,14 +81,13 @@ class OrdersPage extends PureComponent {
     let windowWidth = window.screen.availWidth
     console.log(windowWidth);
 
-    const {orders, history} = this.props; //enable in order to use with the reducer
+    const {orders, history} = this.props
 
 		return (
       <div>
         <Paper style={{
           position: 'relative',
           top: 80,
-          botom: 10,
           left: '25%',
           width: '50%',
           overflow: 'scroll',
@@ -144,21 +95,23 @@ class OrdersPage extends PureComponent {
         <List>
           <Subheader style={{
             fontSize: 40,
+            margin: 8,
           }}>Bestellingen</Subheader>
           <Divider style={{
-            padding: 5,
-            marginBottom: 5,
+            padding: 1,
+            backgroundColor: '#F09517',
           }}/>
-          <Divider />
+
           {orders && orders.map((order) => (
             <div >
+              <Divider />
               <ListItem
+              hoverColor= '#f4b357'
               secondaryTextLines={2}
               primaryText={`${order.shortDescription}`}
               secondaryText={<p> <span> {'Bestellingsnummer: '+ `${order.id}`}</span><br/><span>{'Opdrachtgever: '+ `${order.userEmail}`}</span></p>}
               className='order-row' onClick={_=> history.push(`/flexicon/orders/${order.orderNumber}`)}
               />
-              <Divider />
             </div>
           ))
           }
