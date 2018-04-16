@@ -75,7 +75,7 @@ class NavBar extends PureComponent {
       case "JeBestellingen":
         this.setState({drawer: false})
         console.log(type);
-        this.props.history.push('/flexicon/users/:usersId/orders')
+        this.props.history.push('/flexicon/orders')
         break;
       default:
 

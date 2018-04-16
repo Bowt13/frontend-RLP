@@ -8,7 +8,7 @@ const reducer = combineReducers(reducers)
 
 const devTools = window.devToolsExtension ? window.devToolsExtension() : (f) => f
 
-const socket = new SocketIO()
+export const socket = new SocketIO()
 
 const enhancer = compose(
   applyMiddleware(ReduxThunk, storeJwt, socketIo(socket)),
