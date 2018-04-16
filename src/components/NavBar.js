@@ -144,7 +144,6 @@ class NavBar extends PureComponent {
           }}
           onLeftIconButtonClick={_=> this.setState({drawer: !this.state.drawer})}
         />
-        {
         <Drawer width={300} open={this.state.drawer} >
           <AppBar
             title={`${user.firstName} ${user.lastName}`}
@@ -206,7 +205,6 @@ class NavBar extends PureComponent {
             />
           </List>
         </Drawer>
-      }
       </div>
     )
   }

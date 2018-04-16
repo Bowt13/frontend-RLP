@@ -15,6 +15,7 @@
 
 //Components
   import OrdersPage from './components/OrdersPage'
+  import OrderDetails from './components/OrderDetails'
   import NavBar from './components/NavBar'
 
 class App extends Component {
@@ -26,9 +27,11 @@ class App extends Component {
           <NavBar />
           <Route exact path="/login" component={ LoginPage } />
           <Route exact path="/signup/:jwt" component={ SignupPage } />
+          <Route exact path="/forgotpassword/:jwt" component={ SignupPage } />
           <Route exact path="/flexicon/create/order" component={ OrderCreator } />
           <Route exact path="/flexicon/InternalContactOverview" component={ InternalContactOverview } />
           <Route exact path="/flexicon/orders" component={ OrdersPage }/>
+          <Route exact path="/flexicon/orders/:orderNumber" component={ OrderDetails }/>
           <Route exact path="/" render={ () => <Redirect to="/login" /> } />
         </div>
       </MuiThemeProvider>

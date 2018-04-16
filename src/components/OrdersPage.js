@@ -1,6 +1,7 @@
 //Dependencies
 import React, {PureComponent} from 'react'
 import {connect} from 'react-redux'
+import {getOrders} from '../actions/orders'
 
 //MaterialUI
   //Components
@@ -36,25 +37,29 @@ const user = {
 
 const orders = [
   {
-    number: '0707',
+    id: 1,
+    orderNumber: '0707',
     type: 'Secretary of the Year',
     description: '3D crystal glass',
     user: 'Johnny Bravo'
   },
   {
-    number: '0808',
+    id: 2,
+    orderNumber: '0808',
     type: 'Manager of the Month',
     description: 'Award Tombstone Rectangle',
     user: 'Annette Whilmore'
   },
   {
-    number: '0909',
+    id: 3,
+    orderNumber: '0909',
     type: 'Coffee Maker of the Week',
     description: 'Award in Metal and Wood',
     user: 'Stuart Belleville'
   },
   {
-    number: '1010',
+    id: 4,
+    orderNumber: '1010',
     type: 'Colleague of the Day',
     description: 'Plexiglass Star Shape',
     user: 'Johnny Bravo'
@@ -64,6 +69,10 @@ const orders = [
 class OrdersPage extends PureComponent {
   state = {
     openProfile: false,
+  }
+
+  componentWillMount() {
+    this.props.getOrders()
   }
 
   handleToggle = () => {
@@ -119,6 +128,9 @@ class OrdersPage extends PureComponent {
 	render() {
     let windowWidth = window.screen.availWidth
     console.log(windowWidth);
+
+    // const {orders} = this.props; //enable in order to use with the reducer
+
 		return (
       <div>
         <Paper style={{
@@ -138,14 +150,13 @@ class OrdersPage extends PureComponent {
             marginBottom: 5,
           }}/>
           <Divider />
-          {orders.map((order) => (
+          {orders && orders.map((order) => (
             <div >
               <ListItem
               secondaryTextLines={2}
               primaryText={`${order.type}`}
-              secondaryText={<p> <span> {'Nr: '+ `${order.number}`}</span><br/><span>{'Created by: '+ `${order.user}`}</span></p>}
-              className='order-row' onClick={_=>window.location.href=`/flexicon/orders/${order.id}`}
-
+              secondaryText={<p> <span> {'Nr: '+ `${order.orderNumber}`}</span><br/><span>{'Created by: '+ `${order.user}`}</span></p>}
+              className='order-row' onClick={_=>window.location.href=`/flexicon/orders/${order.orderNumber}`}
               />
               <Divider />
             </div>
@@ -158,9 +169,10 @@ class OrdersPage extends PureComponent {
 	}
 }
 
-const mapStateToProps = function (state) {
+const mapStateToProps = function (state, props) {
 	return {
+    orders: state.orders
 	}
 }
 
-export default connect(mapStateToProps)(OrdersPage)
+export default connect(mapStateToProps, {getOrders})(OrdersPage)
