@@ -34,6 +34,7 @@ class App extends Component {
           <Route exact path="/flexicon/orders" component={ OrdersPage }/>
           <Route exact path="/flexicon/customers" component={ CustomerList } />
           <Route exact path="/flexicon/orders/:orderNumber" component={ OrderDetails }/>
+          <Route exact path="/flexicon/companies" component={ InternalContactOverview }/>
           <Route exact path="/" render={ () => <Redirect to="/login" /> } />
         </div>
       </MuiThemeProvider>
