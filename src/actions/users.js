@@ -69,3 +69,19 @@ export const getUser = (userId) => (dispatch, getState) => {
     })
     .catch(err => console.error(err))
 }
+
+export const getCurrentUser = () => (dispatch, getState) => {
+	const state = getState()
+  const jwt = state.currentUser.jwt
+
+  request
+    .get(`${baseUrl}/users/currentUser`)
+    .set('Authorization', `Bearer ${jwt}`)
+    .then(response => {
+      dispatch({
+        type: GET_USER,
+        payload: response.body
+      })
+    })
+    .catch(err => console.error(err))
+}
