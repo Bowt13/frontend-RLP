@@ -132,7 +132,7 @@ class OrdersPage extends PureComponent {
         <List>
           <Subheader style={{
             fontSize: 40,
-          }}>Orders</Subheader>
+          }}>Bestellingen</Subheader>
           <Divider style={{
             padding: 5,
             marginBottom: 5,
