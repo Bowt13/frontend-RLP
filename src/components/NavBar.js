@@ -7,7 +7,7 @@ import { withRouter } from 'react-router'
 import logo from './logo.png'
 
 //actions
-import { logout } from '../actions/users'
+import { logout, getCurrentUser } from '../actions/users'
 
 //MaterialUI
   //Components
@@ -24,36 +24,20 @@ import { logout } from '../actions/users'
     import FeaturedPlayList from 'material-ui/svg-icons/av/featured-play-list'
     import ShoppingCart from 'material-ui/svg-icons/action/shopping-cart'
     import Person from 'material-ui/svg-icons/social/person'
+    import People from 'material-ui/svg-icons/social/people'
 
 
 class NavBar extends PureComponent {
 
   state = {
-    drawer: false,
-    currentUser: {
-      firstName: 'Nigel',
-      lastName: 'Brown',
-      company: {
-        name: 'Codaisseur',
-        address: {
-          street: 'Burgerweeshuispad 201',
-          extra: 'Tripolis, building 200',
-          city: '1076 GR Amsterdam',
-          country: 'The Netherlands'
-        }
-      },
-      role: 'internal'
-    },
+    drawer: false
   }
 
-
-  // componentHasMount() {
-  //   const { currentUser } = this.props
-  //   if (this.props.authenticated) {
-  //     console.log(currentUser);
-  //    this.props.getUser(currentUser.id)
-  //   }
-  // }
+  componentWillMount() {
+    if (!this.props.user) {
+     this.props.getCurrentUser()
+    }
+  }
 
   handleClick = () => {
     this.props.logout()
@@ -64,19 +48,19 @@ class NavBar extends PureComponent {
     switch (type) {
       case "GegevensBewerken":
         this.setState({drawer: false})
-        console.log(type);
         this.props.history.push('/flexicon/users/:usersId/changedetails')
-        break;
+        break
       case "NieuweBestelling":
         this.setState({drawer: false})
-        console.log(type);
         this.props.history.push('/flexicon/create/order')
-        break;
+        break
       case "JeBestellingen":
         this.setState({drawer: false})
-        console.log(type);
-        this.props.history.push('/flexicon/users/:usersId/orders')
-        break;
+        this.props.history.push('/flexicon/orders')
+        break
+      case "Klanten":
+        this.setState({drawer: false})
+        this.props.history.push('/flexicon/customers')
       default:
 
     }
@@ -85,11 +69,13 @@ class NavBar extends PureComponent {
   render() {
 
     const { user, history, location } = this.props
+
     if (location.pathname.indexOf('flexicon') <= 0 ) return(
       <header className="Header" style={{ backgroundColor: '#5e5d5e', height: 100, }}>
         <img src={ logo } style={{ margin: 10, }}/>
       </header>
     )
+
     return(
       <div style={{
         textAlign: 'center',
@@ -139,7 +125,6 @@ class NavBar extends PureComponent {
           }}
           onLeftIconButtonClick={_=> this.setState({drawer: !this.state.drawer})}
         />
-        {
         <Drawer width={300} open={this.state.drawer} >
           <AppBar
             title={`${user.firstName} ${user.lastName}`}
@@ -165,43 +150,58 @@ class NavBar extends PureComponent {
             }}
             onRightIconButtonClick={_=> this.setState({drawer: !this.state.drawer})}
           />
-          <h3>{`${user.companyName}`}</h3>
-          <div
+          <h3
             style={{
-              lineHeight: 0.7,
-              fontSize: 14,
-              margin: 30,
-            }}
-          >
-            <p>{`${this.state.currentUser.company.address.street}`}</p>
-            <p>{`${this.state.currentUser.company.address.extra}`}</p>
-            <p>{`${this.state.currentUser.company.address.city}`}</p>
-            <p>{`${this.state.currentUser.company.address.country}`}</p>
-          </div>
-          <Divider />
-          <List
-            style={{
-              textAlign: 'left',
               marginTop: 20,
-              marginLeft: 10,
-              hoverColor:'#F09517',
             }}
           >
-            <ListItem primaryText="Je bestellingen"
-              leftIcon={<FeaturedPlayList color='#F09517'/>}
-              onClick={_ => this.handleDrawerClick("JeBestellingen")}
-            />
-            <ListItem primaryText="Nieuwe bestelling"
-              leftIcon={<ShoppingCart color='#F09517'/>}
-              onClick={_ => this.handleDrawerClick("NieuweBestelling")}
-            />
-            <ListItem primaryText="Gegevens bewerken"
-              leftIcon={<Person color='#F09517'/>}
-              onClick={_ => this.handleDrawerClick("GegevensBewerken")}
-            />
-          </List>
+            {`${user.companyName}`}
+          </h3>
+          <Divider />
+              <List
+                style={{
+                  textAlign: 'left',
+                  marginTop: 20,
+                  marginLeft: 10,
+                  hoverColor:'#F09517',
+                }}
+              >
+              {this.props.user && this.props.user.role === "External" &&
+                <div>
+                  <ListItem primaryText="Je bestellingen"
+                    leftIcon={<FeaturedPlayList color='#F09517'/>}
+                    onClick={_ => this.handleDrawerClick("JeBestellingen")}
+                  />
+                  <ListItem primaryText="Nieuwe bestelling"
+                    leftIcon={<ShoppingCart color='#F09517'/>}
+                    onClick={_ => this.handleDrawerClick("NieuweBestelling")}
+                  />
+                  <ListItem primaryText="Gegevens bewerken"
+                    leftIcon={<Person color='#F09517'/>}
+                    onClick={_ => this.handleDrawerClick("GegevensBewerken")}
+                  />
+                </div>
+              }
+
+              {this.props.user && this.props.user.role === "Internal" &&
+                <div>
+                  <ListItem primaryText="Klanten"
+                    leftIcon={<People color='#F09517'/>}
+                    onClick={_ => this.handleDrawerClick("Klanten")}
+                  />
+                  <ListItem primaryText="Bestellingen"
+                    leftIcon={<ShoppingCart color='#F09517'/>}
+                    onClick={_ => this.handleDrawerClick("JeBestellingen")}
+                  />
+                  <ListItem primaryText="Gegevens bewerken"
+                    leftIcon={<Person color='#F09517'/>}
+                    onClick={_ => this.handleDrawerClick("GegevensBewerken")}
+                  />
+                </div>
+              }
+
+            </List>
         </Drawer>
-        }
       </div>
     )
   }
@@ -213,4 +213,4 @@ const mapStateToProps = function (state) {
 	}
 }
 
-export default withRouter(connect(mapStateToProps, {  logout })(NavBar))
+export default withRouter(connect(mapStateToProps, { logout, getCurrentUser })(NavBar))
