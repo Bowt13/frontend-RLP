@@ -36,7 +36,7 @@ const order =
   id: 1,
   orderNumber: '0707',
   shortDescription: '"Secretary of the Year", 3D crystal glass',
-  description: '3D crystal glass, height: 10cm, width: 5cm, polished: yes, jhfesgdrjfbdksjhkdjnfkjdnvbfkjhfdnv,mnfjk.hgodflknv,mnn,mv,\n\nlogo: bottom left, wrapping: yes',
+  description: '3D crystal glass, height: 10cm, width: 5cm, polished: yes, bdshbhdshdvvdcxbhjdsjdsjkjbffdbfsjkjefkhjbjkbkcdhvcshjvhjvlogo: bottom left, wrapping: yes',
   amount: 3,
   orderDate: '20-02-2018',
   deliveryDate: '10-03-2018',
@@ -87,21 +87,27 @@ class OrderDetails extends PureComponent {
           <List>
             <ListItem disabled={true} primaryText="Order Number" secondaryText={`${order.orderNumber}`}/>
             <Divider/>
-            <ListItem disabled={true} primaryText="Starred" />
+            <ListItem disabled={true} primaryText="Short Description" secondaryText={`${order.shortDescription}`}/>
             <Divider/>
-            <ListItem disabled={true} primaryText="Sent mail"/>
+            <ListItem primaryText="Full Description"
+             nestedItems={[
+              <ListItem
+                value={2}
+                primaryText={`${order.description}`}
+              />,
+            ]}/>
             <Divider/>
-            <ListItem disabled={true} primaryText="Drafts"/>
+            <ListItem disabled={true} primaryText="Order Amount" secondaryText={`${order.amount}`}/>
             <Divider/>
-            <ListItem disabled={true} primaryText="Inbox"/>
+            <ListItem disabled={true} primaryText="Order Date" secondaryText={`${order.orderDate}`}/>
             <Divider/>
-            <ListItem disabled={true} primaryText="All mail"/>
+            <ListItem disabled={true} primaryText="Delivery Date" secondaryText={`${order.deliveryDate}`}/>
             <Divider/>
-            <ListItem disabled={true} primaryText="Trash"/>
+            <ListItem disabled={true} primaryText="Payment Type" secondaryText={`${order.paymentType}`}/>
             <Divider/>
-            <ListItem disabled={true} primaryText="Spam"/>
+            <ListItem disabled={true} primaryText="Delivery ID" secondaryText={`${order.deliveryId}`}/>
             <Divider/>
-            <ListItem disabled={true} primaryText="Follow up"/>
+            <ListItem disabled={true} primaryText="User ID" secondaryText={`${order.userId}`}/>
           </List>
         </Paper>
       </div>
