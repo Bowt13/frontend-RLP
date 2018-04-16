@@ -90,11 +90,7 @@ class NavBar extends PureComponent {
         <img src={ logo } style={{ margin: 10, }}/>
       </header>
     )
-    // if (!user.id) return(
-    //   <header className="Header" style={{ backgroundColor: '#5e5d5e', height: 100, }}>
-    //     <img src={ logo } style={{ margin: 10, }}/>
-    //   </header>
-    // )
+
     return(
       <div style={{
         textAlign: 'center',
@@ -169,7 +165,13 @@ class NavBar extends PureComponent {
             }}
             onRightIconButtonClick={_=> this.setState({drawer: !this.state.drawer})}
           />
-          <h3>{`${user.companyName}`}</h3>
+          <h3
+            style={{
+              marginTop: 20,
+            }}
+          >
+            {`${user.companyName}`}
+          </h3>
           <div
             style={{
               lineHeight: 0.7,
