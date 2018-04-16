@@ -25,7 +25,7 @@ const order =
   id: 1,
   orderNumber: '0707',
   shortDescription: '"Secretary of the Year", 3D crystal glass',
-  description: '3D crystal glass, height: 10cm, width: 5cm, polished: yes, logo: bottom left, wrapping: yes',
+  description: '3D crystal glass, height: 10cm, width: 5cm, polished: yes, jhfesgdrjfbdksjhkdjnfkjdnvbfkjhfdnv,mnfjk.hgodflknv,mnn,mv,\n\nlogo: bottom left, wrapping: yes',
   amount: 3,
   orderDate: '20-02-2018',
   deliveryDate: '10-03-2018',
