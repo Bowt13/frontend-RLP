@@ -55,6 +55,9 @@ class CustomerList extends PureComponent {
                   <Divider />
                   <ListItem
                     hoverColor= '#F09517'
+                    style={{
+                      textAlign: 'right',
+                    }}
                     primaryText={ `${order.shortDescription}` }
                     secondaryText={ 'Besteldatum:' + ' ' + `${order.orderDate}` }
                     onClick={ _=> history.push(`/flexicon/orders/${order.orderNumber}`) }
