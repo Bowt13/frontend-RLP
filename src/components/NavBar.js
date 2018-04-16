@@ -90,7 +90,11 @@ class NavBar extends PureComponent {
         <img src={ logo } style={{ margin: 10, }}/>
       </header>
     )
-    if (!user.id) return null
+    // if (!user.id) return(
+    //   <header className="Header" style={{ backgroundColor: '#5e5d5e', height: 100, }}>
+    //     <img src={ logo } style={{ margin: 10, }}/>
+    //   </header>
+    // )
     return(
       <div style={{
         textAlign: 'center',
@@ -140,6 +144,7 @@ class NavBar extends PureComponent {
           }}
           onLeftIconButtonClick={_=> this.setState({drawer: !this.state.drawer})}
         />
+        {
         <Drawer width={300} open={this.state.drawer} >
           <AppBar
             title={`${user.firstName} ${user.lastName}`}
@@ -201,6 +206,7 @@ class NavBar extends PureComponent {
             />
           </List>
         </Drawer>
+      }
       </div>
     )
   }
