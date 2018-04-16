@@ -29,21 +29,7 @@ import { logout } from '../actions/users'
 class NavBar extends PureComponent {
 
   state = {
-    drawer: false,
-    currentUser: {
-      firstName: 'Nigel',
-      lastName: 'Brown',
-      company: {
-        name: 'Codaisseur',
-        address: {
-          street: 'Burgerweeshuispad 201',
-          extra: 'Tripolis, building 200',
-          city: '1076 GR Amsterdam',
-          country: 'The Netherlands'
-        }
-      },
-      role: 'internal'
-    },
+    drawer: false
   }
 
 
@@ -172,18 +158,6 @@ class NavBar extends PureComponent {
           >
             {`${user.companyName}`}
           </h3>
-          <div
-            style={{
-              lineHeight: 0.7,
-              fontSize: 14,
-              margin: 30,
-            }}
-          >
-            <p>{`${this.state.currentUser.company.address.street}`}</p>
-            <p>{`${this.state.currentUser.company.address.extra}`}</p>
-            <p>{`${this.state.currentUser.company.address.city}`}</p>
-            <p>{`${this.state.currentUser.company.address.country}`}</p>
-          </div>
           <Divider />
           <List
             style={{
