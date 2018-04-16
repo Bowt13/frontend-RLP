@@ -7,22 +7,23 @@ import Mic from 'material-ui/svg-icons/av/mic';
 import ContentSend from 'material-ui/svg-icons/content/send';
 
 const styles = {
-    paper: {
-        width: '80vw',
-        height: '80vh',
-        maxWidth: '400px',
-        maxHeight: '700px',
-        display: 'flex',
-        alignItems: 'center',
-        flexDirection: 'column',
-        position: 'relative'
-    },
     container: {
-        width: '100vw',
-        height: '100vh',
+        position: 'relative',
+        width: '50%',
+        height: '100%',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
+    },
+    paper: {
+        width: '25vw',
+        height: '79vh',
+        // maxWidth: '400px',
+        // maxHeight: '700px',
+        display: 'flex',
+        alignItems: 'center',
+        flexDirection: 'column',
+        // position: 'relative'
     },
     record: {
         width: '95%',
@@ -50,16 +51,16 @@ const styles = {
 
 const myMessages = [
   {
-    message:'hello friend',
-    name:'Eva'
+    message:'Where is my order?!?!?',
+    name:'Harvey Specter'
   },
   {
-    message:'hello there',
-    name:'Flo'
+    message:'almost there mate',
+    name:'Nikki'
   },
   {
-    message:'whats up?',
-    name:'Freud'
+    message:'I am not your mate!',
+    name:'Harvey Specter'
   },
 ]
 
@@ -78,15 +79,12 @@ class ChatBox extends PureComponent {
           message: this.state.text
       })
       // this.forceUpdate() //triggers rerender
-      this.setState({text: '' })
+      this.setState({text: ''})
   }
 
 
-
   render() {
-
-    console.log(this.state);
-
+    // console.log(this.state);
 		return (
       <div style={styles.container}>
         <div>
@@ -97,7 +95,7 @@ class ChatBox extends PureComponent {
                     (
                       <div style={styles.message}>
                         <span>{msg.message}</span>
-                        <sub>{msg.name}</sub>
+                        <sub style={{color:'lightgrey'}}>{msg.name}</sub>
                       </div>
                     )
                   )
@@ -110,14 +108,7 @@ class ChatBox extends PureComponent {
                 onChange={ev => {
                   this.setState({text: ev.target.value})
                 }}
-                // onKeyPress={(event) => {
-                //   if (event.which === 13) {
-                //     event.preventDefault();
-                //     // $('#btn').focus();
-                //     // $('#btn').click();
-                //   }
-                // }}
-                hintText="Full width"
+                hintText="type your message here"
                 fullWidth={true}
               />
               <IconButton onClick={this.send} ref='send'>

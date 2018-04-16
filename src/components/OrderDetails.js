@@ -2,6 +2,7 @@
 import React, {PureComponent} from 'react'
 import {connect} from 'react-redux'
 import {getOrders} from '../actions/orders'
+import ChatBox from './ChatBox'
 
 //MaterialUI
   //Components
@@ -116,7 +117,7 @@ class OrderDetails extends PureComponent {
           position: 'relative',
           top: 80,
           botom: 10,
-          left: '25%',
+          margin: 'auto',
           width: '50%',
           overflow: 'scroll',
         }}>
@@ -127,47 +128,49 @@ class OrderDetails extends PureComponent {
           padding: 5,
           marginBottom: 5,
         }}/>
-          <List>
-            <ListItem disabled={true} primaryText="Order Number" secondaryText={`${order.orderNumber}`}/>
-            <Divider/>
-            <ListItem disabled={true} primaryText="Short Description" secondaryText={`${order.shortDescription}`}/>
-            <Divider/>
-            <ListItem primaryText="Full Description"
-             nestedItems={[
-              <ListItem
-                value={2}
-                primaryText={`${order.description}`}
-            />,
-            ]}/>
-            <Divider/>
-            <ListItem disabled={true} primaryText="Order Amount" secondaryText={`${order.amount}`}/>
-            <Divider/>
-            <ListItem disabled={true} primaryText="Order Date" secondaryText={`${order.orderDate}`}/>
-            <Divider/>
-            <ListItem disabled={true} primaryText="Delivery Date" secondaryText={`${order.deliveryDate}`}/>
-            <Divider/>
-            <ListItem disabled={true} primaryText="Payment Type" secondaryText={`${order.paymentType}`}/>
-            <Divider/>
-            <ListItem disabled={true} primaryText="Delivery ID" secondaryText={`${order.deliveryId}`}/>
-            <Divider/>
-            <ListItem disabled={true} primaryText="User ID" secondaryText={`${order.userId}`}/>
-            <Divider/>
+          <div style={{display: 'flex'}}>
+            <List style={{flex: '1'}}>
+              <ListItem disabled={true} primaryText="Order Number" secondaryText={`${order.orderNumber}`}/>
+              <Divider/>
+              <ListItem disabled={true} primaryText="Short Description" secondaryText={`${order.shortDescription}`}/>
+              <Divider/>
+              <ListItem primaryText="Full Description"
+               nestedItems={[
+                <ListItem
+                  value={2}
+                  primaryText={`${order.description}`}
+              />,
+              ]}/>
+              <Divider/>
+              <ListItem disabled={true} primaryText="Order Amount" secondaryText={`${order.amount}`}/>
+              <Divider/>
+              <ListItem disabled={true} primaryText="Order Date" secondaryText={`${order.orderDate}`}/>
+              <Divider/>
+              <ListItem disabled={true} primaryText="Delivery Date" secondaryText={`${order.deliveryDate}`}/>
+              <Divider/>
+              <ListItem disabled={true} primaryText="Payment Type" secondaryText={`${order.paymentType}`}/>
+              <Divider/>
+              <ListItem disabled={true} primaryText="Delivery ID" secondaryText={`${order.deliveryId}`}/>
+              <Divider/>
+              <ListItem disabled={true} primaryText="User ID" secondaryText={`${order.userId}`}/>
+            </List>
+            <ChatBox />
+          </div>
+          <div style={styles.root}>
+            <GridList style={styles.gridList} cols={2.2}>
+              {tilesData.map((tile) => (
+                <GridTile
+                  key={tile.img}
+                  title={tile.comment}
+                  titleStyle={styles.titleStyle}
+                  titleBackground="linear-gradient(to top, rgba(0,0,0,0.7) 0%,rgba(0,0,0,0.3) 70%,rgba(0,0,0,0) 100%)"
+                >
+                  <img src={tile.img} />
+                </GridTile>
+              ))}
+            </GridList>
+          </div>
 
-            <div style={styles.root}>
-              <GridList style={styles.gridList} cols={2.2}>
-                {tilesData.map((tile) => (
-                  <GridTile
-                    key={tile.img}
-                    title={tile.comment}
-                    titleStyle={styles.titleStyle}
-                    titleBackground="linear-gradient(to top, rgba(0,0,0,0.7) 0%,rgba(0,0,0,0.3) 70%,rgba(0,0,0,0) 100%)"
-                  >
-                    <img src={tile.img} />
-                  </GridTile>
-                ))}
-              </GridList>
-            </div>
-          </List>
         </Paper>
       </div>
 		)
