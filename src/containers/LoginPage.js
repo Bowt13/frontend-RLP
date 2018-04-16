@@ -1,6 +1,6 @@
 import React, {PureComponent} from 'react'
 import {connect} from 'react-redux'
-import {login} from '../actions/users'
+import {login, getCurrentUser} from '../actions/users'
 import { Redirect, Link } from 'react-router-dom'
 import LoginForm from '../components/LoginForm'
 
@@ -31,7 +31,6 @@ class LoginPage extends PureComponent {
 	}
 
 	handleForgotPasswordFormSubmit = () => {
-		console.log('Hello');
 		this.props.forgotPassword(this.state.email)
 		this.handleClose()
 	}
@@ -59,9 +58,18 @@ class LoginPage extends PureComponent {
 				onClick={this.handleForgotPasswordFormSubmit}
 			/>,
 		]
-		if (this.props.currentUser) return (
-			<Redirect to="/flexicon/create/order" />
+
+		if (this.props.currentUser) {
+			this.props.getCurrentUser()
+		}
+
+		if (this.props.user && this.props.user.role === 'External') return (
+			<Redirect to="/flexicon/orders" />
 	  )
+
+		if (this.props.user && this.props.user.role === 'Internal') return (
+			<Redirect to="/flexicon/customers" />
+		)
 
 		return (
 			<div className='login-page'>
@@ -132,8 +140,9 @@ class LoginPage extends PureComponent {
 const mapStateToProps = function (state) {
 	return {
 		currentUser: state.currentUser,
-    error: state.login.error
+    error: state.login.error,
+		user: state.user
 	}
 }
 
-export default connect(mapStateToProps, {login, forgotPassword})(LoginPage)
+export default connect(mapStateToProps, {login, forgotPassword, getCurrentUser})(LoginPage)

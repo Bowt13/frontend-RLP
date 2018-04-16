@@ -318,7 +318,13 @@ class OrderCreator extends PureComponent {
   }
 
 	render() {
-    const {handleChange} = this
+
+    const {handleChange, authenticated} = this
+
+    // if(authenticated) return (
+    //   <Redirect to="/" />
+    // )
+
 		return (
       <div
         style={{
@@ -354,7 +360,8 @@ class OrderCreator extends PureComponent {
 
 const mapStateToProps = function (state) {
 	return {
-    currentUser: state.currentUser
+    currentUser: state.currentUser,
+    // authenticated: state.currentUser !== null
 	}
 }
 

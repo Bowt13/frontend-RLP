@@ -7,7 +7,7 @@ import { withRouter } from 'react-router'
 import logo from './logo.png'
 
 //actions
-import { logout } from '../actions/users'
+import { logout, getCurrentUser } from '../actions/users'
 
 //MaterialUI
   //Components
@@ -29,21 +29,7 @@ import { logout } from '../actions/users'
 class NavBar extends PureComponent {
 
   state = {
-    drawer: false,
-    currentUser: {
-      firstName: 'Nigel',
-      lastName: 'Brown',
-      company: {
-        name: 'Codaisseur',
-        address: {
-          street: 'Burgerweeshuispad 201',
-          extra: 'Tripolis, building 200',
-          city: '1076 GR Amsterdam',
-          country: 'The Netherlands'
-        }
-      },
-      role: 'internal'
-    },
+    drawer: false
   }
 
 
@@ -75,7 +61,7 @@ class NavBar extends PureComponent {
       case "JeBestellingen":
         this.setState({drawer: false})
         console.log(type);
-        this.props.history.push('/flexicon/users/:usersId/orders')
+        this.props.history.push('/flexicon/orders')
         break;
       default:
 
@@ -90,6 +76,7 @@ class NavBar extends PureComponent {
         <img src={ logo } style={{ margin: 10, }}/>
       </header>
     )
+
     return(
       <div style={{
         textAlign: 'center',
@@ -139,7 +126,6 @@ class NavBar extends PureComponent {
           }}
           onLeftIconButtonClick={_=> this.setState({drawer: !this.state.drawer})}
         />
-        {
         <Drawer width={300} open={this.state.drawer} >
           <AppBar
             title={`${user.firstName} ${user.lastName}`}
@@ -165,19 +151,13 @@ class NavBar extends PureComponent {
             }}
             onRightIconButtonClick={_=> this.setState({drawer: !this.state.drawer})}
           />
-          <h3>{`${user.companyName}`}</h3>
-          <div
+          <h3
             style={{
-              lineHeight: 0.7,
-              fontSize: 14,
-              margin: 30,
+              marginTop: 20,
             }}
           >
-            <p>{`${this.state.currentUser.company.address.street}`}</p>
-            <p>{`${this.state.currentUser.company.address.extra}`}</p>
-            <p>{`${this.state.currentUser.company.address.city}`}</p>
-            <p>{`${this.state.currentUser.company.address.country}`}</p>
-          </div>
+            {`${user.companyName}`}
+          </h3>
           <Divider />
           <List
             style={{
@@ -201,7 +181,6 @@ class NavBar extends PureComponent {
             />
           </List>
         </Drawer>
-        }
       </div>
     )
   }
@@ -213,4 +192,4 @@ const mapStateToProps = function (state) {
 	}
 }
 
-export default withRouter(connect(mapStateToProps, {  logout })(NavBar))
+export default withRouter(connect(mapStateToProps, {  logout, getCurrentUser })(NavBar))

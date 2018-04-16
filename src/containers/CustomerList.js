@@ -66,7 +66,7 @@ const orders = [
   }
 ]
 
-class OrdersPage extends PureComponent {
+class CustomerList extends PureComponent {
   state = {
     openProfile: false,
   }
@@ -175,4 +175,4 @@ const mapStateToProps = function (state, props) {
 	}
 }
 
-export default connect(mapStateToProps, {getOrders})(OrdersPage)
+export default connect(mapStateToProps, {getOrders})(CustomerList)

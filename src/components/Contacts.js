@@ -1,7 +1,6 @@
 //Dependencies
 import React, {PureComponent} from 'react'
 import {connect} from 'react-redux'
-import {getOrders} from '../actions/orders'
 
 //MaterialUI
   //Components
@@ -37,42 +36,34 @@ const user = {
 
 const orders = [
   {
-    id: 1,
-    orderNumber: '0707',
+    number: 'order 0707',
     type: 'Secretary of the Year',
     description: '3D crystal glass',
     user: 'Johnny Bravo'
   },
   {
-    id: 2,
-    orderNumber: '0808',
+    number: 'order 0808',
     type: 'Manager of the Month',
     description: 'Award Tombstone Rectangle',
     user: 'Annette Whilmore'
   },
   {
-    id: 3,
-    orderNumber: '0909',
+    number: 'order 0909',
     type: 'Coffee Maker of the Week',
     description: 'Award in Metal and Wood',
     user: 'Stuart Belleville'
   },
   {
-    id: 4,
-    orderNumber: '1010',
+    number: 'order 1010',
     type: 'Colleague of the Day',
     description: 'Plexiglass Star Shape',
     user: 'Johnny Bravo'
   }
 ]
 
-class OrdersPage extends PureComponent {
+class ContactPage extends PureComponent {
   state = {
     openProfile: false,
-  }
-
-  componentWillMount() {
-    this.props.getOrders()
   }
 
   handleToggle = () => {
@@ -128,9 +119,6 @@ class OrdersPage extends PureComponent {
 	render() {
     let windowWidth = window.screen.availWidth
     console.log(windowWidth);
-
-    // const {orders} = this.props; //enable in order to use with the reducer
-
 		return (
       <div>
         <Paper style={{
@@ -144,19 +132,25 @@ class OrdersPage extends PureComponent {
         <List>
           <Subheader style={{
             fontSize: 40,
-          }}>Bestellingen</Subheader>
+          }}>Orders</Subheader>
           <Divider style={{
             padding: 5,
             marginBottom: 5,
           }}/>
           <Divider />
-          {orders && orders.map((order) => (
+          {orders.map((order) => (
             <div >
               <ListItem
-              secondaryTextLines={2}
-              primaryText={`${order.type}`}
-              secondaryText={<p> <span> {'Nr: '+ `${order.orderNumber}`}</span><br/><span>{'Created by: '+ `${order.user}`}</span></p>}
-              className='order-row' onClick={_=>window.location.href=`/flexicon/orders/${order.orderNumber}`}
+                primaryText={'Order Number: '+`${order.number}`}
+                secondaryText={'Order Description: '+ `${order.description}`}
+                nestedItems={[
+                  <ListItem
+                    value={2}
+                    primaryText={ 'Order Type: ' + `${order.type}`}
+                    secondaryText={'Created by: '+ `${order.user}`}
+                   className='order-row' onClick={_=>window.location.href=`/orders/${order.id}`}
+                  />
+                ]}
               />
               <Divider />
             </div>
@@ -169,10 +163,9 @@ class OrdersPage extends PureComponent {
 	}
 }
 
-const mapStateToProps = function (state, props) {
+const mapStateToProps = function (state) {
 	return {
-    orders: state.orders
 	}
 }
 
-export default connect(mapStateToProps, {getOrders})(OrdersPage)
+export default connect(mapStateToProps)(ContactPage)
