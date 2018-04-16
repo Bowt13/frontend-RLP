@@ -18,6 +18,15 @@ import './OrderDetails.css'
     import Subheader from 'material-ui/Subheader';
     import Divider from 'material-ui/Divider';
     import Business from 'material-ui/svg-icons/communication/business'
+    import {
+      Table,
+      TableBody,
+      TableHeader,
+      TableHeaderColumn,
+      TableRow,
+      TableRowColumn,
+    } from 'material-ui/Table';
+
 
 
 const order =
@@ -53,8 +62,8 @@ class OrderDetails extends PureComponent {
     let windowWidth = window.screen.availWidth
     console.log(windowWidth);
 
-     const {order} = this.props
-     if (!order) return <p>order does not exist!</p>
+     // const {order} = this.props
+     // if (!order) return <p>order does not exist!</p>
 
 		return (
       <div>
@@ -66,45 +75,66 @@ class OrderDetails extends PureComponent {
           width: '50%',
           overflow: 'scroll',
         }}>
-          <h2>Order Details</h2>
-          <table >
-            <tr>
-              <td>ORDER NUMBER</td>
-              <td>{`${order.orderNumber}`}</td>
-            </tr>
-            <tr>
-              <td>SHORT DESCRIPTION</td>
-              <td>{`${order.shortDescription}`}</td>
-            </tr>
-            <tr>
-              <td>DESCRIPTION</td>
-              <td>{`${order.description}`}</td>
-            </tr>
-            <tr>
-              <td>AMOUNT</td>
-              <td>{`${order.amount}`}</td>
-            </tr>
-            <tr>
-              <td>ORDER DATE</td>
-              <td>{`${order.orderDate}`}</td>
-            </tr>
-            <tr>
-              <td>DELIVERY DATE</td>
-              <td>{`${order.deliveryDate}`}</td>
-            </tr>
-            <tr>
-              <td>PAYMENT TYPE</td>
-              <td>{`${order.paymentType}`}</td>
-            </tr>
-            <tr>
-              <td>DELIVERY ID</td>
-              <td>{`${order.deliveryId}`}</td>
-            </tr>
-            <tr>
-              <td>USER ID</td>
-              <td>{`${order.userId}`}</td>
-            </tr>
-          </table>
+        <Subheader style={{
+          fontSize: 40,
+        }}>Order Details</Subheader>
+        <Divider style={{
+          padding: 5,
+          marginBottom: 5,
+        }}/>
+
+
+  <Table>
+    <TableBody>
+
+      <TableRow>
+        <TableRowColumn>Order Number</TableRowColumn>
+        <TableRowColumn>{`${order.orderNumber}`}</TableRowColumn>
+      </TableRow>
+
+      <TableRow>
+        <TableRowColumn>Short Description</TableRowColumn>
+        <TableRowColumn>{`${order.shortDescription}`}</TableRowColumn>
+      </TableRow>
+
+      <TableRow>
+        <TableRowColumn>Full Description</TableRowColumn>
+        <TableRowColumn>{`${order.description}`}</TableRowColumn>
+      </TableRow>
+
+      <TableRow>
+        <TableRowColumn>Order Amount</TableRowColumn>
+        <TableRowColumn>{`${order.amount}`}</TableRowColumn>
+      </TableRow>
+
+      <TableRow>
+        <TableRowColumn>Order Date</TableRowColumn>
+        <TableRowColumn>{`${order.orderDate}`}</TableRowColumn>
+      </TableRow>
+
+      <TableRow>
+        <TableRowColumn>Delivery Date</TableRowColumn>
+        <TableRowColumn>{`${order.deliveryDate}`}</TableRowColumn>
+      </TableRow>
+
+      <TableRow>
+        <TableRowColumn>Payment Type</TableRowColumn>
+        <TableRowColumn>{`${order.paymentType}`}</TableRowColumn>
+      </TableRow>
+
+      <TableRow>
+        <TableRowColumn>Delivery ID</TableRowColumn>
+        <TableRowColumn>{`${order.deliveryId}`}</TableRowColumn>
+      </TableRow>
+
+      <TableRow>
+        <TableRowColumn>User ID</TableRowColumn>
+        <TableRowColumn>{`${order.userId}`}</TableRowColumn>
+      </TableRow>
+
+    </TableBody>
+  </Table>
+
         </Paper>
       </div>
 		)
