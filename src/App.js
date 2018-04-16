@@ -29,7 +29,6 @@ class App extends Component {
           <Route exact path="/forgotpassword/:jwt" component={ SignupPage } />
           <Route exact path="/flexicon/create/order" component={ OrderCreator } />
           <Route exact path="/flexicon/InternalContactOverview" component={ InternalContactOverview } />
-          <Route exact path="/forgotpassword" component={ ForgotPassword }/>
           <Route exact path="/flexicon/orders" component={ OrdersPage }/>
           <Route exact path="/" render={ () => <Redirect to="/login" /> } />
         </div>

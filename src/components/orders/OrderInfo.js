@@ -43,7 +43,6 @@ class OrderInfo extends PureComponent {
   }
 
   formatDate = ( date ) => {
-    console.log(date)
     var d = date.getDate();
     var m = date.getMonth() + 1;
     var y = date.getFullYear();
@@ -86,6 +85,12 @@ class OrderInfo extends PureComponent {
               width: 350,
             }}
             value={this.state.Bonnummer}
+            floatingLabelStyle={{
+              fontSize: 30,
+            }}
+            inputStyle={{
+              fontSize: 30,
+            }}
           />
           <DateRange
             style={{
@@ -100,6 +105,12 @@ class OrderInfo extends PureComponent {
             style={{
               position: 'relative',
               left: -200,
+            }}
+            floatingLabelStyle={{
+              fontSize: 30,
+            }}
+            inputStyle={{
+              fontSize: 30,
             }}
           />
         </Paper>

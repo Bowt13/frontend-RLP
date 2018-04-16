@@ -53,7 +53,7 @@ class BezoekAdresForm extends PureComponent {
 		return (
       <div style={{
         display: 'inline-block',
-        textAlign: 'center',
+        float: 'left',
       }}>
       <h1
         style={{

@@ -53,6 +53,7 @@ class AfleverAdresForm extends PureComponent {
 		return (
       <div style={{
         textAlign: 'center',
+        float: 'left',
       }}>
       <h1
         style={{

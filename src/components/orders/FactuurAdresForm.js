@@ -54,6 +54,7 @@ class FactuurAdresForm extends PureComponent {
       <div style={{
         display: 'inline-block',
         textAlign: 'center',
+        float: 'left'
       }}>
       <h1
         style={{
@@ -162,9 +163,9 @@ class FactuurAdresForm extends PureComponent {
           }}
         />
         <TextField
-          name='Telefoonnummer'
-          floatingLabelText="Telefoonnummer:"
-          value={this.state.Telefoonnummer || ''}
+          name='Email'
+          floatingLabelText="Email:"
+          value={this.state.Email || ''}
           onChange={this.handleChange}
         />
         <br/>

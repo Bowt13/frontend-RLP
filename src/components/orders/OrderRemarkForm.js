@@ -10,7 +10,6 @@ import PropTypes from 'prop-types'
     import RaisedButton from 'material-ui/RaisedButton'
     import Paper from 'material-ui/Paper'
     import Divider from 'material-ui/Divider'
-    import CircularProgress from 'material-ui/CircularProgress'
 
   //Icons
     import Description from 'material-ui/svg-icons/action/description'
@@ -27,39 +26,7 @@ class OrderRemarkForm extends PureComponent {
     onChange: PropTypes.func.isRequired,
   }
   state = {
-    showImage: false,
-  }
-
-  previewFile = () => {
-    let preview = document.querySelector("img[id='previewFile']")
-    let file    = this.state.picture
-    let reader  = new FileReader()
-    reader.onloadend = function () {
-      preview.src = reader.result
-    }
-    if (file) {
-      reader.readAsDataURL(file)
-    } else {
-      preview.src = ""
-    }
-  }
-
-  loading = () => {
-    this.timer = setTimeout(() => this.progress(this.state.completed), 1000)
-  }
-
-  progress(completed) {
-    if (completed > 100) {
-      this.setState({
-        completed: 100,
-        showImage: true,
-      })
-      this.previewFile()
-    } else {
-      this.setState({completed});
-      const diff = 100;
-      this.timer = setTimeout(() => this.progress(this.state.completed + diff), 1000);
-    }
+    files:[]
   }
 
   handleChange = (event) => {
@@ -71,11 +38,9 @@ class OrderRemarkForm extends PureComponent {
 
   handleFileChange = (e) => {
     this.setState({
-      picture: e.target.files[0],
-      completed: 0,
-      showImage: false,
+      files: e.target.files,
     })
-    this.loading()
+    console.log(this.state.files)
   }
 
   onClick = () => {
@@ -95,15 +60,22 @@ class OrderRemarkForm extends PureComponent {
 
 		return (
       <div style={{
-        width: 1150,
+        width: '90%',
         display: 'inline-block',
         textAlign: 'center',
+        float: 'left',
+        position: 'relative',
+        top: 0,
+        marginLeft: 65,
+        marginBottom: 10,
       }}>
       <Paper>
         <h1
           style={{
+            textAlign: 'left',
             position: 'relative',
             top: 10,
+            left: 60,
           }}
         >Ordernummer/Kostenplaats</h1>
         <Divider
@@ -224,37 +196,32 @@ class OrderRemarkForm extends PureComponent {
                     width: '100%',
                     opacity: 0,
                   }}
+                  accept="image/*"
                   onChange={this.handleFileChange}
+                  multiple
                 />
               </RaisedButton>
-              {this.state.completed === 100 && this.state.showImage &&
-                <img
-                  src=""
-                  id="previewFile"
-                  height="200"
-                  width="auto"
-                  alt="Geen afbeelding..."
-                  style={{
-                    display: 'inline-block',
-                  }}
-                />
-              }
-              {!this.state.showImage &&
-                <div
-                  style={{
-                    height: 200
-                  }}
-                >{this.state.picture &&
-                  <CircularProgress
-                    mode="determinate"
-                    value={this.state.completed}
-                    size={100}
-                    thickness={5}
-                  />
-                }
-                </div>
-              }
               <br/>
+              {console.log(Object.values(this.state.files))}
+              {Object.values(this.state.files).map(file => (
+                <div style={{
+                  textAlign: 'left',
+                }}>
+                  <TextField
+                    name='Files'
+                    key='file'
+                    floatingLabelText={`file`}
+                    value={file.name}
+                    style={{
+                      position: 'relative',
+                      left: 68,
+                      width: '90%',
+                    }}
+                  />
+                  <br/>
+                </div>
+              ))
+              }
             </form>
         </Paper>
       </div>

@@ -322,14 +322,18 @@ class OrderCreator extends PureComponent {
 		return (
       <div
         style={{
+          float: 'left',
           position: 'relative',
           top: 55,
           textAlign: 'center',
+          height: '100%',
+          width: '100%',
         }}
       >
         <Paper
           style={{
-            height: 1800,
+            float: 'left',
+            height: '100%',
             width: '100%',
           }}
         >
@@ -338,14 +342,22 @@ class OrderCreator extends PureComponent {
           <OrderRemarkForm onChange={handleChange} onRef={ref => (this.orderRemarkForm = ref)}/>
           <OrderAfleverInfo onChange={handleChange} onRef={ref => (this.orderAfleverInfo = ref)}/>
           <br/>
-          <RaisedButton
-            style={{
-              width: 500,
-            }}
-            onClick={_ => this.handleSubmit()}
-          >
-          Verstuur Order
-          </RaisedButton>
+          <div style={{
+            width: '100%',
+          }}>
+            <RaisedButton
+              style={{
+                position: 'relative',
+                float: 'left',
+                width: '90%',
+                marginLeft: 65,
+                marginBottom: 15,
+              }}
+              onClick={_ => this.handleSubmit()}
+            >
+            Verstuur Order
+            </RaisedButton>
+          </div>
         </Paper>
       </div>
 		)
