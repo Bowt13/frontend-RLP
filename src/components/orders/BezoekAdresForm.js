@@ -151,6 +151,9 @@ class BezoekAdresForm extends PureComponent {
           floatingLabelText="Telefoonnummer:"
           value={this.state.Telefoonnummer || ''}
           onChange={this.handleChange}
+          style={{
+            marginBottom: 10,
+          }}
         />
         <br/>
         </form>
