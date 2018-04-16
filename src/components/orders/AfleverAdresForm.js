@@ -40,7 +40,6 @@ class AfleverAdresForm extends PureComponent {
   }
 
   handleSubmit = () => {
-    console.log('AfleverAdresForm.handleSubmit')
     this.props.onChange('AfleverAdres', this.state)
   }
 
@@ -53,6 +52,7 @@ class AfleverAdresForm extends PureComponent {
 		return (
       <div style={{
         textAlign: 'center',
+        float: 'left',
       }}>
       <h1
         style={{
@@ -108,20 +108,6 @@ class AfleverAdresForm extends PureComponent {
           name='Adres1'
           floatingLabelText="Adres 1:"
           value={this.state.Adres1 || ''}
-          onChange={this.handleChange}
-        />
-        <br/>
-        <Adres
-          style={{
-            position: 'relative',
-            top: 5,
-            left: -15,
-          }}
-        />
-        <TextField
-          name='Adres2'
-          floatingLabelText="Adres 2:"
-          value={this.state.Adres2 || ''}
           onChange={this.handleChange}
         />
         <br/>
