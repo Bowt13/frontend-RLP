@@ -27,6 +27,7 @@ class App extends Component {
           <NavBar />
           <Route exact path="/login" component={ LoginPage } />
           <Route exact path="/signup/:jwt" component={ SignupPage } />
+          <Route exact path="/forgotpassword/:jwt" component={ SignupPage } />
           <Route exact path="/flexicon/create/order" component={ OrderCreator } />
           <Route exact path="/flexicon/InternalContactOverview" component={ InternalContactOverview } />
           <Route exact path="/flexicon/orders" component={ OrdersPage }/>
