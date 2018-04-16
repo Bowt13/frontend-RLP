@@ -18,10 +18,6 @@ import PropTypes from 'prop-types'
 
   //Colors
 
-
-//Actions
-import {getDeliveries} from '../../actions/deliveries'
-
 class OrderRemarkForm extends PureComponent {
   static propTypes = {
     onChange: PropTypes.func.isRequired,
@@ -72,15 +68,18 @@ class OrderRemarkForm extends PureComponent {
     this.setState({
       minDate: new Date(Date.parse(CurrentDate) + (DeliveryTime * 86400000))
     })
-    if(!this.props.deliveryTypes){
-    this.props.getDeliveries()}
+    if(!this.props.deliveries){
+      console.log('Not here')
+    }
   }
 
 	render() {
     const {DeliveryTime, LeverDatum} = this.state
     const CurrentDate = new Date()
     const MinimalDeliveryDate = LeverDatum
-    console.log(this.props.deliveryTypes)
+
+    const {deliveries} = this.props
+
 		return (
       <div style={{
         width: '90%',
@@ -149,15 +148,15 @@ class OrderRemarkForm extends PureComponent {
                   textAlign:'left',
                 }}
               >
-              {this.props.deliveryTypes && this.props.deliveryTypes.map(delivery => (
+              {deliveries && deliveries.map((delivery) => (
                 <RadioButton
                   name= 'DeliveryType'
-                  value="PakketDienst"
-                  label="Pakketdienst € 29,50 - bij schade kosteloos herstel."
+                  value={delivery.deliveryType}
+                  label={`${delivery.deliveryType} - ${delivery.condition}`}
                   style={{
                     marginBottom: 10,
                   }}
-                  onClick={_ => this.handleChangeRadio('DeliveryType', 'PakketDienst')}
+                  onClick={_ => this.handleChangeRadio('DeliveryType', delivery)}
                 />
               ))}
               </RadioButtonGroup>
@@ -172,8 +171,8 @@ class OrderRemarkForm extends PureComponent {
 
 const mapStateToProps = function (state) {
 	return {
-    deliveryTypes: state.Deliveries,
+    deliveries: state.deliveries,
 	}
 }
 
-export default connect(mapStateToProps , {getDeliveries})(OrderRemarkForm)
+export default connect(mapStateToProps)(OrderRemarkForm)
