@@ -31,7 +31,7 @@ class App extends Component {
           <Route exact path="/forgotpassword/:jwt" component={ SignupPage } />
           <Route exact path="/flexicon/create/order" component={ OrderCreator } />
           <Route exact path="/flexicon/InternalContactOverview" component={ InternalContactOverview } />
-          <Route exact path="/flexicon/users/:userId/orders" component={ OrdersPage }/>
+          <Route exact path="/flexicon/orders" component={ OrdersPage }/>
           <Route exact path="/flexicon/customers" component={ CustomerList } />
           <Route exact path="/flexicon/orders/:orderNumber" component={ OrderDetails }/>
           <Route exact path="/" render={ () => <Redirect to="/login" /> } />

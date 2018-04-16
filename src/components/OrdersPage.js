@@ -87,12 +87,14 @@ class OrdersPage extends PureComponent {
       <div>
         <Paper style={{
           position: 'relative',
-          top: 80,
+          top: 90,
           left: '25%',
           width: '50%',
           overflow: 'scroll',
         }}>
-        <List>
+        <List style={{
+          padding: 0,
+        }}>
           <Subheader style={{
             fontSize: 40,
             margin: 8,

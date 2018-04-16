@@ -33,7 +33,9 @@ class CustomerList extends PureComponent {
           width: '50%',
           overflow: 'scroll',
         }}>
-        <List>
+        <List style={{
+          padding: 0,
+        }}>
           <Subheader style={{
             fontSize: 40,
             margin: 8,
