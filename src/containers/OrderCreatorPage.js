@@ -15,7 +15,8 @@ import {Redirect} from 'react-router-dom'
 
 
 //Actions
-
+  import {addOrder} from '../actions/orders'
+  import {getUser} from '../actions/users'
 
 //Components
   import OrderInfo from '../components/orders/OrderInfo'
@@ -277,6 +278,7 @@ import {Redirect} from 'react-router-dom'
     },
   ]
 
+
 class OrderCreator extends PureComponent {
   state = {
   }
@@ -285,15 +287,34 @@ class OrderCreator extends PureComponent {
     this.setState({
       [type]: state
     })
-    console.log(this.state)
   }
 
   handleSubmit = () => {
+    this.orderInfo.onClick()
     this.orderAdressForm.onClick()
-    console.log(this.state)
+    setTimeout(() => this.orderAdressForm.onClick(), 10)
+    this.orderRemarkForm.onClick()
+    this.orderAfleverInfo.onClick()
+    console.log(this.orderAdressForm.state)
+    setTimeout(() => console.log(this.state), 20)
+    // setTimeout(() => this.props.addOrder(
+    //   {
+    //     shortDescription: this.state.OrderRemarkForm.KorteOmschrijving,
+    //     description: this.state.OrderRemarkForm.Opdrachtomschrijving,
+    //     amount: this.state.OrderRemarkForm.Aantal,
+    //     orderDate: new Date,
+    //     deliveryDate: this.state.OrderAfleverInfo.LeverDatum,
+    //     paymentType: "",
+    //     delivery: "",
+    //     user: this.props.currentUser,
+    //     addresses: [this.state.],
+    //   }
+    // ), 10)
   }
 
   componentWillMount() {
+    const { currentUser } = this.props
+    this.props.getUser(currentUser.id)
   }
 
 	render() {
@@ -308,17 +329,24 @@ class OrderCreator extends PureComponent {
       >
         <Paper
           style={{
+            height: 1800,
             width: '100%',
           }}
         >
-          <OrderInfo onChange={handleChange}/>
+          <OrderInfo onChange={handleChange} onRef={ref => (this.orderInfo = ref)}/>
           <OrderAdressForm onChange={handleChange} onRef={ref => (this.orderAdressForm = ref)}/>
-          <OrderRemarkForm onChange={handleChange}/>
-          <OrderAfleverInfo onChange={handleChange}/>
+          <OrderRemarkForm onChange={handleChange} onRef={ref => (this.orderRemarkForm = ref)}/>
+          <OrderAfleverInfo onChange={handleChange} onRef={ref => (this.orderAfleverInfo = ref)}/>
+          <br/>
+          <RaisedButton
+            style={{
+              width: 500,
+            }}
+            onClick={_ => this.handleSubmit()}
+          >
+          Verstuur Order
+          </RaisedButton>
         </Paper>
-        <RaisedButton
-          onClick={_ => this.handleSubmit()}
-        />
       </div>
 		)
 	}
@@ -326,7 +354,8 @@ class OrderCreator extends PureComponent {
 
 const mapStateToProps = function (state) {
 	return {
+    currentUser: state.currentUser
 	}
 }
 
-export default connect(mapStateToProps)(OrderCreator)
+export default connect(mapStateToProps, {addOrder, getUser})(OrderCreator)

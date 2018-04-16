@@ -67,7 +67,6 @@ class OrderRemarkForm extends PureComponent {
     this.setState({
       [name]: value
     })
-    console.log(this.state)
   }
 
   handleFileChange = (e) => {
@@ -79,7 +78,12 @@ class OrderRemarkForm extends PureComponent {
     this.loading()
   }
 
+  onClick = () => {
+    this.props.onChange('OrderRemarkForm', this.state)
+  }
+
   componentWillMount() {
+    this.props.onRef(this)
     this.setState({
       KorteOmschrijving: []
     })
@@ -157,9 +161,10 @@ class OrderRemarkForm extends PureComponent {
               <br/>
               <Description
                 style={{
-                  position: 'absolute',
-                  top: 1027,
-                  left: 97,
+                  display: 'inline',
+                  position: 'relative',
+                  top: 37,
+                  left: -15,
                 }}
               />
               <TextField
@@ -171,8 +176,10 @@ class OrderRemarkForm extends PureComponent {
                 onChange={this.handleChange}
                 style={{
                   textAlign: 'left',
+                  display: 'inline-block',
                   position: 'relative',
-                  left: 12,
+                  top: '-30',
+                  left: 0,
                   width: '90%',
                 }}
               />

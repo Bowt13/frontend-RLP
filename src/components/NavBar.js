@@ -22,14 +22,14 @@ import { logout } from '../actions/users'
     import NavigationChevronRight from 'material-ui/svg-icons/navigation/chevron-right'
     import NavigationChevronLeft from 'material-ui/svg-icons/navigation/chevron-left'
     import FeaturedPlayList from 'material-ui/svg-icons/av/featured-play-list'
-    import Email from 'material-ui/svg-icons/communication/email'
+    import ShoppingCart from 'material-ui/svg-icons/action/shopping-cart'
     import Person from 'material-ui/svg-icons/social/person'
 
 
 class NavBar extends PureComponent {
 
   state = {
-    drawer: true,
+    drawer: false,
     currentUser: {
       firstName: 'Nigel',
       lastName: 'Brown',
@@ -46,19 +46,51 @@ class NavBar extends PureComponent {
     },
   }
 
+
+  // componentHasMount() {
+  //   const { currentUser } = this.props
+  //   if (this.props.authenticated) {
+  //     console.log(currentUser);
+  //    this.props.getUser(currentUser.id)
+  //   }
+  // }
+
   handleClick = () => {
-    // this.props.logout()
+    this.props.logout()
     this.props.history.push('/login')
+  }
+
+  handleDrawerClick = (type) => {
+    switch (type) {
+      case "GegevensBewerken":
+        this.setState({drawer: false})
+        console.log(type);
+        this.props.history.push('/flexicon/users/:usersId/changedetails')
+        break;
+      case "NieuweBestelling":
+        this.setState({drawer: false})
+        console.log(type);
+        this.props.history.push('/flexicon/create/order')
+        break;
+      case "JeBestellingen":
+        this.setState({drawer: false})
+        console.log(type);
+        this.props.history.push('/flexicon/users/:usersId/orders')
+        break;
+      default:
+
+    }
   }
 
   render() {
 
-    const { currentUser, history, location } = this.props
+    const { user, history, location } = this.props
     if (location.pathname.indexOf('flexicon') <= 0 ) return(
       <header className="Header" style={{ backgroundColor: '#5e5d5e', height: 100, }}>
         <img src={ logo } style={{ margin: 10, }}/>
       </header>
     )
+    if (!user.id) return null
     return(
       <div style={{
         textAlign: 'center',
@@ -94,7 +126,7 @@ class NavBar extends PureComponent {
   	          style={
   	            {
                   position: 'relative',
-                  top: 4,
+                  top: 5,
                   right: 20,
   								backgroundColor:'#9A9A98',
   	            }
@@ -110,7 +142,7 @@ class NavBar extends PureComponent {
         />
         <Drawer width={300} open={this.state.drawer} >
           <AppBar
-            title={`${this.state.currentUser.firstName} ${this.state.currentUser.lastName}`}
+            title={`${user.firstName} ${user.lastName}`}
             titleStyle={{
               color: '#F09517',
             }}
@@ -133,7 +165,7 @@ class NavBar extends PureComponent {
             }}
             onRightIconButtonClick={_=> this.setState({drawer: !this.state.drawer})}
           />
-          <h3>{`${this.state.currentUser.company.name}`}</h3>
+          <h3>{`${user.companyName}`}</h3>
           <div
             style={{
               lineHeight: 0.7,
@@ -156,13 +188,16 @@ class NavBar extends PureComponent {
             }}
           >
             <ListItem primaryText="Je bestellingen"
-              leftIcon={<FeaturedPlayList />}
+              leftIcon={<FeaturedPlayList color='#F09517'/>}
+              onClick={_ => this.handleDrawerClick("JeBestellingen")}
             />
-            <ListItem primaryText="Berichten"
-              leftIcon={<Email />}
+            <ListItem primaryText="Nieuwe bestelling"
+              leftIcon={<ShoppingCart color='#F09517'/>}
+              onClick={_ => this.handleDrawerClick("NieuweBestelling")}
             />
             <ListItem primaryText="Gegevens bewerken"
-              leftIcon={<Person />}
+              leftIcon={<Person color='#F09517'/>}
+              onClick={_ => this.handleDrawerClick("GegevensBewerken")}
             />
           </List>
         </Drawer>
@@ -173,8 +208,8 @@ class NavBar extends PureComponent {
 
 const mapStateToProps = function (state) {
 	return {
-		currentUser: state.currentUser
+		user: state.user
 	}
 }
 
-export default withRouter(connect(mapStateToProps)(NavBar))
+export default withRouter(connect(mapStateToProps, {  logout })(NavBar))
