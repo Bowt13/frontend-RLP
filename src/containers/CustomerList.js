@@ -20,7 +20,7 @@ import {getOrders} from '../actions/orders'
 
 
 //Actions
-
+import {getCurrentUser} from '../actions/users'
 
 //Components
 
@@ -73,6 +73,7 @@ class CustomerList extends PureComponent {
 
   componentWillMount() {
     this.props.getOrders()
+    if (!this.props.user.id) this.props.getCurrentUser()
   }
 
   handleToggle = () => {
@@ -171,8 +172,9 @@ class CustomerList extends PureComponent {
 
 const mapStateToProps = function (state, props) {
 	return {
+    user: state.currentUser,
     orders: state.orders
 	}
 }
 
-export default connect(mapStateToProps, {getOrders})(CustomerList)
+export default connect(mapStateToProps, {getOrders, getCurrentUser})(CustomerList)
