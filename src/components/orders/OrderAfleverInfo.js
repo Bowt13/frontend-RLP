@@ -20,7 +20,7 @@ import PropTypes from 'prop-types'
 
 
 //Actions
-
+import {getDeliveries} from '../../actions/deliveries'
 
 class OrderRemarkForm extends PureComponent {
   static propTypes = {
@@ -72,14 +72,15 @@ class OrderRemarkForm extends PureComponent {
     this.setState({
       minDate: new Date(Date.parse(CurrentDate) + (DeliveryTime * 86400000))
     })
-    console.log(MinimalDeliveryDate)
+    if(!this.props.deliveryTypes){
+    this.props.getDeliveries()}
   }
 
 	render() {
     const {DeliveryTime, LeverDatum} = this.state
     const CurrentDate = new Date()
     const MinimalDeliveryDate = LeverDatum
-
+    console.log(this.props.deliveryTypes)
 		return (
       <div style={{
         width: '90%',
@@ -148,6 +149,7 @@ class OrderRemarkForm extends PureComponent {
                   textAlign:'left',
                 }}
               >
+              {this.props.deliveryTypes && this.props.deliveryTypes.map(delivery => (
                 <RadioButton
                   name= 'DeliveryType'
                   value="PakketDienst"
@@ -157,25 +159,7 @@ class OrderRemarkForm extends PureComponent {
                   }}
                   onClick={_ => this.handleChangeRadio('DeliveryType', 'PakketDienst')}
                 />
-                <RadioButton
-                  value="PostNL"
-                  label="POSTNL € 12,50 - geen reclamering bij schade mogelijk."
-                  style={{
-                    marginBottom: 10,
-                  }}
-                  onClick={_ => this.handleChangeRadio('DeliveryType', 'PostNL')}
-                />
-                <RadioButton
-                  value="DirecteKoerier"
-                  label="Directe koerier vanaf € 29,50 regio amsterdam,
-                    buiten amsterdam prijs op aanvraag -
-                    bij schade kosteloos herstel."
-                  style={{
-                    width: '100%',
-                    marginBottom: 10,
-                  }}
-                  onClick={_ => this.handleChangeRadio('DeliveryType', 'DirecteKoerier')}
-                />
+              ))}
               </RadioButtonGroup>
               <br/>
             </form>
@@ -188,7 +172,8 @@ class OrderRemarkForm extends PureComponent {
 
 const mapStateToProps = function (state) {
 	return {
+    deliveryTypes: state.Deliveries,
 	}
 }
 
-export default connect(mapStateToProps)(OrderRemarkForm)
+export default connect(mapStateToProps , {getDeliveries})(OrderRemarkForm)

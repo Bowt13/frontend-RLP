@@ -37,7 +37,6 @@ class BezoekAdresForm extends PureComponent {
     this.setState({
       [name]: value
     })
-    console.log(this.state)
   }
 
   handleSubmit = () => {

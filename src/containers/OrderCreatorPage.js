@@ -305,7 +305,7 @@ class OrderCreator extends PureComponent {
         deliveryDate: this.state.OrderAfleverInfo.LeverDatum,
         paymentType: "",
         delivery: "",
-        user: this.props.currentUser,
+        user: this.props.ser,
       },{
         adress1: 'oogabooga'
       }
@@ -368,7 +368,8 @@ class OrderCreator extends PureComponent {
 
 const mapStateToProps = function (state) {
 	return {
-    currentUser: state.currentUser
+    currentUser: state.currentUser,
+    user: state.user
 	}
 }
 

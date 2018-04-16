@@ -181,7 +181,7 @@ class OrderRemarkForm extends PureComponent {
                   position: 'relative',
                   left: -350,
                   width: 177,
-                  margin: 30,
+                  margin: 15,
                 }}
                 containerElement="label"
               >
@@ -189,10 +189,6 @@ class OrderRemarkForm extends PureComponent {
                   style={{
                     cursor: 'pointer',
                     position: 'absolute',
-                    top: 0,
-                    bottom: 0,
-                    right: 0,
-                    left: 0,
                     width: '100%',
                     opacity: 0,
                   }}
@@ -202,7 +198,6 @@ class OrderRemarkForm extends PureComponent {
                 />
               </RaisedButton>
               <br/>
-              {console.log(Object.values(this.state.files))}
               {Object.values(this.state.files).map(file => (
                 <div style={{
                   textAlign: 'center',

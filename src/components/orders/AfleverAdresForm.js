@@ -40,7 +40,6 @@ class AfleverAdresForm extends PureComponent {
   }
 
   handleSubmit = () => {
-    console.log('AfleverAdresForm.handleSubmit')
     this.props.onChange('AfleverAdres', this.state)
   }
 
