@@ -18,8 +18,6 @@ import { getCustomers } from '../actions/users'
 
 //Components
 
-
-
 //HArdCode
 
 const orders = [
@@ -60,16 +58,15 @@ class CustomerList extends PureComponent {
   }
 
 	render() {
-    let windowWidth = window.screen.availWidth
-    console.log(windowWidth);
 
-    // const {orders} = this.props; //enable in order to use with the reducer
+    const { customers } = this.props
+    console.log(this.props.customers);
 
 		return (
       <div>
         <Paper style={{
           position: 'relative',
-          top: 80,
+          top: 90,
           botom: 10,
           left: '25%',
           width: '50%',
@@ -78,21 +75,25 @@ class CustomerList extends PureComponent {
         <List>
           <Subheader style={{
             fontSize: 40,
-          }}>Bestellingen</Subheader>
+            margin: 8,
+            textAlign: 'left',
+          }}>Klanten</Subheader>
           <Divider style={{
-            padding: 5,
-            marginBottom: 5,
+            padding: 1,
+            backgroundColor: '#F09517',
           }}/>
-          <Divider />
-          {orders && orders.map((order) => (
+          {customers && customers.map(customer => (
             <div >
-              <ListItem
-              secondaryTextLines={2}
-              primaryText={`${order.type}`}
-              secondaryText={<p> <span> {'Nr: '+ `${order.orderNumber}`}</span><br/><span>{'Created by: '+ `${order.user}`}</span></p>}
-              className='order-row' onClick={_=>window.location.href=`/flexicon/orders/${order.orderNumber}`}
-              />
               <Divider />
+              <ListItem
+              style={{
+                textAlign: 'left',
+              }}
+              secondaryTextLines={2}
+              primaryText={`${customer.companyName}`}
+              secondaryText={<p> <span> {'Nr: '+ `${customer.orderNumber}`}</span><br/><span>{'Created by: '+ `${customer}`}</span></p>}
+              className='order-row' onClick={_=>window.location.href=`/flexicon/orders/${customer.orderNumber}`}
+              />
             </div>
           ))
           }
@@ -103,9 +104,9 @@ class CustomerList extends PureComponent {
 	}
 }
 
-const mapStateToProps = function (state, props) {
+const mapStateToProps = function (state) {
 	return {
-    orders: state.orders
+    customers: state.customers
 	}
 }
 

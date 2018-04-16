@@ -88,7 +88,7 @@ export const getCurrentUser = () => (dispatch, getState) => {
 
 export const getCustomers = () => (dispatch, getState) => {
 	const state = getState()
-	const jwt = state.currentUser.sessionStorageJwtKey
+	const jwt = state.currentUser.jwt
 
 	request
 		.get(`${baseUrl}/users`)
