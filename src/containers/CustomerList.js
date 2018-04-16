@@ -1,39 +1,26 @@
 //Dependencies
-import React, {PureComponent} from 'react'
-import {connect} from 'react-redux'
-import {getOrders} from '../actions/orders'
+import React, { PureComponent } from 'react'
+import { connect } from 'react-redux'
 
 //MaterialUI
   //Components
     import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText, CardContent} from 'material-ui/Card';
     import RaisedButton from 'material-ui/RaisedButton'
     import Paper from 'material-ui/Paper';
-    import Avatar from 'material-ui/Avatar'
-    import {
-      List,
-      ListItem
-    } from 'material-ui/List';
+    import { List, ListItem } from 'material-ui/List';
     import Subheader from 'material-ui/Subheader';
     import Divider from 'material-ui/Divider';
     import Business from 'material-ui/svg-icons/communication/business'
-  //Colors
 
 
 //Actions
-
+import { getCustomers } from '../actions/users'
 
 //Components
 
 
 
 //HArdCode
-const user = {
-  firstName: 'Safidy',
-  lastName: 'Ratsimbazafy',
-  email: 'safidy@example.com',
-  company: 'SAFISYX CORP.',
-  phone : '06 06060606'
-}
 
 const orders = [
   {
@@ -67,63 +54,10 @@ const orders = [
 ]
 
 class CustomerList extends PureComponent {
-  state = {
-    openProfile: false,
-  }
 
   componentWillMount() {
-    this.props.getOrders()
+    this.props.getCustomers()
   }
-
-  handleToggle = () => {
-    this.setState({openProfile: !this.state.openProfile},()=>
-    console.log(this.state.openProfile))
-  }
-
-  // TO HAVE PROFILE IN THE TOP BAR (FOR NOW WE DON'T WANT IT)
-  // renderProfile = () => {
-  //   if (this.state.openProfile)
-  //     return (
-  //     <Card style={{position: 'relative', maxWidth: '80%', height:'200px',
-  //                   transform:'translate(-50%,0)', left:'50%',
-  //                   margin: '25px 0 0 0'}} className='contactCard'
-  //       onClick={this.handleToggle}>
-  //       <CardText style={{position:'absolute',
-  //                         left:'0',
-  //                         transform: 'translate(0,-50%)',
-  //                         top: '50%',
-  //                         textAlign: 'left'}}>
-  //         <p>
-  //           <span>Name: </span>
-  //           {`${user.firstName +' ' + user.lastName}`}
-  //         </p>
-  //         <p>
-  //           <span>Email: </span>
-  //           {`${user.email}`}
-  //         </p>
-  //         <p>
-  //           <span>Phone: </span>
-  //           {`${user.phone}`}
-  //         </p>
-  //
-  //
-  //       </CardText>
-  //       <CardText style={{position:'absolute',
-  //                         transform: 'translate(0,-50%)',
-  //                         left:'50%',
-  //                         top:'50%'}}>
-  //         <p>
-  //           <span>Company: </span>
-  //           {`${user.company}`}
-  //         </p>
-  //         <RaisedButton>
-  //           Edit Profile
-  //         </RaisedButton>
-  //
-  //       </CardText>
-  //     </Card>
-  //   )
-  // }
 
 	render() {
     let windowWidth = window.screen.availWidth
@@ -175,4 +109,4 @@ const mapStateToProps = function (state, props) {
 	}
 }
 
-export default connect(mapStateToProps, {getOrders})(CustomerList)
+export default connect(mapStateToProps, { getCustomers })(CustomerList)
