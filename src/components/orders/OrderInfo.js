@@ -74,9 +74,10 @@ class OrderInfo extends PureComponent {
             <Receipt
               style={{
                 position: 'relative',
-                top: 5,
+                top: 4,
                 marginRight: 15,
                 marginLeft: 65,
+                color: '#F09517',
               }}
             />
             <TextField
@@ -100,9 +101,10 @@ class OrderInfo extends PureComponent {
             <DateRange
               style={{
                 position: 'relative',
-                top: 5,
+                top: 4,
                 marginRight: 15,
                 marginLeft: 65,
+                color: '#F09517',
               }}
             />
             <TextField
