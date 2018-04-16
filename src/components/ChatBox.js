@@ -8,18 +8,10 @@ import ContentSend from 'material-ui/svg-icons/content/send';
 
 const styles = {
     paper: {
-        width: '90vw',
-        height: '80vh',
-        maxWidth: '1000px',
-        maxHeight: '700px',
-        display: 'flex',
-        alignItems: 'center',
-        flexDirection: 'column',
-        position: 'relative'
-    },
-    paper2: {
         width: '80vw',
-        maxWidth: '800px',
+        height: '80vh',
+        maxWidth: '400px',
+        maxHeight: '700px',
         display: 'flex',
         alignItems: 'center',
         flexDirection: 'column',
@@ -43,17 +35,6 @@ const styles = {
         right: 0,
         margin: 10
     },
-    record1: {
-        width: '95%',
-        display: 'flex',
-        alignItems: 'center',
-        margin: 10
-    },
-    logOut: {
-        position: 'absolute',
-        top: 10,
-        right: 10
-    },
     messagesBody: {
         width: 'calc( 100% - 20px )',
         margin: 10,
@@ -67,10 +48,26 @@ const styles = {
     }
 };
 
+const myMessages = [
+  {
+    message:'hello friend',
+    name:'Eva'
+  },
+  {
+    message:'hello there',
+    name:'Flo'
+  },
+  {
+    message:'whats up?',
+    name:'Freud'
+  },
+]
+
 class ChatBox extends PureComponent {
 
   state = {
-      messages: [],
+      // messages: [],
+      messages: myMessages,
       text: "",
       name: 'eva',
       name1: ''
@@ -81,13 +78,13 @@ class ChatBox extends PureComponent {
       <div style={styles.container}>
         <div>
           <Paper style={styles.paper} zDepth={2} >
-            <Paper id="style-1" style={styles.messagesBody}>
+            <Paper style={styles.messagesBody}>
                 {
-                  this.state.messages.map(el =>
+                  this.state.messages.map(msg =>
                     (
                       <div style={styles.message}>
-                        <span>{el.message}</span>
-                        <sub>{el.name}</sub>
+                        <span>{msg.message}</span>
+                        <sub>{msg.name}</sub>
                       </div>
                     )
                   )
@@ -100,17 +97,17 @@ class ChatBox extends PureComponent {
                 onChange={ev => {
                   this.setState({text: ev.target.value})
                 }}
-                onKeyPress={(event) => {
-                  if (event.which === 13) {
-                    event.preventDefault();
-                    // $('#btn').focus();
-                    // $('#btn').click();
-                  }
-                }}
+                // onKeyPress={(event) => {
+                //   if (event.which === 13) {
+                //     event.preventDefault();
+                //     // $('#btn').focus();
+                //     // $('#btn').click();
+                //   }
+                // }}
                 hintText="Full width"
                 fullWidth={true}
               />
-              <IconButton onClick={this.send} ref='send' id="btn" className="micBtn" style={styles.MicBtn}>
+              <IconButton onClick={this.send} ref='send'>
                 <ContentSend/>
               </IconButton>
             </div>
