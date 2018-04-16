@@ -66,7 +66,7 @@ const orders = [
   }
 ]
 
-class OrdersPage extends PureComponent {
+class CustomerList extends PureComponent {
   state = {
     openProfile: false,
   }
@@ -129,7 +129,7 @@ class OrdersPage extends PureComponent {
     let windowWidth = window.screen.availWidth
     console.log(windowWidth);
 
-    const {orders} = this.props; //enable in order to use with the reducer
+    // const {orders} = this.props; //enable in order to use with the reducer
 
 		return (
       <div>
@@ -155,8 +155,8 @@ class OrdersPage extends PureComponent {
               <ListItem
               secondaryTextLines={2}
               primaryText={`${order.type}`}
-              secondaryText={<p> <span> {'Nr: '+ `${order.orderId}`}</span><br/><span>{'Created by: '+ `${order.user}`}</span></p>}
-              className='order-row' onClick={_=>window.location.href=`/flexicon/orders/${order.orderId}`}
+              secondaryText={<p> <span> {'Nr: '+ `${order.orderNumber}`}</span><br/><span>{'Created by: '+ `${order.user}`}</span></p>}
+              className='order-row' onClick={_=>window.location.href=`/flexicon/orders/${order.orderNumber}`}
               />
               <Divider />
             </div>
@@ -175,4 +175,4 @@ const mapStateToProps = function (state, props) {
 	}
 }
 
-export default connect(mapStateToProps, {getOrders})(OrdersPage)
+export default connect(mapStateToProps, {getOrders})(CustomerList)

@@ -3,8 +3,6 @@ import React, {PureComponent} from 'react'
 import {connect} from 'react-redux'
 import {getOrders} from '../actions/orders'
 
-import './OrderDetails.css'
-
 //MaterialUI
   //Components
     import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText, CardContent} from 'material-ui/Card';
