@@ -129,7 +129,7 @@ class OrdersPage extends PureComponent {
     let windowWidth = window.screen.availWidth
     console.log(windowWidth);
 
-    // const {orders} = this.props; //enable in order to use with the reducer
+    const {orders} = this.props; //enable in order to use with the reducer
 
 		return (
       <div>
