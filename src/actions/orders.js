@@ -22,11 +22,11 @@ export const addOrder = (order,addresses) => (dispatch, getState) => {
 
 export const getOrders = () => (dispatch, getState) => {
   const state = getState()
-  // const jwt = state.currentUser.jwt
+  const jwt = state.currentUser.jwt
 
   request
 		.get(`${baseUrl}/orders`)
-    // .set('Authorization', `Bearer ${jwt}`)
+    		.set('Authorization', `Bearer ${jwt}`)
 		.then(result => {
 			dispatch({
 				type: GET_ORDERS,
