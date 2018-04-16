@@ -2,7 +2,6 @@
 import React, {PureComponent} from 'react'
 import {connect} from 'react-redux'
 import {getOrders} from '../actions/orders'
-import { getCurrentUser } from '../actions/users'
 
 //MaterialUI
   //Components
@@ -73,7 +72,6 @@ class OrdersPage extends PureComponent {
   }
 
   componentWillMount() {
-    this.props.getCurrentUser()
     this.props.getOrders()
   }
 
@@ -177,4 +175,4 @@ const mapStateToProps = function (state, props) {
 	}
 }
 
-export default connect(mapStateToProps, {getOrders, getCurrentUser})(OrdersPage)
+export default connect(mapStateToProps, {getOrders})(OrdersPage)

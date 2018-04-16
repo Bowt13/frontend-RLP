@@ -59,15 +59,17 @@ class LoginPage extends PureComponent {
 			/>,
 		]
 
-		if (this.props.currentUser ) {
+		if (this.props.currentUser) {
 			this.props.getCurrentUser()
-			if (this.props.user.role === 'External') return(
-				<Redirect to="/flexicon/orders" />
-			)
-			else if (this.props.user.role === 'Internal') return (
-				<Redirect to="/flexicon/customers" />
-			)
 		}
+
+		if (this.props.user && this.props.user.role === 'External') return (
+			<Redirect to="/flexicon/orders" />
+	  )
+
+		if (this.props.user && this.props.user.role === 'Internal') return (
+			<Redirect to="/flexicon/customers" />
+		)
 
 		return (
 			<div className='login-page'>

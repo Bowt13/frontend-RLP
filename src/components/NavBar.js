@@ -7,7 +7,7 @@ import { withRouter } from 'react-router'
 import logo from './logo.png'
 
 //actions
-import { logout } from '../actions/users'
+import { logout, getCurrentUser } from '../actions/users'
 
 //MaterialUI
   //Components
@@ -192,4 +192,4 @@ const mapStateToProps = function (state) {
 	}
 }
 
-export default withRouter(connect(mapStateToProps, {  logout })(NavBar))
+export default withRouter(connect(mapStateToProps, {  logout, getCurrentUser })(NavBar))
