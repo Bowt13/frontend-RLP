@@ -18,6 +18,7 @@
   import OrdersPage from './components/OrdersPage'
   import OrderDetails from './components/OrderDetails'
   import NavBar from './components/NavBar'
+  import ChatBox from './components/ChatBox'
 
 class App extends Component {
   render() {
@@ -34,6 +35,7 @@ class App extends Component {
           <Route exact path="/flexicon/orders" component={ OrdersPage }/>
           <Route exact path="/flexicon/customers" component={ CustomerList } />
           <Route exact path="/flexicon/orders/:orderId" component={ OrderDetails }/>
+          <Route exact path="/chatbox" component={ ChatBox } />
           <Route exact path="/" render={ () => <Redirect to="/login" /> } />
         </div>
       </MuiThemeProvider>

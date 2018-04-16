@@ -155,8 +155,8 @@ class OrdersPage extends PureComponent {
               <ListItem
               secondaryTextLines={2}
               primaryText={`${order.type}`}
-              secondaryText={<p> <span> {'Nr: '+ `${order.orderId}`}</span><br/><span>{'Created by: '+ `${order.user}`}</span></p>}
-              className='order-row' onClick={_=>window.location.href=`/flexicon/orders/${order.orderId}`}
+              secondaryText={<p> <span> {'Nr: '+ `${order.orderNumber}`}</span><br/><span>{'Created by: '+ `${order.user}`}</span></p>}
+              className='order-row' onClick={_=>window.location.href=`/flexicon/orders/${order.orderNumber}`}
               />
               <Divider />
             </div>
