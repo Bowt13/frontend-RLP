@@ -27,6 +27,10 @@ class OrdersPage extends PureComponent {
     this.props.getOrders()
   }
 
+  componentHasMount() {
+    this.props.getOrders()
+  }
+
   handleToggle = () => {
     this.setState({openProfile: !this.state.openProfile},()=>
     console.log(this.state.openProfile))
@@ -127,7 +131,7 @@ class OrdersPage extends PureComponent {
 
 const mapStateToProps = function (state, props) {
 	return {
-    orders: state.orders
+    orders: state.orders === null ? null:Object.values(state.orders).sort((a, b) => b.id - a.id)
 	}
 }
 
