@@ -300,12 +300,14 @@ class OrderCreator extends PureComponent {
     setTimeout(_ => console.log(new Date()), 20)
     setTimeout(() => this.props.addOrder(
       {
+        orderNumber: this.state.OrderInfo.Bonnummer,
         shortDescription: this.state.OrderRemarkForm.KorteOmschrijving,
         description: this.state.OrderRemarkForm.Opdrachtomschrijving,
         amount: this.state.OrderRemarkForm.Aantal,
         deliveryDate: this.state.OrderAfleverInfo.LeverDatum || null,
         paymentType: 'cash',
         deliveryId: this.state.OrderAfleverInfo.DeliveryType.id,
+        companyId: 1,
       },{
         addresses: [{}]
       }

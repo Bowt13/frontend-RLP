@@ -25,7 +25,7 @@ const styles = {
         display: 'flex',
         alignItems: 'center',
         flexDirection: 'column',
-        // position: 'relative'
+        position: 'relative'
     },
     record: {
         width: '90%',

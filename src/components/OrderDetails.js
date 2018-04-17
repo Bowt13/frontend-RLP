@@ -126,10 +126,12 @@ class OrderDetails extends PureComponent {
           marginRight: 20,
           marginLeft: 50,
           // width: '20%',
-          overflow: 'scroll',
+          // overflow: 'scroll',
           textAlign: 'left',
           display: 'inline-block',
           float: 'left',
+          width: 800,
+          overflow: 'hidden',
           // flex: '1',
         }}>
         <Subheader style={{
@@ -144,7 +146,7 @@ class OrderDetails extends PureComponent {
           display: 'flex',
         }}>
           <List style={{
-            flex: '1',
+            width: 800,
           }}>
             <ListItem disabled={true} primaryText="Bonnummer" secondaryText={`${order.orderNumber}`}/>
             <Divider/>

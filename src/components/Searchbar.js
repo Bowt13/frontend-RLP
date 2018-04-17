@@ -36,7 +36,7 @@ class Searchbar extends PureComponent {
             width: 300,
             height: 75,
             position: 'relative',
-            right: -200,
+            right: -230,
             top: 90,
             flexDirection: 'column',
           }}>
@@ -52,7 +52,7 @@ class Searchbar extends PureComponent {
             }}
             name='zoeken'
             type='text'
-            floatingLabelText="Zoeken naar bestellinge"
+            floatingLabelText="Zoeken naar bestellingen"
             value={ this.state.zoeken }
             onChange={ this.handleChange }
             />
