@@ -16,8 +16,8 @@ const styles = {
         justifyContent: 'center',
     },
     paper: {
-        width: '25vw',
-        height: '79vh',
+        width: '30vw',
+        height: '80vh',
         // maxWidth: '400px',
         // maxHeight: '700px',
         display: 'flex',
@@ -117,8 +117,11 @@ class ChatBox extends PureComponent {
                 hintText="type your message here"
                 fullWidth={true}
               />
-              <IconButton onClick={this.send} ref='send'>
-                <ContentSend/>
+              <IconButton
+                onClick={this.send} ref='send'>
+                <ContentSend
+                  color= '#F09517'
+                />
               </IconButton>
             </div>
           </Paper>
