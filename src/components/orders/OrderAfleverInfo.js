@@ -127,7 +127,6 @@ class OrderRemarkForm extends PureComponent {
                 style={{
                   position: 'relative',
                   display: 'inline',
-                  headerColor: 'green',
                 }}
                 textFieldStyle={{
                   width: '90%',

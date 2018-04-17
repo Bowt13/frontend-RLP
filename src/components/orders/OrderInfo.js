@@ -74,9 +74,10 @@ class OrderInfo extends PureComponent {
             <Receipt
               style={{
                 position: 'relative',
-                top: 5,
+                top: 4,
                 marginRight: 15,
                 marginLeft: 65,
+                color: '#F09517',
               }}
             />
             <TextField
@@ -86,6 +87,9 @@ class OrderInfo extends PureComponent {
               value={this.state.Bonnummer}
               style={{
                 position: 'relative',
+                margin: 5,
+                height: 80,
+                lineHeight: 8,
               }}
               floatingLabelStyle={{
                 fontSize: 30,
@@ -97,9 +101,10 @@ class OrderInfo extends PureComponent {
             <DateRange
               style={{
                 position: 'relative',
-                top: 5,
+                top: 4,
                 marginRight: 15,
                 marginLeft: 65,
+                color: '#F09517',
               }}
             />
             <TextField
@@ -108,6 +113,8 @@ class OrderInfo extends PureComponent {
               value={`${this.state.currentDate}`}
               style={{
                 position: 'relative',
+                height: 80,
+                lineHeight: 8,
               }}
               floatingLabelStyle={{
                 fontSize: 30,

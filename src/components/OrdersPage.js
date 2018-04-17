@@ -103,16 +103,17 @@ class OrdersPage extends PureComponent {
             padding: 1,
             backgroundColor: '#F09517',
           }}/>
-
           {orders && orders.map((order) => (
             <div >
+              {console.log(order)}
               <Divider />
               <ListItem
               hoverColor= '#f4b357'
               secondaryTextLines={2}
               primaryText={`${order.shortDescription}`}
               secondaryText={<p> <span> {'Bestellingsnummer: '+ `${order.id}`}</span><br/><span>{'Opdrachtgever: '+ `${order.userEmail}`}</span></p>}
-              className='order-row' onClick={_=> history.push(`/flexicon/orders/${order.orderNumber}`)}
+              className='order-row'
+              onClick={_=> history.push(`/flexicon/orders/${order.id}`)}
               />
             </div>
           ))

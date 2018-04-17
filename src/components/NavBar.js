@@ -40,9 +40,7 @@ class NavBar extends PureComponent {
   }
 
   componentDidMount() {
-    if (!this.props.user) {
-     this.props.getCurrentUser()
-    }
+   this.props.getCurrentUser()
   }
 
   handleClick = () => {

@@ -100,6 +100,9 @@ class OrderAdressForm extends PureComponent {
           labelStyle={{
             marginLeft: 5,
           }}
+          iconStyle={{
+            fill: '#F09517'
+          }}
           />
           <Checkbox
           label="Afleveradres is gelijk aan bezoekadres"
@@ -111,6 +114,9 @@ class OrderAdressForm extends PureComponent {
           }}
           labelStyle={{
             marginLeft: 5,
+          }}
+          iconStyle={{
+            fill: '#F09517'
           }}
           />
         </Paper>
