@@ -2,6 +2,9 @@
 import React, { PureComponent } from 'react'
 import { connect } from 'react-redux'
 
+//Components
+import Searchbar from '../components/Searchbar'
+
 //MaterialUI
   //Components
     // import RaisedButton from 'material-ui/RaisedButton'
@@ -24,12 +27,14 @@ class CustomerList extends PureComponent {
     const { customers, history } = this.props
 
 		return (
-      <div>
+      <div style={{
+        display: 'flex'
+      }}>
         <Paper style={{
           position: 'relative',
           top: 90,
           botom: 10,
-          left: '25%',
+          left: '15%',
           width: '50%',
           overflow: 'scroll',
         }}>
@@ -79,6 +84,7 @@ class CustomerList extends PureComponent {
           }
         </List>
         </Paper>
+        <Searchbar />
       </div>
 		)
 	}
