@@ -9,6 +9,7 @@
   import SignupPage from './containers/SignupPage'
   import OrderCreator from './containers/OrderCreatorPage'
   import CustomerList from './containers/CustomerList'
+  import ContactCreator from './components/ContactCreator'
 
 //MATERIALUI
   //PROVIDER
@@ -31,6 +32,7 @@ class App extends Component {
           <Route exact path="/signup/:jwt" component={ SignupPage } />
           <Route exact path="/forgotpassword/:jwt" component={ SignupPage } />
           <Route exact path="/flexicon/create/order" component={ OrderCreator } />
+          <Route exact path="/flexicon/create/contact" component={ ContactCreator } />
           <Route exact path="/flexicon/InternalContactOverview" component={ InternalContactOverview } />
           <Route exact path="/flexicon/orders" component={ OrdersPage }/>
           <Route exact path="/flexicon/customers" component={ CustomerList } />
