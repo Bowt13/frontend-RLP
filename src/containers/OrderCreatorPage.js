@@ -310,7 +310,8 @@ class OrderCreator extends PureComponent {
     //     addresses: [{}]
     //   }
     // ), 20)
-    setTimeout(() => this.props.addOrderNewAPI({
+    setTimeout(() => this.props.addOrderNewAPI(
+    {
       "amount": this.state.OrderRemarkForm.Aantal,
       "billing_addr_id": null,
       "billing_address_line_1": "",
@@ -319,19 +320,19 @@ class OrderCreator extends PureComponent {
       "billing_postcode": "",
       "company_addr_id": null,
       "company_address_line_1": this.state.OrderAdres.BezoekAdres.Adres1,
-      "company_city": "",
+      "company_city": "Hilversum",
       "company_postcode": this.state.OrderAdres.BezoekAdres.Postcode,
       "cust_code": "CUST0003",
-      "cust_id": null,
+      "cust_id": 8,
       "deliver_addr_id": null,
       "deliver_address_line_1": "",
       "deliver_city": "",
       "deliver_date": "",
       "deliver_equals_company": "Y",
       "deliver_postcode": "",
-      "deliver_type": this.state.OrderAfleverInfo.DeliveryType,
+      "deliver_type": 'POSTNL',
       "description": this.state.OrderRemarkForm.Opdrachtomschrijving,
-      "order_date": new Date,
+      "order_date": null,
       "ordr_code": "",
       "ordr_id": null,
       "ordr_rv": null,
