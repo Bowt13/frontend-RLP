@@ -36,6 +36,10 @@ const styles = {
   },
 }
 
+const style = {
+  margin: 12,
+};
+
 
 class contactCreator extends PureComponent {
   static propTypes = {
@@ -152,12 +156,19 @@ class contactCreator extends PureComponent {
         />
         <br/>
 
-        <div style={styles.block}>
+        <div style={{display: "inline-block",textAling:"center"}}>
           <Checkbox
-            label="Internal Role"
-            style={styles.checkbox}
-            
+            label="Internal"
+          iconStyle={{
+            fill: '#F09517'
+          }}
           />
+          <br/>
+          <br/>
+        </div>
+
+        <div style={{display: "inline-block"}}>
+        <RaisedButton label="Save"/>
         </div>
         </form>
       </div>
