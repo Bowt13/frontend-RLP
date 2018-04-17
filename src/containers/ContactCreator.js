@@ -25,6 +25,10 @@ import PropTypes from 'prop-types'
 
 
   //Actions
+  import {getContacts, createContact} from '../actions/contacts'
+
+  //Components
+  import ContactForm from '../components/ContactForm'
 
 
 
@@ -53,29 +57,33 @@ static propTypes = {
  })).isRequired,
  };
 
- creataContact = (company) => {
+ createContact = (contact) => {
    this.props.creataContact(contact)
  }
 
-  updateCheck() {
-   this.setState((oldState) => {
-     return {
-       checked: !oldState.checked,
-     };
-   });
+ componentWillMount = (contact) => {
+   this.props.createContact(contact)
  }
 
-
-  handleChange = (event) => {
-    const {name, value} = event.target
-    this.setState({
-      [name]: value
-    })
-  }
-
-  handleSubmit = () => {
-    this.props.onChange('Create Contact', this.state)
-  }
+ //  updateCheck() {
+ //   this.setState((oldState) => {
+ //     return {
+ //       checked: !oldState.checked,
+ //     };
+ //   });
+ // }
+ //
+ //
+ //  handleChange = (event) => {
+ //    const {name, value} = event.target
+ //    this.setState({
+ //      [name]: value
+ //    })
+ //  }
+ //
+ //  handleSubmit = () => {
+ //    this.props.onChange('Create Contact', this.state)
+ //  }
 
   // componentDidMount() {
   //   this.props.onRef(this)
@@ -83,8 +91,8 @@ static propTypes = {
 
 	render() {
 
-    const {company} = this.props
-    console.log(company);
+    const {contact} = this.props
+    console.log(contact);
 
 		return (
       <Paper style={{
@@ -130,7 +138,7 @@ static propTypes = {
           }}
           lastName='Last Name'
           floatingLabelText="Last Name:"
-          value={this.state.Contactpersoon || ''}
+          value={this.state.lastName || ''}
           onChange={this.handleChange}
         />
         <br/>
@@ -157,9 +165,9 @@ static propTypes = {
           underlineFocusStyle={{
             borderColor: '#F09517',
           }}
-          name='Telefoonnummer'
-          floatingLabelText="Telefoonnummer:"
-          value={this.state.Telefoonnummer || ''}
+          name='telephoneNumber'
+          floatingLabelText="Telephone Number:"
+          value={this.state.telephoneNumber || ''}
           onChange={this.handleChange}
           style={{
             marginBottom: 10,
@@ -181,6 +189,7 @@ static propTypes = {
         <div style={{display: "inline-block"}}>
         <RaisedButton label="Save"/>
         </div>
+        <ContactForm onSubmit={this.creataContact}/>
         </form>
         </Paper>
 		)
@@ -193,4 +202,4 @@ const mapStateToProps = function (state) {
 	}
 }
 
-export default connect(mapStateToProps, {creataContact})(contactCreator)
+export default connect(mapStateToProps, {createContact})(contactCreator)

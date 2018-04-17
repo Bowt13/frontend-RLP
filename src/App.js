@@ -9,7 +9,7 @@
   import SignupPage from './containers/SignupPage'
   import OrderCreator from './containers/OrderCreatorPage'
   import CustomerList from './containers/CustomerList'
-  import ContactCreator from './components/ContactCreator'
+  import ContactCreator from './containers/ContactCreator'
 
 //MATERIALUI
   //PROVIDER
