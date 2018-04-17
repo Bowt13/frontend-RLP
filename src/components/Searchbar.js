@@ -33,12 +33,10 @@ class Searchbar extends PureComponent {
           <Paper style={{
             flex: '1',
             flexDirection: 'column',
-            width: 300,
-            height: 75,
-            position: 'relative',
-            right: -230,
-            top: 90,
+            flexGrow: '1',
+            width: '110%',
             flexDirection: 'column',
+            margin: 5,
           }}>
             <TextField
             floatingLabelFocusStyle={{

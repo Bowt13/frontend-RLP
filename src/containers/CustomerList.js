@@ -49,15 +49,15 @@ class CustomerList extends PureComponent {
       customers= this.state.customers
 		return (
       <div style={{
-        display: 'flex'
+        display: 'flex',
+        width: '80%',
+        margin: 'auto',
+        paddingTop: '5em',
       }}>
         <Paper style={{
-          position: 'relative',
-          top: 90,
-          botom: 10,
-          left: '15%',
-          width: '50%',
           overflow: 'scroll',
+          flexGrow: '2',
+          margin: 5,
         }}>
         <List style={{
           padding: 0,
