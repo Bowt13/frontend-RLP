@@ -310,6 +310,38 @@ class OrderCreator extends PureComponent {
         addresses: [{}]
       }
     ), 20)
+    const orderModel = {
+      "amount": null,
+      "billing_addr_id": null,
+      "billing_address_line_1": "",
+      "billing_city": "",
+      "billing_equals_company": "",
+      "billing_postcode": "",
+      "company_addr_id": null,
+      "company_address_line_1": "",
+      "company_city": "",
+      "company_postcode": "",
+      "cust_code": "",
+      "cust_id": null,
+      "deliver_addr_id": null,
+      "deliver_address_line_1": "",
+      "deliver_city": "",
+      "deliver_date": "",
+      "deliver_equals_company": "",
+      "deliver_postcode": "",
+      "deliver_type": "",
+      "description": "",
+      "order_date": "",
+      "ordr_code": "",
+      "ordr_id": null,
+      "ordr_rv": null,
+      "payment_type": "",
+      "price": null,
+      "reln_id": null,
+      "rv": null,
+      "short_description": "",
+      "usr_id": null
+    }
   }
 
   componentWillMount() {
@@ -321,12 +353,12 @@ class OrderCreator extends PureComponent {
   }
 
 	render() {
+    const {handleChange} = this
+    const {authenticated} = this.props
 
-    const {handleChange, authenticated} = this
-
-    // if(authenticated) return (
-    //   <Redirect to="/" />
-    // )
+    if(authenticated) return (
+      <Redirect to="/" />
+    )
 
 		return (
       <div
@@ -378,6 +410,7 @@ class OrderCreator extends PureComponent {
 const mapStateToProps = function (state) {
 	return {
     currentUser: state.currentUser,
+    authenticated: state.currentUser !== null,
     deliveries: state.deliveries,
     user: state.user
 	}
