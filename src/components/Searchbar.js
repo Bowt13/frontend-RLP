@@ -52,7 +52,7 @@ class Searchbar extends PureComponent {
             }}
             name='zoeken'
             type='text'
-            floatingLabelText="Zoeken"
+            floatingLabelText="Zoeken naar bestellinge"
             value={ this.state.zoeken }
             onChange={ this.handleChange }
             />
