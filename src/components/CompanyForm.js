@@ -33,8 +33,6 @@ class CompanyForm extends PureComponent {
   						this.state.companyLogo || ''
   					} onChange={ this.handleChange } />
   				</div>
-
-
   				<button type="submit">Save</button>
   			</form>
   		)

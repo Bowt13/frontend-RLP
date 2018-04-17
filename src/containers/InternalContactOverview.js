@@ -30,13 +30,16 @@ import {getCompanies} from '../actions/companies'
 class InternalContactOverview extends PureComponent {
   state = {
     drawer: true,
+    create: false
+ }
     currentUser: {
       firstName: 'Nigel',
       lastName: 'Brown',
       picture: 'https://www.watsonmartin.com/wp-content/uploads/2016/03/default-profile-picture.jpg',
       //company: 'Codasseur',
-    },
-  }
+    }
+
+
   static propTypes = {
     company: PropTypes.arrayOf(PropTypes.shape({
       id: PropTypes.number.isRequired,
@@ -60,10 +63,10 @@ class InternalContactOverview extends PureComponent {
       this.props.getCompanies()
     }
 
-
 	render() {
     const {company} = this.props
     console.log(company)
+
 		return (
       <div style={{
         textAlign: 'center',
@@ -121,9 +124,8 @@ class InternalContactOverview extends PureComponent {
               />
               <Divider />
               </div>
-            ))
-            }
-          </List>
+            ))}
+          </List>      
         </Paper>
       </div>
 		)

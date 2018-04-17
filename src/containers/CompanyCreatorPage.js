@@ -64,10 +64,7 @@ class CompanyCreator extends PureComponent {
         width: '50%',
         }}
       >
-
      <CompanyForm onSubmit={this.createCompany}/>
-
-
    </Paper>
 </div>
     )
