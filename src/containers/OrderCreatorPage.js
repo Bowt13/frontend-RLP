@@ -394,7 +394,7 @@ class OrderCreator extends PureComponent {
                 float: 'left',
                 width: '90%',
                 marginLeft: 50,
-                marginBottom: 15,
+                marginBottom: 30,
               }}
               onClick={_ => this.handleSubmit()}
             >
