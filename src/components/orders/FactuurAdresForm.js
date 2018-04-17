@@ -40,7 +40,6 @@ class FactuurAdresForm extends PureComponent {
   }
 
   handleSubmit = () => {
-    console.log('FactuurAdresForm.handleSubmit')
     this.props.onChange('FactuurAdres', this.state)
   }
 
@@ -54,6 +53,7 @@ class FactuurAdresForm extends PureComponent {
       <div style={{
         display: 'inline-block',
         textAlign: 'center',
+        float: 'left',
       }}>
       <h1
         style={{
@@ -112,20 +112,6 @@ class FactuurAdresForm extends PureComponent {
           onChange={this.handleChange}
         />
         <br/>
-        <Adres
-          style={{
-            position: 'relative',
-            top: 5,
-            left: -15,
-          }}
-        />
-        <TextField
-          name='Adres2'
-          floatingLabelText="Adres 2:"
-          value={this.state.Adres2 || ''}
-          onChange={this.handleChange}
-        />
-        <br/>
         <City
           style={{
             position: 'relative',
@@ -162,9 +148,9 @@ class FactuurAdresForm extends PureComponent {
           }}
         />
         <TextField
-          name='Telefoonnummer'
-          floatingLabelText="Telefoonnummer:"
-          value={this.state.Telefoonnummer || ''}
+          name='Email'
+          floatingLabelText="Email:"
+          value={this.state.Email || ''}
           onChange={this.handleChange}
         />
         <br/>

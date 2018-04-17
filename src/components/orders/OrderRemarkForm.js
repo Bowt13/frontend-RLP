@@ -10,12 +10,12 @@ import PropTypes from 'prop-types'
     import RaisedButton from 'material-ui/RaisedButton'
     import Paper from 'material-ui/Paper'
     import Divider from 'material-ui/Divider'
-    import CircularProgress from 'material-ui/CircularProgress'
 
   //Icons
     import Description from 'material-ui/svg-icons/action/description'
     import ShoppingCart from 'material-ui/svg-icons/action/add-shopping-cart'
     import Zoom from 'material-ui/svg-icons/action/zoom-in'
+    import Attachment from 'material-ui/svg-icons/file/attachment'
   //Colors
 
 
@@ -27,39 +27,7 @@ class OrderRemarkForm extends PureComponent {
     onChange: PropTypes.func.isRequired,
   }
   state = {
-    showImage: false,
-  }
-
-  previewFile = () => {
-    let preview = document.querySelector("img[id='previewFile']")
-    let file    = this.state.picture
-    let reader  = new FileReader()
-    reader.onloadend = function () {
-      preview.src = reader.result
-    }
-    if (file) {
-      reader.readAsDataURL(file)
-    } else {
-      preview.src = ""
-    }
-  }
-
-  loading = () => {
-    this.timer = setTimeout(() => this.progress(this.state.completed), 1000)
-  }
-
-  progress(completed) {
-    if (completed > 100) {
-      this.setState({
-        completed: 100,
-        showImage: true,
-      })
-      this.previewFile()
-    } else {
-      this.setState({completed});
-      const diff = 100;
-      this.timer = setTimeout(() => this.progress(this.state.completed + diff), 1000);
-    }
+    files:[]
   }
 
   handleChange = (event) => {
@@ -71,11 +39,8 @@ class OrderRemarkForm extends PureComponent {
 
   handleFileChange = (e) => {
     this.setState({
-      picture: e.target.files[0],
-      completed: 0,
-      showImage: false,
+      files: e.target.files,
     })
-    this.loading()
   }
 
   onClick = () => {
@@ -95,15 +60,21 @@ class OrderRemarkForm extends PureComponent {
 
 		return (
       <div style={{
-        width: 1150,
+        width: '90%',
         display: 'inline-block',
         textAlign: 'center',
+        float: 'left',
+        position: 'relative',
+        marginLeft: 50,
+        marginBottom: 10,
       }}>
       <Paper>
         <h1
           style={{
+            textAlign: 'left',
             position: 'relative',
             top: 10,
+            left: 8,
           }}
         >Ordernummer/Kostenplaats</h1>
         <Divider
@@ -174,6 +145,7 @@ class OrderRemarkForm extends PureComponent {
                 rows={1}
                 value={this.state.Opdrachtomschrijving|| ''}
                 onChange={this.handleChange}
+                hintText='Niet nodig.'
                 style={{
                   textAlign: 'left',
                   display: 'inline-block',
@@ -209,7 +181,7 @@ class OrderRemarkForm extends PureComponent {
                   position: 'relative',
                   left: -350,
                   width: 177,
-                  margin: 30,
+                  margin: 15,
                 }}
                 containerElement="label"
               >
@@ -217,44 +189,40 @@ class OrderRemarkForm extends PureComponent {
                   style={{
                     cursor: 'pointer',
                     position: 'absolute',
-                    top: 0,
-                    bottom: 0,
-                    right: 0,
-                    left: 0,
                     width: '100%',
                     opacity: 0,
                   }}
+                  accept="image/*"
                   onChange={this.handleFileChange}
+                  multiple
                 />
               </RaisedButton>
-              {this.state.completed === 100 && this.state.showImage &&
-                <img
-                  src=""
-                  id="previewFile"
-                  height="200"
-                  width="auto"
-                  alt="Geen afbeelding..."
-                  style={{
-                    display: 'inline-block',
-                  }}
-                />
-              }
-              {!this.state.showImage &&
-                <div
-                  style={{
-                    height: 200
-                  }}
-                >{this.state.picture &&
-                  <CircularProgress
-                    mode="determinate"
-                    value={this.state.completed}
-                    size={100}
-                    thickness={5}
-                  />
-                }
-                </div>
-              }
               <br/>
+              {Object.values(this.state.files).map(file => (
+                <div style={{
+                  textAlign: 'center',
+                }}>
+                  <Attachment
+                    style={{
+                      position: 'relative',
+                      top: 5,
+                      left: -15,
+                    }}
+                  />
+                  <TextField
+                    name='Files'
+                    key='file'
+                    floatingLabelText={`file`}
+                    value={file.name}
+                    style={{
+                      position: 'relative',
+                      width: '90%',
+                    }}
+                  />
+                  <br/>
+                </div>
+              ))
+              }
             </form>
         </Paper>
       </div>
