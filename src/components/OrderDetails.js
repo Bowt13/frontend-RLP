@@ -52,23 +52,23 @@ const styles = {
 const tilesData = [
   {
     img: 'http://www.flexicon.nl/img/cache/20c50287b5a2e4230891b103812dde55.jpg',
-    comment: 'blabla',
+    comment: 'first version',
   },
   {
     img: 'http://www.flexicon.nl/img/cache/20c50287b5a2e4230891b103812dde55.jpg',
-    comment: 'blabla',
+    comment: 'second version',
   },
   {
     img: 'http://www.flexicon.nl/img/cache/20c50287b5a2e4230891b103812dde55.jpg',
-    comment: 'blabla',
+    comment: 'after polish',
   },
   {
     img: 'http://www.flexicon.nl/img/cache/20c50287b5a2e4230891b103812dde55.jpg',
-    comment: 'blabla',
+    comment: 'angles adjust',
   },
   {
     img: 'http://www.flexicon.nl/img/cache/20c50287b5a2e4230891b103812dde55.jpg',
-    comment: 'blabla',
+    comment: 'final version',
   },
 ];
 
