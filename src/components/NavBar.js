@@ -39,6 +39,12 @@ class NavBar extends PureComponent {
     }
   }
 
+  componentDidMount() {
+    if (!this.props.user) {
+     this.props.getCurrentUser()
+    }
+  }
+
   handleClick = () => {
     this.props.logout()
     this.props.history.push('/login')

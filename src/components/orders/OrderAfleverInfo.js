@@ -127,9 +127,20 @@ class OrderRemarkForm extends PureComponent {
                 style={{
                   position: 'relative',
                   display: 'inline',
+                  headerColor: 'green',
                 }}
                 textFieldStyle={{
                   width: '90%',
+                }}
+                dialogContainerStyle={{
+                  containerBackgroundColor: 'green',
+                  bodyColor: 'black',
+                  headerColor: 'black',
+                  textColor: 'orange',
+                  color: 'green',
+                  calendarTextColor: 'orange',
+                  selectColor: 'green',
+
                 }}
               />
               <br/>

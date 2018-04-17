@@ -85,11 +85,11 @@ class OrderDetails extends PureComponent {
           marginBottom: 5,
         }}/>
           <List>
-            <ListItem disabled={true} primaryText="Order Number" secondaryText={`${order.orderNumber}`}/>
+            <ListItem disabled={true} primaryText="Bonnummer" secondaryText={`${order.orderNumber}`}/>
             <Divider/>
-            <ListItem disabled={true} primaryText="Short Description" secondaryText={`${order.shortDescription}`}/>
+            <ListItem disabled={true} primaryText="Korte omschrijving" secondaryText={`${order.shortDescription}`}/>
             <Divider/>
-            <ListItem primaryText="Full Description"
+            <ListItem primaryText="Omschrijving"
              nestedItems={[
               <ListItem
                 value={2}
