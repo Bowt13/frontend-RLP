@@ -11,6 +11,7 @@ import PropTypes from 'prop-types'
     import Paper from 'material-ui/Paper';
     import Divider from 'material-ui/Divider';
     import Checkbox from 'material-ui/Checkbox';
+    import Subheader from 'material-ui/Subheader';
 
   //Icons
     import Account from 'material-ui/svg-icons/action/account-circle'
@@ -42,11 +43,19 @@ const style = {
 
 
 class contactCreator extends PureComponent {
-  static propTypes = {
-    onChange: PropTypes.func.isRequired,
-  }
-  state = {
-  }
+static propTypes = {
+   contact: PropTypes.arrayOf(PropTypes.shape({
+   id: PropTypes.number.isRequired,
+   firstName: PropTypes.string.isRequired,
+   lastName: PropTypes.string.isRequired,
+   email: PropTypes.string.isRequired,
+   telephoneNumber: PropTypes.string.isRequired,
+ })).isRequired,
+ };
+
+ creataContact = (company) => {
+   this.props.creataContact(contact)
+ }
 
   updateCheck() {
    this.setState((oldState) => {
@@ -74,8 +83,11 @@ class contactCreator extends PureComponent {
 
 	render() {
 
+    const {company} = this.props
+    console.log(company);
+
 		return (
-      <div Paper style={{
+      <Paper style={{
         position: 'relative',
         top: 80,
         botom: 10,
@@ -83,18 +95,17 @@ class contactCreator extends PureComponent {
         width: '50%',
         overflow: 'scroll',
       }}>
-      <h1
-        style={{
-          position: 'relative',
-          top: 10,
-        }}
-      >Create Contact</h1>
-      <Divider/>
+
+      <Subheader style={{
+        fontSize: 40,
+      }}>Create Contact</Subheader>
+      <Divider style={{
+        padding: 1,
+        marginBottom: 1,
+      }}/>
         <form
           name='Create Contact'
         >
-
-
         <TextField
           floatingLabelFocusStyle={{
             color: '#F09517',
@@ -104,7 +115,7 @@ class contactCreator extends PureComponent {
           }}
           firstName='First Name'
           floatingLabelText="First Name:"
-          value={this.state.Bedrijfsnaam || ''}
+          value={this.state.firstName || ''}
           onChange={this.handleChange}
         />
         <br/>
@@ -156,7 +167,7 @@ class contactCreator extends PureComponent {
         />
         <br/>
 
-        <div style={{display: "inline-block",textAling:"center"}}>
+        <div style={{display: "inline-block",textAlign:"center"}}>
           <Checkbox
             label="Internal"
           iconStyle={{
@@ -171,14 +182,15 @@ class contactCreator extends PureComponent {
         <RaisedButton label="Save"/>
         </div>
         </form>
-      </div>
+        </Paper>
 		)
 	}
 }
 
 const mapStateToProps = function (state) {
 	return {
+    contact: state.contact
 	}
 }
 
-export default connect(mapStateToProps)(contactCreator)
+export default connect(mapStateToProps, {creataContact})(contactCreator)
