@@ -45,7 +45,8 @@ const styles = {
     overflowX: 'auto',
   },
   titleStyle: {
-    color: 'rgb(0, 188, 212)',
+    color: '#F09517',
+    textAlign: 'center',
   },
 };
 
@@ -116,8 +117,8 @@ class OrderDetails extends PureComponent {
         <Paper style={{
           position: 'relative',
           top: 90,
-          botom: 10,
-          margin: 'auto',
+          left: '20%',
+          marginBottom: 20,
           width: '60%',
           overflow: 'scroll',
           textAlign: 'left',
