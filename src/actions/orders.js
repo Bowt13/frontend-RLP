@@ -6,7 +6,7 @@ import {ADD_ORDER, GET_ORDERS, GET_ORDER} from './types'
 export const addOrder = (order,addresses) => (dispatch, getState) => {
   const state = getState()
   const jwt = state.currentUser.jwt
-
+  console.log(order, addresses)
   request
 		.post(`${baseUrl}/orders`)
 		.send({ order, addresses })
