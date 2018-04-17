@@ -45,7 +45,8 @@ const styles = {
     overflowX: 'auto',
   },
   titleStyle: {
-    color: 'rgb(0, 188, 212)',
+    color: '#F09517',
+    textAlign: 'center',
   },
 };
 
@@ -115,18 +116,20 @@ class OrderDetails extends PureComponent {
       <div>
         <Paper style={{
           position: 'relative',
-          top: 80,
-          botom: 10,
-          margin: 'auto',
-          width: '50%',
+          top: 90,
+          left: '20%',
+          marginBottom: 20,
+          width: '60%',
           overflow: 'scroll',
+          textAlign: 'left',
         }}>
         <Subheader style={{
           fontSize: 40,
-        }}>Order Details</Subheader>
+          margin: 8,
+        }}>Bestelling nummer {order.id}</Subheader>
         <Divider style={{
-          padding: 5,
-          marginBottom: 5,
+          padding: 1,
+          backgroundColor: '#F09517',
         }}/>
         <div style={{
           display: 'flex',
@@ -138,27 +141,29 @@ class OrderDetails extends PureComponent {
             <Divider/>
             <ListItem disabled={true} primaryText="Korte omschrijving" secondaryText={`${order.shortDescription}`}/>
             <Divider/>
-            <ListItem primaryText="Omschrijving"
-             nestedItems={[
-              <ListItem
-                value={2}
-                primaryText={`${order.description}`}
-              />,
+            <ListItem
+              primaryText="Omschrijving"
+              primaryTogglesNestedList={ true }
+              nestedItems={[
+                <ListItem
+                  value={2}
+                  primaryText={`${order.description}`}
+                  />,
               ]}/>
-              <Divider/>
-              <ListItem disabled={true} primaryText="Order Amount" secondaryText={`${order.amount}`}/>
-              <Divider/>
-              <ListItem disabled={true} primaryText="Order Date" secondaryText={`${order.orderDate}`}/>
-              <Divider/>
-              <ListItem disabled={true} primaryText="Delivery Date" secondaryText={`${order.deliveryDate}`}/>
-              <Divider/>
-              <ListItem disabled={true} primaryText="Payment Type" secondaryText={`${order.paymentType}`}/>
-              <Divider/>
-              <ListItem disabled={true} primaryText="Delivery ID" secondaryText={`${order.deliveryId}`}/>
-              <Divider/>
-              <ListItem disabled={true} primaryText="User ID" secondaryText={`${order.userId}`}/>
-            </List>
-            <ChatBox />
+            <Divider/>
+            <ListItem disabled={true} primaryText="Aantal" secondaryText={`${order.amount}`}/>
+            <Divider/>
+            <ListItem disabled={true} primaryText="Besteldatum" secondaryText={`${order.orderDate}`}/>
+            <Divider/>
+            <ListItem disabled={true} primaryText="Leverdatum" secondaryText={`${order.deliveryDate}`}/>
+            <Divider/>
+            <ListItem disabled={true} primaryText="Betalinswijze" secondaryText={`${order.paymentType}`}/>
+            <Divider/>
+            <ListItem disabled={true} primaryText="Bestelling-ID" secondaryText={`${order.deliveryId}`}/>
+            <Divider/>
+            <ListItem disabled={true} primaryText="Klant-ID" secondaryText={`${order.userId}`}/>
+          </List>
+          <ChatBox />
           </div>
           <div style={styles.root}>
             <GridList style={styles.gridList} cols={2.2}>

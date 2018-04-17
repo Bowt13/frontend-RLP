@@ -16,7 +16,7 @@ import {Redirect} from 'react-router-dom'
 
 //Actions
   import {getDeliveries} from '../actions/deliveries'
-  import {addOrder} from '../actions/orders'
+  import {addOrder, addOrderNewAPI} from '../actions/orders'
   import {getCurrentUser} from '../actions/users'
 
 //Components
@@ -298,50 +298,50 @@ class OrderCreator extends PureComponent {
     this.orderAfleverInfo.onClick()
     setTimeout(_ => console.log(this.state), 20)
     setTimeout(_ => console.log(new Date()), 20)
-    setTimeout(() => this.props.addOrder(
-      {
-        shortDescription: this.state.OrderRemarkForm.KorteOmschrijving,
-        description: this.state.OrderRemarkForm.Opdrachtomschrijving,
-        amount: this.state.OrderRemarkForm.Aantal,
-        deliveryDate: this.state.OrderAfleverInfo.LeverDatum || null,
-        paymentType: 'cash',
-        deliveryId: this.state.OrderAfleverInfo.DeliveryType.id,
-      },{
-        addresses: [{}]
-      }
-    ), 20)
-    const orderModel = {
-      "amount": null,
+    // setTimeout(() => this.props.addOrder(
+    //   {
+    //     shortDescription: this.state.OrderRemarkForm.KorteOmschrijving,
+    //     description: this.state.OrderRemarkForm.Opdrachtomschrijving,
+    //     amount: this.state.OrderRemarkForm.Aantal,
+    //     deliveryDate: this.state.OrderAfleverInfo.LeverDatum || null,
+    //     paymentType: 'cash',
+    //     deliveryId: this.state.OrderAfleverInfo.DeliveryType.id,
+    //   },{
+    //     addresses: [{}]
+    //   }
+    // ), 20)
+    setTimeout(() => this.props.addOrderNewAPI({
+      "amount": this.state.OrderRemarkForm.Aantal,
       "billing_addr_id": null,
       "billing_address_line_1": "",
       "billing_city": "",
-      "billing_equals_company": "",
+      "billing_equals_company": "Y",
       "billing_postcode": "",
       "company_addr_id": null,
-      "company_address_line_1": "",
+      "company_address_line_1": this.state.OrderAdres.BezoekAdres.Adres1,
       "company_city": "",
-      "company_postcode": "",
-      "cust_code": "",
+      "company_postcode": this.state.OrderAdres.BezoekAdres.Postcode,
+      "cust_code": "CUST0003",
       "cust_id": null,
       "deliver_addr_id": null,
       "deliver_address_line_1": "",
       "deliver_city": "",
       "deliver_date": "",
-      "deliver_equals_company": "",
+      "deliver_equals_company": "Y",
       "deliver_postcode": "",
-      "deliver_type": "",
-      "description": "",
-      "order_date": "",
+      "deliver_type": this.state.OrderAfleverInfo.DeliveryType,
+      "description": this.state.OrderRemarkForm.Opdrachtomschrijving,
+      "order_date": new Date,
       "ordr_code": "",
       "ordr_id": null,
       "ordr_rv": null,
-      "payment_type": "",
+      "payment_type": "contant",
       "price": null,
       "reln_id": null,
       "rv": null,
-      "short_description": "",
+      "short_description": this.state.OrderRemarkForm.KorteOmschrijving,
       "usr_id": null
-    }
+    }), 20)
   }
 
   componentWillMount() {
@@ -416,4 +416,4 @@ const mapStateToProps = function (state) {
 	}
 }
 
-export default connect(mapStateToProps, {addOrder, getCurrentUser, getDeliveries})(OrderCreator)
+export default connect(mapStateToProps, {addOrder, addOrderNewAPI, getCurrentUser, getDeliveries})(OrderCreator)
