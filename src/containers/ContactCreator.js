@@ -1,7 +1,6 @@
 //Dependencies
 import React, {PureComponent} from 'react'
 import {connect} from 'react-redux'
-import {Redirect} from 'react-router-dom'
 
 //MaterialUI
   //Components
@@ -30,7 +29,9 @@ import {createContact} from '../actions/contacts'
 
 
 class contactCreator extends PureComponent {
-  state = {}
+  state = {
+    role: 'External',
+  }
 
   handleSubmit = (e) => {
     e.preventDefault()
@@ -40,6 +41,12 @@ class contactCreator extends PureComponent {
   handleChange = event => {
     const { name, value } = event.target;
     this.setState({ [name]: value })
+  }
+
+  updateCheck() {
+    this.setState((oldState) => ({
+        role: oldState.role === 'Internal' ? 'External' : 'Internal'
+    }) )
   }
 
  render() {
@@ -95,45 +102,29 @@ class contactCreator extends PureComponent {
             style={{ marginBottom: 10 }}
           />
           <br/>
+          <br/>
           <div style={{ display: "inline-block", textAlign:"center" }}>
-            <Checkbox label="Internal" iconStyle={{ fill: '#F09517' }}/>
+            <Checkbox
+              label="Internal"
+              iconStyle={{ fill: '#F09517' }}
+              checked={this.state.role === 'Internal' ? true : false }
+              onCheck={this.updateCheck.bind(this)}
+            />
           </div>
           <br/>
           <br/>
           <br/>
           <div style={{display: "inline-block"}}>
-            <RaisedButton type="submit" label="Save"/ >
+            <RaisedButton type="submit" label="Save" backgroundColor='#F09517'/ >
           </div>
+          <br/>
+          <br/>
         </form>
       </Paper>
     </div>
     )
  }
 }
-
-// <Paper
-//   style={{
-//   position: 'relative',
-//   top: 80,
-//   botom: 10,
-//   left: '25%',
-//   width: '50%',
-//   }}
-// >
-//   <form onSubmit={this.handleSubmit}>
-//     <div>
-//       <input name= "firstName" placeholder="Insert First Name"
-//       value={ this.state.firstName || '' } onChange={ this.handleChange } />
-//     </div>
-//     <div>
-//       <input name= "lastName" placeholder="Insert Last Name"
-//       value={ this.state.lastName || '' } onChange={ this.handleChange } />
-//     </div>
-//     <button type="submit">Save</button>
-//   </form>
-// </Paper>
-
-// <RaisedButton label="Save"/>
 
 const mapStateToProps = function (state) {
 	return {
