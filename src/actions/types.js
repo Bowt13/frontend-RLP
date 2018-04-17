@@ -20,6 +20,7 @@ export const ADD_ORDER = 'ADD_ORDER'
 
 //Company
 export const GET_COMPANIES = 'GET_COMPANIES'
+export const ADD_COMPANY = 'ADD_COMPANY'
 
 //deliveries
 export const GET_DELIVERIES = 'GET_DELIVERIES'
