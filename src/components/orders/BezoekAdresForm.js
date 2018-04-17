@@ -77,6 +77,12 @@ class BezoekAdresForm extends PureComponent {
           }}
         />
         <TextField
+          floatingLabelFocusStyle={{
+            color: '#F09517',
+          }}
+          underlineFocusStyle={{
+            borderColor: '#F09517',
+          }}
           name='Bedrijfsnaam'
           floatingLabelText="Bedrijfsnaam:"
           value={this.state.Bedrijfsnaam || ''}
@@ -91,6 +97,12 @@ class BezoekAdresForm extends PureComponent {
           }}
         />
         <TextField
+          floatingLabelFocusStyle={{
+            color: '#F09517',
+          }}
+          underlineFocusStyle={{
+            borderColor: '#F09517',
+          }}
           name='Contactpersoon'
           floatingLabelText="Contactpersoon:"
           value={this.state.Contactpersoon || ''}
@@ -105,6 +117,12 @@ class BezoekAdresForm extends PureComponent {
           }}
         />
         <TextField
+          floatingLabelFocusStyle={{
+            color: '#F09517',
+          }}
+          underlineFocusStyle={{
+            borderColor: '#F09517',
+          }}
           name='Adres1'
           floatingLabelText="Adres 1:"
           value={this.state.Adres1 || ''}
@@ -119,6 +137,12 @@ class BezoekAdresForm extends PureComponent {
           }}
         />
         <TextField
+          floatingLabelFocusStyle={{
+            color: '#F09517',
+          }}
+          underlineFocusStyle={{
+            borderColor: '#F09517',
+          }}
           name='Postcode'
           floatingLabelText="Postcode:"
           value={this.state.Postcode || ''}
@@ -133,6 +157,12 @@ class BezoekAdresForm extends PureComponent {
           }}
         />
         <TextField
+          floatingLabelFocusStyle={{
+            color: '#F09517',
+          }}
+          underlineFocusStyle={{
+            borderColor: '#F09517',
+          }}
           name='Land'
           floatingLabelText="Land:"
           value={this.state.Land || ''}
@@ -147,6 +177,12 @@ class BezoekAdresForm extends PureComponent {
           }}
         />
         <TextField
+          floatingLabelFocusStyle={{
+            color: '#F09517',
+          }}
+          underlineFocusStyle={{
+            borderColor: '#F09517',
+          }}
           name='Telefoonnummer'
           floatingLabelText="Telefoonnummer:"
           value={this.state.Telefoonnummer || ''}

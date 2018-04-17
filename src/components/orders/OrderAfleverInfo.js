@@ -131,6 +131,9 @@ class OrderRemarkForm extends PureComponent {
                 textFieldStyle={{
                   width: '90%',
                 }}
+                dialogContainerStyle={{
+                  color: '#F09517',
+                }}
               />
               <br/>
               <Shipping

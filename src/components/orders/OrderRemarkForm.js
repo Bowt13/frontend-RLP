@@ -93,6 +93,12 @@ class OrderRemarkForm extends PureComponent {
                 }}
               />
               <TextField
+                floatingLabelFocusStyle={{
+                  color: '#F09517',
+                }}
+                underlineFocusStyle={{
+                  borderColor: '#F09517',
+                }}
                 name='Aantal'
                 floatingLabelText="Aantal:"
                 value={this.state.Aantal || ''}
@@ -111,6 +117,12 @@ class OrderRemarkForm extends PureComponent {
                 }}
               />
               <TextField
+                floatingLabelFocusStyle={{
+                  color: '#F09517',
+                }}
+                underlineFocusStyle={{
+                  borderColor: '#F09517',
+                }}
                 name='KorteOmschrijving'
                 floatingLabelText="Korte omschrijving:"
                 maxlength="100"
@@ -139,6 +151,12 @@ class OrderRemarkForm extends PureComponent {
                 }}
               />
               <TextField
+                floatingLabelFocusStyle={{
+                  color: '#F09517',
+                }}
+                underlineFocusStyle={{
+                  borderColor: '#F09517',
+                }}
                 name='Opdrachtomschrijving'
                 floatingLabelText="Opdrachtomschrijving:"
                 multiLine={true}
@@ -164,6 +182,12 @@ class OrderRemarkForm extends PureComponent {
                 }}
               />
               <TextField
+                floatingLabelFocusStyle={{
+                  color: '#F09517',
+                }}
+                underlineFocusStyle={{
+                  borderColor: '#F09517',
+                }}
                 name='Aandachtspunten'
                 floatingLabelText="Aandachtspunten:"
                 value={this.state.Aandachtspunten || ''}
