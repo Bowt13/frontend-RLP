@@ -43,6 +43,7 @@ const styles = {
     display: 'flex',
     flexWrap: 'nowrap',
     overflowX: 'auto',
+    width: 900,
   },
   titleStyle: {
     color: '#F09517',
@@ -113,15 +114,23 @@ class OrderDetails extends PureComponent {
      if (!order) return <p>order does not exist</p>
 
 		return (
-      <div>
+      <div style={{
+        display: 'flex',
+        float: 'left',
+      }}>
         <Paper style={{
           position: 'relative',
           top: 90,
-          left: '20%',
+          left: '2%',
           marginBottom: 20,
-          width: '60%',
+          marginRight: 20,
+          marginLeft: 50,
+          // width: '20%',
           overflow: 'scroll',
           textAlign: 'left',
+          display: 'inline-block',
+          float: 'left',
+          // flex: '1',
         }}>
         <Subheader style={{
           fontSize: 40,
@@ -163,7 +172,6 @@ class OrderDetails extends PureComponent {
             <Divider/>
             <ListItem disabled={true} primaryText="Klant-ID" secondaryText={`${order.userId}`}/>
           </List>
-          <ChatBox />
           </div>
           <div style={styles.root}>
             <GridList style={styles.gridList} cols={2.2}>
@@ -180,6 +188,7 @@ class OrderDetails extends PureComponent {
             </GridList>
           </div>
         </Paper>
+        <ChatBox />
       </div>
 		)
 	}

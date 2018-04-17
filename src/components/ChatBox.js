@@ -9,15 +9,17 @@ import ContentSend from 'material-ui/svg-icons/content/send';
 const styles = {
     container: {
         position: 'relative',
-        width: '50%',
-        height: '100%',
-        display: 'flex',
+        width: '45%',
         alignItems: 'center',
         justifyContent: 'center',
+        display: 'inline-block',
+        float: 'left',
+        marginLeft: 30,
+        marginTop: 90,
     },
     paper: {
         width: '30vw',
-        height: '80vh',
+        height: '90vh',
         // maxWidth: '400px',
         // maxHeight: '700px',
         display: 'flex',
@@ -26,15 +28,11 @@ const styles = {
         // position: 'relative'
     },
     record: {
-        width: '95%',
+        width: '90%',
         height: 60,
         display: 'flex',
         alignItems: 'center',
-        position: 'absolute',
-        bottom: 0,
-        left: 0,
-        right: 0,
-        margin: 10
+        margin: 10,
     },
     messagesBody: {
         width: 'calc( 100% - 20px )',
@@ -107,7 +105,7 @@ class ChatBox extends PureComponent {
                 underlineFocusStyle={{
                   borderColor: '#F09517',
                 }}
-                value={this.state.text}
+                value={this.state.text || ''}
                 onChange={e => {
                   if (e.keyCode == 13) {
                     this.send()
