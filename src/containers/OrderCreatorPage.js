@@ -15,6 +15,7 @@ import {Redirect} from 'react-router-dom'
 
 
 //Actions
+  import {getDeliveries} from '../actions/deliveries'
   import {addOrder} from '../actions/orders'
   import {getCurrentUser} from '../actions/users'
 
@@ -292,29 +293,31 @@ class OrderCreator extends PureComponent {
   handleSubmit = () => {
     this.orderInfo.onClick()
     this.orderAdressForm.onClick()
-    setTimeout(() => this.orderAdressForm.onClick(), 10)
+    setTimeout(_ => this.orderAdressForm.onClick(), 10)
     this.orderRemarkForm.onClick()
     this.orderAfleverInfo.onClick()
-    console.log(this.orderAdressForm.state)
-    setTimeout(() => console.log(this.state), 20)
-    // setTimeout(() => this.props.addOrder(
-    //   {
-    //     shortDescription: this.state.OrderRemarkForm.KorteOmschrijving,
-    //     description: this.state.OrderRemarkForm.Opdrachtomschrijving,
-    //     amount: this.state.OrderRemarkForm.Aantal,
-    //     orderDate: new Date,
-    //     deliveryDate: this.state.OrderAfleverInfo.LeverDatum,
-    //     paymentType: "",
-    //     delivery: "",
-    //     user: this.props.currentUser,
-    //     addresses: [this.state.],
-    //   }
-    // ), 10)
+    setTimeout(_ => console.log(this.state), 20)
+    setTimeout(_ => console.log(new Date()), 20)
+    setTimeout(() => this.props.addOrder(
+      {
+        shortDescription: this.state.OrderRemarkForm.KorteOmschrijving,
+        description: this.state.OrderRemarkForm.Opdrachtomschrijving,
+        amount: this.state.OrderRemarkForm.Aantal,
+        deliveryDate: this.state.OrderAfleverInfo.LeverDatum || null,
+        paymentType: 'cash',
+        deliveryId: this.state.OrderAfleverInfo.DeliveryType.id,
+      },{
+        addresses: [{}]
+      }
+    ), 20)
   }
 
   componentWillMount() {
-    const { currentUser } = this.props
+    const { currentUser, deliveryTypes } = this.props
     this.props.getCurrentUser()
+    if(!deliveryTypes){
+      this.props.getDeliveries()
+    }
   }
 
 	render() {
@@ -328,14 +331,20 @@ class OrderCreator extends PureComponent {
 		return (
       <div
         style={{
+          float: 'left',
           position: 'relative',
           top: 55,
           textAlign: 'center',
+          height: '100%',
+          width: '100%',
+          margin: 0,
+          padding: 0,
         }}
       >
         <Paper
           style={{
-            height: 1800,
+            float: 'left',
+            height: '100%',
             width: '100%',
           }}
         >
@@ -344,14 +353,22 @@ class OrderCreator extends PureComponent {
           <OrderRemarkForm onChange={handleChange} onRef={ref => (this.orderRemarkForm = ref)}/>
           <OrderAfleverInfo onChange={handleChange} onRef={ref => (this.orderAfleverInfo = ref)}/>
           <br/>
-          <RaisedButton
-            style={{
-              width: 500,
-            }}
-            onClick={_ => this.handleSubmit()}
-          >
-          Verstuur Order
-          </RaisedButton>
+          <div style={{
+            width: '100%',
+          }}>
+            <RaisedButton
+              style={{
+                position: 'relative',
+                float: 'left',
+                width: '90%',
+                marginLeft: 50,
+                marginBottom: 15,
+              }}
+              onClick={_ => this.handleSubmit()}
+            >
+            Verstuur Order
+            </RaisedButton>
+          </div>
         </Paper>
       </div>
 		)
@@ -361,8 +378,9 @@ class OrderCreator extends PureComponent {
 const mapStateToProps = function (state) {
 	return {
     currentUser: state.currentUser,
-    // authenticated: state.currentUser !== null
+    deliveries: state.deliveries,
+    user: state.user
 	}
 }
 
-export default connect(mapStateToProps, {addOrder, getCurrentUser})(OrderCreator)
+export default connect(mapStateToProps, {addOrder, getCurrentUser, getDeliveries})(OrderCreator)

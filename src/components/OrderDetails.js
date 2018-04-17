@@ -108,8 +108,8 @@ class OrderDetails extends PureComponent {
     let windowWidth = window.screen.availWidth
     console.log(windowWidth);
 
-     const {order} = this.props
-     if (!order) return <p>order does not exist!</p>
+    const {order} = this.props
+     if (!order) return <p>order does not exist</p>
 
 		return (
       <div>
