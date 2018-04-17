@@ -123,10 +123,11 @@ class OrderDetails extends PureComponent {
         }}>
         <Subheader style={{
           fontSize: 40,
-        }}>Order Details</Subheader>
+          margin: 8,
+        }}>Bestelling nummer {order.id}</Subheader>
         <Divider style={{
-          padding: 5,
-          marginBottom: 5,
+          padding: 1,
+          backgroundColor: '#F09517',
         }}/>
         <div style={{
           display: 'flex',
