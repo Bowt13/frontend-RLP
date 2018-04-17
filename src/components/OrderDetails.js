@@ -151,17 +151,17 @@ class OrderDetails extends PureComponent {
                   />,
               ]}/>
             <Divider/>
-            <ListItem disabled={true} primaryText="Order Amount" secondaryText={`${order.amount}`}/>
+            <ListItem disabled={true} primaryText="Aantal" secondaryText={`${order.amount}`}/>
             <Divider/>
-            <ListItem disabled={true} primaryText="Order Date" secondaryText={`${order.orderDate}`}/>
+            <ListItem disabled={true} primaryText="Besteldatum" secondaryText={`${order.orderDate}`}/>
             <Divider/>
-            <ListItem disabled={true} primaryText="Delivery Date" secondaryText={`${order.deliveryDate}`}/>
+            <ListItem disabled={true} primaryText="Leverdatum" secondaryText={`${order.deliveryDate}`}/>
             <Divider/>
-            <ListItem disabled={true} primaryText="Payment Type" secondaryText={`${order.paymentType}`}/>
+            <ListItem disabled={true} primaryText="Betalinswijze" secondaryText={`${order.paymentType}`}/>
             <Divider/>
-            <ListItem disabled={true} primaryText="Delivery ID" secondaryText={`${order.deliveryId}`}/>
+            <ListItem disabled={true} primaryText="Bestelling-ID" secondaryText={`${order.deliveryId}`}/>
             <Divider/>
-            <ListItem disabled={true} primaryText="User ID" secondaryText={`${order.userId}`}/>
+            <ListItem disabled={true} primaryText="Klant-ID" secondaryText={`${order.userId}`}/>
           </List>
           <ChatBox />
           </div>
