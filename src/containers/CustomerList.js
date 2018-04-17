@@ -1,165 +1,79 @@
 //Dependencies
-import React, {PureComponent} from 'react'
-import {connect} from 'react-redux'
-import {getOrders} from '../actions/orders'
+import React, { PureComponent } from 'react'
+import { connect } from 'react-redux'
 
 //MaterialUI
   //Components
-    import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText, CardContent} from 'material-ui/Card';
-    import RaisedButton from 'material-ui/RaisedButton'
-    import Paper from 'material-ui/Paper';
-    import Avatar from 'material-ui/Avatar'
-    import {
-      List,
-      ListItem
-    } from 'material-ui/List';
-    import Subheader from 'material-ui/Subheader';
-    import Divider from 'material-ui/Divider';
-    import Business from 'material-ui/svg-icons/communication/business'
-  //Colors
-
+    // import RaisedButton from 'material-ui/RaisedButton'
+    import Paper from 'material-ui/Paper'
+    import { List, ListItem } from 'material-ui/List'
+    import Subheader from 'material-ui/Subheader'
+    import Divider from 'material-ui/Divider'
 
 //Actions
-import {getCurrentUser} from '../actions/users'
-
-//Components
-
-
-
-//HArdCode
-const user = {
-  firstName: 'Safidy',
-  lastName: 'Ratsimbazafy',
-  email: 'safidy@example.com',
-  company: 'SAFISYX CORP.',
-  phone : '06 06060606'
-}
-
-const orders = [
-  {
-    id: 1,
-    orderNumber: '0707',
-    type: 'Secretary of the Year',
-    description: '3D crystal glass',
-    user: 'Johnny Bravo'
-  },
-  {
-    id: 2,
-    orderNumber: '0808',
-    type: 'Manager of the Month',
-    description: 'Award Tombstone Rectangle',
-    user: 'Annette Whilmore'
-  },
-  {
-    id: 3,
-    orderNumber: '0909',
-    type: 'Coffee Maker of the Week',
-    description: 'Award in Metal and Wood',
-    user: 'Stuart Belleville'
-  },
-  {
-    id: 4,
-    orderNumber: '1010',
-    type: 'Colleague of the Day',
-    description: 'Plexiglass Star Shape',
-    user: 'Johnny Bravo'
-  }
-]
+import { getCustomers } from '../actions/users'
 
 class CustomerList extends PureComponent {
-  state = {
-    openProfile: false,
-  }
 
   componentWillMount() {
-    this.props.getOrders()
-    if (!this.props.user.id) this.props.getCurrentUser()
+    this.props.getCustomers()
   }
-
-  handleToggle = () => {
-    this.setState({openProfile: !this.state.openProfile},()=>
-    console.log(this.state.openProfile))
-  }
-
-  // TO HAVE PROFILE IN THE TOP BAR (FOR NOW WE DON'T WANT IT)
-  // renderProfile = () => {
-  //   if (this.state.openProfile)
-  //     return (
-  //     <Card style={{position: 'relative', maxWidth: '80%', height:'200px',
-  //                   transform:'translate(-50%,0)', left:'50%',
-  //                   margin: '25px 0 0 0'}} className='contactCard'
-  //       onClick={this.handleToggle}>
-  //       <CardText style={{position:'absolute',
-  //                         left:'0',
-  //                         transform: 'translate(0,-50%)',
-  //                         top: '50%',
-  //                         textAlign: 'left'}}>
-  //         <p>
-  //           <span>Name: </span>
-  //           {`${user.firstName +' ' + user.lastName}`}
-  //         </p>
-  //         <p>
-  //           <span>Email: </span>
-  //           {`${user.email}`}
-  //         </p>
-  //         <p>
-  //           <span>Phone: </span>
-  //           {`${user.phone}`}
-  //         </p>
-  //
-  //
-  //       </CardText>
-  //       <CardText style={{position:'absolute',
-  //                         transform: 'translate(0,-50%)',
-  //                         left:'50%',
-  //                         top:'50%'}}>
-  //         <p>
-  //           <span>Company: </span>
-  //           {`${user.company}`}
-  //         </p>
-  //         <RaisedButton>
-  //           Edit Profile
-  //         </RaisedButton>
-  //
-  //       </CardText>
-  //     </Card>
-  //   )
-  // }
 
 	render() {
-    let windowWidth = window.screen.availWidth
-    console.log(windowWidth);
 
-    // const {orders} = this.props; //enable in order to use with the reducer
+    const { customers, history } = this.props
 
 		return (
       <div>
         <Paper style={{
           position: 'relative',
-          top: 80,
+          top: 90,
           botom: 10,
           left: '25%',
           width: '50%',
           overflow: 'scroll',
         }}>
-        <List>
+        <List style={{
+          padding: 0,
+        }}>
           <Subheader style={{
             fontSize: 40,
-          }}>Bestellingen</Subheader>
+            margin: 8,
+            textAlign: 'left',
+          }}>Klanten</Subheader>
           <Divider style={{
-            padding: 5,
-            marginBottom: 5,
+            padding: 1,
+            backgroundColor: '#F09517',
           }}/>
-          <Divider />
-          {orders && orders.map((order) => (
-            <div >
-              <ListItem
-              secondaryTextLines={2}
-              primaryText={`${order.type}`}
-              secondaryText={<p> <span> {'Nr: '+ `${order.orderNumber}`}</span><br/><span>{'Created by: '+ `${order.user}`}</span></p>}
-              className='order-row' onClick={_=>window.location.href=`/flexicon/orders/${order.orderNumber}`}
-              />
+          { customers && customers.map(customer => (
+            <div>
               <Divider />
+              <ListItem
+              initiallyOpen={ false }
+              primaryTogglesNestedList={ true }
+              hoverColor= '#F09517'
+              nestedItems={[ customer.orders.map(order => (
+                <div>
+                  <Divider />
+                  <ListItem
+                    hoverColor= '#f4b357'
+                    style={{
+                      textAlign: 'right',
+                    }}
+                    primaryText={ `${order.shortDescription}` }
+                    secondaryText={ 'Besteldatum:' + ' ' + `${order.orderDate}` }
+                    onClick={ _=> history.push(`/flexicon/orders/${order.orderNumber}`) }
+                  />
+                </div>
+              ))
+            ]}
+              style={{
+                textAlign: 'left',
+              }}
+              secondaryTextLines={ 2 }
+              primaryText={ `${customer.email}` }
+              secondaryText={<p> <span> { `${customer.companyName}` }</span><br/><span>{ `${customer.firstName}`+ ' ' + `${customer.lastName}`}</span></p> }
+              />
             </div>
           ))
           }
@@ -170,11 +84,10 @@ class CustomerList extends PureComponent {
 	}
 }
 
-const mapStateToProps = function (state, props) {
+const mapStateToProps = function (state) {
 	return {
-    user: state.currentUser,
-    orders: state.orders
+    customers: Object.values(state.customers).sort((a, b) => a.email.localeCompare(b.email))
 	}
 }
 
-export default connect(mapStateToProps, {getOrders, getCurrentUser})(CustomerList)
+export default connect(mapStateToProps, { getCustomers })(CustomerList)

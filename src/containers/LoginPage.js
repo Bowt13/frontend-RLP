@@ -55,7 +55,6 @@ class LoginPage extends PureComponent {
 			<RaisedButton
 				label="Verzenden"
 				backgroundColor='#F09517'
-				primary={true}
 				style={{
 					postion: 'relative',
 					margin: 30,

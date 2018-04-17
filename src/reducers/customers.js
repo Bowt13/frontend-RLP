@@ -1,8 +1,8 @@
-import {GET_ORDERS} from '../actions/types'
+import { GET_CUSTOMERS } from '../actions/types'
 
 export default function (state = [], {type, payload}) {
 	switch (type) {
-		case GET_ORDERS:
+		case GET_CUSTOMERS:
 			return payload
 
 		default:

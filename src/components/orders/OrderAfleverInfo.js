@@ -89,7 +89,7 @@ class OrderRemarkForm extends PureComponent {
         position: 'relative',
         top: 0,
         marginLeft: 50,
-        marginBottom: 10,
+        marginBottom: 5,
       }}>
       <Paper>
         <h1
@@ -130,6 +130,16 @@ class OrderRemarkForm extends PureComponent {
                 }}
                 textFieldStyle={{
                   width: '90%',
+                }}
+                dialogContainerStyle={{
+                  containerBackgroundColor: 'green',
+                  bodyColor: 'black',
+                  headerColor: 'black',
+                  textColor: 'orange',
+                  color: 'green',
+                  calendarTextColor: 'orange',
+                  selectColor: 'green',
+
                 }}
               />
               <br/>

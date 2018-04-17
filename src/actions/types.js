@@ -5,6 +5,7 @@ export const USER_LOGIN_SUCCESS = 'USER_LOGIN_SUCCESS'
 export const USER_LOGIN_FAILED = 'USER_LOGIN_FAILED'
 export const USER_LOGOUT = 'USER_LOGOUT'
 export const GET_USER = 'GET_USER'
+export const GET_CUSTOMERS = 'GET_CUSTOMERS'
 
 //password
 export const FORGOT_PASSWORD = 'FORGOT_PASSWORD'
