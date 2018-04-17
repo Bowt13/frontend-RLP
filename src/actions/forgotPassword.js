@@ -6,8 +6,8 @@ import { FORGOT_PASSWORD } from './types'
 
 export const forgotPassword = (email) => (dispatch) =>
   request
-    .post(`${baseUrl}/users`)
-    .send({ email: email })
+    .post(`${baseUrl}/forgotPassword`)
+    .send({email})
     .catch(err => {
       console.error(err)
     })
