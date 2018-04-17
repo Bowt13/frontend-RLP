@@ -5,7 +5,7 @@ import user from './user'
 import orders from './orders'
 import customers from './customers'
 import deliveries from './deliveries'
-import contact from './contact'
+import contacts from './contacts'
 
 export default {
   signup,
@@ -15,5 +15,5 @@ export default {
   orders,
   customers,
   deliveries,
-  contact
+  contacts
 }

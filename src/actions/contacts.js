@@ -1,9 +1,7 @@
 import * as request from 'superagent'
 import {baseUrl} from '../constants'
+import {GET_CONTACTS, ADD_CONTACT} from './types'
 
-
-export const GET_CONTACTS = 'GET_CONTACTS'
-export const ADD_CONTACT = 'ADD_CONTACT'
 
 export const getContacts = () => (dispatch) => {
     request

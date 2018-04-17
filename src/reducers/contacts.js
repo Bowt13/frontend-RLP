@@ -1,4 +1,4 @@
-import {GET_CONTACTS, ADD_CONTACT} from '../actions/contacts'
+import {GET_CONTACTS, ADD_CONTACT} from '../actions/types'
 
 export default function (state = [], action) {
   switch (action.type) {
