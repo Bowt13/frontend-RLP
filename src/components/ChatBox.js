@@ -108,8 +108,11 @@ class ChatBox extends PureComponent {
                   borderColor: '#F09517',
                 }}
                 value={this.state.text}
-                onChange={ev => {
-                  this.setState({text: ev.target.value})
+                onChange={e => {
+                  if (e.keyCode == 13) {
+                    this.send()
+                  }
+                  this.setState({text: e.target.value})
                 }}
                 hintText="type your message here"
                 fullWidth={true}
