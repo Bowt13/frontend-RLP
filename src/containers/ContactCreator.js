@@ -66,9 +66,9 @@ static propTypes = {
  }
 
  render() {
-   const {contact} = this.propTypes
+   const {contact} = this.props
    console.log(contact);
- }
+
 
   return (
     <div style={{
@@ -84,10 +84,12 @@ static propTypes = {
         width: '50%',
         }}
       >
-      <CompanyForm onSubmit={this.createContact}/>
+      <ContactForm onSubmit={this.createContact}/>
       </Paper>
     </div>
     )
+ }
+}
 
 const mapStateToProps = function (state) {
 	return {

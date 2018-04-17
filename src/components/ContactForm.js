@@ -4,7 +4,7 @@ import React, {PureComponent} from 'react'
 import {Redirect} from 'react-router-dom'
 import PropTypes from 'prop-types'
 
-class CompanyForm extends PureComponent {
+class ContactForm extends PureComponent {
 state = {}
 
 handleSubmit = (e) => {
@@ -24,15 +24,15 @@ handleSubmit = (e) => {
   		return (
   			<form onSubmit={this.handleSubmit}>
   				<div>
-  					<input name= "companyName" placeholder="Insert Company Name" id= "companyName" value={
-  						this.state.companyName || ''
+  					<input name= "contactFirstName" placeholder="Insert First Name" id= "contactFirstName" value={
+  						this.state.contactFirstName || ''
  					} onChange={ this.handleChange } />
 
           </div>
 
   				<div>
-          	<input name= "companyLogo" placeholder="Link to Company Logo" id= "companyLogo" value={
-  						this.state.companyLogo || ''
+          	<input name= "contactLastName" placeholder="Insert Last Name" id= "contactLastName" value={
+  						this.state.contactLastName || ''
   					} onChange={ this.handleChange } />
   				</div>
   				<button type="submit">Save</button>
@@ -41,4 +41,4 @@ handleSubmit = (e) => {
   	}
   }
 
-export default CompanyForm
+export default ContactForm
