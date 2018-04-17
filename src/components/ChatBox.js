@@ -8,24 +8,18 @@ import ContentSend from 'material-ui/svg-icons/content/send';
 
 const styles = {
     container: {
-        position: 'relative',
-        width: '45%',
         alignItems: 'center',
         justifyContent: 'center',
-        display: 'inline-block',
-        float: 'left',
-        marginLeft: 30,
-        marginTop: 90,
+        flex: '1',
+        flexGrow: '1',
+        margin: 5,
     },
     paper: {
         width: '30vw',
         height: '80vh',
-        // maxWidth: '400px',
-        // maxHeight: '700px',
         display: 'flex',
         alignItems: 'center',
         flexDirection: 'column',
-        position: 'relative'
     },
     record: {
         width: '90%',
@@ -37,7 +31,7 @@ const styles = {
     messagesBody: {
         width: 'calc( 100% - 20px )',
         margin: 10,
-        overflowY: 'scroll',
+        overflow: 'scroll',
         height: 'calc( 100% - 80px )',
     },
     message: {

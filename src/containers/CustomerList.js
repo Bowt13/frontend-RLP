@@ -36,7 +36,6 @@ class CustomerList extends PureComponent {
     this.setState({
       customers: searchForOrder(customers ,value)
     })
-    // this.setState({ init: event.target.value })
   }
 
 	render() {
@@ -88,6 +87,7 @@ class CustomerList extends PureComponent {
                     hoverColor= '#f4b357'
                     style={{
                       textAlign: 'right',
+                      textOverflow: ''
                     }}
                     primaryText={ `${order.shortDescription}` }
                     secondaryText={ 'Besteldatum:' + ' ' + `${order.orderDate}` }

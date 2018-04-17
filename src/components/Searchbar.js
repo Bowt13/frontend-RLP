@@ -35,7 +35,6 @@ class Searchbar extends PureComponent {
             flexDirection: 'column',
             flexGrow: '1',
             width: '110%',
-            flexDirection: 'column',
             margin: 5,
           }}>
             <TextField
