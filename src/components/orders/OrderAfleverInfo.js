@@ -131,6 +131,9 @@ class OrderRemarkForm extends PureComponent {
                 textFieldStyle={{
                   width: '90%',
                 }}
+                dialogContainerStyle={{
+                  color: '#F09517',
+                }}
               />
               <br/>
               <Shipping
@@ -155,6 +158,9 @@ class OrderRemarkForm extends PureComponent {
                   label={`${delivery.deliveryType} - ${delivery.condition}`}
                   style={{
                     marginBottom: 10,
+                  }}
+                  iconStyle={{
+                    fill: '#F09517',
                   }}
                   onClick={_ => this.handleChangeRadio('DeliveryType', delivery)}
                 />

@@ -6,7 +6,6 @@ import orders from './orders'
 import customers from './customers'
 import deliveries from './deliveries'
 
-
 export default {
   signup,
   login,
@@ -14,5 +13,5 @@ export default {
   user,
   orders,
   customers,
-  deliveries,
+  deliveries
 }
