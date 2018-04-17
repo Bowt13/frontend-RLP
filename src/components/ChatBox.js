@@ -19,7 +19,7 @@ const styles = {
     },
     paper: {
         width: '30vw',
-        height: '90vh',
+        height: '80vh',
         // maxWidth: '400px',
         // maxHeight: '700px',
         display: 'flex',
