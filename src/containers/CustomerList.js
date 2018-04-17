@@ -5,6 +5,9 @@ import { connect } from 'react-redux'
 //Components
 import Searchbar from '../components/Searchbar'
 
+//Functions
+import { searchForOrder } from '../lib/functions'
+
 //MaterialUI
   //Components
     // import RaisedButton from 'material-ui/RaisedButton'
@@ -18,14 +21,32 @@ import { getCustomers } from '../actions/users'
 
 class CustomerList extends PureComponent {
 
+  state={
+    props:true
+  }
   componentWillMount() {
     this.props.getCustomers()
+
+  }
+
+  handleSubmit = (value) => {
+    const { customers } = this.props
+    if (this.state.props === true)
+      this.setState({props:false})
+    this.setState({
+      customers: searchForOrder(customers ,value)
+    })
+    // this.setState({ init: event.target.value })
   }
 
 	render() {
 
-    const { customers, history } = this.props
-
+    const { history } = this.props
+    let customers
+    if (this.state.props)
+      customers= this.props.customers
+    if(!this.state.props)
+      customers= this.state.customers
 		return (
       <div style={{
         display: 'flex'
@@ -84,7 +105,9 @@ class CustomerList extends PureComponent {
           }
         </List>
         </Paper>
-        <Searchbar />
+        <Searchbar
+          onSubmit={ this.handleSubmit }
+        />
       </div>
 		)
 	}

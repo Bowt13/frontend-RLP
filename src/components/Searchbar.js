@@ -1,6 +1,7 @@
 //Dependencies
 import React, {PureComponent} from 'react'
-// import {connect} from 'react-redux'
+
+
 
 //MaterialUI
   //Components
@@ -9,17 +10,26 @@ import React, {PureComponent} from 'react'
 
 class Searchbar extends PureComponent {
 
-  state = { init: '' }
+  state = { zoeken: '' }
 
   handleSubmit = (event) => {
-    event.preventDefault()
-    this.setState({ init: event.target.value })
+		event.preventDefault()
+		this.props.onSubmit(this.state.zoeken)
+	}
+
+  handleChange = (event) => {
+    const { name, value } = event.target
+    this.setState({
+      [name]: value
+    })
   }
 
   render() {
     return(
       <div>
-        <form>
+        <form
+          onSubmit={ this.handleSubmit }
+        >
           <Paper style={{
             flex: '1',
             flexDirection: 'column',
@@ -40,10 +50,11 @@ class Searchbar extends PureComponent {
             underlineFocusStyle={{
               borderColor: '#F09517',
             }}
-            name='Zoeken'
+            name='zoeken'
+            type='text'
             floatingLabelText="Zoeken"
-            value={ this.state.init }
-            onSubmit={this.handleSubmit}
+            value={ this.state.zoeken }
+            onChange={ this.handleChange }
             />
           </Paper>
         </form>
