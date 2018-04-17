@@ -65,136 +65,29 @@ static propTypes = {
    this.props.createContact(contact)
  }
 
- //  updateCheck() {
- //   this.setState((oldState) => {
- //     return {
- //       checked: !oldState.checked,
- //     };
- //   });
- // }
- //
- //
- //  handleChange = (event) => {
- //    const {name, value} = event.target
- //    this.setState({
- //      [name]: value
- //    })
- //  }
- //
- //  handleSubmit = () => {
- //    this.props.onChange('Create Contact', this.state)
- //  }
+ render() {
+   const {contact} = this.propTypes
+   console.log(contact);
+ }
 
-  // componentDidMount() {
-  //   this.props.onRef(this)
-  // }
+  return (
+    <div style={{
+      textAlign: 'center',
+    }}>
 
-	render() {
-
-    const {contact} = this.props
-    console.log(contact);
-
-		return (
-      <Paper style={{
+      <Paper
+        style={{
         position: 'relative',
         top: 80,
         botom: 10,
-        margin: 'auto',
+        left: '25%',
         width: '50%',
-        overflow: 'scroll',
-      }}>
-
-      <Subheader style={{
-        fontSize: 40,
-      }}>Create Contact</Subheader>
-      <Divider style={{
-        padding: 1,
-        marginBottom: 1,
-      }}/>
-        <form
-          name='Create Contact'
-        >
-        <TextField
-          floatingLabelFocusStyle={{
-            color: '#F09517',
-          }}
-          underlineFocusStyle={{
-            borderColor: '#F09517',
-          }}
-          firstName='First Name'
-          floatingLabelText="First Name:"
-          value={this.state.firstName || ''}
-          onChange={this.handleChange}
-        />
-        <br/>
-
-
-        <TextField
-          floatingLabelFocusStyle={{
-            color: '#F09517',
-          }}
-          underlineFocusStyle={{
-            borderColor: '#F09517',
-          }}
-          lastName='Last Name'
-          floatingLabelText="Last Name:"
-          value={this.state.lastName || ''}
-          onChange={this.handleChange}
-        />
-        <br/>
-
-
-        <TextField
-          floatingLabelFocusStyle={{
-            color: '#F09517',
-          }}
-          underlineFocusStyle={{
-            borderColor: '#F09517',
-          }}
-          name='emailAdres'
-          floatingLabelText="Email Adres:"
-          value={this.state.emailAdres || ''}
-          onChange={this.handleChange}
-        />
-        <br/>
-
-        <TextField
-          floatingLabelFocusStyle={{
-            color: '#F09517',
-          }}
-          underlineFocusStyle={{
-            borderColor: '#F09517',
-          }}
-          name='telephoneNumber'
-          floatingLabelText="Telephone Number:"
-          value={this.state.telephoneNumber || ''}
-          onChange={this.handleChange}
-          style={{
-            marginBottom: 10,
-          }}
-        />
-        <br/>
-
-        <div style={{display: "inline-block",textAlign:"center"}}>
-          <Checkbox
-            label="Internal"
-          iconStyle={{
-            fill: '#F09517'
-          }}
-          />
-          <br/>
-          <br/>
-        </div>
-
-        <div style={{display: "inline-block"}}>
-        <RaisedButton label="Save"/>
-        </div>
-        <ContactForm onSubmit={this.creataContact}/>
-        </form>
-        </Paper>
-		)
-	}
-}
+        }}
+      >
+      <CompanyForm onSubmit={this.createContact}/>
+      </Paper>
+    </div>
+    )
 
 const mapStateToProps = function (state) {
 	return {
