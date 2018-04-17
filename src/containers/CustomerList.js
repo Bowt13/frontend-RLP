@@ -67,7 +67,7 @@ class CustomerList extends PureComponent {
                     }}
                     primaryText={ `${order.shortDescription}` }
                     secondaryText={ 'Besteldatum:' + ' ' + `${order.orderDate}` }
-                    onClick={ _=> history.push(`/flexicon/orders/${order.orderNumber}`) }
+                    onClick={ _=> history.push(`/flexicon/orders/${order.id}`) }
                   />
                 </div>
               ))
