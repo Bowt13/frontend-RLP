@@ -18,6 +18,10 @@ export const GET_ORDERS = 'GET_ORDERS'
 export const GET_ORDER = 'ADD_ORDER'
 export const ADD_ORDER = 'ADD_ORDER'
 
+//contact
+export const GET_CONTACTS = 'GET_CONTACTS'
+export const ADD_CONTACT = 'ADD_CONTACT'
+
 //deliveries
 export const GET_DELIVERIES = 'GET_DELIVERIES'
 export const ADD_DELIVERY = 'ADD_DELIVERY'
