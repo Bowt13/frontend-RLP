@@ -170,7 +170,6 @@ class OrderDetails extends PureComponent {
               ))}
             </GridList>
           </div>
-
         </Paper>
       </div>
 		)
