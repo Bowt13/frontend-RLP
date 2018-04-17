@@ -10,6 +10,7 @@ import PropTypes from 'prop-types'
     import RaisedButton from 'material-ui/RaisedButton'
     import Paper from 'material-ui/Paper';
     import Divider from 'material-ui/Divider';
+    import Checkbox from 'material-ui/Checkbox';
 
   //Icons
     import Account from 'material-ui/svg-icons/action/account-circle'
@@ -25,12 +26,32 @@ import PropTypes from 'prop-types'
   //Actions
 
 
+
+const styles = {
+  block: {
+    maxWidth: 250,
+  },
+  checkbox: {
+    marginBottom: 16,
+  },
+}
+
+
 class contactCreator extends PureComponent {
   static propTypes = {
     onChange: PropTypes.func.isRequired,
   }
   state = {
   }
+
+  updateCheck() {
+   this.setState((oldState) => {
+     return {
+       checked: !oldState.checked,
+     };
+   });
+ }
+
 
   handleChange = (event) => {
     const {name, value} = event.target
@@ -129,21 +150,15 @@ class contactCreator extends PureComponent {
             marginBottom: 10,
           }}
         />
+        <br/>
 
-        <TextField
-          floatingLabelFocusStyle={{
-            color: '#F09517',
-          }}
-          underlineFocusStyle={{
-            borderColor: '#F09517',
-          }}
-          name='Role'
-          floatingLabelText="Role:"
-          value={this.state.Role || ''}
-          onChange={this.handleChange}
-        />
-        <br/>
-        <br/>
+        <div style={styles.block}>
+          <Checkbox
+            label="Internal Role"
+            style={styles.checkbox}
+            
+          />
+        </div>
         </form>
       </div>
 		)
