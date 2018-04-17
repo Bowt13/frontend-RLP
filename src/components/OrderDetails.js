@@ -128,8 +128,12 @@ class OrderDetails extends PureComponent {
           padding: 5,
           marginBottom: 5,
         }}/>
-        <div>
-          <List>
+        <div style={{
+          display: 'flex',
+        }}>
+          <List style={{
+            flex: '1',
+          }}>
             <ListItem disabled={true} primaryText="Bonnummer" secondaryText={`${order.orderNumber}`}/>
             <Divider/>
             <ListItem disabled={true} primaryText="Korte omschrijving" secondaryText={`${order.shortDescription}`}/>

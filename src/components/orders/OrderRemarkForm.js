@@ -204,7 +204,7 @@ class OrderRemarkForm extends PureComponent {
                 style={{
                   position: 'relative',
                   left: -350,
-                  width: 177,
+                  width: 'auto',
                   margin: 15,
                 }}
                 containerElement="label"

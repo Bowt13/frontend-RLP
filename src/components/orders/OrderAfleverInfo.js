@@ -89,7 +89,7 @@ class OrderRemarkForm extends PureComponent {
         position: 'relative',
         top: 0,
         marginLeft: 50,
-        marginBottom: 10,
+        marginBottom: 5,
       }}>
       <Paper>
         <h1

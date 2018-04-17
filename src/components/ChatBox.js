@@ -104,6 +104,9 @@ class ChatBox extends PureComponent {
             <div style={styles.record}>
               <TextField
                 id="input"
+                underlineFocusStyle={{
+                  borderColor: '#F09517',
+                }}
                 value={this.state.text}
                 onChange={e => {
                   if (e.keyCode == 13) {
