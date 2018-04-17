@@ -37,7 +37,6 @@ class BezoekAdresForm extends PureComponent {
     this.setState({
       [name]: value
     })
-    console.log(this.state)
   }
 
   handleSubmit = () => {
@@ -53,7 +52,7 @@ class BezoekAdresForm extends PureComponent {
 		return (
       <div style={{
         display: 'inline-block',
-        textAlign: 'center',
+        float: 'left',
       }}>
       <h1
         style={{
@@ -78,6 +77,12 @@ class BezoekAdresForm extends PureComponent {
           }}
         />
         <TextField
+          floatingLabelFocusStyle={{
+            color: '#F09517',
+          }}
+          underlineFocusStyle={{
+            borderColor: '#F09517',
+          }}
           name='Bedrijfsnaam'
           floatingLabelText="Bedrijfsnaam:"
           value={this.state.Bedrijfsnaam || ''}
@@ -92,6 +97,12 @@ class BezoekAdresForm extends PureComponent {
           }}
         />
         <TextField
+          floatingLabelFocusStyle={{
+            color: '#F09517',
+          }}
+          underlineFocusStyle={{
+            borderColor: '#F09517',
+          }}
           name='Contactpersoon'
           floatingLabelText="Contactpersoon:"
           value={this.state.Contactpersoon || ''}
@@ -106,23 +117,15 @@ class BezoekAdresForm extends PureComponent {
           }}
         />
         <TextField
+          floatingLabelFocusStyle={{
+            color: '#F09517',
+          }}
+          underlineFocusStyle={{
+            borderColor: '#F09517',
+          }}
           name='Adres1'
           floatingLabelText="Adres 1:"
           value={this.state.Adres1 || ''}
-          onChange={this.handleChange}
-        />
-        <br/>
-        <Adres
-          style={{
-            position: 'relative',
-            top: 5,
-            left: -15,
-          }}
-        />
-        <TextField
-          name='Adres2'
-          floatingLabelText="Adres 2:"
-          value={this.state.Adres2 || ''}
           onChange={this.handleChange}
         />
         <br/>
@@ -134,6 +137,12 @@ class BezoekAdresForm extends PureComponent {
           }}
         />
         <TextField
+          floatingLabelFocusStyle={{
+            color: '#F09517',
+          }}
+          underlineFocusStyle={{
+            borderColor: '#F09517',
+          }}
           name='Postcode'
           floatingLabelText="Postcode:"
           value={this.state.Postcode || ''}
@@ -148,6 +157,12 @@ class BezoekAdresForm extends PureComponent {
           }}
         />
         <TextField
+          floatingLabelFocusStyle={{
+            color: '#F09517',
+          }}
+          underlineFocusStyle={{
+            borderColor: '#F09517',
+          }}
           name='Land'
           floatingLabelText="Land:"
           value={this.state.Land || ''}
@@ -162,10 +177,19 @@ class BezoekAdresForm extends PureComponent {
           }}
         />
         <TextField
+          floatingLabelFocusStyle={{
+            color: '#F09517',
+          }}
+          underlineFocusStyle={{
+            borderColor: '#F09517',
+          }}
           name='Telefoonnummer'
           floatingLabelText="Telefoonnummer:"
           value={this.state.Telefoonnummer || ''}
           onChange={this.handleChange}
+          style={{
+            marginBottom: 10,
+          }}
         />
         <br/>
         </form>

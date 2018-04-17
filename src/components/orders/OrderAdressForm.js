@@ -27,8 +27,8 @@ class OrderAdressForm extends PureComponent {
     onChange: PropTypes.func.isRequired,
   }
   state = {
-    factuurAdres: false,
-    afleverAdres: false,
+    factuurAdres: true,
+    afleverAdres: true,
   }
 
   updateCheckFA() {
@@ -37,9 +37,6 @@ class OrderAdressForm extends PureComponent {
         factuurAdres: !oldState.factuurAdres,
       }
     })
-    if(this.state.afleverAdres === true) {
-      this.updateCheckAA()
-    }
   }
 
   updateCheckAA() {
@@ -58,21 +55,12 @@ class OrderAdressForm extends PureComponent {
 
   onClick = () => {
     this.bezoekAdresForm.handleSubmit()
-    {this.state.factuurAdres &&
+    {!this.state.factuurAdres &&
       this.factuurAdresForm.handleSubmit()
     }
-    {this.state.afleverAdres &&
+    {!this.state.afleverAdres &&
       this.afleverAdresForm.handleSubmit()
     }
-    console.log(Object.values(this.state).length)
-    // switch (this.state.length) {
-    //   case expression:
-    //
-    //     break;
-    //   default:
-    //
-    // }
-    //this.props.onChange('OrderAdres', {bezoekAdres: this.bezoekAdresForm.state, factuurAdres: this.factuurAdresForm.state})
     this.props.onChange('OrderAdres', this.state)
 
   }
@@ -86,94 +74,80 @@ class OrderAdressForm extends PureComponent {
 		return (
       <div style={{
         display: 'inline-block',
+        float: 'left',
+        marginBottom: 10,
       }}>
         <Paper
           style={{
             display: 'inline',
             float: 'left',
-            position: 'relative',
-            left: -50,
-            height: 660,
+            height: 585,
             width: 350,
+            marginLeft: 50,
+            marginTop: 25,
            }}
         >
           <BezoekAdresForm onChange={handleChange} onRef={ref => (this.bezoekAdresForm = ref)}/>
           <Checkbox
-          label="Bezoekadres is ook het factuuradres en afleveradres?"
+          label="Factuuradres is gelijk aan bezoekadres"
           labelPosition="left"
           checked={this.state.factuurAdres}
           onCheck={this.updateCheckFA.bind(this)}
           style={{
             position: 'relative',
-            left: -5,
-            margin: 10,
+            marginBottom: 10,
+          }}
+          labelStyle={{
+            marginLeft: 5,
+          }}
+          iconStyle={{
+            fill: '#F09517'
           }}
           />
-        </Paper>
-
-        {this.state.factuurAdres &&
-        <Paper
-          style={{
-            display: 'inline',
-            float: 'left',
-            position: 'relative',
-            left: -0,
-            height: 660,
-            width: 350,
-           }}
-        >
-          <FactuurAdresForm onChange={handleChange} onRef={ref => (this.factuurAdresForm = ref)}/>
           <Checkbox
-          label="Factuuradres is ook het afleveradres?"
+          label="Afleveradres is gelijk aan bezoekadres"
           labelPosition="left"
           checked={this.state.afleverAdres}
           onCheck={this.updateCheckAA.bind(this)}
           style={{
             position: 'relative',
-            left: -5,
-            margin: 10,
+          }}
+          labelStyle={{
+            marginLeft: 5,
+          }}
+          iconStyle={{
+            fill: '#F09517'
           }}
           />
-        </Paper>}
+        </Paper>
 
         {!this.state.factuurAdres &&
-        <div
-          style={{
-            display: 'inline',
-            float: 'left',
-            position: 'relative',
-            left: -0,
-            height: 660,
-            width: 350,
-           }}
-        />
-        }
-
-        {this.state.afleverAdres &&
         <Paper
           style={{
             display: 'inline',
             float: 'left',
-            position: 'relative',
-            left: 50,
-            height: 660,
+            height: 585,
             width: 350,
+            marginLeft: 50,
+            marginTop: 25,
+           }}
+        >
+          <FactuurAdresForm onChange={handleChange} onRef={ref => (this.factuurAdresForm = ref)}/>
+        </Paper>}
+
+        {!this.state.afleverAdres &&
+        <Paper
+          style={{
+            display: 'inline',
+            float: 'left',
+            height: 585,
+            width: 350,
+            marginLeft: 50,
+            marginTop: 25,
            }}
         >
           <AfleverAdresForm onChange={handleChange} onRef={ref => (this.afleverAdresForm = ref)}/>
         </Paper>}
-
-        {!this.state.afleverAdres &&
-        <div
-          style={{
-            display: 'inline',
-            float: 'left',
-            position: 'relative',
-            left: 50,
-            height: 660,
-            width: 350,
-           }}
-        />}
 
       </div>
 		)

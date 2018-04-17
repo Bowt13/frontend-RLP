@@ -5,6 +5,7 @@ export const USER_LOGIN_SUCCESS = 'USER_LOGIN_SUCCESS'
 export const USER_LOGIN_FAILED = 'USER_LOGIN_FAILED'
 export const USER_LOGOUT = 'USER_LOGOUT'
 export const GET_USER = 'GET_USER'
+export const GET_CUSTOMERS = 'GET_CUSTOMERS'
 
 //password
 export const FORGOT_PASSWORD = 'FORGOT_PASSWORD'
@@ -12,10 +13,14 @@ export const FORGOT_PASSWORD = 'FORGOT_PASSWORD'
 //Socket
 export const MESSAGE_SUCCESS = 'MESSAGE_SUCCESS'
 
-//Order types
+//order types
 export const GET_ORDERS = 'GET_ORDERS'
 export const GET_ORDER = 'ADD_ORDER'
 export const ADD_ORDER = 'ADD_ORDER'
 
 //Company
 export const GET_COMPANIES = 'GET_COMPANIES'
+
+//deliveries
+export const GET_DELIVERIES = 'GET_DELIVERIES'
+export const ADD_DELIVERY = 'ADD_DELIVERY'

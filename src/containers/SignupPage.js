@@ -23,25 +23,7 @@ class SignupPage extends PureComponent {
 
 	// 	const { authenticated } = this.props
 	//
-	// 	if(!authenticated) return (
-	// 		<div>
-	// 			<Paper style={{
-	// 				display: 'inline-block',
-	// 				margin: 50,
-	// 				width: 450,
-	// 				height: 300,
-	// 				padding: 20,
-	// 				textAlign: 'center',
-	// 				lineHeight: 1.6,
-	// 			}}
-	// 			zDepth={2}
-	// 			>
-	// 				<h2>Het lijkt erop dat je geen geregistreerde klant bent.</h2>
-	// 				<p>Als je een uitnodiging van Flexicon hebt gekregen en de link je naar deze pagina brengt,
-	// 					neem alsjeblieft contact op met de contactpersoon in de e-mail.</p>
-	// 			</Paper>
-	// 	</div>
-	// )
+	// 	if(!authenticated)
     const pathname = this.props.location.pathname
 		if (this.props.signup.success) {
 			if (pathname.indexOf('forgotpassword') <= 0)
@@ -54,6 +36,28 @@ class SignupPage extends PureComponent {
 				)
 			}
 	  }
+
+		if (this.props.signup.success === false) {
+			return (
+				<div>
+					<Paper style={{
+						display: 'inline-block',
+						margin: 50,
+						width: 450,
+						height: 300,
+						padding: 20,
+						textAlign: 'center',
+						lineHeight: 1.6,
+					}}
+					zDepth={2}
+					>
+						<h2>Het lijkt erop dat je geen geregistreerde klant bent.</h2>
+						<p>Als je een uitnodiging van Flexicon hebt gekregen en de link je naar deze pagina brengt,
+							neem alsjeblieft contact op met de contactpersoon in de e-mail.</p>
+					</Paper>
+				</div>
+			)
+		}
 
 		return (
 			<div className='signup-page'>
@@ -87,7 +91,7 @@ class SignupPage extends PureComponent {
 
 const mapStateToProps = function (state) {
 	return {
-	//	authenticated: state.currentUser !== null,
+		// authenticated: state.currentUser !== null,
 		signup: state.signup
 	}
 }

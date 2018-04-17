@@ -6,7 +6,7 @@ import {ADD_ORDER, GET_ORDERS, GET_ORDER} from './types'
 export const addOrder = (order,addresses) => (dispatch, getState) => {
   const state = getState()
   const jwt = state.currentUser.jwt
-
+  console.log(order, addresses)
   request
 		.post(`${baseUrl}/orders`)
 		.send({ order, addresses })
@@ -26,7 +26,7 @@ export const getOrders = () => (dispatch, getState) => {
 
   request
 		.get(`${baseUrl}/orders`)
-    		.set('Authorization', `Bearer ${jwt}`)
+    .set('Authorization', `Bearer ${jwt}`)
 		.then(result => {
 			dispatch({
 				type: GET_ORDERS,
