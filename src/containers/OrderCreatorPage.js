@@ -356,9 +356,9 @@ class OrderCreator extends PureComponent {
     const {handleChange} = this
     const {authenticated} = this.props
 
-    if(authenticated) return (
-      <Redirect to="/" />
-    )
+    // if(authenticated) return (
+    //   <Redirect to="/" />
+    // )
 
 		return (
       <div
@@ -394,7 +394,7 @@ class OrderCreator extends PureComponent {
                 float: 'left',
                 width: '90%',
                 marginLeft: 50,
-                marginBottom: 30,
+                marginBottom: 15,
               }}
               onClick={_ => this.handleSubmit()}
             >
