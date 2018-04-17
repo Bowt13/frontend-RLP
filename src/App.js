@@ -9,6 +9,7 @@
   import SignupPage from './containers/SignupPage'
   import OrderCreator from './containers/OrderCreatorPage'
   import CustomerList from './containers/CustomerList'
+  import CompanyCreator from './containers/CompanyCreatorPage'
 
 //MATERIALUI
   //PROVIDER
@@ -37,6 +38,7 @@ class App extends Component {
           <Route exact path="/flexicon/orders/:orderNumber" component={ OrderDetails }/>
           <Route exact path="/flexicon/companies" component={ InternalContactOverview }/>
           <Route exact path="/flexicon/orders/:orderId" component={ OrderDetails }/>
+          <Route exact path="/flexicon/companies/creator" component={ CompanyCreator }/>
           <Route exact path="/chatbox" component={ ChatBox } />
           <Route exact path="/" render={ () => <Redirect to="/login" /> } />
         </div>

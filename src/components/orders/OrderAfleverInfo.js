@@ -89,7 +89,7 @@ class OrderRemarkForm extends PureComponent {
         position: 'relative',
         top: 0,
         marginLeft: 50,
-        marginBottom: 10,
+        marginBottom: 5,
       }}>
       <Paper>
         <h1
@@ -132,7 +132,14 @@ class OrderRemarkForm extends PureComponent {
                   width: '90%',
                 }}
                 dialogContainerStyle={{
-                  color: '#F09517',
+                  containerBackgroundColor: 'green',
+                  bodyColor: 'black',
+                  headerColor: 'black',
+                  textColor: 'orange',
+                  color: 'green',
+                  calendarTextColor: 'orange',
+                  selectColor: 'green',
+
                 }}
               />
               <br/>
@@ -158,9 +165,6 @@ class OrderRemarkForm extends PureComponent {
                   label={`${delivery.deliveryType} - ${delivery.condition}`}
                   style={{
                     marginBottom: 10,
-                  }}
-                  iconStyle={{
-                    fill: '#F09517',
                   }}
                   onClick={_ => this.handleChangeRadio('DeliveryType', delivery)}
                 />
