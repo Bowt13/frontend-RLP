@@ -75,6 +75,9 @@ class CustomerList extends PureComponent {
             <div>
               <Divider />
               <ListItem
+              style={{
+                maxWidth: '100%',
+              }}
               initiallyOpen={ false }
               primaryTogglesNestedList={ true }
               hoverColor= '#F09517'
