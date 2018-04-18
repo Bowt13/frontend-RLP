@@ -14,6 +14,7 @@ import { searchForContact } from '../lib/functions'
     import Divider from 'material-ui/Divider'
     import Avatar from 'material-ui/Avatar';
     import SearchBar from 'material-ui-search-bar'
+    import RaisedButton from 'material-ui/RaisedButton';
 
 //Actions
 import { getCustomers } from '../actions/users'
@@ -130,6 +131,16 @@ class CustomerList extends PureComponent {
             </div>
           )}
           </List>
+          <div>
+          <RaisedButton
+            labelStyle={{
+              labelColor: '#F09517'
+            }}
+            label="Create Company"
+            onClick={ _=> history.push(`/flexicon/companies/creator`) }
+
+             />
+          </div>
       </Paper>
 
     </div>
