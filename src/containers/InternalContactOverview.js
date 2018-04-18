@@ -18,6 +18,7 @@ import PropTypes from 'prop-types'
     import Subheader from 'material-ui/Subheader';
     import Divider from 'material-ui/Divider';
     import Business from 'material-ui/svg-icons/communication/business'
+    import SearchBar from 'material-ui-search-bar'
 
   //Colors
 
@@ -70,7 +71,14 @@ class InternalContactOverview extends PureComponent {
       <div style={{
         textAlign: 'center',
       }}>
-
+      <SearchBar
+        onChange={() => console.log('onChange')}
+        onRequestSearch={() => console.log('onRequestSearch')}
+        style={{
+        margin: '0 auto',
+        maxWidth: 800
+        }}
+        />
         <Paper
           style={{
             position: 'relative',
@@ -80,6 +88,15 @@ class InternalContactOverview extends PureComponent {
             width: '50%',
           }}
         >
+        <SearchBar
+          onChange={() => console.log('onChange')}
+          onRequestSearch={() => console.log('onRequestSearch')}
+          style={{
+          margin: '0 auto',
+          maxWidth: 800
+          }}
+          />
+          <br />
           <List
             style={{
               position: 'relative',
