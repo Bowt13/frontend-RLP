@@ -1,5 +1,7 @@
 //Dependencies
 import React, {PureComponent} from 'react'
+import { Redirect, Link } from 'react-router-dom'
+import {withRouter} from 'react-router'
 
 //MaterialUI
 import Paper from 'material-ui/Paper';
@@ -7,7 +9,6 @@ import Subheader from 'material-ui/Subheader';
 import Divider from 'material-ui/Divider';
 import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton'
-
 
 class CompanyForm extends PureComponent {
 	state = {}
@@ -26,7 +27,8 @@ class CompanyForm extends PureComponent {
   };
 
   render() {
-  		return (
+
+		return (
 				<div style={{ textAlign: 'center'}}>
 		      <Paper style={{
 		        position: 'relative',
@@ -60,18 +62,19 @@ class CompanyForm extends PureComponent {
 		          <br/>
 							<br/>
 							<div style={{display: "inline-block"}}>
-		            <RaisedButton type="submit" label="Save" backgroundColor='#F09517'/ >
+		            <RaisedButton type="submit" label="Save" backgroundColor='#F09517'
+					      onClick={ _=> this.props.history.push(`/flexicon/customers`) }/>
 		          </div>
 							<br/>
 							<br/>
 		          <br/>
 						</form>
 			      </Paper>
-			      </div>
+						</div>
 					)
 				}
 			}
 
 
 
-export default CompanyForm
+export default withRouter(CompanyForm)

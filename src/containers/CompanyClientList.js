@@ -50,12 +50,29 @@ class CustomerList extends PureComponent {
     //console.log(customers)
 
   	return (
+      <div>
+      <div>
+      <RaisedButton
+        label="Maak een bedrijf"
+        backgroundColor='#F09517'
+        style={{
+          postion: 'relative',
+          margin: 30,
+          marginTop: 5,
+          backgroundColor: '#9A9A98',
+        }}
+        onClick={ _=> history.push(`/flexicon/companies/creator`) }
+
+         />
+      </div>
+
       <div style={{
         display: 'flex',
         width: '80%',
         margin: 'auto',
         paddingTop: '5em',
         }}>
+
 
         <Paper style={{
           overflow: 'scroll',
@@ -130,22 +147,10 @@ class CustomerList extends PureComponent {
 
             </div>
           )}
-          </List>  
+          </List>
       </Paper>
-      <div>
-      <RaisedButton
-        label="Maak een bedrijf"
-        backgroundColor='#F09517'
-        style={{
-          postion: 'relative',
-          margin: 30,
-          marginTop: 5,
-          backgroundColor: '#9A9A98',
-        }}
-        onClick={ _=> history.push(`/flexicon/companies/creator`) }
 
-         />
-      </div>
+    </div>
     </div>
     )
   }
