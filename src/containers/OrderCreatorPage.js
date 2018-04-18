@@ -298,7 +298,7 @@ class OrderCreator extends PureComponent {
     this.orderAfleverInfo.onClick()
     setTimeout(_ => console.log(this.state), 20)
     setTimeout(_ => console.log(new Date()), 20)
-    setTimeout(() => this.props.addOrder(
+    setTimeout(_ => this.props.addOrder(
       {
         orderNumber: this.state.OrderInfo.Bonnummer,
         shortDescription: this.state.OrderRemarkForm.KorteOmschrijving,
@@ -312,7 +312,7 @@ class OrderCreator extends PureComponent {
         addresses: [{}]
       }
     ), 20)
-    // setTimeout(() => this.props.addOrderNewAPI(
+    // setTimeout(_ => this.props.addOrderNewAPI(
     // {
     //   "amount": this.state.OrderRemarkForm.Aantal,
     //   "billing_addr_id": null,
