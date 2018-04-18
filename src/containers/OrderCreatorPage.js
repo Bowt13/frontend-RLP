@@ -54,9 +54,9 @@ class OrderCreator extends PureComponent {
         paymentType: 'cash',
         deliveryId: this.state.OrderAfleverInfo.DeliveryType.id,
         companyId: this.props.user.companyId,
-      },{
-        addresses: [{}]
-      }
+      },
+        // [{ this.state.afleveradres }, {  }]
+      // ,
     ), 20)
     setTimeout(_ => this.props.history.push('/flexicon/orders'), 25)
     // setTimeout(_ => this.props.addOrderNewAPI(
