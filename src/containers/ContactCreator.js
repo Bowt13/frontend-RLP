@@ -39,7 +39,7 @@ class contactCreator extends PureComponent {
   }
 
  render() {
-
+ if (this.props.user.role && this.props.user.role==='External') return null 
 
   return (
     <div style={{ textAlign: 'center'}}>
@@ -61,7 +61,7 @@ class contactCreator extends PureComponent {
             floatingLabelText="First Name:"
             value={this.state.firstName || ''}
             onChange={this.handleChange}
-          />
+          required/>
           <br/>
           <TextField
             floatingLabelFocusStyle={{ color: '#F09517' }}
@@ -70,7 +70,7 @@ class contactCreator extends PureComponent {
             floatingLabelText="Last Name:"
             value={this.state.lastName || ''}
             onChange={this.handleChange}
-          />
+          required/>
           <br/>
           <TextField
             floatingLabelFocusStyle={{ color: '#F09517' }}
@@ -79,7 +79,7 @@ class contactCreator extends PureComponent {
             floatingLabelText="Email:"
             value={this.state.email || ''}
             onChange={this.handleChange}
-          />
+          required/>
           <br/>
           <TextField
             floatingLabelFocusStyle={{ color: '#F09517' }}
