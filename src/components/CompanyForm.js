@@ -1,7 +1,5 @@
 //Dependencies
 import React, {PureComponent} from 'react'
-import {Redirect} from 'react-router-dom'
-import PropTypes from 'prop-types'
 
 //MaterialUI
 import Paper from 'material-ui/Paper';
