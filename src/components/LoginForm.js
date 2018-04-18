@@ -86,9 +86,8 @@ export default class LoginForm extends PureComponent {
 	          style={
 	            {
 	              position: 'relative',
-	              margin: 30,
+	              margin: 20,
 								backgroundColor:'#9A9A98',
-								marginTop: 10,
 	            }
 	          }
 	          type="submit"
