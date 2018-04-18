@@ -90,7 +90,7 @@ class OrderDetails extends PureComponent {
         <Subheader style={{
           fontSize: 40,
           margin: 8,
-        }}>Bestelling nummer {order.id}</Subheader>
+        }}>Bestelling nummer {order.orderNumber}</Subheader>
         <Divider style={{
           padding: 1,
           backgroundColor: '#F09517',
