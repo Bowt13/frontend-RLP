@@ -10,7 +10,7 @@
   import OrderCreator from './containers/OrderCreatorPage'
   import CustomerList from './containers/CustomerList'
   import CompanyCreator from './containers/CompanyCreatorPage'
-  import CompanyClientList from './containers/CompanyClientList'
+  // import CompanyClientList from './containers/CompanyClientList'
 
 //MATERIALUI
   //PROVIDER

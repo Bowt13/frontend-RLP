@@ -22,6 +22,7 @@ export const addOrder = (order,addresses) => (dispatch, getState) => {
 
   export const addOrderNewAPI = (order) => (dispatch, getState) => {
     const state = getState()
+    console.log(order)
     request
       .post(orderAPIurl)
       .auth('crpi_api_helper_user@rest_client_id', 'codaisseur')
