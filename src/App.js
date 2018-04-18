@@ -4,7 +4,6 @@
   import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom'
 
 //CONTAINERS
-  import InternalContactOverview from './containers/InternalContactOverview'
   import LoginPage from './containers/LoginPage'
   import SignupPage from './containers/SignupPage'
   import OrderCreator from './containers/OrderCreatorPage'
@@ -12,6 +11,7 @@
   import ContactCreator from './containers/ContactCreator'
   import CompanyClientList from './containers/CompanyClientList'
 //import CustomerList from './containers/CustomerList'
+//import InternalContactOverview from './containers/InternalContactOverview'
 
 //MATERIALUI
   //PROVIDER
@@ -33,7 +33,6 @@ class App extends Component {
           <Route exact path="/forgotpassword/:jwt" component={ SignupPage } />
           <Route exact path="/flexicon/create/order" component={ OrderCreator } />
           <Route exact path="/flexicon/users/company/:companyId" component={ ContactCreator } />
-          <Route exact path="/flexicon/InternalContactOverview" component={ InternalContactOverview } />
           <Route exact path="/flexicon/orders" component={ OrdersPage }/>
           <Route exact path="/flexicon/customers" component={ CompanyClientList } />
           <Route exact path="/flexicon/orders/:orderId" component={ OrderDetails }/>
