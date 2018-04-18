@@ -166,6 +166,9 @@ class OrderRemarkForm extends PureComponent {
                   style={{
                     marginBottom: 10,
                   }}
+                  iconStyle={{
+                    fill: '#F09517',
+                  }}
                   onClick={_ => this.handleChangeRadio('DeliveryType', delivery)}
                 />
               ))}
