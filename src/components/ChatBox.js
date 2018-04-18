@@ -94,21 +94,21 @@ class ChatBox extends PureComponent {
                 }
             </Paper>
             <div style={styles.record}>
-              <TextField
-                id="input"
-                underlineFocusStyle={{
-                  borderColor: '#F09517',
-                }}
-                value={this.state.text || ''}
-                onChange={e => {
-                  if (e.keyCode == 13) {
-                    this.send()
-                  }
-                  this.setState({text: e.target.value})
-                }}
-                hintText="type your message here"
-                fullWidth={true}
-              />
+              <form onSubmit={this.send}>
+                <TextField
+                  id="input"
+                  type='text'
+                  underlineFocusStyle={{
+                    borderColor: '#F09517',
+                  }}
+                  value={this.state.text || ''}
+                  onChange={e => {
+                    this.setState({text: e.target.value})
+                  }}
+                  hintText="type your message here"
+                  fullWidth={true}
+                />
+              </form>
               <IconButton
                 onClick={this.send} ref='send'>
                 <ContentSend

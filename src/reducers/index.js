@@ -8,6 +8,7 @@ import company from './company'
 
 import customers from './customers'
 import deliveries from './deliveries'
+import contacts from './contacts'
 
 
 export default {
@@ -18,6 +19,6 @@ export default {
   orders,
   company,
   customers,
-  deliveries
-
+  deliveries,
+  contacts
 }
