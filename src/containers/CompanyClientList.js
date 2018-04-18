@@ -61,6 +61,18 @@ class CustomerList extends PureComponent {
           flexGrow: '2',
           margin: 5,
         }}>
+        <SearchBar
+          onChange={ this.handleSubmit }
+          style={{
+          margin: '0 auto',
+          maxWidth: 1000,
+          maxLength: 500
+          }}
+          />
+          <Divider style={{
+            padding: 1,
+            backgroundColor: '#F09517',
+          }}/>
           <List style={{
             padding: 0,
           }}>
@@ -119,13 +131,7 @@ class CustomerList extends PureComponent {
           )}
           </List>
       </Paper>
-      <SearchBar
-        onChange={ this.handleSubmit }
-        style={{
-        margin: '0 auto',
-        maxWidth: 800
-        }}
-        />
+
     </div>
     )
   }
