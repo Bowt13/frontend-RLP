@@ -1,6 +1,7 @@
 //Dependencies
 import React, {PureComponent} from 'react'
 import {connect} from 'react-redux'
+import {withRouter} from 'react-router'
 
 //MaterialUI
   //Components
@@ -14,19 +15,6 @@ import RaisedButton from 'material-ui/RaisedButton'
 //Actions
 import {createContact} from '../actions/contacts'
 
-// const styles = {
-//   block: {
-//     maxWidth: 250,
-//   },
-//   checkbox: {
-//     marginBottom: 16,
-//   },
-// }
-//
-// const style = {
-//   margin: 12,
-// };
-
 
 class contactCreator extends PureComponent {
   state = {
@@ -35,7 +23,8 @@ class contactCreator extends PureComponent {
 
   handleSubmit = (e) => {
     e.preventDefault()
-    this.props.createContact(this.state)
+    console.log(this.state);
+    this.props.createContact(this.props.match.params.companyId, this.state)
   }
 
   handleChange = event => {
@@ -50,7 +39,7 @@ class contactCreator extends PureComponent {
   }
 
  render() {
-   console.log(this.state);
+
 
   return (
     <div style={{ textAlign: 'center'}}>
@@ -128,8 +117,11 @@ class contactCreator extends PureComponent {
 
 const mapStateToProps = function (state) {
 	return {
-    // contacts: state.contacts
+    user: state.user,
 	}
 }
 
-export default connect(mapStateToProps, {createContact})(contactCreator)
+
+export default withRouter(
+  connect(mapStateToProps, {createContact})(contactCreator)
+)

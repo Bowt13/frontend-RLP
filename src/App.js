@@ -34,7 +34,7 @@ class App extends Component {
           <Route exact path="/signup/:jwt" component={ SignupPage } />
           <Route exact path="/forgotpassword/:jwt" component={ SignupPage } />
           <Route exact path="/flexicon/create/order" component={ OrderCreator } />
-          <Route exact path="/flexicon/create/contact" component={ ContactCreator } />
+          <Route exact path="/flexicon/users/company/:companyId" component={ ContactCreator } />
           <Route exact path="/flexicon/InternalContactOverview" component={ InternalContactOverview } />
           <Route exact path="/flexicon/orders" component={ OrdersPage }/>
           <Route exact path="/flexicon/customers" component={ CustomerList } />
