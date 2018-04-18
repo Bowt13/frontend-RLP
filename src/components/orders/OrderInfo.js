@@ -17,7 +17,7 @@ import PropTypes from 'prop-types'
 
 
 //Actions
-
+import { getBonnummer } from '../../actions/orders'
 
 //Components
 
@@ -25,8 +25,8 @@ class OrderInfo extends PureComponent {
   static propTypes = {
     onChange: PropTypes.func.isRequired,
   }
-  state = {
-  }
+
+  state = {}
 
   handleChange = (event) => {
     const {name, value} = event.target
@@ -37,7 +37,7 @@ class OrderInfo extends PureComponent {
 
   onClick = () => {
     this.props.onChange('OrderInfo', {
-      Bonnummer: this.state.Bonnummer,
+      Bonnummer: this.props.bunnummer,
       currentDate: this.state.currentDate[0]
     })
   }
@@ -50,14 +50,19 @@ class OrderInfo extends PureComponent {
   }
 
   componentWillMount() {
+    if(!this.props.bonnummer) {
+      this.props.getBonnummer()
+    }
     this.props.onRef(this)
     this.setState({
-      Bonnummer: 876,
       currentDate: JSON.stringify(this.formatDate(new Date())).substr(1,10).split('T', 1)
     })
   }
 
 	render() {
+
+    const { bonnummer } = this.props
+
 		return (
       <div style={{
         textAlign: 'center',
@@ -84,7 +89,7 @@ class OrderInfo extends PureComponent {
               name='Bonnummer'
               floatingLabelText="Bonnummer:"
               floatingLabelFixed={true}
-              value={this.state.Bonnummer}
+              value={this.props.bonnummer}
               style={{
                 position: 'relative',
                 margin: 5,
@@ -132,7 +137,8 @@ class OrderInfo extends PureComponent {
 
 const mapStateToProps = function (state) {
 	return {
+    bonnummer: state.bonnummer.orderNumber
 	}
 }
 
-export default connect(mapStateToProps)(OrderInfo)
+export default connect(mapStateToProps,{ getBonnummer })(OrderInfo)

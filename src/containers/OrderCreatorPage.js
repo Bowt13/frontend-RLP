@@ -45,7 +45,7 @@ class OrderCreator extends PureComponent {
     setTimeout(_ => console.log(new Date()), 20)
     setTimeout(_ => this.props.addOrder(
       {
-        orderNumber: this.state.OrderInfo.Bonnummer,
+        orderNumber: this.props.bonnummer,
         shortDescription: this.state.OrderRemarkForm.KorteOmschrijving,
         description: this.state.OrderRemarkForm.Opdrachtomschrijving,
         amount: this.state.OrderRemarkForm.Aantal,
@@ -57,7 +57,7 @@ class OrderCreator extends PureComponent {
         addresses: [{}]
       }
     ), 20)
-    
+
     // setTimeout(_ => this.props.addOrderNewAPI(
     // {
     //   "amount": this.state.OrderRemarkForm.Aantal,
@@ -161,7 +161,8 @@ const mapStateToProps = function (state) {
     currentUser: state.currentUser,
     authenticated: state.currentUser !== null,
     deliveries: state.deliveries,
-    user: state.user
+    user: state.user,
+    bonnummer: state.bonnummer.orderNumber
 	}
 }
 
