@@ -24,9 +24,9 @@ class OrdersPage extends PureComponent {
     this.props.getOrders()
   }
 
-  componentHasMount() {
-    this.props.getOrders()
-  }
+  // componentHasMount() {
+  //   this.props.getOrders()
+  // }
 
   handleToggle = () => {
     this.setState({openProfile: !this.state.openProfile},()=>

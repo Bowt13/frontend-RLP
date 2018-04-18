@@ -58,8 +58,7 @@ class OrderCreator extends PureComponent {
         addresses: [{}]
       }
     ), 20)
-    // this.props.history.push('./flexcion/orders')
-
+    setTimeout(_ => this.props.history.push('/flexicon/orders'), 25)
     // setTimeout(_ => this.props.addOrderNewAPI(
     // {
     //   "amount": this.state.OrderRemarkForm.Aantal,
