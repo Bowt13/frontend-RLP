@@ -36,7 +36,7 @@ class App extends Component {
           <Route exact path="/flexicon/orders" component={ OrdersPage }/>
           <Route exact path="/flexicon/customers" component={ CompanyClientList } />
           <Route exact path="/flexicon/orders/:orderId" component={ OrderDetails }/>
-          <Route exact path="/flexicon/companies/companyId" component={ CompanyCreator }/>
+          <Route exact path="/flexicon/companies" component={ CompanyCreator }/>
           <Route exact path="/chatbox" component={ ChatBox } />
           <Route exact path="/" render={ () => <Redirect to="/login" /> } />
         </div>

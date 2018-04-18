@@ -16,6 +16,9 @@ import { searchForContact } from '../lib/functions'
     import SearchBar from 'material-ui-search-bar'
     import RaisedButton from 'material-ui/RaisedButton';
     import FloatingActionButton from 'material-ui/FloatingActionButton';
+    import IconButton from 'material-ui/IconButton';
+    import ActionGrade from 'material-ui/svg-icons/action/grade';
+
 
 //Actions
 import { getCustomers } from '../actions/users'
@@ -86,7 +89,7 @@ class CustomerList extends PureComponent {
                  marginTop: 5,
                  backgroundColor: '#9A9A98',
                }}
-               onClick={ _=> history.push(`/flexicon/users/company/:company.id`) }
+               onClick={ _=> history.push(`/flexicon/companies`) }
                 />
           </div>
           <Divider style={{
@@ -150,6 +153,9 @@ class CustomerList extends PureComponent {
 
                 )]}
                />
+               <IconButton tooltip="Contactpersoon maken" touch={true} tooltipPosition="bottom-left" label="Contactpersoon maken">
+               <ActionGrade />
+               </IconButton>
                <RaisedButton
 
                  label= "Contactpersoon maken"
