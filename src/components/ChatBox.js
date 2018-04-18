@@ -1,10 +1,14 @@
 //Dependencies
-import React, {PureComponent} from 'react'
-import {connect} from 'react-redux'
+  import React, {PureComponent} from 'react'
+  import {connect} from 'react-redux'
+
 //MaterialUI
-import { Paper, TextField, IconButton, RaisedButton } from "material-ui"
-import Mic from 'material-ui/svg-icons/av/mic';
-import ContentSend from 'material-ui/svg-icons/content/send';
+  import { Paper, TextField, IconButton, RaisedButton } from "material-ui"
+  import Mic from 'material-ui/svg-icons/av/mic';
+  import ContentSend from 'material-ui/svg-icons/content/send';
+
+//Actions
+  import {getCurrentUser} from '../actions/users'
 
 const styles = {
     container: {
@@ -41,48 +45,34 @@ const styles = {
     }
 };
 
-const myMessages = [
-  {
-    message:'Where is my order?!?!?',
-    name:'Harvey Specter'
-  },
-  {
-    message:'almost there mate',
-    name:'Nikki'
-  },
-  {
-    message:'I am not your mate!',
-    name:'Harvey Specter'
-  },
-]
-
 class ChatBox extends PureComponent {
 
   state = {
-      // messages: [],
-      messages: myMessages,
-      text: '',
-      name: 'eva',
+    messages: [],
   }
 
-  send = () => {
-      myMessages.push({
-          name: this.state.name,
+  send = (event) => {
+    event.preventDefault()
+    {this.state.text !== '' &&
+      this.state.messages.push({
+          name: this.props.user.firstName,
           message: this.state.text
-      })
-      // this.forceUpdate() //triggers rerender
+      })}
       this.setState({text: ''})
   }
 
+  componentWillMount(){
+    const {user, getCurrentUser} = this.props
+    getCurrentUser()
+  }
 
   render() {
-    // console.log(this.state);
 		return (
       <div style={styles.container}>
         <div>
           <Paper style={styles.paper} zDepth={2} >
             <Paper style={styles.messagesBody}>
-                {
+                {this.state.messages &&
                   this.state.messages.map(msg =>
                     (
                       <div style={styles.message}>
@@ -94,7 +84,10 @@ class ChatBox extends PureComponent {
                 }
             </Paper>
             <div style={styles.record}>
-              <form onSubmit={this.send}>
+              <form onSubmit={this.send}
+              style={{
+                width: '90%'
+              }}>
                 <TextField
                   id="input"
                   type='text'
@@ -106,7 +99,9 @@ class ChatBox extends PureComponent {
                     this.setState({text: e.target.value})
                   }}
                   hintText="type your message here"
-                  fullWidth={true}
+                  style={{
+                    width: '90%'
+                  }}
                 />
               </form>
               <IconButton
@@ -123,5 +118,13 @@ class ChatBox extends PureComponent {
   }
 }
 
+const mapStateToProps = function (state) {
+	return {
+    currentUser: state.currentUser,
+    authenticated: state.currentUser !== null,
+    deliveries: state.deliveries,
+    user: state.user
+	}
+}
 
-export default ChatBox
+export default connect(mapStateToProps, {getCurrentUser})(ChatBox)
