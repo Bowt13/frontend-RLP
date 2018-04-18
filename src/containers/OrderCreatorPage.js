@@ -42,7 +42,7 @@ class OrderCreator extends PureComponent {
     setTimeout(_ => this.orderAdressForm.onClick(), 10)
     this.orderRemarkForm.onClick()
     this.orderAfleverInfo.onClick()
-    setTimeout(_ => console.log(this.state.OrderAdres), 20)
+    setTimeout(_ => console.log(this.state.orderRemarkForm), 20)
     setTimeout(_ => {
       switch (this.state.OrderAdres.factuurAdres) {
           case true:
@@ -66,7 +66,24 @@ class OrderCreator extends PureComponent {
                     telephoneNumber: this.state.OrderAdres.BezoekAdres.Telefoonnummer,
                     email: null,
                     contactPerson: this.state.OrderAdres.BezoekAdres.Contactpersoon,
-                  }]
+                  },{
+                    address: this.state.OrderAdres.BezoekAdres.Adres1,
+                    postcode: this.state.OrderAdres.BezoekAdres.Postcode,
+                    city: this.state.OrderAdres.BezoekAdres.Stad,
+                    type: 'factuurAdres',
+                    telephoneNumber: this.state.OrderAdres.BezoekAdres.Telefoonnummer,
+                    email: null,
+                    contactPerson: this.state.OrderAdres.BezoekAdres.Contactpersoon,
+                  },{
+                    address: this.state.OrderAdres.BezoekAdres.Adres1,
+                    postcode: this.state.OrderAdres.BezoekAdres.Postcode,
+                    city: this.state.OrderAdres.BezoekAdres.Stad,
+                    type: 'afleverAdres',
+                    telephoneNumber: this.state.OrderAdres.BezoekAdres.Telefoonnummer,
+                    email: null,
+                    contactPerson: this.state.OrderAdres.BezoekAdres.Contactpersoon,
+                  }],
+                  this.state.OrderRemarkForm.files[0]
                 )
               break;
             case false:
@@ -89,6 +106,14 @@ class OrderCreator extends PureComponent {
                     email: null,
                     contactPerson: this.state.OrderAdres.BezoekAdres.Contactpersoon,
                   },{
+                    address: this.state.OrderAdres.BezoekAdres.Adres1,
+                    postcode: this.state.OrderAdres.BezoekAdres.Postcode,
+                    city: this.state.OrderAdres.BezoekAdres.Stad,
+                    type: 'factuurAdres',
+                    telephoneNumber: this.state.OrderAdres.BezoekAdres.Telefoonnummer,
+                    email: null,
+                    contactPerson: this.state.OrderAdres.BezoekAdres.Contactpersoon,
+                  },{
                     address: this.state.OrderAdres.FactuurAdres.Adres1,
                     postcode: this.state.OrderAdres.FactuurAdres.Postcode,
                     city: this.state.OrderAdres.FactuurAdres.Stad,
@@ -97,7 +122,9 @@ class OrderCreator extends PureComponent {
                     email: this.state.OrderAdres.FactuurAdres.Email,
                     contactPerson: this.state.OrderAdres.AfleverAdres.Contactpersoon,
                   }
-                ])
+                ],
+                this.state.OrderRemarkForm.files[0]
+              )
               break;
             default:
               break;
@@ -133,8 +160,17 @@ class OrderCreator extends PureComponent {
                     telephoneNumber: null,
                     email: this.state.OrderAdres.FactuurAdres.Email,
                     contactPerson: this.state.OrderAdres.FactuurAdres.Contactpersoon,
-                  }
-                ]
+                  },{
+                    address: this.state.OrderAdres.BezoekAdres.Adres1,
+                    postcode: this.state.OrderAdres.BezoekAdres.Postcode,
+                    city: this.state.OrderAdres.BezoekAdres.Stad,
+                    type: 'afleverAdres',
+                    telephoneNumber: this.state.OrderAdres.BezoekAdres.Telefoonnummer,
+                    email: null,
+                    contactPerson: this.state.OrderAdres.BezoekAdres.Contactpersoon,
+                  },
+                ],
+                this.state.OrderRemarkForm.files[0]
               )
               break;
               case false:
@@ -173,7 +209,8 @@ class OrderCreator extends PureComponent {
                       email: this.state.OrderAdres.FactuurAdres.Email,
                       contactPerson: this.state.OrderAdres.FactuurAdres.Contactpersoon,
                     }
-                  ]
+                  ],
+                  this.state.OrderRemarkForm.files[0]
                 )
                 break;
               default:
@@ -232,9 +269,9 @@ class OrderCreator extends PureComponent {
     const {handleChange} = this
     const {authenticated} = this.props
 
-    // if(authenticated) return (
-    //   <Redirect to="/" />
-    // )
+    if(!authenticated) return (
+      <Redirect to="/" />
+    )
 
 		return (
       <div>
