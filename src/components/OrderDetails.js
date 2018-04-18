@@ -98,7 +98,7 @@ class OrderDetails extends PureComponent {
         <Subheader style={{
           fontSize: 40,
           margin: 8,
-        }}>Bestelling nummer {order.id}</Subheader>
+        }}>Bestelling nummer {order.orderNumber}</Subheader>
         <Divider style={{
           padding: 1,
           backgroundColor: '#F09517',
@@ -137,7 +137,7 @@ class OrderDetails extends PureComponent {
             <Divider/>
             <ListItem disabled={true} primaryText="Betalinswijze" secondaryText={`${order.paymentType}`}/>
             <Divider/>
-            <ListItem disabled={true} primaryText="Bestelling-ID" secondaryText={`${order.deliveryId}`}/>
+            <ListItem disabled={true} primaryText="Bestelling-ID" secondaryText={`${order.id}`}/>
             <Divider/>
             <ListItem disabled={true} primaryText="Klant-ID" secondaryText={`${order.userId}`}/>
           </List>
