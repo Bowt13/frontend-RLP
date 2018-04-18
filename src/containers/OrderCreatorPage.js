@@ -298,6 +298,22 @@ class OrderCreator extends PureComponent {
     this.orderAfleverInfo.onClick()
     setTimeout(_ => console.log(this.state), 20)
     setTimeout(_ => console.log(new Date()), 20)
+    setTimeout(() => this.props.addOrder(
+      {
+        orderNumber: this.state.OrderInfo.Bonnummer,
+        shortDescription: this.state.OrderRemarkForm.KorteOmschrijving,
+        description: this.state.OrderRemarkForm.Opdrachtomschrijving,
+        amount: this.state.OrderRemarkForm.Aantal,
+        deliveryDate: this.state.OrderAfleverInfo.LeverDatum || null,
+        paymentType: 'cash',
+        deliveryId: this.state.OrderAfleverInfo.DeliveryType.id,
+        companyId: 1,
+      },{
+        addresses: [{}]
+      }
+    ), 20)
+    const orderModel = {
+      "amount": null,
     // setTimeout(() => this.props.addOrder(
     //   {
     //     shortDescription: this.state.OrderRemarkForm.KorteOmschrijving,
@@ -310,8 +326,8 @@ class OrderCreator extends PureComponent {
     //     addresses: [{}]
     //   }
     // ), 20)
-    setTimeout(() => this.props.addOrderNewAPI({
-      "amount": this.state.OrderRemarkForm.Aantal,
+    //setTimeout(() => this.props.addOrderNewAPI({
+      //"amount": this.state.OrderRemarkForm.Aantal,
       "billing_addr_id": null,
       "billing_address_line_1": "",
       "billing_city": "",
