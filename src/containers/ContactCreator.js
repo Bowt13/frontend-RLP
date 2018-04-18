@@ -26,7 +26,7 @@ import {createContact} from '../actions/contacts'
 // const style = {
 //   margin: 12,
 // };
-
+import NavBar from '../components/NavBar'
 
 class contactCreator extends PureComponent {
   state = {
@@ -54,6 +54,7 @@ class contactCreator extends PureComponent {
 
   return (
     <div style={{ textAlign: 'center'}}>
+      <NavBar/>
       <Paper style={{
         position: 'relative',
         top: 80,

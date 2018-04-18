@@ -15,6 +15,8 @@ import ChatBox from './ChatBox'
     import Divider from 'material-ui/Divider';
     import {GridList, GridTile} from 'material-ui/GridList';
 
+import NavBar from '../components/NavBar'
+
 
 const styles = {
   root: {
@@ -73,9 +75,15 @@ class OrderDetails extends PureComponent {
   render() {
 
     const {order} = this.props
-     if (!order) return <p>order does not exist</p>
+     if (!order) return (<div>
+       <NavBar/>
+       <p>loading</p>
+     </div>
+     )
 
 		return (
+      <div>
+      <NavBar/>
       <div style={{
         display: 'flex',
         width: '80%',
@@ -150,6 +158,7 @@ class OrderDetails extends PureComponent {
           </div>
         </Paper>
         <ChatBox />
+      </div>
       </div>
 		)
 	}

@@ -24,6 +24,7 @@ import {Redirect} from 'react-router-dom'
   import OrderAdressForm from '../components/orders/OrderAdressForm'
   import OrderRemarkForm from '../components/orders/OrderRemarkForm'
   import OrderAfleverInfo from '../components/orders/OrderAfleverInfo'
+  import NavBar from '../components/NavBar'
 
 //companies
   const companies = [
@@ -312,7 +313,7 @@ class OrderCreator extends PureComponent {
         addresses: [{}]
       }
     ), 20)
-    
+
     // setTimeout(_ => this.props.addOrderNewAPI(
     // {
     //   "amount": this.state.OrderRemarkForm.Aantal,
@@ -365,6 +366,8 @@ class OrderCreator extends PureComponent {
     // )
 
 		return (
+      <div>
+      <NavBar/>
       <div
         style={{
           float: 'left',
@@ -406,6 +409,7 @@ class OrderCreator extends PureComponent {
             </RaisedButton>
           </div>
         </Paper>
+      </div>
       </div>
 		)
 	}
