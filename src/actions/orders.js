@@ -69,15 +69,15 @@ export const getOrder = (id) => (dispatch, getState) => {
   }
 
 export const getBonnummer = () => (dispatch, getState) => {
-  const state = getSTate()
+  const state = getState()
   const jwt = state.currentUser.jwt
 
   request
     .get(`${baseUrl}/orders/orderNumber/newNumber`)
     .set('Authorization', `Bearer ${jwt}`)
     .then(result => {
-      dispatcy({
-        type: GET_BONNUMMER
+      dispatch({
+        type: GET_BONNUMMER,
         payload: result.body
       })
     })
