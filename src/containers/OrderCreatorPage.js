@@ -307,7 +307,7 @@ class OrderCreator extends PureComponent {
         deliveryDate: this.state.OrderAfleverInfo.LeverDatum || null,
         paymentType: 'cash',
         deliveryId: this.state.OrderAfleverInfo.DeliveryType.id,
-        companyId: 1,
+        companyId: this.props.user.companyId,
       },{
         addresses: [{}]
       }
