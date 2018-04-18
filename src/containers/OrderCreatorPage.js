@@ -55,7 +55,7 @@ class OrderCreator extends PureComponent {
         deliveryId: this.state.OrderAfleverInfo.DeliveryType.id,
         companyId: this.props.user.companyId,
       },
-        // [{ this.state.afleveradres }, {  }]
+        // [{ this.state.orderAdressForm.afleveradres }, {  }]
       // ,
     ), 20)
     setTimeout(_ => this.props.history.push('/flexicon/orders'), 25)
