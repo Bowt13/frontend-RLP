@@ -2,6 +2,12 @@
 import React, { PureComponent } from 'react'
 import { connect } from 'react-redux'
 
+//Components
+import Searchbar from '../components/Searchbar'
+
+//Functions
+import { searchForOrder } from '../lib/functions'
+
 //MaterialUI
   //Components
     // import RaisedButton from 'material-ui/RaisedButton'
@@ -17,24 +23,44 @@ import NavBar from '../components/NavBar'
 
 class CustomerList extends PureComponent {
 
+  state={
+    props:true
+  }
   componentWillMount() {
     this.props.getCustomers()
+
+  }
+
+  handleSubmit = (value) => {
+    const { customers } = this.props
+    if (this.state.props === true)
+      this.setState({props:false})
+    this.setState({
+      customers: searchForOrder(customers ,value)
+    })
   }
 
 	render() {
 
-    const { customers, history } = this.props
-
+    const { history } = this.props
+    let customers
+    if (this.state.props)
+      customers= this.props.customers
+    if(!this.state.props)
+      customers= this.state.customers
 		return (
       <div>
-        <NavBar/>
+      <NavBar/>
+      <div style={{
+        display: 'flex',
+        width: '80%',
+        margin: 'auto',
+        paddingTop: '5em',
+      }}>
         <Paper style={{
-          position: 'relative',
-          top: 90,
-          botom: 10,
-          left: '25%',
-          width: '50%',
           overflow: 'scroll',
+          flexGrow: '2',
+          margin: 5,
         }}>
         <List style={{
           padding: 0,
@@ -52,6 +78,10 @@ class CustomerList extends PureComponent {
             <div>
               <Divider />
               <ListItem
+              style={{
+                maxWidth: '100%',
+                textAlign: 'left',
+              }}
               initiallyOpen={ false }
               primaryTogglesNestedList={ true }
               hoverColor= '#F09517'
@@ -62,17 +92,15 @@ class CustomerList extends PureComponent {
                     hoverColor= '#f4b357'
                     style={{
                       textAlign: 'right',
+                      textOverflow: ''
                     }}
                     primaryText={ `${order.shortDescription}` }
                     secondaryText={ 'Besteldatum:' + ' ' + `${order.orderDate}` }
-                    onClick={ _=> history.push(`/flexicon/orders/${order.orderNumber}`) }
+                    onClick={ _=> history.push(`/flexicon/orders/${order.id}`) }
                   />
                 </div>
               ))
             ]}
-              style={{
-                textAlign: 'left',
-              }}
               secondaryTextLines={ 2 }
               primaryText={ `${customer.email}` }
               secondaryText={<p> <span> { `${customer.companyName}` }</span><br/><span>{ `${customer.firstName}`+ ' ' + `${customer.lastName}`}</span></p> }
@@ -82,6 +110,10 @@ class CustomerList extends PureComponent {
           }
         </List>
         </Paper>
+        <Searchbar
+          onSubmit={ this.handleSubmit }
+        />
+      </div>
       </div>
 		)
 	}

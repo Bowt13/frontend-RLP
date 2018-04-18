@@ -8,38 +8,30 @@ import ContentSend from 'material-ui/svg-icons/content/send';
 
 const styles = {
     container: {
-        position: 'relative',
-        width: '50%',
-        height: '100%',
-        display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
+        flex: '1',
+        flexGrow: '1',
+        margin: 5,
     },
     paper: {
         width: '30vw',
         height: '80vh',
-        // maxWidth: '400px',
-        // maxHeight: '700px',
         display: 'flex',
         alignItems: 'center',
         flexDirection: 'column',
-        // position: 'relative'
     },
     record: {
-        width: '95%',
+        width: '90%',
         height: 60,
         display: 'flex',
         alignItems: 'center',
-        position: 'absolute',
-        bottom: 0,
-        left: 0,
-        right: 0,
-        margin: 10
+        margin: 10,
     },
     messagesBody: {
         width: 'calc( 100% - 20px )',
         margin: 10,
-        overflowY: 'scroll',
+        overflow: 'scroll',
         height: 'calc( 100% - 80px )',
     },
     message: {
@@ -102,21 +94,21 @@ class ChatBox extends PureComponent {
                 }
             </Paper>
             <div style={styles.record}>
-              <TextField
-                id="input"
-                underlineFocusStyle={{
-                  borderColor: '#F09517',
-                }}
-                value={this.state.text}
-                onChange={e => {
-                  if (e.keyCode == 13) {
-                    this.send()
-                  }
-                  this.setState({text: e.target.value})
-                }}
-                hintText="type your message here"
-                fullWidth={true}
-              />
+              <form onSubmit={this.send}>
+                <TextField
+                  id="input"
+                  type='text'
+                  underlineFocusStyle={{
+                    borderColor: '#F09517',
+                  }}
+                  value={this.state.text || ''}
+                  onChange={e => {
+                    this.setState({text: e.target.value})
+                  }}
+                  hintText="type your message here"
+                  fullWidth={true}
+                />
+              </form>
               <IconButton
                 onClick={this.send} ref='send'>
                 <ContentSend

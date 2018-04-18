@@ -5,32 +5,15 @@ import {getOrders} from '../actions/orders'
 import ChatBox from './ChatBox'
 
 //MaterialUI
-  //Components
-    import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText, CardContent} from 'material-ui/Card';
-    import RaisedButton from 'material-ui/RaisedButton'
     import Paper from 'material-ui/Paper';
-    import Avatar from 'material-ui/Avatar'
     import {
       List,
       ListItem
     } from 'material-ui/List';
 
-    import ActionInfo from 'material-ui/svg-icons/action/info';
     import Subheader from 'material-ui/Subheader';
     import Divider from 'material-ui/Divider';
-    import Business from 'material-ui/svg-icons/communication/business'
-    import {
-      Table,
-      TableBody,
-      TableHeader,
-      TableHeaderColumn,
-      TableRow,
-      TableRowColumn,
-    } from 'material-ui/Table';
-
     import {GridList, GridTile} from 'material-ui/GridList';
-    import IconButton from 'material-ui/IconButton';
-    import StarBorder from 'material-ui/svg-icons/toggle/star-border';
 
 import NavBar from '../components/NavBar'
 
@@ -75,24 +58,6 @@ const tilesData = [
   },
 ];
 
-
-
-
-// const order =
-//   {
-//   id: 1,
-//   orderNumber: '0707',
-//   shortDescription: '"Secretary of the Year", 3D crystal glass',
-//   description: '3D crystal glass, height: 10cm, width: 5cm, polished: yes, bdshbhdshdvvdcxbhjdsjdsjkjbffdbfsjkjefkhjbjkbkcdhvcshjvhjvlogo: bottom left, wrapping: yes',
-//   amount: 3,
-//   orderDate: '20-02-2018',
-//   deliveryDate: '10-03-2018',
-//   paymentType: 'credit card',
-//   deliveryId: 'GH 142434',
-//   userId: 'N 987'
-//   }
-
-
 class OrderDetails extends PureComponent {
   state = {
     openProfile: false,
@@ -108,23 +73,27 @@ class OrderDetails extends PureComponent {
   }
 
   render() {
-    let windowWidth = window.screen.availWidth
-    console.log(windowWidth);
 
     const {order} = this.props
-     if (!order) return <p>loading</p>
+     if (!order) return (<div>
+       <NavBar/>
+       <p>loading</p>
+     </div>
+     )
 
 		return (
       <div>
-        <NavBar/>
+      <NavBar/>
+      <div style={{
+        display: 'flex',
+        width: '80%',
+        margin: 'auto',
+        paddingTop: '5em',
+      }}>
         <Paper style={{
-          position: 'relative',
-          top: 90,
-          left: '20%',
-          marginBottom: 20,
-          width: '60%',
           overflow: 'scroll',
-          textAlign: 'left',
+          flexGrow: '2',
+          margin: 5,
         }}>
         <Subheader style={{
           fontSize: 40,
@@ -135,14 +104,20 @@ class OrderDetails extends PureComponent {
           backgroundColor: '#F09517',
         }}/>
         <div style={{
-          display: 'flex',
+          maxWidth: '100%',
         }}>
-          <List style={{
-            flex: '1',
-          }}>
-            <ListItem disabled={true} primaryText="Bonnummer" secondaryText={`${order.orderNumber}`}/>
+          <List>
+            <ListItem
+              disabled={true}
+              primaryText="Bonnummer"
+              secondaryText={`${order.orderNumber}`}
+            />
             <Divider/>
-            <ListItem disabled={true} primaryText="Korte omschrijving" secondaryText={`${order.shortDescription}`}/>
+            <ListItem
+              disabled={true}
+              primaryText="Korte omschrijving"
+              secondaryText={`${order.shortDescription}`}
+            />
             <Divider/>
             <ListItem
               primaryText="Omschrijving"
@@ -166,7 +141,6 @@ class OrderDetails extends PureComponent {
             <Divider/>
             <ListItem disabled={true} primaryText="Klant-ID" secondaryText={`${order.userId}`}/>
           </List>
-          <ChatBox />
           </div>
           <div style={styles.root}>
             <GridList style={styles.gridList} cols={2.2}>
@@ -177,12 +151,14 @@ class OrderDetails extends PureComponent {
                   titleStyle={styles.titleStyle}
                   titleBackground="linear-gradient(to top, rgba(0,0,0,0.7) 0%,rgba(0,0,0,0.3) 70%,rgba(0,0,0,0) 100%)"
                 >
-                  <img src={tile.img} alt= 'tile'/>
+                  <img src={tile.img} alt='tile' />
                 </GridTile>
               ))}
             </GridList>
           </div>
         </Paper>
+        <ChatBox />
+      </div>
       </div>
 		)
 	}

@@ -5,17 +5,13 @@ import {getOrders} from '../actions/orders'
 
 //MaterialUI
   //Components
-    import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText, CardContent} from 'material-ui/Card';
-    import RaisedButton from 'material-ui/RaisedButton'
     import Paper from 'material-ui/Paper';
-    import Avatar from 'material-ui/Avatar'
     import {
       List,
       ListItem
     } from 'material-ui/List';
     import Subheader from 'material-ui/Subheader';
     import Divider from 'material-ui/Divider';
-    import Business from 'material-ui/svg-icons/communication/business'
 
 import NavBar from '../components/NavBar'
 
@@ -117,7 +113,7 @@ class OrdersPage extends PureComponent {
               hoverColor= '#f4b357'
               secondaryTextLines={2}
               primaryText={`${order.shortDescription}`}
-              secondaryText={<p> <span> {'Bestellingsnummer: '+ `${order.id}`}</span><br/><span>{'Opdrachtgever: '+ `${order.userEmail}`}</span></p>}
+              secondaryText={<p> <span> {`Bestellingsnummer: ${order.id}`}</span><br/><span>{`Opdrachtgever: ${order.userEmail}`}</span></p>}
               className='order-row'
               onClick={_=> history.push(`/flexicon/orders/${order.id}`)}
               />

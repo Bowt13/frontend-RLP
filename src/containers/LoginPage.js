@@ -79,8 +79,6 @@ class LoginPage extends PureComponent {
 
 		return (
 			<div className='login-page'>
-			  <img src={'http://localhost:4001/uploads/photo-2018-04-17T17:42:40.png'} alt='cv'/>
-				<div style ={{width:'300px', height:'400px', backgroundImage: 'public/uploads/photo-2018-04-17T17:42:40.png'}}/>
 				<Paper style={{
 					display: 'inline-block',
 					margin: 50,
