@@ -42,23 +42,149 @@ class OrderCreator extends PureComponent {
     setTimeout(_ => this.orderAdressForm.onClick(), 10)
     this.orderRemarkForm.onClick()
     this.orderAfleverInfo.onClick()
-    setTimeout(_ => console.log(this.state), 20)
-    setTimeout(_ => console.log(new Date()), 20)
-    setTimeout(_ => this.props.addOrder(
-      {
-        orderNumber: this.props.bonnummer,
-        shortDescription: this.state.OrderRemarkForm.KorteOmschrijving,
-        description: this.state.OrderRemarkForm.Opdrachtomschrijving,
-        amount: this.state.OrderRemarkForm.Aantal,
-        deliveryDate: this.state.OrderAfleverInfo.LeverDatum || null,
-        paymentType: 'cash',
-        deliveryId: this.state.OrderAfleverInfo.DeliveryType.id,
-        companyId: this.props.user.companyId,
-      },{
-        addresses: [{}]
-      }
-    ), 20)
-    setTimeout(_ => this.props.history.push('/flexicon/orders'), 25)
+    setTimeout(_ => console.log(this.state.OrderAdres), 20)
+    setTimeout(_ => {
+      switch (this.state.OrderAdres.factuurAdres) {
+          case true:
+          switch (this.state.OrderAdres.afleverAdres) {
+            case true:
+              this.props.addOrder(
+                {
+                  orderNumber: this.props.bonnummer,
+                  shortDescription: this.state.OrderRemarkForm.KorteOmschrijving,
+                  description: this.state.OrderRemarkForm.Opdrachtomschrijving,
+                  amount: this.state.OrderRemarkForm.Aantal,
+                  deliveryDate: this.state.OrderAfleverInfo.LeverDatum || null,
+                  paymentType: 'cash',
+                  deliveryId: this.state.OrderAfleverInfo.DeliveryType.id,
+                  companyId: this.props.user.companyId,
+                },[{
+                    address: this.state.OrderAdres.BezoekAdres.Adres1,
+                    postcode: this.state.OrderAdres.BezoekAdres.Postcode,
+                    city: this.state.OrderAdres.BezoekAdres.Stad,
+                    type: 'bezoekAdres',
+                    telephoneNumber: this.state.OrderAdres.BezoekAdres.Telefoonnummer,
+                    email: null,
+                    contactPerson: this.state.OrderAdres.BezoekAdres.Contactpersoon,
+                  }]
+                )
+              break;
+            case false:
+              this.props.addOrder(
+                {
+                  orderNumber: this.props.bonnummer,
+                  shortDescription: this.state.OrderRemarkForm.KorteOmschrijving,
+                  description: this.state.OrderRemarkForm.Opdrachtomschrijving,
+                  amount: this.state.OrderRemarkForm.Aantal,
+                  deliveryDate: this.state.OrderAfleverInfo.LeverDatum || null,
+                  paymentType: 'cash',
+                  deliveryId: this.state.OrderAfleverInfo.DeliveryType.id,
+                  companyId: this.props.user.companyId,
+                },[{
+                    address: this.state.OrderAdres.BezoekAdres.Adres1,
+                    postcode: this.state.OrderAdres.BezoekAdres.Postcode,
+                    city: this.state.OrderAdres.BezoekAdres.Stad,
+                    type: 'bezoekAdres',
+                    telephoneNumber: this.state.OrderAdres.BezoekAdres.Telefoonnummer,
+                    email: null,
+                    contactPerson: this.state.OrderAdres.BezoekAdres.Contactpersoon,
+                  },{
+                    address: this.state.OrderAdres.FactuurAdres.Adres1,
+                    postcode: this.state.OrderAdres.FactuurAdres.Postcode,
+                    city: this.state.OrderAdres.FactuurAdres.Stad,
+                    type: 'afleverAdres',
+                    telephoneNumber: null,
+                    email: this.state.OrderAdres.FactuurAdres.Email,
+                    contactPerson: this.state.OrderAdres.AfleverAdres.Contactpersoon,
+                  }
+                ])
+              break;
+            default:
+              break;
+          }
+          break;
+          case false:
+            switch (this.state.OrderAdres.afleverAdres) {
+              case true:
+                this.props.addOrder(
+                  {
+                    orderNumber: this.props.bonnummer,
+                    shortDescription: this.state.OrderRemarkForm.KorteOmschrijving,
+                    description: this.state.OrderRemarkForm.Opdrachtomschrijving,
+                    amount: this.state.OrderRemarkForm.Aantal,
+                    deliveryDate: this.state.OrderAfleverInfo.LeverDatum || null,
+                    paymentType: 'cash',
+                    deliveryId: this.state.OrderAfleverInfo.DeliveryType.id,
+                    companyId: this.props.user.companyId,
+                  },
+                  [{
+                    address: this.state.OrderAdres.BezoekAdres.Adres1,
+                    postcode: this.state.OrderAdres.BezoekAdres.Postcode,
+                    city: this.state.OrderAdres.BezoekAdres.Stad,
+                    type: 'bezoekAdres',
+                    telephoneNumber: this.state.OrderAdres.BezoekAdres.Telefoonnummer,
+                    email: null,
+                    contactPerson: this.state.OrderAdres.BezoekAdres.Contactpersoon,
+                  },{
+                    address: this.state.OrderAdres.FactuurAdres.Adres1,
+                    postcode: this.state.OrderAdres.FactuurAdres.Postcode,
+                    city: this.state.OrderAdres.FactuurAdres.Stad,
+                    type: 'factuurAdres',
+                    telephoneNumber: null,
+                    email: this.state.OrderAdres.FactuurAdres.Email,
+                    contactPerson: this.state.OrderAdres.FactuurAdres.Contactpersoon,
+                  }
+                ]
+              )
+              break;
+              case false:
+                this.props.addOrder(
+                  {
+                    orderNumber: this.props.bonnummer,
+                    shortDescription: this.state.OrderRemarkForm.KorteOmschrijving,
+                    description: this.state.OrderRemarkForm.Opdrachtomschrijving,
+                    amount: this.state.OrderRemarkForm.Aantal,
+                    deliveryDate: this.state.OrderAfleverInfo.LeverDatum || null,
+                    paymentType: 'cash',
+                    deliveryId: this.state.OrderAfleverInfo.DeliveryType.id,
+                    companyId: this.props.user.companyId,
+                  },[{
+                      address: this.state.OrderAdres.BezoekAdres.Adres1,
+                      postcode: this.state.OrderAdres.BezoekAdres.Postcode,
+                      city: this.state.OrderAdres.BezoekAdres.Stad,
+                      type: 'bezoekAdres',
+                      telephoneNumber: this.state.OrderAdres.BezoekAdres.Telefoonnummer,
+                      email: null,
+                      contactPerson: this.state.OrderAdres.BezoekAdres.Contactpersoon,
+                    },{
+                      address: this.state.OrderAdres.AfleverAdres.Adres1,
+                      postcode: this.state.OrderAdres.AfleverAdres.Postcode,
+                      city: this.state.OrderAdres.AfleverAdres.Stad,
+                      type: 'afleverAdres',
+                      telephoneNumber: this.state.OrderAdres.AfleverAdres.Telefoonnummer,
+                      email: null,
+                      contactPerson: this.state.OrderAdres.AfleverAdres.Contactpersoon,
+                    },{
+                      address: this.state.OrderAdres.FactuurAdres.Adres1,
+                      postcode: this.state.OrderAdres.FactuurAdres.Postcode,
+                      city: this.state.OrderAdres.FactuurAdres.Stad,
+                      type: 'factuurAdres',
+                      telephoneNumber: null,
+                      email: this.state.OrderAdres.FactuurAdres.Email,
+                      contactPerson: this.state.OrderAdres.FactuurAdres.Contactpersoon,
+                    }
+                  ]
+                )
+                break;
+              default:
+                break;
+            }
+            break;
+          default:
+            break;
+        }
+      }, 20)
+    //setTimeout(_ => this.props.history.push('/flexicon/orders'), 25)
     // setTimeout(_ => this.props.addOrderNewAPI(
     // {
     //   "amount": this.state.OrderRemarkForm.Aantal,
