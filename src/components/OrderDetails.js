@@ -5,32 +5,15 @@ import {getOrders} from '../actions/orders'
 import ChatBox from './ChatBox'
 
 //MaterialUI
-  //Components
-    import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText, CardContent} from 'material-ui/Card';
-    import RaisedButton from 'material-ui/RaisedButton'
     import Paper from 'material-ui/Paper';
-    import Avatar from 'material-ui/Avatar'
     import {
       List,
       ListItem
     } from 'material-ui/List';
 
-    import ActionInfo from 'material-ui/svg-icons/action/info';
     import Subheader from 'material-ui/Subheader';
     import Divider from 'material-ui/Divider';
-    import Business from 'material-ui/svg-icons/communication/business'
-    import {
-      Table,
-      TableBody,
-      TableHeader,
-      TableHeaderColumn,
-      TableRow,
-      TableRowColumn,
-    } from 'material-ui/Table';
-
     import {GridList, GridTile} from 'material-ui/GridList';
-    import IconButton from 'material-ui/IconButton';
-    import StarBorder from 'material-ui/svg-icons/toggle/star-border';
 
 
 const styles = {
@@ -160,7 +143,7 @@ class OrderDetails extends PureComponent {
                   titleStyle={styles.titleStyle}
                   titleBackground="linear-gradient(to top, rgba(0,0,0,0.7) 0%,rgba(0,0,0,0.3) 70%,rgba(0,0,0,0) 100%)"
                 >
-                  <img src={tile.img} />
+                  <img src={tile.img} alt='tile' />
                 </GridTile>
               ))}
             </GridList>

@@ -312,6 +312,7 @@ class OrderCreator extends PureComponent {
         addresses: [{}]
       }
     ), 20)
+    
     // setTimeout(_ => this.props.addOrderNewAPI(
     // {
     //   "amount": this.state.OrderRemarkForm.Aantal,
