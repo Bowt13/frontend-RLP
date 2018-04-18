@@ -72,6 +72,7 @@ class OrderDetails extends PureComponent {
 
   componentWillMount() {
     this.props.getOrders()
+    console.log(document.URL.split('/')[document.URL.split('/').length-1])
   }
 
   handleToggle = () => {
@@ -95,20 +96,20 @@ class OrderDetails extends PureComponent {
   };
 
   render() {
-
     const {order} = this.props
      if (!order) return <p>order does not exist</p>
 
 		return (
       <div style={{
         display: 'flex',
-        width: '80%',
+        width: '100%',
         margin: 'auto',
         paddingTop: '5em',
       }}>
         <Paper style={{
           overflow: 'scroll',
           flexGrow: '2',
+          maxWidth: '60vw',
           margin: 5,
         }}>
         <Subheader style={{
@@ -119,9 +120,7 @@ class OrderDetails extends PureComponent {
           padding: 1,
           backgroundColor: '#F09517',
         }}/>
-        <div style={{
-          maxWidth: '100%',
-        }}>
+        <div>
           <List>
             <ListItem
               disabled={true}
@@ -191,7 +190,7 @@ class OrderDetails extends PureComponent {
             </Dialog>
           </div>
         </Paper>
-        <ChatBox />
+        <ChatBox order={this.props.order} />
       </div>
 		)
 	}
@@ -199,7 +198,7 @@ class OrderDetails extends PureComponent {
 
 const mapStateToProps = function (state, props) {
 	return {
-    order: state.orders && state.orders.find(order => `${order.id}`===props.match.params.orderId),
+    order: state.orders && state.orders.find(order => `${order.id}`=== props.match.params.orderId),
 	}
 }
 

@@ -9,6 +9,7 @@
 
 //Actions
   import {getCurrentUser} from '../actions/users'
+  import {addMessage} from '../actions/messages'
 
 const styles = {
     container: {
@@ -48,17 +49,20 @@ const styles = {
 class ChatBox extends PureComponent {
 
   state = {
-    messages: [],
+    text: ''
   }
 
   send = (event) => {
     event.preventDefault()
-    {this.state.text !== '' &&
-      this.state.messages.push({
-          name: this.props.user.firstName,
-          message: this.state.text
-      })}
-      this.setState({text: ''})
+    {if (this.state.text !== '') {
+      this.props.addMessage(this.props.order.id, this.state.text)
+    }}
+    this.setState({text: ''})
+    setTimeout(_ => {
+      const elem = document.getElementById('messageBox')
+      if (elem) {
+      elem.scrollTop = elem.scrollHeight}
+    }, 500)
   }
 
   componentWillMount(){
@@ -67,17 +71,23 @@ class ChatBox extends PureComponent {
   }
 
   render() {
+    console.log(this.props.order.messages)
+    const {order} = this.props
+    window.setInterval(function() {
+      var elem = document.getElementById('messageBox');
+      elem.scrollTop = elem.scrollHeight;
+    }, 500)
 		return (
       <div style={styles.container}>
         <div>
           <Paper style={styles.paper} zDepth={2} >
-            <Paper style={styles.messagesBody}>
-                {this.state.messages &&
-                  this.state.messages.map(msg =>
+            <Paper id='messageBox' style={styles.messagesBody}>
+                {order.messages &&
+                  order.messages.sort((a,b) => {if(a.id > b.id){return 1}else{return -1}}).map(msg =>
                     (
                       <div style={styles.message}>
-                        <span>{msg.message}</span>
-                        <sub style={{color:'lightgrey'}}>{msg.name}</sub>
+                        <span>{msg.content}</span>
+                        <sub style={{color:'lightgrey'}}>{msg.userName}</sub>
                       </div>
                     )
                   )
@@ -94,7 +104,7 @@ class ChatBox extends PureComponent {
                   underlineFocusStyle={{
                     borderColor: '#F09517',
                   }}
-                  value={this.state.text || ''}
+                  value={this.state.text}
                   onChange={e => {
                     this.setState({text: e.target.value})
                   }}
@@ -123,8 +133,8 @@ const mapStateToProps = function (state) {
     currentUser: state.currentUser,
     authenticated: state.currentUser !== null,
     deliveries: state.deliveries,
-    user: state.user
+    user: state.user,
 	}
 }
 
-export default connect(mapStateToProps, {getCurrentUser})(ChatBox)
+export default connect(mapStateToProps, {getCurrentUser, addMessage})(ChatBox)
