@@ -1,6 +1,6 @@
 import {GET_ORDERS} from '../actions/types'
 
-export default function (state = null, {type, payload}) {
+export default function (state = [], {type, payload}) {
 	switch (type) {
 		case GET_ORDERS:
 			return payload

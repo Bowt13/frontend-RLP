@@ -8,38 +8,30 @@ import ContentSend from 'material-ui/svg-icons/content/send';
 
 const styles = {
     container: {
-        position: 'relative',
-        width: '50%',
-        height: '100%',
-        display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
+        flex: '1',
+        flexGrow: '1',
+        margin: 5,
     },
     paper: {
-        width: '25vw',
-        height: '79vh',
-        // maxWidth: '400px',
-        // maxHeight: '700px',
+        width: '30vw',
+        height: '80vh',
         display: 'flex',
         alignItems: 'center',
         flexDirection: 'column',
-        // position: 'relative'
     },
     record: {
-        width: '95%',
+        width: '90%',
         height: 60,
         display: 'flex',
         alignItems: 'center',
-        position: 'absolute',
-        bottom: 0,
-        left: 0,
-        right: 0,
-        margin: 10
+        margin: 10,
     },
     messagesBody: {
         width: 'calc( 100% - 20px )',
         margin: 10,
-        overflowY: 'scroll',
+        overflow: 'scroll',
         height: 'calc( 100% - 80px )',
     },
     message: {
@@ -107,7 +99,7 @@ class ChatBox extends PureComponent {
                 underlineFocusStyle={{
                   borderColor: '#F09517',
                 }}
-                value={this.state.text}
+                value={this.state.text || ''}
                 onChange={e => {
                   if (e.keyCode == 13) {
                     this.send()
@@ -117,8 +109,11 @@ class ChatBox extends PureComponent {
                 hintText="type your message here"
                 fullWidth={true}
               />
-              <IconButton onClick={this.send} ref='send'>
-                <ContentSend/>
+              <IconButton
+                onClick={this.send} ref='send'>
+                <ContentSend
+                  color= '#F09517'
+                />
               </IconButton>
             </div>
           </Paper>
