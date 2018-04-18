@@ -58,11 +58,6 @@ class ChatBox extends PureComponent {
       this.props.addMessage(this.props.order.id, this.state.text)
     }}
     this.setState({text: ''})
-    setTimeout(_ => {
-      const elem = document.getElementById('messageBox')
-      if (elem) {
-      elem.scrollTop = elem.scrollHeight}
-    }, 500)
   }
 
   componentWillMount(){
@@ -70,13 +65,15 @@ class ChatBox extends PureComponent {
     getCurrentUser()
   }
 
+  componentDidUpdate(){
+    const elem = document.getElementById('messageBox')
+    if (elem) {
+    elem.scrollTop = elem.scrollHeight}
+  }
+
   render() {
     console.log(this.props.order.messages)
     const {order} = this.props
-    window.setInterval(function() {
-      var elem = document.getElementById('messageBox');
-      elem.scrollTop = elem.scrollHeight;
-    }, 500)
 		return (
       <div style={styles.container}>
         <div>

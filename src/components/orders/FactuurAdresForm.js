@@ -164,9 +164,9 @@ class FactuurAdresForm extends PureComponent {
           underlineFocusStyle={{
             borderColor: '#F09517',
           }}
-          name='Land'
-          floatingLabelText="Land:"
-          value={this.state.Land || ''}
+          name='Stad'
+          floatingLabelText="Stad:"
+          value={this.state.Stad || ''}
           onChange={this.handleChange}
         />
         <br/>
