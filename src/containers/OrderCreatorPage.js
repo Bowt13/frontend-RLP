@@ -312,9 +312,10 @@ class OrderCreator extends PureComponent {
         addresses: [{}]
       }
     ), 20)
+
     // const orderModel = {
     //   "amount": null,
-    // // setTimeout(() => this.props.addOrder(
+    // // setTimeout(() => this.props.addOrder
     //   {
     //     shortDescription: this.state.OrderRemarkForm.KorteOmschrijving,
     //     description: this.state.OrderRemarkForm.Opdrachtomschrijving,
