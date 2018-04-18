@@ -133,10 +133,14 @@ class CustomerList extends PureComponent {
           </List>
           <div>
           <RaisedButton
-            labelStyle={{
-              labelColor: '#F09517'
-            }}
-            label="Create Company"
+    				label="Maak een bedrijf"
+    				backgroundColor='#F09517'
+    				style={{
+    					postion: 'relative',
+    					margin: 30,
+    					marginTop: 5,
+    					backgroundColor: '#9A9A98',
+    				}}
             onClick={ _=> history.push(`/flexicon/companies/creator`) }
 
              />
