@@ -15,6 +15,7 @@ import RaisedButton from 'material-ui/RaisedButton'
 //Actions
 import {createContact} from '../actions/contacts'
 
+import NavBar from '../components/NavBar'
 
 class contactCreator extends PureComponent {
   state = {
@@ -39,10 +40,11 @@ class contactCreator extends PureComponent {
   }
 
  render() {
- if (this.props.user.role && this.props.user.role==='External') return null 
+ if (this.props.user.role && this.props.user.role==='External') return null
 
   return (
     <div style={{ textAlign: 'center'}}>
+      <NavBar/>
       <Paper style={{
         position: 'relative',
         top: 80,

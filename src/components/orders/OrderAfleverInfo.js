@@ -1,13 +1,11 @@
 //Dependencies
 import React, {PureComponent} from 'react'
 import {connect} from 'react-redux'
-import {Redirect} from 'react-router-dom'
 import PropTypes from 'prop-types'
 
 //MaterialUI
   //Components
     import DatePicker from 'material-ui/DatePicker';
-    import RaisedButton from 'material-ui/RaisedButton'
     import Paper from 'material-ui/Paper';
     import Divider from 'material-ui/Divider';
     import {RadioButton, RadioButtonGroup} from 'material-ui/RadioButton'
@@ -63,7 +61,6 @@ class OrderRemarkForm extends PureComponent {
   componentWillMount() {
     const {DeliveryTime} = this.state
     const CurrentDate = new Date()
-    const MinimalDeliveryDate = new Date(Date.parse(CurrentDate) + (DeliveryTime * 86400000))
     this.props.onRef(this)
     this.setState({
       minDate: new Date(Date.parse(CurrentDate) + (DeliveryTime * 86400000))
@@ -74,9 +71,6 @@ class OrderRemarkForm extends PureComponent {
   }
 
 	render() {
-    const {DeliveryTime, LeverDatum} = this.state
-    const CurrentDate = new Date()
-    const MinimalDeliveryDate = LeverDatum
 
     const {deliveries} = this.props
 
@@ -132,14 +126,6 @@ class OrderRemarkForm extends PureComponent {
                   width: '90%',
                 }}
                 dialogContainerStyle={{
-                  containerBackgroundColor: 'green',
-                  bodyColor: 'black',
-                  headerColor: 'black',
-                  textColor: 'orange',
-                  color: 'green',
-                  calendarTextColor: 'orange',
-                  selectColor: 'green',
-
                 }}
               />
               <br/>

@@ -34,14 +34,10 @@ class NavBar extends PureComponent {
   }
 
   componentWillMount() {
-    if (!this.props.user) {
+    if (!this.props.user.id) {
      this.props.getCurrentUser()
     }
   }
-
-  // componentDidMount() {
-  //  this.props.getCurrentUser()
-  // }
 
   handleClick = () => {
     this.props.logout()
@@ -76,7 +72,7 @@ class NavBar extends PureComponent {
 
     if (location.pathname.indexOf('flexicon') <= 0 ) return(
       <header className="Header" style={{ backgroundColor: '#5e5d5e', height: 100, }}>
-        <img src={ logo } style={{ margin: 10, }}/>
+        <img src={ logo } style={{ margin: 10, }} alt='logo'/>
       </header>
     )
 
@@ -91,6 +87,7 @@ class NavBar extends PureComponent {
                 height: 60,
               }}
               src={ logo }
+              alt='logo'
             />}
           titleStyle={{
             position: 'center',

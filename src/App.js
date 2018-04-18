@@ -11,7 +11,7 @@
   import CustomerList from './containers/CustomerList'
   import CompanyCreator from './containers/CompanyCreatorPage'
   import ContactCreator from './containers/ContactCreator'
-
+  // import CompanyClientList from './containers/CompanyClientList'
 
 //MATERIALUI
   //PROVIDER
@@ -20,7 +20,6 @@
 //Components
   import OrdersPage from './components/OrdersPage'
   import OrderDetails from './components/OrderDetails'
-  import NavBar from './components/NavBar'
   import ChatBox from './components/ChatBox'
 
 class App extends Component {
@@ -29,7 +28,6 @@ class App extends Component {
       <Router>
       <MuiThemeProvider>
         <div className="App">
-          <NavBar />
           <Route exact path="/login" component={ LoginPage } />
           <Route exact path="/signup/:jwt" component={ SignupPage } />
           <Route exact path="/forgotpassword/:jwt" component={ SignupPage } />

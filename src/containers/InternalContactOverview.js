@@ -26,7 +26,7 @@ import PropTypes from 'prop-types'
 import {getCompanies} from '../actions/companies'
 
 //Components
-
+import NavBar from '../components/NavBar'
 class InternalContactOverview extends PureComponent {
   state = {
     drawer: true,
@@ -71,6 +71,7 @@ class InternalContactOverview extends PureComponent {
       <div style={{
         textAlign: 'center',
       }}>
+      <NavBar />
       <SearchBar
         onChange={() => console.log('onChange')}
         onRequestSearch={() => console.log('onRequestSearch')}

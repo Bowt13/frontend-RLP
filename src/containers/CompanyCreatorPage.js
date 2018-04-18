@@ -28,6 +28,7 @@ import {getCompanies, createCompany} from '../actions/companies'
 
 //Components
 import CompanyForm from '../components/CompanyForm'
+import NavBar from '../components/NavBar'
 
 class CompanyCreator extends PureComponent {
   static propTypes = {
@@ -54,7 +55,7 @@ class CompanyCreator extends PureComponent {
     <div style={{
       textAlign: 'center',
     }}>
-
+      <NavBar/>
       <Paper
         style={{
         position: 'relative',

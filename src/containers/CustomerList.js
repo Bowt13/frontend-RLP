@@ -19,6 +19,8 @@ import { searchForOrder } from '../lib/functions'
 //Actions
 import { getCustomers } from '../actions/users'
 
+import NavBar from '../components/NavBar'
+
 class CustomerList extends PureComponent {
 
   state={
@@ -47,6 +49,8 @@ class CustomerList extends PureComponent {
     if(!this.state.props)
       customers= this.state.customers
 		return (
+      <div>
+      <NavBar/>
       <div style={{
         display: 'flex',
         width: '80%',
@@ -76,6 +80,7 @@ class CustomerList extends PureComponent {
               <ListItem
               style={{
                 maxWidth: '100%',
+                textAlign: 'left',
               }}
               initiallyOpen={ false }
               primaryTogglesNestedList={ true }
@@ -96,9 +101,6 @@ class CustomerList extends PureComponent {
                 </div>
               ))
             ]}
-              style={{
-                textAlign: 'left',
-              }}
               secondaryTextLines={ 2 }
               primaryText={ `${customer.email}` }
               secondaryText={<p> <span> { `${customer.companyName}` }</span><br/><span>{ `${customer.firstName}`+ ' ' + `${customer.lastName}`}</span></p> }
@@ -111,6 +113,7 @@ class CustomerList extends PureComponent {
         <Searchbar
           onSubmit={ this.handleSubmit }
         />
+      </div>
       </div>
 		)
 	}
