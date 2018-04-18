@@ -36,7 +36,6 @@ class CustomerList extends PureComponent {
     this.setState({
       customers: searchForOrder(customers ,value)
     })
-    // this.setState({ init: event.target.value })
   }
 
 	render() {
@@ -49,15 +48,15 @@ class CustomerList extends PureComponent {
       customers= this.state.customers
 		return (
       <div style={{
-        display: 'flex'
+        display: 'flex',
+        width: '80%',
+        margin: 'auto',
+        paddingTop: '5em',
       }}>
         <Paper style={{
-          position: 'relative',
-          top: 90,
-          botom: 10,
-          left: '15%',
-          width: '50%',
           overflow: 'scroll',
+          flexGrow: '2',
+          margin: 5,
         }}>
         <List style={{
           padding: 0,
@@ -75,6 +74,9 @@ class CustomerList extends PureComponent {
             <div>
               <Divider />
               <ListItem
+              style={{
+                maxWidth: '100%',
+              }}
               initiallyOpen={ false }
               primaryTogglesNestedList={ true }
               hoverColor= '#F09517'
@@ -85,6 +87,7 @@ class CustomerList extends PureComponent {
                     hoverColor= '#f4b357'
                     style={{
                       textAlign: 'right',
+                      textOverflow: ''
                     }}
                     primaryText={ `${order.shortDescription}` }
                     secondaryText={ 'Besteldatum:' + ' ' + `${order.orderDate}` }

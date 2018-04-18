@@ -33,12 +33,9 @@ class Searchbar extends PureComponent {
           <Paper style={{
             flex: '1',
             flexDirection: 'column',
-            width: 300,
-            height: 75,
-            position: 'relative',
-            right: -200,
-            top: 90,
-            flexDirection: 'column',
+            flexGrow: '1',
+            width: '110%',
+            margin: 5,
           }}>
             <TextField
             floatingLabelFocusStyle={{
@@ -52,7 +49,7 @@ class Searchbar extends PureComponent {
             }}
             name='zoeken'
             type='text'
-            floatingLabelText="Zoeken naar bestellinge"
+            floatingLabelText="Zoeken naar bestellingen"
             value={ this.state.zoeken }
             onChange={ this.handleChange }
             />

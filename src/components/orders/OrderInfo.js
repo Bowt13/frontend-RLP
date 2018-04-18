@@ -52,7 +52,7 @@ class OrderInfo extends PureComponent {
   componentWillMount() {
     this.props.onRef(this)
     this.setState({
-      Bonnummer: 876534567890,
+      Bonnummer: 876,
       currentDate: JSON.stringify(this.formatDate(new Date())).substr(1,10).split('T', 1)
     })
   }

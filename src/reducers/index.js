@@ -3,8 +3,12 @@ import login from './login'
 import currentUser from './currentUser'
 import user from './user'
 import orders from './orders'
+
+import company from './company'
+
 import customers from './customers'
 import deliveries from './deliveries'
+
 
 export default {
   signup,
@@ -12,6 +16,8 @@ export default {
   currentUser,
   user,
   orders,
+  company,
   customers,
   deliveries
+
 }
