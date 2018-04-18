@@ -21,8 +21,6 @@ export const createContact = (companyId, contact) => (dispatch, getState) => {
   const state = getState()
   const jwt = state.currentUser.jwt
 
-  console.log('HELLO');
-
   request
     .post(`${baseUrl}/users/company/${companyId}`)
     .send(contact)
