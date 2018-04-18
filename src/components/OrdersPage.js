@@ -3,6 +3,11 @@ import React, {PureComponent} from 'react'
 import {connect} from 'react-redux'
 import {getOrders} from '../actions/orders'
 
+//Components
+import Searchbar from '../components/Searchbar'
+//Functions
+import { searchForOrder } from '../lib/functions'
+
 //MaterialUI
   //Components
     import Paper from 'material-ui/Paper';
@@ -33,6 +38,15 @@ class OrdersPage extends PureComponent {
     console.log(this.state.openProfile))
   }
 
+  handleSubmit = (value) => {
+    const { orders } = this.props
+    if (this.state.props === true)
+      this.setState({props:false})
+    this.setState({
+      orders: searchForOrder(orders ,value)
+    })
+  }
+
 	render() {
     let windowWidth = window.screen.availWidth
     console.log(windowWidth);
@@ -42,12 +56,16 @@ class OrdersPage extends PureComponent {
 		return (
       <div>
       <NavBar/>
+      <div style={{
+        display: 'flex',
+        width: '80%',
+        margin: 'auto',
+        paddingTop: '5em',
+      }}>
         <Paper style={{
-          position: 'relative',
-          top: 90,
-          left: '25%',
-          width: '50%',
           overflow: 'scroll',
+          flexGrow: '2',
+          margin: 5,
         }}>
         <List style={{
           padding: 0,
@@ -77,6 +95,10 @@ class OrdersPage extends PureComponent {
           }
         </List>
         </Paper>
+        <Searchbar
+          onSubmit={ this.handleSubmit }
+        />
+      </div>
       </div>
 		)
 	}
