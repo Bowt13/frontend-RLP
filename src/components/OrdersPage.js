@@ -33,51 +33,6 @@ class OrdersPage extends PureComponent {
     console.log(this.state.openProfile))
   }
 
-  // TO HAVE PROFILE IN THE TOP BAR (FOR NOW WE DON'T WANT IT)
-  // renderProfile = () => {
-  //   if (this.state.openProfile)
-  //     return (
-  //     <Card style={{position: 'relative', maxWidth: '80%', height:'200px',
-  //                   transform:'translate(-50%,0)', left:'50%',
-  //                   margin: '25px 0 0 0'}} className='contactCard'
-  //       onClick={this.handleToggle}>
-  //       <CardText style={{position:'absolute',
-  //                         left:'0',
-  //                         transform: 'translate(0,-50%)',
-  //                         top: '50%',
-  //                         textAlign: 'left'}}>
-  //         <p>
-  //           <span>Name: </span>
-  //           {`${user.firstName +' ' + user.lastName}`}
-  //         </p>
-  //         <p>
-  //           <span>Email: </span>
-  //           {`${user.email}`}
-  //         </p>
-  //         <p>
-  //           <span>Phone: </span>
-  //           {`${user.phone}`}
-  //         </p>
-  //
-  //
-  //       </CardText>
-  //       <CardText style={{position:'absolute',
-  //                         transform: 'translate(0,-50%)',
-  //                         left:'50%',
-  //                         top:'50%'}}>
-  //         <p>
-  //           <span>Company: </span>
-  //           {`${user.company}`}
-  //         </p>
-  //         <RaisedButton>
-  //           Edit Profile
-  //         </RaisedButton>
-  //
-  //       </CardText>
-  //     </Card>
-  //   )
-  // }
-
 	render() {
     let windowWidth = window.screen.availWidth
     console.log(windowWidth);
