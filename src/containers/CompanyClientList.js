@@ -2,9 +2,6 @@
 import React, { PureComponent } from 'react'
 import { connect } from 'react-redux'
 
-//Components
-import Searchbar from '../components/Searchbar'
-
 //Functions
 import { searchForContact } from '../lib/functions'
 
@@ -100,7 +97,7 @@ class CustomerList extends PureComponent {
                     primaryTogglesNestedList={ true }
                     hoverColor= '#F09517'
                     key={user.id}
-                    primaryText= {`${user.firstName} ${user.lastName}`}      
+                    primaryText= {`${user.firstName} ${user.lastName}`}
                     nestedItems={[user.orders.map(order =>
                       <ListItem
                         hoverColor= '#f4b357'
