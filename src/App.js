@@ -8,10 +8,10 @@
   import LoginPage from './containers/LoginPage'
   import SignupPage from './containers/SignupPage'
   import OrderCreator from './containers/OrderCreatorPage'
-  import CustomerList from './containers/CustomerList'
   import CompanyCreator from './containers/CompanyCreatorPage'
   import ContactCreator from './containers/ContactCreator'
   import CompanyClientList from './containers/CompanyClientList'
+//import CustomerList from './containers/CustomerList'
 
 //MATERIALUI
   //PROVIDER
@@ -36,7 +36,6 @@ class App extends Component {
           <Route exact path="/flexicon/InternalContactOverview" component={ InternalContactOverview } />
           <Route exact path="/flexicon/orders" component={ OrdersPage }/>
           <Route exact path="/flexicon/customers" component={ CompanyClientList } />
-          <Route exact path="/flexicon/companies" component={ InternalContactOverview }/>
           <Route exact path="/flexicon/orders/:orderId" component={ OrderDetails }/>
           <Route exact path="/flexicon/companies/creator" component={ CompanyCreator }/>
           <Route exact path="/chatbox" component={ ChatBox } />
