@@ -1,6 +1,6 @@
 import * as request from 'superagent'
 import {baseUrl} from '../constants'
-import {ADD_ORDER, GET_ORDERS, GET_ORDER} from './types'
+import {ADD_ORDER, GET_ORDERS, GET_ORDER, GET_BONNUMMER} from './types'
 
 const orderAPIurl = 'http://flexicon.craftingapps.com:8080/crp_api/api/fcrpi_eorder_vw'
 
@@ -67,3 +67,19 @@ export const getOrder = (id) => (dispatch, getState) => {
 		})
 		.catch(err => console.error(err))
   }
+
+export const getBonnummer = () => (dispatch, getState) => {
+  const state = getSTate()
+  const jwt = state.currentUser.jwt
+
+  request
+    .get(`${baseUrl}/orders/orderNumber/newNumber`)
+    .set('Authorization', `Bearer ${jwt}`)
+    .then(result => {
+      dispatcy({
+        type: GET_BONNUMMER
+        payload: result.body
+      })
+    })
+    .catch(err => console.error(err))
+}
