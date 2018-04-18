@@ -158,6 +158,9 @@ class ContactPage extends PureComponent {
           }
         </List>
         </Paper>
+        <Searchbar
+          onSubmit={ this.handleSubmit }
+        />
       </div>
 		)
 	}
