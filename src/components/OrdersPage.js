@@ -13,6 +13,7 @@ import {getOrders} from '../actions/orders'
     import Subheader from 'material-ui/Subheader';
     import Divider from 'material-ui/Divider';
 
+import NavBar from '../components/NavBar'
 
 class OrdersPage extends PureComponent {
   state = {
@@ -85,6 +86,7 @@ class OrdersPage extends PureComponent {
 
 		return (
       <div>
+      <NavBar/>
         <Paper style={{
           position: 'relative',
           top: 90,

@@ -24,6 +24,7 @@ import {Redirect} from 'react-router-dom'
   import OrderAdressForm from '../components/orders/OrderAdressForm'
   import OrderRemarkForm from '../components/orders/OrderRemarkForm'
   import OrderAfleverInfo from '../components/orders/OrderAfleverInfo'
+  import NavBar from '../components/NavBar'
 
 class OrderCreator extends PureComponent {
   state = {
@@ -110,6 +111,8 @@ class OrderCreator extends PureComponent {
     // )
 
 		return (
+      <div>
+      <NavBar/>
       <div
         style={{
           float: 'left',
@@ -151,6 +154,7 @@ class OrderCreator extends PureComponent {
             </RaisedButton>
           </div>
         </Paper>
+      </div>
       </div>
 		)
 	}
