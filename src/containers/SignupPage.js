@@ -40,6 +40,9 @@ class SignupPage extends PureComponent {
 		if (this.props.signup.success === false) {
 			return (
 				<div>
+				<header className="Header" style={{ backgroundColor: '#5e5d5e', height: 100, }}>
+	        <img src={ logo } style={{ margin: 10, }} alt='logo'/>
+	      </header>
 					<Paper style={{
 						display: 'inline-block',
 						margin: 50,
@@ -61,7 +64,9 @@ class SignupPage extends PureComponent {
 
 		return (
 			<div className='signup-page'>
-
+			<header className="Header" style={{ backgroundColor: '#5e5d5e', height: 100, }}>
+        <img src={ logo } style={{ margin: 10, }} alt='logo'/>
+      </header>
 				<Paper style={{
 					display: 'inline-block',
 					margin: 50,

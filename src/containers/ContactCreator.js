@@ -1,6 +1,7 @@
 //Dependencies
 import React, {PureComponent} from 'react'
 import {connect} from 'react-redux'
+import {withRouter} from 'react-router'
 
 //MaterialUI
   //Components
@@ -14,19 +15,7 @@ import RaisedButton from 'material-ui/RaisedButton'
 //Actions
 import {createContact} from '../actions/contacts'
 
-// const styles = {
-//   block: {
-//     maxWidth: 250,
-//   },
-//   checkbox: {
-//     marginBottom: 16,
-//   },
-// }
-//
-// const style = {
-//   margin: 12,
-// };
-
+import NavBar from '../components/NavBar'
 
 class contactCreator extends PureComponent {
   state = {
@@ -35,7 +24,8 @@ class contactCreator extends PureComponent {
 
   handleSubmit = (e) => {
     e.preventDefault()
-    this.props.createContact(this.state)
+    console.log(this.state);
+    this.props.createContact(this.props.match.params.companyId, this.state)
   }
 
   handleChange = event => {
@@ -50,10 +40,11 @@ class contactCreator extends PureComponent {
   }
 
  render() {
-   console.log(this.state);
+ if (this.props.user.role && this.props.user.role==='External') return null
 
   return (
     <div style={{ textAlign: 'center'}}>
+      <NavBar/>
       <Paper style={{
         position: 'relative',
         top: 80,
@@ -72,7 +63,7 @@ class contactCreator extends PureComponent {
             floatingLabelText="First Name:"
             value={this.state.firstName || ''}
             onChange={this.handleChange}
-          />
+          required/>
           <br/>
           <TextField
             floatingLabelFocusStyle={{ color: '#F09517' }}
@@ -81,7 +72,7 @@ class contactCreator extends PureComponent {
             floatingLabelText="Last Name:"
             value={this.state.lastName || ''}
             onChange={this.handleChange}
-          />
+          required/>
           <br/>
           <TextField
             floatingLabelFocusStyle={{ color: '#F09517' }}
@@ -90,7 +81,7 @@ class contactCreator extends PureComponent {
             floatingLabelText="Email:"
             value={this.state.email || ''}
             onChange={this.handleChange}
-          />
+          required/>
           <br/>
           <TextField
             floatingLabelFocusStyle={{ color: '#F09517' }}
@@ -128,8 +119,11 @@ class contactCreator extends PureComponent {
 
 const mapStateToProps = function (state) {
 	return {
-    // contacts: state.contacts
+    user: state.user,
 	}
 }
 
-export default connect(mapStateToProps, {createContact})(contactCreator)
+
+export default withRouter(
+  connect(mapStateToProps, {createContact})(contactCreator)
+)
