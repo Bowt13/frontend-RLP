@@ -180,14 +180,9 @@ class OrderDetails extends PureComponent {
               autoDetectWindowHeight={true}
               contentStyle={{
                 textAlign: 'center',
-                height: '80vh',
-                width: '90vw',
-                backgroundColor: 'white',
               }}
             >
               <div style={{
-                width: '100%',
-                height: '100%',
               }}>
                 <img
                   className='dialog-picture'
