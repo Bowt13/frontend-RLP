@@ -79,11 +79,14 @@ class LoginPage extends PureComponent {
 
 		return (
 			<div className='login-page'>
+			<header className="Header" style={{ backgroundColor: '#5e5d5e', height: 100, }}>
+				<img src={ logo } style={{ margin: 10, }} alt='logo'/>
+			</header>
 				<Paper style={{
 					display: 'inline-block',
 					margin: 50,
 					width: 400,
-					height: 380,
+					height: 390,
 					padding: 20,
 				}}
 				zDepth={2}
@@ -91,10 +94,17 @@ class LoginPage extends PureComponent {
 					<h2>Inloggen</h2>
 					<LoginForm onSubmit={this.handleSubmit} />
 
-					<p onClick={this.handleOpen} style={{ position: 'relative', top: 30, fontSize: 14, color: '#5e5d5e', cursor: 'pointer'}}>
+					<p
+						onClick={this.handleOpen}
+						style={{
+							position: 'relative',
+							fontSize: 14,
+							color: '#5e5d5e',
+							cursor: 'pointer'}}
+					>
 						Wachtwoord vergeten?
 					</p>
-					{this.props.error && <p style={{color:'red'}}>{this.props.error}</p>}
+					{this.props.error && <p style={{color:'red', marginBottom: 5,}}>{this.props.error}</p>}
 					<Dialog
 						title="Wachtwoord vergeten"
 						actions={actions}

@@ -13,6 +13,7 @@ import {getOrders} from '../actions/orders'
     import Subheader from 'material-ui/Subheader';
     import Divider from 'material-ui/Divider';
 
+import NavBar from '../components/NavBar'
 
 class OrdersPage extends PureComponent {
   state = {
@@ -23,9 +24,9 @@ class OrdersPage extends PureComponent {
     this.props.getOrders()
   }
 
-  componentHasMount() {
-    this.props.getOrders()
-  }
+  // componentHasMount() {
+  //   this.props.getOrders()
+  // }
 
   handleToggle = () => {
     this.setState({openProfile: !this.state.openProfile},()=>
@@ -85,6 +86,7 @@ class OrdersPage extends PureComponent {
 
 		return (
       <div>
+      <NavBar/>
         <Paper style={{
           position: 'relative',
           top: 90,
@@ -111,7 +113,7 @@ class OrdersPage extends PureComponent {
               hoverColor= '#f4b357'
               secondaryTextLines={2}
               primaryText={`${order.shortDescription}`}
-              secondaryText={<p> <span> {`Bestellingsnummer: ${order.id}`}</span><br/><span>{`Opdrachtgever: ${order.userEmail}`}</span></p>}
+              secondaryText={<p> <span> {`Bestellingsnummer: ${order.orderNumber}`}</span><br/><span>{`Opdrachtgever: ${order.userEmail}`}</span></p>}
               className='order-row'
               onClick={_=> history.push(`/flexicon/orders/${order.id}`)}
               />

@@ -3,6 +3,7 @@ import login from './login'
 import currentUser from './currentUser'
 import user from './user'
 import orders from './orders'
+import bonnummer from './bonnummer'
 
 import company from './company'
 
@@ -20,5 +21,6 @@ export default {
   company,
   customers,
   deliveries,
-  contacts
+  contacts,
+  bonnummer
 }

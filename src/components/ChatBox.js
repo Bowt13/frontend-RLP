@@ -21,7 +21,7 @@ const styles = {
     },
     paper: {
         width: '30vw',
-        height: '80vh',
+        height: '85vh',
         display: 'flex',
         alignItems: 'center',
         flexDirection: 'column',

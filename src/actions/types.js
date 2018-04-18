@@ -18,6 +18,7 @@ export const ADD_MESSAGE= 'ADD_MESSAGE'
 export const GET_ORDERS = 'GET_ORDERS'
 export const GET_ORDER = 'ADD_ORDER'
 export const ADD_ORDER = 'ADD_ORDER'
+export const GET_BONNUMMER = 'GET_BONNUMMER'
 
 //Contact
 export const GET_CONTACTS = 'GET_CONTACTS'

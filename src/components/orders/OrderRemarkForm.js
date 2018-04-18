@@ -202,8 +202,6 @@ class OrderRemarkForm extends PureComponent {
                 name='file'
                 labelPosition='before'
                 style={{
-                  position: 'relative',
-                  left: -350,
                   width: 'auto',
                   margin: 15,
                 }}

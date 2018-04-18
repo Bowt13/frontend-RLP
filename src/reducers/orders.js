@@ -1,4 +1,4 @@
-import {GET_ORDERS, ADD_MESSAGE} from '../actions/types'
+import {GET_ORDERS, ADD_ORDER, ADD_MESSAGE} from '../actions/types'
 
 export default function (state = [], {type, payload}) {
 	switch (type) {
@@ -12,6 +12,10 @@ export default function (state = [], {type, payload}) {
 				  return payload
 				return order
 			})
+
+		case ADD_ORDER:
+			return state.concat(payload)
+			
 		default:
       return state
 	}

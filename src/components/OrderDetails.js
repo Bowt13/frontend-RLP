@@ -24,6 +24,8 @@ import ChatBox from './ChatBox'
   //Icons
     import ReSize from 'material-ui/svg-icons/navigation/fullscreen';
 
+import NavBar from '../components/NavBar'
+
 
 const styles = {
   root: {
@@ -97,9 +99,15 @@ class OrderDetails extends PureComponent {
 
   render() {
     const {order} = this.props
-     if (!order) return <p>order does not exist</p>
+     if (!order) return (<div>
+       <NavBar/>
+       <p>loading</p>
+     </div>
+     )
 
 		return (
+      <div>
+      <NavBar/>
       <div style={{
         display: 'flex',
         width: '100%',
@@ -115,7 +123,7 @@ class OrderDetails extends PureComponent {
         <Subheader style={{
           fontSize: 40,
           margin: 8,
-        }}>Bestelling nummer {order.id}</Subheader>
+        }}>Bestelling nummer {order.orderNumber}</Subheader>
         <Divider style={{
           padding: 1,
           backgroundColor: '#F09517',
@@ -152,7 +160,7 @@ class OrderDetails extends PureComponent {
             <Divider/>
             <ListItem disabled={true} primaryText="Betalinswijze" secondaryText={`${order.paymentType}`}/>
             <Divider/>
-            <ListItem disabled={true} primaryText="Bestelling-ID" secondaryText={`${order.deliveryId}`}/>
+            <ListItem disabled={true} primaryText="Bestelling-ID" secondaryText={`${order.id}`}/>
             <Divider/>
             <ListItem disabled={true} primaryText="Klant-ID" secondaryText={`${order.userId}`}/>
           </List>
@@ -191,6 +199,7 @@ class OrderDetails extends PureComponent {
           </div>
         </Paper>
         <ChatBox order={this.props.order} />
+      </div>
       </div>
 		)
 	}
