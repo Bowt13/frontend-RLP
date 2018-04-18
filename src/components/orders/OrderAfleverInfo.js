@@ -65,15 +65,12 @@ class OrderRemarkForm extends PureComponent {
     this.setState({
       minDate: new Date(Date.parse(CurrentDate) + (DeliveryTime * 86400000))
     })
-    if(!this.props.deliveries){
-      console.log('Not here')
-    }
   }
+
 
 	render() {
 
     const {deliveries} = this.props
-
 		return (
       <div style={{
         width: '90%',
