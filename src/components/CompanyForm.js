@@ -3,6 +3,14 @@ import React, {PureComponent} from 'react'
 import {Redirect} from 'react-router-dom'
 import PropTypes from 'prop-types'
 
+//MaterialUI
+import Paper from 'material-ui/Paper';
+import Subheader from 'material-ui/Subheader';
+import Divider from 'material-ui/Divider';
+import TextField from 'material-ui/TextField';
+import RaisedButton from 'material-ui/RaisedButton'
+
+
 class CompanyForm extends PureComponent {
 	state = {}
 
@@ -21,22 +29,51 @@ class CompanyForm extends PureComponent {
 
   render() {
   		return (
-  			<form onSubmit={this.handleSubmit}>
-  				<div>
-  					<input name= "companyName" placeholder="Insert Company Name" id= "companyName" value={
-  						this.state.companyName || ''
-  					} onChange={ this.handleChange } />
-  				</div>
+				<div style={{ textAlign: 'center'}}>
+		      <Paper style={{
+		        position: 'relative',
+		        top: 80,
+		        botom: 10,
+		        margin: 'auto',
+		        width: '50%',
+		        overflow: 'scroll',
+						height: '70%',
+		      }}>
+		        <Subheader style={{ fontSize: 40 }}>Create Company</Subheader>
+		        <Divider style={{ padding: 1, marginBottom: 1 }}/>
+		        <form name='Create Company' onSubmit={this.handleSubmit}>
+		          <TextField
+		            floatingLabelFocusStyle={{ color: '#F09517' }}
+		            underlineFocusStyle={{ borderColor: '#F09517' }}
+		            name='companyName'
+		            floatingLabelText="Company Name:"
+		            value={this.state.companyName || ''}
+		            onChange={this.handleChange}
+		          required/>
+		          <br/>
+		          <TextField
+		            floatingLabelFocusStyle={{ color: '#F09517' }}
+		            underlineFocusStyle={{ borderColor: '#F09517' }}
+		            name='companyLogo'
+		            floatingLabelText="Company Logo:"
+		            value={this.state.companyLogo || ''}
+		            onChange={this.handleChange}
+		          required/>
+		          <br/>
+							<br/>
+							<div style={{display: "inline-block"}}>
+		            <RaisedButton type="submit" label="Save" backgroundColor='#F09517'/ >
+		          </div>
+							<br/>
+							<br/>
+		          <br/>
+						</form>
+			      </Paper>
+			      </div>
+					)
+				}
+			}
 
-  				<div>
-          	<input name= "companyLogo" placeholder="Link to Company Logo" id= "companyLogo" value={
-  						this.state.companyLogo || ''
-  					} onChange={ this.handleChange } />
-  				</div>
-  				<button type="submit">Save</button>
-  			</form>
-  		)
-  	}
-  }
+
 
 export default CompanyForm

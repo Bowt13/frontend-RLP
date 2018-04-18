@@ -56,18 +56,8 @@ class CompanyCreator extends PureComponent {
       textAlign: 'center',
     }}>
       <NavBar/>
-      <Paper
-        style={{
-        position: 'relative',
-        top: 80,
-        botom: 10,
-        left: '25%',
-        width: '50%',
-        }}
-      >
      <CompanyForm onSubmit={this.createCompany}/>
-   </Paper>
-</div>
+    </div>
     )
   }
 }
