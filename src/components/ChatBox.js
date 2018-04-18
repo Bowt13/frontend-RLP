@@ -74,8 +74,9 @@ class ChatBox extends PureComponent {
     console.log(this.props.order.messages)
     const {order} = this.props
     window.setInterval(function() {
-      var elem = document.getElementById('messageBox');
-      elem.scrollTop = elem.scrollHeight;
+      var elem = document.getElementById('messageBox')
+      if (elem) {
+      elem.scrollTop = elem.scrollHeight}
     }, 500)
 		return (
       <div style={styles.container}>
@@ -108,7 +109,7 @@ class ChatBox extends PureComponent {
                   onChange={e => {
                     this.setState({text: e.target.value})
                   }}
-                  hintText="type your message here"
+                  hintText="schrijf je bericht hier"
                   style={{
                     width: '90%'
                   }}
