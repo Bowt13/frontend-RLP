@@ -13,6 +13,8 @@ import { connect } from 'react-redux'
 //Actions
 import { getCustomers } from '../actions/users'
 
+import NavBar from '../components/NavBar'
+
 class CustomerList extends PureComponent {
 
   componentWillMount() {
@@ -25,6 +27,7 @@ class CustomerList extends PureComponent {
 
 		return (
       <div>
+        <NavBar/>
         <Paper style={{
           position: 'relative',
           top: 90,

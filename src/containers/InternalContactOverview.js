@@ -25,7 +25,7 @@ import {Redirect} from 'react-router-dom'
 
 
 //Components
-
+import NavBar from '../components/NavBar'
 //companies
   const companies = [
     {
@@ -303,6 +303,7 @@ class InternalContactOverview extends PureComponent {
       <div style={{
         textAlign: 'center',
       }}>
+      <NavBar/>
         <Paper
           style={{
             position: 'relative',

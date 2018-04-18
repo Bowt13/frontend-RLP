@@ -32,6 +32,8 @@ import ChatBox from './ChatBox'
     import IconButton from 'material-ui/IconButton';
     import StarBorder from 'material-ui/svg-icons/toggle/star-border';
 
+import NavBar from '../components/NavBar'
+
 
 const styles = {
   root: {
@@ -110,10 +112,11 @@ class OrderDetails extends PureComponent {
     console.log(windowWidth);
 
     const {order} = this.props
-     if (!order) return <p>order does not exist</p>
+     if (!order) return <p>loading</p>
 
 		return (
       <div>
+        <NavBar/>
         <Paper style={{
           position: 'relative',
           top: 90,
@@ -174,7 +177,7 @@ class OrderDetails extends PureComponent {
                   titleStyle={styles.titleStyle}
                   titleBackground="linear-gradient(to top, rgba(0,0,0,0.7) 0%,rgba(0,0,0,0.3) 70%,rgba(0,0,0,0) 100%)"
                 >
-                  <img src={tile.img} />
+                  <img src={tile.img} alt= 'tile'/>
                 </GridTile>
               ))}
             </GridList>
