@@ -62,7 +62,6 @@ class OrderAdressForm extends PureComponent {
       this.afleverAdresForm.handleSubmit()
     }
     this.props.onChange('OrderAdres', this.state)
-
   }
 
   componentDidMount() {
@@ -71,6 +70,7 @@ class OrderAdressForm extends PureComponent {
 
 	render() {
     const {handleChange} = this
+    console.log(this.state)
 		return (
       <div style={{
         display: 'inline-block',

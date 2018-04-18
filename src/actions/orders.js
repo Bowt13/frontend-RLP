@@ -9,10 +9,9 @@ export const addOrder = (order,addresses, photo) => (dispatch, getState) => {
   const jwt = state.currentUser.jwt
   request
 		.post(`${baseUrl}/orders`)
-		.send({ order, addresses })
-    .attach('photo', photo)
-    .field(photo)
     .set('Authorization', `Bearer ${jwt}`)
+		.send({ order, addresses })
+    //.attach('photo', photo)
 		.then(result => {
 			dispatch({
 				type: ADD_ORDER,
