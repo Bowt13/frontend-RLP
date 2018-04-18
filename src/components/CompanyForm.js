@@ -1,6 +1,5 @@
 //Dependencies
 import React, {PureComponent} from 'react'
-import { Redirect, Link } from 'react-router-dom'
 import {withRouter} from 'react-router'
 
 //MaterialUI
