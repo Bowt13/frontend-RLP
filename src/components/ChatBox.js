@@ -1,10 +1,15 @@
 //Dependencies
-import React, {PureComponent} from 'react'
-import {connect} from 'react-redux'
+  import React, {PureComponent} from 'react'
+  import {connect} from 'react-redux'
+
 //MaterialUI
-import { Paper, TextField, IconButton, RaisedButton } from "material-ui"
-import Mic from 'material-ui/svg-icons/av/mic';
-import ContentSend from 'material-ui/svg-icons/content/send';
+  import { Paper, TextField, IconButton, RaisedButton } from "material-ui"
+  import Mic from 'material-ui/svg-icons/av/mic';
+  import ContentSend from 'material-ui/svg-icons/content/send';
+
+//Actions
+  import {getCurrentUser} from '../actions/users'
+  import {addMessage} from '../actions/messages'
 
 const styles = {
     container: {
@@ -41,72 +46,72 @@ const styles = {
     }
 };
 
-const myMessages = [
-  {
-    message:'Where is my order?!?!?',
-    name:'Harvey Specter'
-  },
-  {
-    message:'almost there mate',
-    name:'Nikki'
-  },
-  {
-    message:'I am not your mate!',
-    name:'Harvey Specter'
-  },
-]
-
 class ChatBox extends PureComponent {
 
   state = {
-      // messages: [],
-      messages: myMessages,
-      text: '',
-      name: 'eva',
+    text: ''
   }
 
-  send = () => {
-      myMessages.push({
-          name: this.state.name,
-          message: this.state.text
-      })
-      // this.forceUpdate() //triggers rerender
-      this.setState({text: ''})
+  send = (event) => {
+    event.preventDefault()
+    {if (this.state.text !== '') {
+      this.props.addMessage(this.props.order.id, this.state.text)
+    }}
+    this.setState({text: ''})
+    setTimeout(_ => {
+      const elem = document.getElementById('messageBox')
+      if (elem) {
+      elem.scrollTop = elem.scrollHeight}
+    }, 500)
   }
 
+  componentWillMount(){
+    const {user, getCurrentUser} = this.props
+    getCurrentUser()
+  }
 
   render() {
-    // console.log(this.state);
+    console.log(this.props.order.messages)
+    const {order} = this.props
+    window.setInterval(function() {
+      var elem = document.getElementById('messageBox');
+      elem.scrollTop = elem.scrollHeight;
+    }, 500)
 		return (
       <div style={styles.container}>
         <div>
           <Paper style={styles.paper} zDepth={2} >
-            <Paper style={styles.messagesBody}>
-                {
-                  this.state.messages.map(msg =>
+            <Paper id='messageBox' style={styles.messagesBody}>
+                {order.messages &&
+                  order.messages.sort((a,b) => {if(a.id > b.id){return 1}else{return -1}}).map(msg =>
                     (
                       <div style={styles.message}>
-                        <span>{msg.message}</span>
-                        <sub style={{color:'lightgrey'}}>{msg.name}</sub>
+                        <span>{msg.content}</span>
+                        <sub style={{color:'lightgrey'}}>{msg.userName}</sub>
                       </div>
                     )
                   )
                 }
             </Paper>
             <div style={styles.record}>
-              <form onSubmit={this.send}>
+              <form onSubmit={this.send}
+              style={{
+                width: '90%'
+              }}>
                 <TextField
                   id="input"
                   type='text'
                   underlineFocusStyle={{
                     borderColor: '#F09517',
                   }}
-                  value={this.state.text || ''}
+                  value={this.state.text}
                   onChange={e => {
                     this.setState({text: e.target.value})
                   }}
                   hintText="type your message here"
-                  fullWidth={true}
+                  style={{
+                    width: '90%'
+                  }}
                 />
               </form>
               <IconButton
@@ -123,5 +128,13 @@ class ChatBox extends PureComponent {
   }
 }
 
+const mapStateToProps = function (state) {
+	return {
+    currentUser: state.currentUser,
+    authenticated: state.currentUser !== null,
+    deliveries: state.deliveries,
+    user: state.user,
+	}
+}
 
-export default ChatBox
+export default connect(mapStateToProps, {getCurrentUser, addMessage})(ChatBox)
