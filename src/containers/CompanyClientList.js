@@ -6,7 +6,7 @@ import { connect } from 'react-redux'
 import Searchbar from '../components/Searchbar'
 
 //Functions
-import { searchForOrder } from '../lib/functions'
+import { searchForContact } from '../lib/functions'
 
 //MaterialUI
   //Components
@@ -15,9 +15,12 @@ import { searchForOrder } from '../lib/functions'
     import { List, ListItem } from 'material-ui/List'
     import Subheader from 'material-ui/Subheader'
     import Divider from 'material-ui/Divider'
+    import Avatar from 'material-ui/Avatar';
+    import SearchBar from 'material-ui-search-bar'
 
 //Actions
 import { getCustomers } from '../actions/users'
+import { getCompanies } from '../actions/companies'
 
 class CustomerList extends PureComponent {
 
@@ -25,98 +28,117 @@ class CustomerList extends PureComponent {
     props:true
   }
   componentWillMount() {
-    this.props.getCustomers()
-
+    this.props.getCompanies()
   }
 
   handleSubmit = (value) => {
-    const { customers } = this.props
     if (this.state.props === true)
       this.setState({props:false})
     this.setState({
-      customers: searchForOrder(customers ,value)
+      company: searchForContact(this.props.company ,value)
     })
-    // this.setState({ init: event.target.value })
   }
 
 	render() {
 
     const { history } = this.props
-    let customers
+    let company
     if (this.state.props)
-      customers= this.props.customers
+      company= this.props.company
     if(!this.state.props)
-      customers= this.state.customers
-    return (
+      company= this.state.company
+  //  const {company} = this.state
+    console.log(company)
+    //console.log(customers)
+
+  	return (
       <div style={{
-        display: 'flex'
-      }}>
+        display: 'flex',
+        width: '80%',
+        margin: 'auto',
+        paddingTop: '5em',
+        }}>
+
         <Paper style={{
-          position: 'relative',
-          top: 90,
-          botom: 10,
-          left: '15%',
-          width: '50%',
           overflow: 'scroll',
+          flexGrow: '2',
+          margin: 5,
         }}>
-        <List style={{
-          padding: 0,
-        }}>
-          <Subheader style={{
-            fontSize: 40,
-            margin: 8,
-            textAlign: 'left',
-          }}>Company</Subheader>
-          <Divider style={{
-            padding: 1,
-            backgroundColor: '#F09517',
-          }}/>
-          { customers && customers.map(customer => (
+          <List style={{
+            padding: 0,
+          }}>
+            <Subheader style={{
+              fontSize: 40,
+              margin: 8,
+              textAlign: 'left',
+            }}>Klanten</Subheader>
+            <Divider style={{
+              padding: 1,
+              backgroundColor: '#F09517',
+            }}/>
+            { company && company.map(cpy =>
+
             <div>
               <Divider />
               <ListItem
-              initiallyOpen={ false }
-              primaryTogglesNestedList={ true }
-              hoverColor= '#F09517'
-              nestedItems={[ customer.orders.map(order => (
-                <div>
+                style={{
+                maxWidth: '100%',
+              }}
+                initiallyOpen={ false }
+                primaryTogglesNestedList={ true }
+                hoverColor= '#F09517'
+                primaryText= {cpy.companyName}
+                leftAvatar={<Avatar src={cpy.companyLogo}/>}
+                nestedItems={[cpy.users.map(user =>
+                  <div>
                   <Divider />
                   <ListItem
-                    hoverColor= '#f4b357'
                     style={{
-                      textAlign: 'right',
+                    textAlign: 'right',
+                    textOverflow: ''
                     }}
-                    primaryText={ `${order.shortDescription}` }
-                    secondaryText={ 'Besteldatum:' + ' ' + `${order.orderDate}` }
-                    onClick={ _=> history.push(`/flexicon/orders/${order.id}`) }
-                  />
-                </div>
-              ))
-            ]}
-              style={{
-                textAlign: 'left',
-              }}
-              secondaryTextLines={ 2 }
-              primaryText={ `${customer.email}` }
-              secondaryText={<p> <span> { `${customer.companyName}` }</span><br/><span>{ `${customer.firstName}`+ ' ' + `${customer.lastName}`}</span></p> }
-              />
+                    primaryTogglesNestedList={ true }
+                    hoverColor= '#F09517'
+                    key={user.id}
+                    primaryText= {`${user.firstName} ${user.lastName}`}      
+                    nestedItems={[user.orders.map(order =>
+                      <ListItem
+                        hoverColor= '#f4b357'
+                        primaryTogglesNestedList={ true }
+                        style={{
+                        textAlign: 'right',
+                        textOverflow: ''
+                      }}key={order.id}
+                      primaryText={ `${order.shortDescription}` }
+                      secondaryText={ 'Besteldatum:' + ' ' + `${order.orderDate}` }
+                      onClick={ _=> history.push(`/flexicon/orders/${order.id}`) }/>,
+                    )]}
+                    />
+                  </div>
+                )]}
+               />
+
             </div>
-          ))
-          }
-        </List>
-        </Paper>
-        <Searchbar
-          onSubmit={ this.handleSubmit }
+          )}
+          </List>
+      </Paper>
+      <SearchBar
+        onChange={ this.handleSubmit }
+        style={{
+        margin: '0 auto',
+        maxWidth: 800
+        }}
         />
-      </div>
-		)
-	}
+    </div>
+    )
+  }
 }
 
 const mapStateToProps = function (state) {
 	return {
-    customers: Object.values(state.customers).sort((a, b) => a.email.localeCompare(b.email))
+    customers: Object.values(state.customers).sort((a, b) => a.email.localeCompare(b.email)),
+    company: Object.values(state.company)
 	}
 }
 
-export default connect(mapStateToProps, { getCustomers })(CustomerList)
+export default connect(mapStateToProps, { getCustomers, getCompanies })(CustomerList)
