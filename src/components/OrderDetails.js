@@ -129,7 +129,7 @@ class OrderDetails extends PureComponent {
             <Divider/>
             <ListItem disabled={true} primaryText="Betalinswijze" secondaryText={`${order.paymentType}`}/>
             <Divider/>
-            <ListItem disabled={true} primaryText="Bestelling-ID" secondaryText={`${order.deliveryId}`}/>
+            <ListItem disabled={true} primaryText="Bestelling-ID" secondaryText={`${order.id}`}/>
             <Divider/>
             <ListItem disabled={true} primaryText="Klant-ID" secondaryText={`${order.userId}`}/>
           </List>
