@@ -118,6 +118,17 @@ class CustomerList extends PureComponent {
                 nestedItems={[cpy.users.map(user =>
                   <div>
                   <Divider />
+                  <RaisedButton
+                    label= "Contactpersoon maken"
+                    backgroundColor='#F09517'
+                    style={{
+                      postion: 'relative',
+                      margin: 30,
+                      marginTop: 5,
+                      backgroundColor: '#9A9A98',
+                    }}
+                    onClick={ _=> history.push(`/flexicon/users/company/${cpy.id}`) }
+                     />
 
                   <ListItem
                   style={{
