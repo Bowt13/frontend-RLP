@@ -55,9 +55,9 @@ class ChatBox extends PureComponent {
 
   send = (event) => {
     event.preventDefault()
-    {if (this.state.text !== '') {
+    if (this.state.text !== '') {
       this.props.addMessage(this.props.order.id, this.state.text)
-    }}
+    }
     this.setState({text: ''})
   }
 

@@ -1,7 +1,6 @@
 //Dependencies
 import React, {PureComponent} from 'react'
 import {connect} from 'react-redux'
-import {getOrders} from '../actions/orders'
 import ChatBox from './ChatBox'
 
 //MaterialUI
@@ -26,6 +25,8 @@ import ChatBox from './ChatBox'
 
 import NavBar from '../components/NavBar'
 
+//Actions
+  import {getOrders, addPhoto} from '../actions/orders'
 
 const styles = {
   root: {
@@ -55,9 +56,8 @@ class OrderDetails extends PureComponent {
   }
 
   handleFileChange = (e) => {
-    this.setState({
-      files: e.target.files,
-    })
+    console.log('yes');
+    this.props.addPhoto(this.props.order.id, e.target.files[0])
   }
 
   handleToggle = () => {
@@ -273,4 +273,4 @@ const mapStateToProps = function (state, props) {
 	}
 }
 
-export default connect(mapStateToProps, {getOrders})(OrderDetails)
+export default connect(mapStateToProps, {getOrders, addPhoto})(OrderDetails)

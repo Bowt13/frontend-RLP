@@ -23,6 +23,7 @@ class OrdersPage extends PureComponent {
   }
 
   componentWillMount() {
+    this.props.getOrders()
   }
 
   handleToggle = () => {
