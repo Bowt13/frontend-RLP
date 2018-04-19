@@ -70,7 +70,7 @@ class OrdersPage extends PureComponent {
               primaryText={`${order.shortDescription}`}
               secondaryText={<p> <span> {`Bestellingsnummer: ${order.orderNumber}`}</span><br/><span>{`Opdrachtgever: ${order.userEmail}`}</span></p>}
               className='order-row'
-              onClick={_=> history.push(`/flexicon/orders/${order.id}`)}
+              onClick={_=> history.push(`/flexicon/orders/${order.orderNumber}`)}
               />
             </div>
           ))
