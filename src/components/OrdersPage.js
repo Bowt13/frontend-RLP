@@ -15,7 +15,7 @@ import {getOrders} from '../actions/orders'
     import SearchBar from 'material-ui-search-bar'
 
 //functions
-import { searchForContact } from '../lib/functions'
+import { searchForOrder } from '../lib/functions'
 
 import NavBar from '../components/NavBar'
 
@@ -33,7 +33,7 @@ class OrdersPage extends PureComponent {
     if (this.state.props === true)
       this.setState({props:false})
     this.setState({
-      company: searchForContact(this.props.company ,value)
+      orders: searchForOrder(this.props.orders ,value)
     })
   }
 
@@ -46,7 +46,7 @@ class OrdersPage extends PureComponent {
     let windowWidth = window.screen.availWidth
     console.log(windowWidth);
 
-    const { history} = this.props
+    const { history } = this.props
 
     let orders
     if (this.state.props)
