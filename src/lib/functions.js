@@ -19,6 +19,7 @@ export const searchForOrder = (customers, text) => {
 }
 
 export const searchForContact = (companies, text) => {
+ console.log(companies, text);
   const usersFiltered = companies.map(company => {
     return {
       ...company,
