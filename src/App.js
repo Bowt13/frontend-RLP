@@ -20,7 +20,6 @@
 //Components
   import OrdersPage from './components/OrdersPage'
   import OrderDetails from './components/OrderDetails'
-  import ChatBox from './components/ChatBox'
 
 class App extends Component {
   render() {
