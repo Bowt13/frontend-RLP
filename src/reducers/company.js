@@ -1,4 +1,5 @@
 import {GET_COMPANIES, ADD_COMPANY} from '../actions/companies'
+import {ADD_CONTACT} from '../actions/types'
 
 export default function (state = [], action) {
   switch (action.type) {
@@ -6,6 +7,12 @@ export default function (state = [], action) {
       return action.payload
     case ADD_COMPANY:
       return [...state, action.payload]
+    case ADD_CONTACT:
+      return state.map(company=>{
+        if(action.payload.id===company.id)
+          return action.payload
+        return company
+      })
 
     default:
       return state

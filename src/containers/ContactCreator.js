@@ -26,6 +26,7 @@ class contactCreator extends PureComponent {
     e.preventDefault()
     console.log(this.state);
     this.props.createContact(this.props.match.params.companyId, this.state)
+    this.props.history.push(`/flexicon/customers`)
   }
 
   handleChange = event => {
