@@ -79,6 +79,7 @@ class contactCreator extends PureComponent {
             floatingLabelFocusStyle={{ color: '#F09517' }}
             underlineFocusStyle={{ borderColor: '#F09517' }}
             name='email'
+            type='Email'
             floatingLabelText="Email:"
             value={this.state.email || ''}
             onChange={this.handleChange}
