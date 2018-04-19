@@ -4,13 +4,14 @@ import {ADD_ORDER, GET_ORDERS, GET_ORDER, GET_BONNUMMER} from './types'
 
 const orderAPIurl = 'http://flexicon.craftingapps.com:8080/crp_api/api/fcrpi_eorder_vw'
 
-export const addOrder = (order,addresses) => (dispatch, getState) => {
+export const addOrder = (order,addresses, photo) => (dispatch, getState) => {
   const state = getState()
   const jwt = state.currentUser.jwt
   request
 		.post(`${baseUrl}/orders`)
-		.send({ order, addresses })
     .set('Authorization', `Bearer ${jwt}`)
+		.send({ order, addresses })
+    //.attach('photo', photo)
 		.then(result => {
 			dispatch({
 				type: ADD_ORDER,

@@ -110,7 +110,7 @@ class OrderDetails extends PureComponent {
       <NavBar/>
       <div style={{
         display: 'flex',
-        width: '100%',
+        width: '90%',
         margin: 'auto',
         paddingTop: '5em',
       }}>
