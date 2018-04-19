@@ -3,8 +3,7 @@
   import {connect} from 'react-redux'
 
 //MaterialUI
-  import { Paper, TextField, IconButton, RaisedButton } from "material-ui"
-  import Mic from 'material-ui/svg-icons/av/mic';
+  import { Paper, TextField, IconButton } from "material-ui"
   import ContentSend from 'material-ui/svg-icons/content/send';
 
 //Actions
@@ -62,7 +61,7 @@ class ChatBox extends PureComponent {
   }
 
   componentWillMount(){
-    const {user, getCurrentUser} = this.props
+    const {getCurrentUser} = this.props
     getCurrentUser()
     const elem = document.getElementById('messageBox')
     if (elem) {

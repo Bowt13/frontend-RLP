@@ -13,17 +13,30 @@ import {getOrders} from '../actions/orders'
     import Subheader from 'material-ui/Subheader';
     import Divider from 'material-ui/Divider';
     import CircularProgress from 'material-ui/CircularProgress';
+    import SearchBar from 'material-ui-search-bar'
 
+//functions
+import { searchForOrder } from '../lib/functions'
 
 import NavBar from '../components/NavBar'
 
 class OrdersPage extends PureComponent {
   state = {
     openProfile: false,
+    props: true
   }
 
   componentWillMount() {
     this.props.getOrders()
+  }
+
+
+  handleSubmit = (value) => {
+    if (this.state.props === true)
+      this.setState({props:false})
+    this.setState({
+      orders: searchForOrder(this.props.orders ,value)
+    })
   }
 
   handleToggle = () => {
@@ -32,33 +45,15 @@ class OrdersPage extends PureComponent {
   }
 
 	render() {
-    const {orders, history} = this.props
 
-    if(orders.length === 0) return (
-      <div>
-      <NavBar/>
-        <Paper style={{
-          position: 'relative',
-          top: 90,
-          left: '25%',
-          width: '50%',
-          overflow: 'scroll',
-        }}>
-          <List style={{
-            padding: 0,
-          }}>
-            <Subheader style={{
-              fontSize: 40,
-              margin: 8,
-            }}>Bestellingen</Subheader>
-            <Divider style={{
-              padding: 1,
-              backgroundColor: '#F09517',
-            }}/>
-            <CircularProgress size={80} thickness={5}/>
-          </List>
-        </Paper>
-      </div>)
+    const {history } = this.props
+
+    let orders
+    if (this.state.props)
+      orders = this.props.orders
+    if(!this.state.props)
+      orders = this.state.orders
+    console.log(orders)
 
 		return (
       <div>
@@ -70,6 +65,15 @@ class OrdersPage extends PureComponent {
           width: '50%',
           overflow: 'scroll',
         }}>
+        <div>
+        <SearchBar
+          onChange={ this.handleSubmit }
+          style={{
+          margin: 20,
+          maxWidth: 1000,
+          maxLength: 500
+          }}
+          />
         <List style={{
           padding: 0,
         }}>
@@ -91,12 +95,13 @@ class OrdersPage extends PureComponent {
               primaryText={`${order.shortDescription}`}
               secondaryText={<p> <span> {`Bestellingsnummer: ${order.orderNumber}`}</span><br/><span>{`Opdrachtgever: ${order.userEmail}`}</span></p>}
               className='order-row'
-              onClick={_=> history.push(`/flexicon/orders/${order.orderNumber}`)}
+              onClick={_=> history.push(`/flexicon/bestellingen/${order.orderNumber}`)}
               />
             </div>
           ))
           }
         </List>
+        </div>
         </Paper>
       </div>
 		)

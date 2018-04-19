@@ -22,7 +22,6 @@ import { logout, getCurrentUser } from '../actions/users'
     import NavigationChevronLeft from 'material-ui/svg-icons/navigation/chevron-left'
     import FeaturedPlayList from 'material-ui/svg-icons/av/featured-play-list'
     import ShoppingCart from 'material-ui/svg-icons/action/shopping-cart'
-    import Person from 'material-ui/svg-icons/social/person'
     import People from 'material-ui/svg-icons/social/people'
 
 
@@ -45,21 +44,18 @@ class NavBar extends PureComponent {
 
   handleDrawerClick = (type) => {
     switch (type) {
-      case "GegevensBewerken":
-        this.setState({drawer: false})
-        this.props.history.push('/flexicon/users/:usersId/changedetails')
-        break
       case "NieuweBestelling":
         this.setState({drawer: false})
-        this.props.history.push('/flexicon/create/order')
+        this.props.history.push('/flexicon/nieuwebestelling')
         break
       case "JeBestellingen":
         this.setState({drawer: false})
-        this.props.history.push('/flexicon/orders')
+        this.props.history.push('/flexicon/bestellingen')
         break
       case "Klanten":
         this.setState({drawer: false})
-        this.props.history.push('/flexicon/customers')
+        this.props.history.push('/flexicon/klanten')
+        break
       default:
 
     }
@@ -67,7 +63,7 @@ class NavBar extends PureComponent {
 
   render() {
 
-    const { user, history, location } = this.props
+    const { user, location } = this.props
 
     if (location.pathname.indexOf('flexicon') <= 0 ) return(
       <header className="Header" style={{ backgroundColor: '#5e5d5e', height: 100, }}>
@@ -196,7 +192,11 @@ class NavBar extends PureComponent {
                     leftIcon={<ShoppingCart color='#F09517'/>}
                     onClick={_ => this.handleDrawerClick("JeBestellingen")}
                   />
-                  <Divider/>
+                  <Divider style={{
+                    marginTop: 20,
+                    width: '97%',
+                    height: 3,
+                  }}/>
                 </div>
               }
 
