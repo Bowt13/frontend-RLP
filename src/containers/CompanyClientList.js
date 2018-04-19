@@ -128,8 +128,8 @@ class CustomerList extends PureComponent {
                     primaryTogglesNestedList={ true }
                     hoverColor= '#F09517'
                     key={user.id}
-                    primaryText= {`${user.firstName} ${user.lastName}`}
-                    secondaryText= {`${user.email}`}
+                    primaryText= {`${user.email}`}
+                    secondaryText= {`${user.firstName} ${user.lastName}`}
                     nestedItems={[user.orders.map(order =>
                       <ListItem
                         hoverColor= '#f4b357'
