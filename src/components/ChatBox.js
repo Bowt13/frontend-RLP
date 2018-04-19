@@ -105,7 +105,7 @@ class ChatBox extends PureComponent {
                   onChange={e => {
                     this.setState({text: e.target.value})
                   }}
-                  hintText="type your message here"
+                  hintText="schrijf je bericht hier"
                   style={{
                     width: '90%'
                   }}
