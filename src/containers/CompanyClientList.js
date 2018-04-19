@@ -129,6 +129,7 @@ class CustomerList extends PureComponent {
                     hoverColor= '#F09517'
                     key={user.id}
                     primaryText= {`${user.firstName} ${user.lastName}`}
+                    secondaryText= {`${user.email}`}
                     nestedItems={[user.orders.map(order =>
                       <ListItem
                         hoverColor= '#f4b357'
@@ -169,7 +170,7 @@ class CustomerList extends PureComponent {
 const mapStateToProps = function (state) {
 	return {
     customers: Object.values(state.customers).sort((a, b) => a.email.localeCompare(b.email)),
-    company: Object.values(state.company)
+    company: Object.values(state.company).sort((a, b) => a.companyName.localeCompare(b.companyName))
 	}
 }
 
