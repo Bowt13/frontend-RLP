@@ -1,6 +1,7 @@
 //Dependencies
 import React, { PureComponent } from 'react'
 import { connect } from 'react-redux'
+import { Redirect } from 'react-router-dom'
 
 //Functions
 import { searchForContact } from '../lib/functions'
@@ -48,7 +49,11 @@ class CustomerList extends PureComponent {
       company= this.props.company
     if(!this.state.props)
       company= this.state.company
-    console.log(company)
+    console.log(this.props.user)
+
+    if (this.props.user && this.props.user.role === 'External') return (
+  			<Redirect to="/login" />
+  	)
 
   	return (
       <div>
@@ -167,6 +172,7 @@ class CustomerList extends PureComponent {
 
 const mapStateToProps = function (state) {
 	return {
+    user: state.user,
     customers: Object.values(state.customers).sort((a, b) => a.email.localeCompare(b.email)),
     company: Object.values(state.company).sort((a, b) => a.companyName.localeCompare(b.companyName))
 	}

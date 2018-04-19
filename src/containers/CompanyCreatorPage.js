@@ -2,6 +2,7 @@
 import React, {PureComponent} from 'react'
 import {connect} from 'react-redux'
 import PropTypes from 'prop-types'
+import { Redirect } from 'react-router-dom'
 
 //MaterialUI
 
@@ -33,6 +34,10 @@ class CompanyCreator extends PureComponent {
   const {company} = this.props
   console.log(company)
 
+  if (this.props.user && this.props.user.role === 'External') return (
+      <Redirect to="/login" />
+  )
+
   return (
     <div style={{
       textAlign: 'center',
@@ -46,7 +51,8 @@ class CompanyCreator extends PureComponent {
 
 const mapStateToProps = function (state) {
 	return {
-    company: state.company
+    company: state.company,
+    user: state.user
 	}
 }
 
