@@ -55,6 +55,7 @@ class NavBar extends PureComponent {
       case "Klanten":
         this.setState({drawer: false})
         this.props.history.push('/flexicon/klanten')
+        break
       default:
 
     }

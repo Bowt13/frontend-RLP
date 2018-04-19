@@ -34,8 +34,6 @@ class OrdersPage extends PureComponent {
   }
 
 	render() {
-    let windowWidth = window.screen.availWidth
-    console.log(windowWidth);
 
     const {orders, history} = this.props
 
@@ -70,7 +68,7 @@ class OrdersPage extends PureComponent {
               primaryText={`${order.shortDescription}`}
               secondaryText={<p> <span> {`Bestellingsnummer: ${order.orderNumber}`}</span><br/><span>{`Opdrachtgever: ${order.userEmail}`}</span></p>}
               className='order-row'
-              onClick={_=> history.push(`/flexicon/orders/${order.orderNumber}`)}
+              onClick={_=> history.push(`/flexicon/bestellingen/${order.orderNumber}`)}
               />
             </div>
           ))
