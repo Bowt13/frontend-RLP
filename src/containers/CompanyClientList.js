@@ -118,6 +118,17 @@ class CustomerList extends PureComponent {
                 nestedItems={[cpy.users.map(user =>
                   <div>
                   <Divider />
+                  <RaisedButton
+                    label= "Contactpersoon maken"
+                    backgroundColor='#F09517'
+                    style={{
+                      postion: 'relative',
+                      margin: 30,
+                      marginTop: 5,
+                      backgroundColor: '#9A9A98',
+                    }}
+                    onClick={ _=> history.push(`/flexicon/users/company/${cpy.id}`) }
+                     />
 
                   <ListItem
                   style={{
@@ -128,7 +139,8 @@ class CustomerList extends PureComponent {
                     primaryTogglesNestedList={ true }
                     hoverColor= '#F09517'
                     key={user.id}
-                    primaryText= {`${user.firstName} ${user.lastName}`}
+                    primaryText= {`${user.email}`}
+                    secondaryText= {`${user.firstName} ${user.lastName}`}
                     nestedItems={[user.orders.map(order =>
                       <ListItem
                         hoverColor= '#f4b357'
@@ -169,7 +181,7 @@ class CustomerList extends PureComponent {
 const mapStateToProps = function (state) {
 	return {
     customers: Object.values(state.customers).sort((a, b) => a.email.localeCompare(b.email)),
-    company: Object.values(state.company)
+    company: Object.values(state.company).sort((a, b) => a.companyName.localeCompare(b.companyName))
 	}
 }
 
