@@ -7,6 +7,7 @@ export default function (state = [], {type, payload}) {
 
 		case ADD_MESSAGE:
 			const orderId = payload.id
+			console.log('NewMessage')
 			return state = state.map((order)=> {
 				if (order.id === orderId)
 				  return payload
@@ -15,7 +16,6 @@ export default function (state = [], {type, payload}) {
 
 		case ADD_ORDER:
 			return state.concat(payload)
-			
 		default:
       return state
 	}

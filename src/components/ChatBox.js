@@ -22,6 +22,7 @@ const styles = {
     paper: {
         width: '30vw',
         height: '85vh',
+        grow: 1,
         display: 'flex',
         alignItems: 'center',
         flexDirection: 'column',
@@ -72,7 +73,6 @@ class ChatBox extends PureComponent {
   }
 
   render() {
-    console.log(this.props.order.messages)
     const {order} = this.props
 		return (
       <div style={styles.container}>
@@ -83,7 +83,10 @@ class ChatBox extends PureComponent {
                   order.messages.sort((a,b) => {if(a.id > b.id){return 1}else{return -1}}).map(msg =>
                     (
                       <div style={styles.message}>
-                        <span>{msg.content}</span>
+                        <span style={{
+                          textAlign: 'left',
+                          maxWidth: '80%',
+                        }}>{msg.content}</span>
                         <sub style={{color:'lightgrey'}}>{msg.userName}</sub>
                       </div>
                     )

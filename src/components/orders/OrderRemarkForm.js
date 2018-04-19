@@ -1,7 +1,6 @@
 //Dependencies
 import React, {PureComponent} from 'react'
 import {connect} from 'react-redux'
-import {Redirect} from 'react-router-dom'
 import PropTypes from 'prop-types'
 
 //MaterialUI
@@ -55,8 +54,6 @@ class OrderRemarkForm extends PureComponent {
   }
 
 	render() {
-    let file    = this.state.picture
-    let reader  = new FileReader()
     console.log(this.state.files)
 		return (
       <div style={{
@@ -216,7 +213,6 @@ class OrderRemarkForm extends PureComponent {
                   }}
                   accept="image/*"
                   onChange={this.handleFileChange}
-                  multiple
                 />
               </RaisedButton>
               <br/>
