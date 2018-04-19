@@ -83,7 +83,7 @@ class CustomerList extends PureComponent {
                  marginTop: 5,
                  backgroundColor: '#9A9A98',
                }}
-               onClick={ _=> history.push(`/flexicon/companies`) }
+               onClick={ _=> history.push(`/flexicon/nieuwbedrijf`) }
                 />
           </div>
           <Divider style={{
@@ -118,18 +118,6 @@ class CustomerList extends PureComponent {
                 nestedItems={[cpy.users.map(user =>
                   <div>
                   <Divider />
-                  <RaisedButton
-                    label= "Contactpersoon maken"
-                    backgroundColor='#F09517'
-                    style={{
-                      postion: 'relative',
-                      margin: 30,
-                      marginTop: 5,
-                      backgroundColor: '#9A9A98',
-                    }}
-                    onClick={ _=> history.push(`/flexicon/users/company/${cpy.id}`) }
-                     />
-
                   <ListItem
                   style={{
                     textAlign: 'right',
@@ -151,7 +139,7 @@ class CustomerList extends PureComponent {
                       }}key={order.id}
                       primaryText={ `${order.shortDescription}` }
                       secondaryText={ 'Besteldatum:' + ' ' + `${order.orderDate}` }
-                      onClick={ _=> history.push(`/flexicon/orders/${order.id}`) }/>
+                      onClick={ _=> history.push(`/flexicon/bestellingen/${order.id}`) }/>
                     )]}
                     />
                   </div>
@@ -166,7 +154,7 @@ class CustomerList extends PureComponent {
                    marginTop: 5,
                    backgroundColor: '#9A9A98',
                  }}
-                 onClick={ _=> history.push(`/flexicon/users/company/${cpy.id}`) }
+                 onClick={ _=> history.push(`flexicon/contactpersoon/bedrijf/${cpy.id}`) }
                   />
             </div>
           )}
