@@ -1,6 +1,7 @@
 //Dependencies
 import React, { PureComponent } from 'react'
 import { connect } from 'react-redux'
+import { Redirect } from 'react-router-dom'
 
 //Components
 import Searchbar from '../components/Searchbar'
@@ -48,6 +49,10 @@ class CustomerList extends PureComponent {
       customers= this.props.customers
     if(!this.state.props)
       customers= this.state.customers
+
+    if (this.props.user && this.props.user.role === 'External') return (
+  			<Redirect to="/login" />
+  	)
 		return (
       <div>
       <NavBar/>
