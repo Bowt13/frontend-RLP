@@ -21,6 +21,7 @@ const styles = {
     paper: {
         width: '30vw',
         height: '85vh',
+        grow: 1,
         display: 'flex',
         alignItems: 'center',
         flexDirection: 'column',
@@ -53,15 +54,18 @@ class ChatBox extends PureComponent {
 
   send = (event) => {
     event.preventDefault()
-    {if (this.state.text !== '') {
+    if (this.state.text !== '') {
       this.props.addMessage(this.props.order.id, this.state.text)
-    }}
+    }
     this.setState({text: ''})
   }
 
   componentWillMount(){
     const {getCurrentUser} = this.props
     getCurrentUser()
+    const elem = document.getElementById('messageBox')
+    if (elem) {
+    elem.scrollTop = elem.scrollHeight}
   }
 
   componentDidUpdate(){
@@ -71,7 +75,6 @@ class ChatBox extends PureComponent {
   }
 
   render() {
-    console.log(this.props.order.messages)
     const {order} = this.props
 		return (
       <div style={styles.container}>
@@ -82,7 +85,10 @@ class ChatBox extends PureComponent {
                   order.messages.sort((a,b) => {if(a.id > b.id){return 1}else{return -1}}).map(msg =>
                     (
                       <div style={styles.message}>
-                        <span>{msg.content}</span>
+                        <span style={{
+                          textAlign: 'left',
+                          maxWidth: '80%',
+                        }}>{msg.content}</span>
                         <sub style={{color:'lightgrey'}}>{msg.userName}</sub>
                       </div>
                     )

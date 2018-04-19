@@ -12,6 +12,7 @@ import {getOrders} from '../actions/orders'
     } from 'material-ui/List';
     import Subheader from 'material-ui/Subheader';
     import Divider from 'material-ui/Divider';
+    import CircularProgress from 'material-ui/CircularProgress';
     import SearchBar from 'material-ui-search-bar'
 
 //functions
@@ -29,6 +30,7 @@ class OrdersPage extends PureComponent {
     this.props.getOrders()
   }
 
+
   handleSubmit = (value) => {
     if (this.state.props === true)
       this.setState({props:false})
@@ -44,7 +46,7 @@ class OrdersPage extends PureComponent {
 
 	render() {
 
-    const { history } = this.props
+    const {history } = this.props
 
     let orders
     if (this.state.props)

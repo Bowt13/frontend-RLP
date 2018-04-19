@@ -50,12 +50,8 @@ class OrderAdressForm extends PureComponent {
 
   onClick = () => {
     this.bezoekAdresForm.handleSubmit()
-    {!this.state.factuurAdres &&
-      this.factuurAdresForm.handleSubmit()
-    }
-    {!this.state.afleverAdres &&
-      this.afleverAdresForm.handleSubmit()
-    }
+    !this.state.factuurAdres && this.factuurAdresForm.handleSubmit()  
+    !this.state.afleverAdres && this.afleverAdresForm.handleSubmit()
     this.props.onChange('OrderAdres', this.state)
   }
 

@@ -59,23 +59,7 @@ class OrderCreator extends PureComponent {
                     address: this.state.OrderAdres.BezoekAdres.Adres1,
                     postcode: this.state.OrderAdres.BezoekAdres.Postcode,
                     city: this.state.OrderAdres.BezoekAdres.Stad,
-                    type: 'bezoekAdres',
-                    telephoneNumber: this.state.OrderAdres.BezoekAdres.Telefoonnummer,
-                    email: null,
-                    contactPerson: this.state.OrderAdres.BezoekAdres.Contactpersoon,
-                  },{
-                    address: this.state.OrderAdres.BezoekAdres.Adres1,
-                    postcode: this.state.OrderAdres.BezoekAdres.Postcode,
-                    city: this.state.OrderAdres.BezoekAdres.Stad,
-                    type: 'factuurAdres',
-                    telephoneNumber: this.state.OrderAdres.BezoekAdres.Telefoonnummer,
-                    email: null,
-                    contactPerson: this.state.OrderAdres.BezoekAdres.Contactpersoon,
-                  },{
-                    address: this.state.OrderAdres.BezoekAdres.Adres1,
-                    postcode: this.state.OrderAdres.BezoekAdres.Postcode,
-                    city: this.state.OrderAdres.BezoekAdres.Stad,
-                    type: 'afleverAdres',
+                    type: 'Bezoekadres',
                     telephoneNumber: this.state.OrderAdres.BezoekAdres.Telefoonnummer,
                     email: null,
                     contactPerson: this.state.OrderAdres.BezoekAdres.Contactpersoon,
@@ -88,7 +72,7 @@ class OrderCreator extends PureComponent {
                 {
                   orderNumber: this.props.bonnummer,
                   shortDescription: this.state.OrderRemarkForm.KorteOmschrijving,
-                  description: this.state.OrderRemarkForm.Opdrachtomschrijving,
+                  description: this.state.OrderRemarkForm.Opdrachtomschrijving || '',
                   amount: this.state.OrderRemarkForm.Aantal,
                   deliveryDate: this.state.OrderAfleverInfo.LeverDatum || null,
                   paymentType: 'cash',
@@ -98,25 +82,17 @@ class OrderCreator extends PureComponent {
                     address: this.state.OrderAdres.BezoekAdres.Adres1,
                     postcode: this.state.OrderAdres.BezoekAdres.Postcode,
                     city: this.state.OrderAdres.BezoekAdres.Stad,
-                    type: 'bezoekAdres',
+                    type: 'Bezoekadres',
                     telephoneNumber: this.state.OrderAdres.BezoekAdres.Telefoonnummer,
                     email: null,
                     contactPerson: this.state.OrderAdres.BezoekAdres.Contactpersoon,
                   },{
-                    address: this.state.OrderAdres.BezoekAdres.Adres1,
-                    postcode: this.state.OrderAdres.BezoekAdres.Postcode,
-                    city: this.state.OrderAdres.BezoekAdres.Stad,
-                    type: 'factuurAdres',
-                    telephoneNumber: this.state.OrderAdres.BezoekAdres.Telefoonnummer,
+                    address: this.state.OrderAdres.AfleverAdres.Adres1,
+                    postcode: this.state.OrderAdres.AfleverAdres.Postcode,
+                    city: this.state.OrderAdres.AfleverAdres.Stad,
+                    type: 'Afleveradres',
+                    telephoneNumber: this.state.OrderAdres.AfleverAdres.Telefoonnummer,
                     email: null,
-                    contactPerson: this.state.OrderAdres.BezoekAdres.Contactpersoon,
-                  },{
-                    address: this.state.OrderAdres.FactuurAdres.Adres1,
-                    postcode: this.state.OrderAdres.FactuurAdres.Postcode,
-                    city: this.state.OrderAdres.FactuurAdres.Stad,
-                    type: 'afleverAdres',
-                    telephoneNumber: null,
-                    email: this.state.OrderAdres.FactuurAdres.Email,
                     contactPerson: this.state.OrderAdres.AfleverAdres.Contactpersoon,
                   }
                 ],
@@ -145,7 +121,7 @@ class OrderCreator extends PureComponent {
                     address: this.state.OrderAdres.BezoekAdres.Adres1,
                     postcode: this.state.OrderAdres.BezoekAdres.Postcode,
                     city: this.state.OrderAdres.BezoekAdres.Stad,
-                    type: 'bezoekAdres',
+                    type: 'Bezoekadres',
                     telephoneNumber: this.state.OrderAdres.BezoekAdres.Telefoonnummer,
                     email: null,
                     contactPerson: this.state.OrderAdres.BezoekAdres.Contactpersoon,
@@ -153,19 +129,11 @@ class OrderCreator extends PureComponent {
                     address: this.state.OrderAdres.FactuurAdres.Adres1,
                     postcode: this.state.OrderAdres.FactuurAdres.Postcode,
                     city: this.state.OrderAdres.FactuurAdres.Stad,
-                    type: 'factuurAdres',
+                    type: 'Factuuradres',
                     telephoneNumber: null,
                     email: this.state.OrderAdres.FactuurAdres.Email,
                     contactPerson: this.state.OrderAdres.FactuurAdres.Contactpersoon,
-                  },{
-                    address: this.state.OrderAdres.BezoekAdres.Adres1,
-                    postcode: this.state.OrderAdres.BezoekAdres.Postcode,
-                    city: this.state.OrderAdres.BezoekAdres.Stad,
-                    type: 'afleverAdres',
-                    telephoneNumber: this.state.OrderAdres.BezoekAdres.Telefoonnummer,
-                    email: null,
-                    contactPerson: this.state.OrderAdres.BezoekAdres.Contactpersoon,
-                  },
+                  }
                 ],
                 this.state.OrderRemarkForm.files[0]
               )
@@ -185,7 +153,7 @@ class OrderCreator extends PureComponent {
                       address: this.state.OrderAdres.BezoekAdres.Adres1,
                       postcode: this.state.OrderAdres.BezoekAdres.Postcode,
                       city: this.state.OrderAdres.BezoekAdres.Stad,
-                      type: 'bezoekAdres',
+                      type: 'Bezoekadres',
                       telephoneNumber: this.state.OrderAdres.BezoekAdres.Telefoonnummer,
                       email: null,
                       contactPerson: this.state.OrderAdres.BezoekAdres.Contactpersoon,
@@ -193,7 +161,7 @@ class OrderCreator extends PureComponent {
                       address: this.state.OrderAdres.AfleverAdres.Adres1,
                       postcode: this.state.OrderAdres.AfleverAdres.Postcode,
                       city: this.state.OrderAdres.AfleverAdres.Stad,
-                      type: 'afleverAdres',
+                      type: 'Afleveradres',
                       telephoneNumber: this.state.OrderAdres.AfleverAdres.Telefoonnummer,
                       email: null,
                       contactPerson: this.state.OrderAdres.AfleverAdres.Contactpersoon,
@@ -201,7 +169,7 @@ class OrderCreator extends PureComponent {
                       address: this.state.OrderAdres.FactuurAdres.Adres1,
                       postcode: this.state.OrderAdres.FactuurAdres.Postcode,
                       city: this.state.OrderAdres.FactuurAdres.Stad,
-                      type: 'factuurAdres',
+                      type: 'Factuuradres',
                       telephoneNumber: null,
                       email: this.state.OrderAdres.FactuurAdres.Email,
                       contactPerson: this.state.OrderAdres.FactuurAdres.Contactpersoon,
@@ -255,10 +223,11 @@ class OrderCreator extends PureComponent {
   }
 
   componentWillMount() {
-    const { deliveryTypes } = this.props
-    this.props.getCurrentUser()
+    const { user, deliveryTypes, getCurrentUser, getDeliveries} = this.props
+    if(!user){
+    getCurrentUser()}
     if(!deliveryTypes){
-      this.props.getDeliveries()
+      getDeliveries()
     }
   }
 
@@ -267,7 +236,7 @@ class OrderCreator extends PureComponent {
     const {authenticated} = this.props
 
     if(!authenticated) return (
-      <Redirect to="/" />
+      <Redirect to="/login" />
     )
 
 		return (

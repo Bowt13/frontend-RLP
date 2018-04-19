@@ -54,8 +54,6 @@ class OrderRemarkForm extends PureComponent {
   }
 
 	render() {
-    let file    = this.state.picture
-    let reader  = new FileReader()
     console.log(this.state.files)
 		return (
       <div style={{

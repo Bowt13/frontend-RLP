@@ -121,7 +121,7 @@ class NavBar extends PureComponent {
           }}
           onLeftIconButtonClick={_=> this.setState({drawer: !this.state.drawer})}
         />
-        <Drawer width={300} open={this.state.drawer} >
+        <Drawer width='20%' open={this.state.drawer} >
           <AppBar
             title={`${user.firstName} ${user.lastName}`}
             titleStyle={{
@@ -153,7 +153,9 @@ class NavBar extends PureComponent {
           >
             {`${user.companyName}`}
           </h3>
-          <Divider />
+          <Divider style={{
+            height: 3,
+          }}/>
               <List
                 style={{
                   textAlign: 'left',
@@ -172,6 +174,11 @@ class NavBar extends PureComponent {
                     leftIcon={<ShoppingCart color='#F09517'/>}
                     onClick={_ => this.handleDrawerClick("NieuweBestelling")}
                   />
+                  <Divider style={{
+                    marginTop: 20,
+                    width: '97%',
+                    height: 3,
+                  }}/>
                 </div>
               }
 
@@ -185,6 +192,11 @@ class NavBar extends PureComponent {
                     leftIcon={<ShoppingCart color='#F09517'/>}
                     onClick={_ => this.handleDrawerClick("JeBestellingen")}
                   />
+                  <Divider style={{
+                    marginTop: 20,
+                    width: '97%',
+                    height: 3,
+                  }}/>
                 </div>
               }
 
