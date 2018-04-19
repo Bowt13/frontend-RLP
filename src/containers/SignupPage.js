@@ -28,7 +28,7 @@ class SignupPage extends PureComponent {
 		if (this.props.signup.success) {
 			if (pathname.indexOf('forgotpassword') <= 0)
 			   return(
-				   <Redirect to="/flexicon/create/order" />
+				   <Redirect to="/flexicon/nieuwebestelling" />
 		     )
 			else {
 				return(
@@ -83,7 +83,7 @@ class SignupPage extends PureComponent {
 					    <p>Kies alsjeblieft een wachtwoord om de registratie van je account te voltooien.</p>
 				  }
 					{
-						(pathname.indexOf('forgotpassword') > 0) &&
+						(pathname.indexOf('wachtwoordvergeten') > 0) &&
 						  <p>Kies alsjeblieft een nieuw wachtwoord.</p>
 					}
 					<SignupForm onSubmit={this.handleSubmit} />
