@@ -87,3 +87,18 @@ export const getBonnummer = () => (dispatch, getState) => {
     })
     .catch(err => console.error(err))
 }
+
+export const addPhoto = (orderId, file) => (dispatch, getState) => {
+  const state = getState()
+  const jwt = state.currentUser.jwt
+  request
+    .post(`${baseUrl}/photos/order/${orderId}`)
+    .set('Authorization', `Bearer ${jwt}`)
+    .attach('photo', file)
+    .then(result => {
+       dispatch({
+         type: 'ADD_PICTURE_SUCCESS'
+        })
+    })
+    .catch(err => console.error(err))
+}
