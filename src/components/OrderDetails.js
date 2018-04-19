@@ -110,7 +110,7 @@ class OrderDetails extends PureComponent {
       <NavBar/>
       <div style={{
         display: 'flex',
-        width: '100%',
+        width: '90%',
         margin: 'auto',
         paddingTop: '5em',
       }}>
@@ -123,7 +123,7 @@ class OrderDetails extends PureComponent {
         <Subheader style={{
           fontSize: 40,
           margin: 8,
-        }}>Bestelling nummer {order.orderNumber}</Subheader>
+        }}>Bestelling {order.orderNumber}</Subheader>
         <Divider style={{
           padding: 1,
           backgroundColor: '#F09517',
@@ -207,7 +207,7 @@ class OrderDetails extends PureComponent {
 
 const mapStateToProps = function (state, props) {
 	return {
-    order: state.orders && state.orders.find(order => `${order.id}`=== props.match.params.orderId),
+    order: state.orders && state.orders.find(order => `${order.orderNumber}`=== props.match.params.orderNumber),
 	}
 }
 
