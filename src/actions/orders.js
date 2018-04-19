@@ -13,9 +13,8 @@ export const addOrder = (order,addresses,file) => (dispatch, getState) => {
 		.post(`${baseUrl}/orders`)
 		.field('order', JSON.stringify(order))
     .field('addresses', JSON.stringify(addresses))
+    .attach('photo', file)
     .set('Authorization', `Bearer ${jwt}`)
-		.send({ order, addresses })
-    //.attach('photo', photo)
 		.then(result => {
 			dispatch({
 				type: ADD_ORDER,
