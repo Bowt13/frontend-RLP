@@ -10,6 +10,7 @@ export const searchForOrder = (orders, text) => {
 
 export const searchForContact = (companies, text) => {
  console.log(companies, text);
+ if (text==='') return companies
   const usersFiltered = companies.map(company => {
     return {
       ...company,

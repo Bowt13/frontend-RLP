@@ -39,14 +39,14 @@ class CompanyForm extends PureComponent {
 		        overflow: 'scroll',
 						height: '70%',
 		      }}>
-		        <Subheader style={{ fontSize: 40 }}>Create Company</Subheader>
+		        <Subheader style={{ fontSize: 40 }}>Maak een bedrijf</Subheader>
 		        <Divider style={{ padding: 1, marginBottom: 1 }}/>
 		        <form name='Create Company' onSubmit={this.handleSubmit}>
 		          <TextField
 		            floatingLabelFocusStyle={{ color: '#F09517' }}
 		            underlineFocusStyle={{ borderColor: '#F09517' }}
 		            name='companyName'
-		            floatingLabelText="Company Name:"
+		            floatingLabelText="Bedrijfnaam:"
 		            value={this.state.companyName || ''}
 		            onChange={this.handleChange}
 		          required/>
@@ -55,14 +55,14 @@ class CompanyForm extends PureComponent {
 		            floatingLabelFocusStyle={{ color: '#F09517' }}
 		            underlineFocusStyle={{ borderColor: '#F09517' }}
 		            name='companyLogo'
-		            floatingLabelText="Company Logo:"
+		            floatingLabelText="Bedrijflogo:"
 		            value={this.state.companyLogo || ''}
 		            onChange={this.handleChange}
 		          required/>
 		          <br/>
 							<br/>
 							<div style={{display: "inline-block"}}>
-		            <RaisedButton type="submit" label="Save" backgroundColor='#F09517'
+		            <RaisedButton type="submit" label="Opslaan" backgroundColor='#F09517'
 					      />
 		          </div>
 							<br/>
