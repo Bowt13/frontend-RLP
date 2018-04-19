@@ -20,6 +20,9 @@ import { searchForContact } from '../lib/functions'
 import { getCustomers } from '../actions/users'
 import { getCompanies } from '../actions/companies'
 
+//components
+import NavBar from '../components/NavBar'
+
 class CustomerList extends PureComponent {
 
   state={
@@ -45,35 +48,17 @@ class CustomerList extends PureComponent {
       company= this.props.company
     if(!this.state.props)
       company= this.state.company
-  //  const {company} = this.state
     console.log(company)
-    //console.log(customers)
 
   	return (
       <div>
-      <div>
-      <RaisedButton
-        label="Maak een bedrijf"
-        backgroundColor='#F09517'
-        style={{
-          postion: 'relative',
-          margin: 30,
-          marginTop: 5,
-          backgroundColor: '#9A9A98',
-        }}
-        onClick={ _=> history.push(`/flexicon/companies/creator`) }
-
-         />
-      </div>
-
+      <NavBar />
       <div style={{
         display: 'flex',
         width: '80%',
         margin: 'auto',
         paddingTop: '5em',
         }}>
-
-
         <Paper style={{
           overflow: 'scroll',
           flexGrow: '2',
@@ -82,11 +67,25 @@ class CustomerList extends PureComponent {
         <SearchBar
           onChange={ this.handleSubmit }
           style={{
-          margin: '0 auto',
+          margin: 20,
           maxWidth: 1000,
           maxLength: 500
           }}
           />
+          <div>
+
+             <RaisedButton
+               label="Maak een bedrijf"
+               backgroundColor='#F09517'
+               style={{
+                 postion: 'relative',
+                 margin: 30,
+                 marginTop: 5,
+                 backgroundColor: '#9A9A98',
+               }}
+               onClick={ _=> history.push(`/flexicon/companies`) }
+                />
+          </div>
           <Divider style={{
             padding: 1,
             backgroundColor: '#F09517',
@@ -119,15 +118,29 @@ class CustomerList extends PureComponent {
                 nestedItems={[cpy.users.map(user =>
                   <div>
                   <Divider />
-                  <ListItem
+                  <RaisedButton
+                    label= "Contactpersoon maken"
+                    backgroundColor='#F09517'
                     style={{
+                      postion: 'relative',
+                      margin: 30,
+                      marginTop: 5,
+                      backgroundColor: '#9A9A98',
+                    }}
+                    onClick={ _=> history.push(`/flexicon/users/company/${cpy.id}`) }
+                     />
+
+                  <ListItem
+                  style={{
                     textAlign: 'right',
                     textOverflow: ''
                     }}
+
                     primaryTogglesNestedList={ true }
                     hoverColor= '#F09517'
                     key={user.id}
-                    primaryText= {`${user.firstName} ${user.lastName}`}
+                    primaryText= {`${user.email}`}
+                    secondaryText= {`${user.firstName} ${user.lastName}`}
                     nestedItems={[user.orders.map(order =>
                       <ListItem
                         hoverColor= '#f4b357'
@@ -138,18 +151,27 @@ class CustomerList extends PureComponent {
                       }}key={order.id}
                       primaryText={ `${order.shortDescription}` }
                       secondaryText={ 'Besteldatum:' + ' ' + `${order.orderDate}` }
-                      onClick={ _=> history.push(`/flexicon/orders/${order.id}`) }/>,
+                      onClick={ _=> history.push(`/flexicon/orders/${order.id}`) }/>
                     )]}
                     />
                   </div>
                 )]}
                />
-
+               <RaisedButton
+                 label= "Contactpersoon maken"
+                 backgroundColor='#F09517'
+                 style={{
+                   postion: 'relative',
+                   margin: 30,
+                   marginTop: 5,
+                   backgroundColor: '#9A9A98',
+                 }}
+                 onClick={ _=> history.push(`/flexicon/users/company/${cpy.id}`) }
+                  />
             </div>
           )}
           </List>
       </Paper>
-
     </div>
     </div>
     )
@@ -159,7 +181,7 @@ class CustomerList extends PureComponent {
 const mapStateToProps = function (state) {
 	return {
     customers: Object.values(state.customers).sort((a, b) => a.email.localeCompare(b.email)),
-    company: Object.values(state.company)
+    company: Object.values(state.company).sort((a, b) => a.companyName.localeCompare(b.companyName))
 	}
 }
 

@@ -14,7 +14,6 @@ export const addOrder = (order,addresses,photo) => (dispatch, getState) => {
 		.field('order', JSON.stringify(order))
     .field('addresses', JSON.stringify(addresses))
     .set('Authorization', `Bearer ${jwt}`)
-		//.send({ order, addresses })
     .attach('photo', photo)
 		.then(result => {
 			dispatch({
@@ -85,6 +84,21 @@ export const getBonnummer = () => (dispatch, getState) => {
         type: GET_BONNUMMER,
         payload: result.body
       })
+    })
+    .catch(err => console.error(err))
+}
+
+export const addPhoto = (orderId, file) => (dispatch, getState) => {
+  const state = getState()
+  const jwt = state.currentUser.jwt
+  request
+    .post(`${baseUrl}/photos/order/${orderId}`)
+    .set('Authorization', `Bearer ${jwt}`)
+    .attach('photo', file)
+    .then(result => {
+       dispatch({
+         type: 'ADD_PICTURE_SUCCESS'
+        })
     })
     .catch(err => console.error(err))
 }

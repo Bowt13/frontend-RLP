@@ -13,7 +13,6 @@ import { logout, getCurrentUser } from '../actions/users'
   //Components
     import Drawer from 'material-ui/Drawer'
     import AppBar from 'material-ui/AppBar'
-    import Avatar from 'material-ui/Avatar'
     import IconButton from 'material-ui/IconButton'
     import { List, ListItem } from 'material-ui/List'
     import Divider from 'material-ui/Divider'
