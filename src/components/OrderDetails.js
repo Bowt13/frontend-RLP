@@ -19,8 +19,8 @@ import ChatBox from './ChatBox'
     } from 'material-ui/GridList';
     import Dialog from 'material-ui/Dialog';
   //Buttons
-    import IconButton from 'material-ui/IconButton';
-    import FlatButton from 'material-ui/FlatButton';
+    import IconButton from 'material-ui/IconButton'
+    import RaisedButton from 'material-ui/RaisedButton'
   //Icons
     import ReSize from 'material-ui/svg-icons/navigation/fullscreen';
 
@@ -47,24 +47,6 @@ const styles = {
   },
 };
 
-const tilesData = [
-  {
-    img: 'http://www.flexicon.nl/img/cache/20c50287b5a2e4230891b103812dde55.jpg',
-  },
-  {
-    img: 'https://cdn.pixabay.com/photo/2013/04/06/11/50/image-editing-101040_960_720.jpg',
-  },
-  {
-    img: 'http://www.clker.com/cliparts/9/a/1/e/13397010011226451784pomme_lrg.jpg',
-  },
-  {
-    img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/bb/Santiago_de_Chile_L4.svg/1024px-Santiago_de_Chile_L4.svg.png',
-  },
-  {
-    img: 'https://newevolutiondesigns.com/images/freebies/water-art-wallpaper-4.jpg'
-  },
-];
-
 class OrderDetails extends PureComponent {
   state = {
     openProfile: false,
@@ -72,9 +54,10 @@ class OrderDetails extends PureComponent {
     currentPicture: ''
   }
 
-  componentWillMount() {
-    this.props.getOrders()
-    console.log(document.URL.split('/')[document.URL.split('/').length-1])
+  handleFileChange = (e) => {
+    this.setState({
+      files: e.target.files,
+    })
   }
 
   handleToggle = () => {
@@ -95,16 +78,20 @@ class OrderDetails extends PureComponent {
   handleClose = () => {
     this.setState({dialog: false})
     console.log(this.state)
-  };
+  }
+
+  componentWillMount() {
+    this.props.getOrders()
+  }
 
   render() {
     const {order} = this.props
-     if (!order) return (<div>
-       <NavBar/>
-       <p>loading</p>
-     </div>
-     )
 
+    if (!order) return (<div>
+      <NavBar/>
+      <p>loading...</p>
+    </div>
+    )
 		return (
       <div>
       <NavBar/>
@@ -118,6 +105,7 @@ class OrderDetails extends PureComponent {
           overflow: 'scroll',
           flexGrow: '2',
           maxWidth: '60vw',
+          height: '100%',
           margin: 5,
         }}>
         <Subheader style={{
@@ -129,21 +117,27 @@ class OrderDetails extends PureComponent {
           backgroundColor: '#F09517',
         }}/>
         <div>
-          <List>
+          <List style={{
+            textAlign: 'left'
+          }}>
             <ListItem
               disabled={true}
-              primaryText="Bonnummer"
+              primaryText="Bonnummer:"
               secondaryText={`${order.orderNumber}`}
             />
-            <Divider/>
+            <Divider style={{
+              height: 2,
+            }}/>
             <ListItem
               disabled={true}
-              primaryText="Korte omschrijving"
+              primaryText="Korte omschrijving:"
               secondaryText={`${order.shortDescription}`}
             />
-            <Divider/>
+            <Divider style={{
+              height: 2,
+            }}/>
             <ListItem
-              primaryText="Omschrijving"
+              primaryText="Omschrijving:"
               primaryTogglesNestedList={ true }
               nestedItems={[
                 <ListItem
@@ -151,32 +145,79 @@ class OrderDetails extends PureComponent {
                   primaryText={`${order.description}`}
                   />,
               ]}/>
-            <Divider/>
-            <ListItem disabled={true} primaryText="Aantal" secondaryText={`${order.amount}`}/>
-            <Divider/>
-            <ListItem disabled={true} primaryText="Besteldatum" secondaryText={`${order.orderDate}`}/>
-            <Divider/>
-            <ListItem disabled={true} primaryText="Leverdatum" secondaryText={`${order.deliveryDate}`}/>
-            <Divider/>
-            <ListItem disabled={true} primaryText="Betalinswijze" secondaryText={`${order.paymentType}`}/>
-            <Divider/>
-            <ListItem disabled={true} primaryText="Bestelling-ID" secondaryText={`${order.id}`}/>
-            <Divider/>
-            <ListItem disabled={true} primaryText="Klant-ID" secondaryText={`${order.userId}`}/>
+              <Divider style={{
+                height: 2,
+              }}/>
+              <ListItem
+                primaryText="Adressen:"
+                primaryTogglesNestedList={ true }
+                nestedItems={order.addresses.map(addres => {
+                  return (
+                    <ListItem
+                      value={2}
+                      primaryText={`${addres.type}:`}
+                      nestedItems={[
+                        <ListItem
+                          value={2}
+                          primaryText={`Contactpersoon: ${addres.contactPerson}`}
+                        />,
+                        <ListItem
+                          value={2}
+                          primaryText={addres.email ? `Email: ${addres.email}` : `Telefoonnummer: ${addres.telephoneNumber}`}
+                        />,
+                        <ListItem
+                          value={2}
+                          primaryText={`Adres: ${addres.address}`}
+                        />,
+                        <ListItem
+                          value={2}
+                          primaryText={`Postcode: ${addres.postcode}`}
+                        />,
+                        <ListItem
+                          value={2}
+                          primaryText={`Stad: ${addres.city}`}
+                        />,
+                      ]}
+                    />)
+                })}/>
+                <Divider style={{
+                  height: 2,
+                }}/>
+            <ListItem
+              disabled={true}
+              primaryText="Aantal:"
+              secondaryText={`${order.amount}`}/>
+            <Divider style={{
+              height: 2,
+            }}/>
+            <ListItem
+              disabled={true}
+              primaryText="Besteldatum:"
+              secondaryText={`${order.orderDate}`}/>
+            <Divider style={{
+              height: 2,
+            }}/>
+            <ListItem
+              disabled={true}
+              primaryText="Leverdatum:"
+              secondaryText={`${order.deliveryDate}`}/>
+            <Divider style={{
+              height: 2,
+            }}/>
           </List>
           </div>
           <div style={styles.root}>
             <GridList style={styles.gridList} cols={2.2}>
-              {tilesData.map((tile) => (
+              {order.photos.map((photo) => (
                 <GridTile
-                  key={tile.img}
+                  key={photo.link}
                   title='``'
                   titlePosition='top'
                   titleStyle={styles.titleStyle}
-                  actionIcon={<IconButton onClick={_ => this.handleOpenDialog(tile.img)}> <ReSize color="rgb(0, 188, 212)" /> </IconButton>}
+                  actionIcon={<IconButton onClick={_ => this.handleOpenDialog(photo.link)}> <ReSize color="rgb(0, 188, 212)" /> </IconButton>}
                   titleBackground="linear-gradient(to top, rgba(0,0,0,0.7) 0%,rgba(0,0,0,0.3) 0%,rgba(0,0,0,0) 0%)"
                 >
-                  <img src={tile.img} alt='tile' />
+                  <img src={photo.link} alt='tile' />
                 </GridTile>
               ))}
             </GridList>
@@ -197,6 +238,27 @@ class OrderDetails extends PureComponent {
               </div>
             </Dialog>
           </div>
+          <RaisedButton
+            label='Bestand toevoegen'
+            name='file'
+            labelPosition='before'
+            style={{
+              width: 'auto',
+              margin: 15,
+            }}
+            containerElement="label"
+          >
+            <input type="file"
+              style={{
+                cursor: 'pointer',
+                position: 'absolute',
+                width: '100%',
+                opacity: 0,
+              }}
+              accept="image/*"
+              onChange={this.handleFileChange}
+            />
+          </RaisedButton>
         </Paper>
         <ChatBox order={this.props.order} />
       </div>

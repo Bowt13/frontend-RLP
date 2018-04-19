@@ -12,6 +12,8 @@ import {getOrders} from '../actions/orders'
     } from 'material-ui/List';
     import Subheader from 'material-ui/Subheader';
     import Divider from 'material-ui/Divider';
+    import CircularProgress from 'material-ui/CircularProgress';
+
 
 import NavBar from '../components/NavBar'
 
@@ -21,12 +23,7 @@ class OrdersPage extends PureComponent {
   }
 
   componentWillMount() {
-    this.props.getOrders()
   }
-
-  // componentHasMount() {
-  //   this.props.getOrders()
-  // }
 
   handleToggle = () => {
     this.setState({openProfile: !this.state.openProfile},()=>
@@ -34,10 +31,33 @@ class OrdersPage extends PureComponent {
   }
 
 	render() {
-    let windowWidth = window.screen.availWidth
-    console.log(windowWidth);
-
     const {orders, history} = this.props
+
+    if(orders.length === 0) return (
+      <div>
+      <NavBar/>
+        <Paper style={{
+          position: 'relative',
+          top: 90,
+          left: '25%',
+          width: '50%',
+          overflow: 'scroll',
+        }}>
+          <List style={{
+            padding: 0,
+          }}>
+            <Subheader style={{
+              fontSize: 40,
+              margin: 8,
+            }}>Bestellingen</Subheader>
+            <Divider style={{
+              padding: 1,
+              backgroundColor: '#F09517',
+            }}/>
+            <CircularProgress size={80} thickness={5}/>
+          </List>
+        </Paper>
+      </div>)
 
 		return (
       <div>

@@ -64,6 +64,9 @@ class ChatBox extends PureComponent {
   componentWillMount(){
     const {user, getCurrentUser} = this.props
     getCurrentUser()
+    const elem = document.getElementById('messageBox')
+    if (elem) {
+    elem.scrollTop = elem.scrollHeight}
   }
 
   componentDidUpdate(){
