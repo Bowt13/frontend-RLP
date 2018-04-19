@@ -2,7 +2,6 @@ import * as request from 'superagent'
 import {baseUrl} from '../constants'
 import {GET_CONTACTS, ADD_CONTACT} from './types'
 
-
 export const getContacts = () => (dispatch, getState) => {
   const state = getState()
   const jwt = state.currentUser.jwt

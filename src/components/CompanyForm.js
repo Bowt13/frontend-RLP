@@ -15,6 +15,7 @@ class CompanyForm extends PureComponent {
 	handleSubmit = (e) => {
 		e.preventDefault()
 		this.props.onSubmit(this.state)
+		this.props.history.push(`/flexicon/customers`)
 	}
 
   handleChange = event => {
@@ -62,7 +63,7 @@ class CompanyForm extends PureComponent {
 							<br/>
 							<div style={{display: "inline-block"}}>
 		            <RaisedButton type="submit" label="Save" backgroundColor='#F09517'
-					      onClick={ _=> this.props.history.push(`/flexicon/customers`) }/>
+					      />
 		          </div>
 							<br/>
 							<br/>
