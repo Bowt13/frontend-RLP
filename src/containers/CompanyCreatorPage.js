@@ -6,23 +6,6 @@ import PropTypes from 'prop-types'
 
 //MaterialUI
 
-//Components
-import Drawer from 'material-ui/Drawer';
-import AppBar from 'material-ui/AppBar'
-import RaisedButton from 'material-ui/RaisedButton'
-import Avatar from 'material-ui/Avatar';
-import Paper from 'material-ui/Paper';
-import
-  {List,
-  ListItem}
-from 'material-ui/List';
-import Subheader from 'material-ui/Subheader';
-import Divider from 'material-ui/Divider';
-import Business from 'material-ui/svg-icons/communication/business'
-import SearchBar from 'material-ui-search-bar'
-//Colors
-
-
 //Actions
 import {getCompanies, createCompany} from '../actions/companies'
 
