@@ -28,6 +28,7 @@ class CustomerList extends PureComponent {
   state={
     props:true
   }
+  
   componentWillMount() {
     this.props.getCompanies()
   }
