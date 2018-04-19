@@ -154,7 +154,7 @@ class CustomerList extends PureComponent {
                    marginTop: 5,
                    backgroundColor: '#9A9A98',
                  }}
-                 onClick={ _=> history.push(`flexicon/contactpersoon/bedrijf/${cpy.id}`) }
+                 onClick={ _=> history.push(`/flexicon/contactpersoon/bedrijf/${cpy.id}`) }
                   />
             </div>
           )}
