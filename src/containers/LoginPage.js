@@ -1,7 +1,7 @@
 import React, {PureComponent} from 'react'
 import {connect} from 'react-redux'
 import {login, getCurrentUser} from '../actions/users'
-import { Redirect, Link } from 'react-router-dom'
+import { Redirect } from 'react-router-dom'
 import LoginForm from '../components/LoginForm'
 
 //Image
@@ -11,7 +11,6 @@ import logo from './logo.png'
   //Components
 	import Paper from 'material-ui/Paper'
 	import Dialog from 'material-ui/Dialog'
-	import FlatButton from 'material-ui/FlatButton'
 	import RaisedButton from 'material-ui/RaisedButton'
 	import TextField from 'material-ui/TextField'
 
@@ -70,11 +69,11 @@ class LoginPage extends PureComponent {
 		}
 
 		if (this.props.user && this.props.user.role === 'External') return (
-			<Redirect to="/flexicon/orders" />
+			<Redirect to="/flexicon/bestellingen" />
 	  )
 
 		if (this.props.user && this.props.user.role === 'Internal') return (
-			<Redirect to="/flexicon/customers" />
+			<Redirect to="/flexicon/klanten" />
 		)
 
 		return (
