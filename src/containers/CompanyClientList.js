@@ -1,6 +1,7 @@
 //Dependencies
 import React, { PureComponent } from 'react'
 import { connect } from 'react-redux'
+import { Redirect } from 'react-router-dom'
 
 //Functions
 import { searchForContact } from '../lib/functions'
@@ -50,6 +51,10 @@ class CustomerList extends PureComponent {
     if(!this.state.props)
       company= this.state.company
     console.log(company)
+
+    if (this.props.user && this.props.user.role === 'External') return (
+  			<Redirect to="/login" />
+  	)
 
   	return (
       <div>
