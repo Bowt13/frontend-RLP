@@ -12,7 +12,6 @@ import {getOrders} from '../actions/orders'
     } from 'material-ui/List';
     import Subheader from 'material-ui/Subheader';
     import Divider from 'material-ui/Divider';
-    import CircularProgress from 'material-ui/CircularProgress';
     import SearchBar from 'material-ui-search-bar'
 
 //functions
