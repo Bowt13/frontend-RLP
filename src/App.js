@@ -30,14 +30,13 @@ class App extends Component {
         <div className="App">
           <Route exact path="/login" component={ LoginPage } />
           <Route exact path="/signup/:jwt" component={ SignupPage } />
-          <Route exact path="/forgotpassword/:jwt" component={ SignupPage } />
-          <Route exact path="/flexicon/create/order" component={ OrderCreator } />
-          <Route exact path="/flexicon/users/company/:companyId" component={ ContactCreator } />
-          <Route exact path="/flexicon/orders" component={ OrdersPage }/>
-          <Route exact path="/flexicon/orders/:orderNumber" component={ OrderDetails }/>
-          <Route exact path="/flexicon/customers" component={ CompanyClientList } />
-          <Route exact path="/flexicon/companies" component={ CompanyCreator }/>
-          <Route exact path="/chatbox" component={ ChatBox } />
+          <Route exact path="/wachtwoordvergeten/:jwt" component={ SignupPage } />
+          <Route exact path="/flexicon/nieuwebestelling" component={ OrderCreator } />
+          <Route exact path="/flexicon/contactpersoon/bedrijf/:companyId" component={ ContactCreator } />
+          <Route exact path="/flexicon/bestellingen" component={ OrdersPage }/>
+          <Route exact path="/flexicon/bestellingen/:orderNumber" component={ OrderDetails }/>
+          <Route exact path="/flexicon/klanten" component={ CompanyClientList } />
+          <Route exact path="/flexicon/nieuwbedrijf" component={ CompanyCreator }/>
           <Route exact path="/" render={ () => <Redirect to="/login" /> } />
         </div>
       </MuiThemeProvider>
