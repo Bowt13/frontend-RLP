@@ -216,7 +216,6 @@ class OrderRemarkForm extends PureComponent {
                   }}
                   accept="image/*"
                   onChange={this.handleFileChange}
-                  multiple
                 />
               </RaisedButton>
               <br/>
