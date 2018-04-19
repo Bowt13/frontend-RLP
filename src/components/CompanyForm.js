@@ -15,7 +15,7 @@ class CompanyForm extends PureComponent {
 	handleSubmit = (e) => {
 		e.preventDefault()
 		this.props.onSubmit(this.state)
-		this.props.history.push(`/flexicon/customers`)
+		this.props.history.push(`/flexicon/klanten`)
 	}
 
   handleChange = event => {

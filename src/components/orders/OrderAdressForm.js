@@ -1,17 +1,12 @@
 //Dependencies
 import React, {PureComponent} from 'react'
 import {connect} from 'react-redux'
-import {Redirect} from 'react-router-dom'
 import PropTypes from 'prop-types'
 
 //MaterialUI
   //Components
-    import TextField from 'material-ui/TextField'
-    import RaisedButton from 'material-ui/RaisedButton'
     import Checkbox from 'material-ui/Checkbox'
     import Paper from 'material-ui/Paper'
-    import Divider from 'material-ui/Divider'
-    import Business from 'material-ui/svg-icons/communication/business'
   //Colors
 
 //Components

@@ -12,21 +12,30 @@ import {getOrders} from '../actions/orders'
     } from 'material-ui/List';
     import Subheader from 'material-ui/Subheader';
     import Divider from 'material-ui/Divider';
+    import SearchBar from 'material-ui-search-bar'
+
+//functions
+import { searchForOrder } from '../lib/functions'
 
 import NavBar from '../components/NavBar'
 
 class OrdersPage extends PureComponent {
   state = {
     openProfile: false,
+    props: true
   }
 
   componentWillMount() {
     this.props.getOrders()
   }
 
-  // componentHasMount() {
-  //   this.props.getOrders()
-  // }
+  handleSubmit = (value) => {
+    if (this.state.props === true)
+      this.setState({props:false})
+    this.setState({
+      orders: searchForOrder(this.props.orders ,value)
+    })
+  }
 
   handleToggle = () => {
     this.setState({openProfile: !this.state.openProfile},()=>
@@ -34,10 +43,15 @@ class OrdersPage extends PureComponent {
   }
 
 	render() {
-    let windowWidth = window.screen.availWidth
-    console.log(windowWidth);
 
-    const {orders, history} = this.props
+    const { history } = this.props
+
+    let orders
+    if (this.state.props)
+      orders = this.props.orders
+    if(!this.state.props)
+      orders = this.state.orders
+    console.log(orders)
 
 		return (
       <div>
@@ -49,6 +63,15 @@ class OrdersPage extends PureComponent {
           width: '50%',
           overflow: 'scroll',
         }}>
+        <div>
+        <SearchBar
+          onChange={ this.handleSubmit }
+          style={{
+          margin: 20,
+          maxWidth: 1000,
+          maxLength: 500
+          }}
+          />
         <List style={{
           padding: 0,
         }}>
@@ -70,12 +93,13 @@ class OrdersPage extends PureComponent {
               primaryText={`${order.shortDescription}`}
               secondaryText={<p> <span> {`Bestellingsnummer: ${order.orderNumber}`}</span><br/><span>{`Opdrachtgever: ${order.userEmail}`}</span></p>}
               className='order-row'
-              onClick={_=> history.push(`/flexicon/orders/${order.orderNumber}`)}
+              onClick={_=> history.push(`/flexicon/bestellingen/${order.orderNumber}`)}
               />
             </div>
           ))
           }
         </List>
+        </div>
         </Paper>
       </div>
 		)

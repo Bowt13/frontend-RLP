@@ -1,22 +1,12 @@
-export const searchForOrder = (customers, text) => {
+export const searchForOrder = (orders, text) => {
   console.log(text);
-  if (text==='') return customers
-  const usersFiltered = customers.map(customer => {
-    return {
-      ...customer,
-      orders: customer.orders.filter(order => {
-        console.log(order.shortDescription);
-        return order.shortDescription.includes(text)
-      })
-    }
-  })
-  console.log(usersFiltered);
-  console.log(usersFiltered.filter(customer=>
-    customer.orders.length > 0))
-  return usersFiltered.filter(customer=>
-    customer.orders.length > 0
+  if (text==='') return orders
+  console.log(orders)
+  return orders.filter(order =>
+    order.shortDescription.includes(text)
   )
-}
+ }
+
 
 export const searchForContact = (companies, text) => {
  console.log(companies, text);

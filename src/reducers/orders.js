@@ -15,7 +15,15 @@ export default function (state = [], {type, payload}) {
 
 		case ADD_ORDER:
 			return state.concat(payload)
-			
+
+		case 'ADD_PHOTO':
+		const id = payload.id
+		return state = state.map((order)=> {
+			if (order.id === id)
+				return payload
+			return order
+		})
+
 		default:
       return state
 	}

@@ -20,7 +20,6 @@ import ChatBox from './ChatBox'
     import Dialog from 'material-ui/Dialog';
   //Buttons
     import IconButton from 'material-ui/IconButton';
-    import FlatButton from 'material-ui/FlatButton';
   //Icons
     import ReSize from 'material-ui/svg-icons/navigation/fullscreen';
 

@@ -6,11 +6,8 @@ import {Redirect} from 'react-router-dom'
 
 //MaterialUI
   //Components
-    import TextField from 'material-ui/TextField'
     import RaisedButton from 'material-ui/RaisedButton'
     import Paper from 'material-ui/Paper';
-    import Divider from 'material-ui/Divider';
-    import Business from 'material-ui/svg-icons/communication/business'
   //Colors
 
 
@@ -221,7 +218,7 @@ class OrderCreator extends PureComponent {
             break;
         }
       }, 20)
-    setTimeout(_ => this.props.history.push('/flexicon/orders'), 25)
+    setTimeout(_ => this.props.history.push('/flexicon/bestellingen'), 25)
     // setTimeout(_ => this.props.addOrderNewAPI(
     // {
     //   "amount": this.state.OrderRemarkForm.Aantal,
@@ -258,7 +255,7 @@ class OrderCreator extends PureComponent {
   }
 
   componentWillMount() {
-    const { currentUser, deliveryTypes } = this.props
+    const { deliveryTypes } = this.props
     this.props.getCurrentUser()
     if(!deliveryTypes){
       this.props.getDeliveries()
