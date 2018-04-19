@@ -15,10 +15,6 @@ import { searchForContact } from '../lib/functions'
     import Avatar from 'material-ui/Avatar';
     import SearchBar from 'material-ui-search-bar'
     import RaisedButton from 'material-ui/RaisedButton';
-    import FloatingActionButton from 'material-ui/FloatingActionButton';
-    import IconButton from 'material-ui/IconButton';
-    import ActionGrade from 'material-ui/svg-icons/action/grade';
-
 
 //Actions
 import { getCustomers } from '../actions/users'
@@ -52,9 +48,7 @@ class CustomerList extends PureComponent {
       company= this.props.company
     if(!this.state.props)
       company= this.state.company
-  //  const {company} = this.state
     console.log(company)
-    //console.log(customers)
 
   	return (
       <div>
@@ -147,17 +141,11 @@ class CustomerList extends PureComponent {
                       secondaryText={ 'Besteldatum:' + ' ' + `${order.orderDate}` }
                       onClick={ _=> history.push(`/flexicon/orders/${order.id}`) }/>
                     )]}
-
                     />
                   </div>
-
                 )]}
                />
-               <IconButton tooltip="Contactpersoon maken" touch={true} tooltipPosition="bottom-left" label="Contactpersoon maken">
-               <ActionGrade />
-               </IconButton>
                <RaisedButton
-
                  label= "Contactpersoon maken"
                  backgroundColor='#F09517'
                  style={{
@@ -172,7 +160,6 @@ class CustomerList extends PureComponent {
           )}
           </List>
       </Paper>
-
     </div>
     </div>
     )
