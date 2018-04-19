@@ -7,7 +7,6 @@ import { searchForContact } from '../lib/functions'
 
 //MaterialUI
   //Components
-    // import RaisedButton from 'material-ui/RaisedButton'
     import Paper from 'material-ui/Paper'
     import { List, ListItem } from 'material-ui/List'
     import Subheader from 'material-ui/Subheader'
@@ -28,7 +27,7 @@ class CustomerList extends PureComponent {
   state={
     props:true
   }
-  
+
   componentWillMount() {
     this.props.getCompanies()
   }
@@ -69,12 +68,10 @@ class CustomerList extends PureComponent {
           onChange={ this.handleSubmit }
           style={{
           margin: 20,
-          maxWidth: 1000,
-          maxLength: 500
+          maxWidth: '100%',
           }}
           />
           <div>
-
              <RaisedButton
                label="Maak een bedrijf"
                backgroundColor='#F09517'
@@ -85,7 +82,7 @@ class CustomerList extends PureComponent {
                  backgroundColor: '#9A9A98',
                }}
                onClick={ _=> history.push(`/flexicon/nieuwbedrijf`) }
-                />
+            />
           </div>
           <Divider style={{
             padding: 1,
@@ -122,7 +119,8 @@ class CustomerList extends PureComponent {
                   <ListItem
                   style={{
                     textAlign: 'right',
-                    textOverflow: ''
+                    textOverflow: '',
+                    textAlign: 'left',
                     }}
 
                     primaryTogglesNestedList={ true }
@@ -130,18 +128,18 @@ class CustomerList extends PureComponent {
                     key={user.id}
                     primaryText= {`${user.email}`}
                     secondaryText= {`${user.firstName} ${user.lastName}`}
-                    nestedItems={[user.orders.map(order =>
+                    nestedItems={user.orders.map(order =>
                       <ListItem
                         hoverColor= '#f4b357'
                         primaryTogglesNestedList={ true }
                         style={{
-                        textAlign: 'right',
+                        textAlign: 'left',
                         textOverflow: ''
                       }}key={order.id}
                       primaryText={ `${order.shortDescription}` }
-                      secondaryText={ 'Besteldatum:' + ' ' + `${order.orderDate}` }
+                      secondaryText={ `Besteldatum: ${order.orderDate}` }
                       onClick={ _=> history.push(`/flexicon/bestellingen/${order.orderNumber}`) }/>
-                    )]}
+                    )}
                     />
                   </div>
                 )]}

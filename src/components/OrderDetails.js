@@ -214,7 +214,11 @@ class OrderDetails extends PureComponent {
                   title='``'
                   titlePosition='top'
                   titleStyle={styles.titleStyle}
-                  actionIcon={<IconButton onClick={_ => this.handleOpenDialog(photo.link)}> <ReSize color="rgb(0, 188, 212)" /> </IconButton>}
+                  style={{
+                    cursor: 'pointer'
+                  }}
+                  onClick={_ => this.handleOpenDialog(photo.link)}
+                  actionIcon={<IconButton onClick={_ => this.handleOpenDialog(photo.link)}> <ReSize color="#F09517" /> </IconButton>}
                   titleBackground="linear-gradient(to top, rgba(0,0,0,0.7) 0%,rgba(0,0,0,0.3) 0%,rgba(0,0,0,0) 0%)"
                 >
                   <img src={photo.link} alt='tile' />
@@ -246,6 +250,7 @@ class OrderDetails extends PureComponent {
               width: 'auto',
               margin: 15,
             }}
+            backgroundColor= '#F09517'
             containerElement="label"
           >
             <input type="file"
