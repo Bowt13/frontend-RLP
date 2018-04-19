@@ -2,6 +2,7 @@
 import React, {PureComponent} from 'react'
 import {connect} from 'react-redux'
 import {withRouter} from 'react-router'
+import { Redirect } from 'react-router-dom'
 
 //MaterialUI
   //Components
@@ -41,7 +42,8 @@ class contactCreator extends PureComponent {
   }
 
  render() {
- if (this.props.user.role && this.props.user.role==='External') return null
+   if (this.props.user.role && this.props.user.role==='External') return (
+      <Redirect to="/login" />)
 
   return (
     <div style={{ textAlign: 'center'}}>
