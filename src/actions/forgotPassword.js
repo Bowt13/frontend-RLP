@@ -8,6 +8,7 @@ export const forgotPassword = (email) => (dispatch) =>
   request
     .post(`${baseUrl}/forgotPassword`)
     .send({email})
+    .then(result=>console.log(result.body))
     .catch(err => {
       console.error(err)
     })
