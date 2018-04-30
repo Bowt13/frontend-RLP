@@ -1,3 +1,3 @@
-export const baseUrl = process.env.SERVER_URL ||'https://afternoon-fortress-86385.herokuapp.com'
+export const baseUrl = process.env.SERVER_URL ||'http://localhost:4001'
 
 export const sessionStorageJwtKey = 'currentUserJwt'
