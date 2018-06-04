@@ -1,38 +1,46 @@
-import {USER_LOGIN_SUCCESS, USER_LOGOUT,
-        USER_SIGNUP_SUCCESS} from './actions/types'
-import {sessionStorageJwtKey} from './constants'
+import {
+	USER_LOGIN_SUCCESS,
+	USER_LOGOUT,
+	USER_SIGNUP_SUCCESS
+} from './actions/types'
+import { sessionStorageJwtKey } from './constants'
 
 export const storeJwt = store => next => action => {
-  try {
-    if (action.type === USER_LOGIN_SUCCESS) {
-      sessionStorage.setItem(sessionStorageJwtKey, action.payload.jwt)
-    }
-    if (action.type === USER_SIGNUP_SUCCESS) {
-      sessionStorage.setItem(sessionStorageJwtKey, action.payload.jwt)
-    }
-    if (action.type === USER_LOGOUT) {
-      sessionStorage.removeItem(sessionStorageJwtKey)
-    }
-  }
-  catch (e) {
-    console.log(`Interaction with LocalStorage went wrong`, e)
-  }
+	try {
+		if (action.type === USER_LOGIN_SUCCESS) {
+			sessionStorage.setItem(sessionStorageJwtKey, action.payload.jwt)
+		}
+		if (action.type === USER_SIGNUP_SUCCESS) {
+			sessionStorage.setItem(sessionStorageJwtKey, action.payload.jwt)
+		}
+		if (action.type === USER_LOGOUT) {
+			sessionStorage.removeItem(sessionStorageJwtKey)
+		}
+	} catch (e) {
+		console.log(`Interaction with LocalStorage went wrong`, e)
+	}
 
-  next(action)
+	next(action)
 }
 
 export const socketIo = socketio => store => next => action => {
-  if (action.type === USER_LOGIN_SUCCESS) {
-    const jwt = action.payload.jwt
-    socketio.connect(store.dispatch, jwt)
-  }
-  if (action.type === USER_SIGNUP_SUCCESS) {
-    const jwt = action.payload.jwt
-    socketio.connect(store.dispatch, jwt)
-  }
-  if (action.type === USER_LOGOUT) {
-    socketio.disconnect()
-  }
+	if (action.type === USER_LOGIN_SUCCESS) {
+		const jwt = action.payload.jwt
+		socketio.connect(
+			store.dispatch,
+			jwt
+		)
+	}
+	if (action.type === USER_SIGNUP_SUCCESS) {
+		const jwt = action.payload.jwt
+		socketio.connect(
+			store.dispatch,
+			jwt
+		)
+	}
+	if (action.type === USER_LOGOUT) {
+		socketio.disconnect()
+	}
 
-  next(action)
+	next(action)
 }

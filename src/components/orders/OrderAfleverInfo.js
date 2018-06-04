@@ -16,7 +16,7 @@ import PropTypes from 'prop-types'
 
   //Colors
 
-class OrderRemarkForm extends PureComponent {
+class OrderAfleverInfo extends PureComponent {
   static propTypes = {
     onChange: PropTypes.func.isRequired,
   }
@@ -171,4 +171,4 @@ const mapStateToProps = function (state) {
 	}
 }
 
-export default connect(mapStateToProps)(OrderRemarkForm)
+export default connect(mapStateToProps)(OrderAfleverInfo)

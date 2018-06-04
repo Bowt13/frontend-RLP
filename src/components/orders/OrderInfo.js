@@ -1,17 +1,16 @@
 //Dependencies
-import React, {PureComponent} from 'react'
-import {connect} from 'react-redux'
+import React, { PureComponent } from 'react'
+import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 
 //MaterialUI
-  //Components
-    import TextField from 'material-ui/TextField'
-    import Paper from 'material-ui/Paper';
-  //Icons
-    import DateRange from 'material-ui/svg-icons/action/date-range'
-    import Receipt from 'material-ui/svg-icons/action/receipt'
-  //Colors
-
+//Components
+import TextField from 'material-ui/TextField'
+import Paper from 'material-ui/Paper'
+//Icons
+import DateRange from 'material-ui/svg-icons/action/date-range'
+import Receipt from 'material-ui/svg-icons/action/receipt'
+//Colors
 
 //Actions
 import { getBonnummer } from '../../actions/orders'
@@ -19,119 +18,124 @@ import { getBonnummer } from '../../actions/orders'
 //Components
 
 class OrderInfo extends PureComponent {
-  static propTypes = {
-    onChange: PropTypes.func.isRequired,
-  }
+	static propTypes = {
+		onChange: PropTypes.func.isRequired
+	}
 
-  state = {}
+	state = {}
 
-  handleChange = (event) => {
-    const {name, value} = event.target
-    this.setState({
-      [name]: value
-    })
-  }
+	handleChange = event => {
+		const { name, value } = event.target
+		this.setState({
+			[name]: value
+		})
+	}
 
-  onClick = () => {
-    this.props.onChange('OrderInfo', {
-      Bonnummer: this.props.bunnummer,
-      currentDate: this.state.currentDate[0]
-    })
-  }
+	onClick = () => {
+		this.props.onChange('OrderInfo', {
+			Bonnummer: this.props.bunnummer,
+			currentDate: this.state.currentDate[0]
+		})
+	}
 
-  formatDate = ( date ) => {
-    var d = date.getDate();
-    var m = date.getMonth() + 1;
-    var y = date.getFullYear();
-    return ('' + (d <= 9 ? '0' + d : d) + '-' + (m<=9 ? '0' + m : m) + '-' + y)
-  }
+	formatDate = date => {
+		var d = date.getDate()
+		var m = date.getMonth() + 1
+		var y = date.getFullYear()
+		return '' + (d <= 9 ? '0' + d : d) + '-' + (m <= 9 ? '0' + m : m) + '-' + y
+	}
 
-  componentWillMount() {
-    this.props.getBonnummer()
-    this.props.onRef(this)
-    this.setState({
-      currentDate: JSON.stringify(this.formatDate(new Date())).substr(1,10).split('T', 1)
-    })
-  }
+	componentWillMount() {
+		this.props.getBonnummer()
+		this.props.onRef(this)
+		this.setState({
+			currentDate: JSON.stringify(this.formatDate(new Date()))
+				.substr(1, 10)
+				.split('T', 1)
+		})
+	}
 
 	render() {
-
 		return (
-      <div style={{
-        textAlign: 'center',
-      }}>
-        <Paper
-          style={{
-            width: '100%',
-            float: 'left',
-          }}
-        >
-          <div style={{
-            float: 'left',
-          }}>
-            <Receipt
-              style={{
-                position: 'relative',
-                top: 4,
-                marginRight: 15,
-                marginLeft: 65,
-                color: '#F09517',
-              }}
-            />
-            <TextField
-              name='Bonnummer'
-              floatingLabelText="Bonnummer:"
-              floatingLabelFixed={true}
-              value={this.props.bonnummer}
-              style={{
-                position: 'relative',
-                margin: 5,
-                height: 80,
-                lineHeight: 8,
-              }}
-              floatingLabelStyle={{
-                fontSize: 30,
-              }}
-              inputStyle={{
-                fontSize: 30,
-              }}
-            />
-            <DateRange
-              style={{
-                position: 'relative',
-                top: 4,
-                marginRight: 15,
-                marginLeft: 65,
-                color: '#F09517',
-              }}
-            />
-            <TextField
-              floatingLabelText="Datum:"
-              floatingLabelFixed={true}
-              value={`${this.state.currentDate}`}
-              style={{
-                position: 'relative',
-                height: 80,
-                lineHeight: 8,
-              }}
-              floatingLabelStyle={{
-                fontSize: 30,
-              }}
-              inputStyle={{
-                fontSize: 30,
-              }}
-            />
-          </div>
-        </Paper>
-      </div>
+			<div
+				style={{
+					textAlign: 'center'
+				}}>
+				<Paper
+					style={{
+						width: '100%',
+						float: 'left'
+					}}>
+					<div
+						style={{
+							float: 'left'
+						}}>
+						<Receipt
+							style={{
+								position: 'relative',
+								top: 4,
+								marginRight: 15,
+								marginLeft: 65,
+								color: '#F09517'
+							}}
+						/>
+						<TextField
+							name="Bonnummer"
+							floatingLabelText="Bonnummer:"
+							floatingLabelFixed={true}
+							value={this.props.bonnummer}
+							style={{
+								position: 'relative',
+								margin: 5,
+								height: 80,
+								lineHeight: 8
+							}}
+							floatingLabelStyle={{
+								fontSize: 30
+							}}
+							inputStyle={{
+								fontSize: 30
+							}}
+						/>
+						<DateRange
+							style={{
+								position: 'relative',
+								top: 4,
+								marginRight: 15,
+								marginLeft: 65,
+								color: '#F09517'
+							}}
+						/>
+						<TextField
+							floatingLabelText="Datum:"
+							floatingLabelFixed={true}
+							value={`${this.state.currentDate}`}
+							style={{
+								position: 'relative',
+								height: 80,
+								lineHeight: 8
+							}}
+							floatingLabelStyle={{
+								fontSize: 30
+							}}
+							inputStyle={{
+								fontSize: 30
+							}}
+						/>
+					</div>
+				</Paper>
+			</div>
 		)
 	}
 }
 
-const mapStateToProps = function (state) {
+const mapStateToProps = function(state) {
 	return {
-    bonnummer: state.bonnummer.orderNumber
+		bonnummer: state.bonnummer.orderNumber
 	}
 }
 
-export default connect(mapStateToProps,{ getBonnummer })(OrderInfo)
+export default connect(
+	mapStateToProps,
+	{ getBonnummer }
+)(OrderInfo)

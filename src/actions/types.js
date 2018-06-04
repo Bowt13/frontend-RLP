@@ -12,7 +12,7 @@ export const FORGOT_PASSWORD = 'FORGOT_PASSWORD'
 
 //Socket
 export const MESSAGE_SUCCESS = 'MESSAGE_SUCCESS'
-export const ADD_MESSAGE= 'ADD_MESSAGE'
+export const ADD_MESSAGE = 'ADD_MESSAGE'
 
 //order types
 export const GET_ORDERS = 'GET_ORDERS'
