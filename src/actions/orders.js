@@ -1,104 +1,104 @@
 import * as request from 'superagent'
-import {baseUrl} from '../constants'
-import {ADD_ORDER, GET_ORDERS, GET_ORDER, GET_BONNUMMER} from './types'
+import { baseUrl } from '../constants'
+import { ADD_ORDER, GET_ORDERS, GET_ORDER, GET_BONNUMMER } from './types'
 
-const orderAPIurl = 'http://flexicon.craftingapps.com:8080/crp_api/api/fcrpi_eorder_vw'
+const orderAPIurl =
+	'http://flexicon.craftingapps.com:8080/crp_api/api/fcrpi_eorder_vw'
 
-
-export const addOrder = (order,addresses,photo) => (dispatch, getState) => {
-  const state = getState()
-  const jwt = state.currentUser.jwt
-  console.log(order);
-  request
+export const addOrder = (order, addresses, photo) => (dispatch, getState) => {
+	const state = getState()
+	const jwt = state.currentUser.jwt
+	console.log(order)
+	request
 		.post(`${baseUrl}/orders`)
 		.field('order', JSON.stringify(order))
-    .field('addresses', JSON.stringify(addresses))
-    .set('Authorization', `Bearer ${jwt}`)
-    .attach('photo', photo)
+		.field('addresses', JSON.stringify(addresses))
+		.set('Authorization', `Bearer ${jwt}`)
+		.attach('photo', photo)
 		.then(result => {
 			dispatch({
 				type: ADD_ORDER,
-        payload: result.body
+				payload: result.body
 			})
 		})
 		.catch(err => console.error(err))
-  }
+}
 
-  export const addOrderNewAPI = (order) => (dispatch, getState) => {
-    const state = getState()
-    console.log(order)
-    request
-      .post(orderAPIurl)
-      .auth('crpi_api_helper_user@rest_client_id', 'codaisseur')
-  		.send(order)
-      .then(result => {
-  			dispatch({
-  				type: ADD_ORDER,
-          payload: result.body
-  			})
-  		})
-  		.catch(err => console.error(err))
-    }
+export const addOrderNewAPI = order => (dispatch, getState) => {
+	const state = getState()
+	console.log(order)
+	request
+		.post(orderAPIurl)
+		.auth('crpi_api_helper_user@rest_client_id', 'codaisseur')
+		.send(order)
+		.then(result => {
+			dispatch({
+				type: ADD_ORDER,
+				payload: result.body
+			})
+		})
+		.catch(err => console.error(err))
+}
 
 export const getOrders = () => (dispatch, getState) => {
-  const state = getState()
-  const jwt = state.currentUser.jwt
+	const state = getState()
+	const jwt = state.currentUser.jwt
 
-  request
+	request
 		.get(`${baseUrl}/orders`)
-    .set('Authorization', `Bearer ${jwt}`)
+		.set('Authorization', `Bearer ${jwt}`)
 		.then(result => {
 			dispatch({
 				type: GET_ORDERS,
-        payload: result.body
+				payload: result.body
 			})
 		})
 		.catch(err => console.error(err))
-  }
+}
 
-export const getOrder = (id) => (dispatch, getState) => {
-  const state = getState()
-  const jwt = state.currentUser.jwt
+export const getOrder = id => (dispatch, getState) => {
+	const state = getState()
+	const jwt = state.currentUser.jwt
 
-  request
+	request
 		.post(`${baseUrl}/orders/${id}`)
-    .set('Authorization', `Bearer ${jwt}`)
+		.set('Authorization', `Bearer ${jwt}`)
 		.then(result => {
 			dispatch({
 				type: GET_ORDER,
-        payload: result.body
+				payload: result.body
 			})
 		})
 		.catch(err => console.error(err))
-  }
+}
 
 export const getBonnummer = () => (dispatch, getState) => {
-  const state = getState()
-  const jwt = state.currentUser.jwt
+	const state = getState()
+	const jwt = state.currentUser.jwt
 
-  request
-    .get(`${baseUrl}/orders/orderNumber/newNumber`)
-    .set('Authorization', `Bearer ${jwt}`)
-    .then(result => {
-      dispatch({
-        type: GET_BONNUMMER,
-        payload: result.body
-      })
-    })
-    .catch(err => console.error(err))
+	request
+		.get(`${baseUrl}/orders/orderNumber/newNumber`)
+		.set('Authorization', `Bearer ${jwt}`)
+		.then(result => {
+			dispatch({
+				type: GET_BONNUMMER,
+				payload: result.body
+			})
+		})
+		.catch(err => console.error(err))
 }
 
 export const addPhoto = (orderId, file) => (dispatch, getState) => {
-  const state = getState()
-  const jwt = state.currentUser.jwt
-  request
-    .post(`${baseUrl}/photos/order/${orderId}`)
-    .set('Authorization', `Bearer ${jwt}`)
-    .attach('photo', file)
-    .then(result => {
-       dispatch({
-         type: 'ADD_PICTURE_SUCCESS'
-        })
-    })
-    .catch(err => console.error(err))
+	const state = getState()
+	const jwt = state.currentUser.jwt
+	request
+		.post(`${baseUrl}/photos/order/${orderId}`)
+		.set('Authorization', `Bearer ${jwt}`)
+		.attach('photo', file)
+		.then(result => {
+			dispatch({
+				type: 'ADD_PICTURE_SUCCESS'
+			})
+		})
+		.catch(err => console.error(err))
 }

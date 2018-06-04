@@ -11,16 +11,15 @@ import customers from './customers'
 import deliveries from './deliveries'
 import contacts from './contacts'
 
-
 export default {
-  signup,
-  login,
-  currentUser,
-  user,
-  orders,
-  company,
-  customers,
-  deliveries,
-  contacts,
-  bonnummer
+	signup,
+	login,
+	currentUser,
+	user,
+	orders,
+	company,
+	customers,
+	deliveries,
+	contacts,
+	bonnummer
 }
