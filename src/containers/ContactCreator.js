@@ -57,14 +57,14 @@ class contactCreator extends PureComponent {
 						width: '50%',
 						overflow: 'scroll'
 					}}>
-					<Subheader style={{ fontSize: 40 }}>Create Contact</Subheader>
+					<Subheader style={{ fontSize: 40 }}>Contact maken</Subheader>
 					<Divider style={{ padding: 1, marginBottom: 1 }} />
 					<form name="Create Contact" onSubmit={this.handleSubmit}>
 						<TextField
 							floatingLabelFocusStyle={{ color: '#F09517' }}
 							underlineFocusStyle={{ borderColor: '#F09517' }}
 							name="firstName"
-							floatingLabelText="First Name:"
+							floatingLabelText="Voornaam:"
 							value={this.state.firstName || ''}
 							onChange={this.handleChange}
 							required
@@ -74,7 +74,7 @@ class contactCreator extends PureComponent {
 							floatingLabelFocusStyle={{ color: '#F09517' }}
 							underlineFocusStyle={{ borderColor: '#F09517' }}
 							name="lastName"
-							floatingLabelText="Last Name:"
+							floatingLabelText="Achternaam:"
 							value={this.state.lastName || ''}
 							onChange={this.handleChange}
 							required
@@ -95,7 +95,7 @@ class contactCreator extends PureComponent {
 							floatingLabelFocusStyle={{ color: '#F09517' }}
 							underlineFocusStyle={{ borderColor: '#F09517' }}
 							name="telephoneNumber"
-							floatingLabelText="Telephone Number:"
+							floatingLabelText="Telefoon nummer:"
 							value={this.state.telephoneNumber || ''}
 							onChange={this.handleChange}
 							style={{ marginBottom: 10 }}
@@ -104,7 +104,8 @@ class contactCreator extends PureComponent {
 						<br />
 						<div style={{ display: 'inline-block', textAlign: 'center' }}>
 							<Checkbox
-								label="Internal"
+								label="Flexicon medewerker"
+								labelPosition="left"
 								iconStyle={{ fill: '#F09517' }}
 								checked={this.state.role === 'Internal' ? true : false}
 								onCheck={this.updateCheck.bind(this)}
@@ -116,7 +117,7 @@ class contactCreator extends PureComponent {
 						<div style={{ display: 'inline-block' }}>
 							<RaisedButton
 								type="submit"
-								label="Save"
+								label="Opslaan"
 								backgroundColor="#F09517"
 							/>
 						</div>
