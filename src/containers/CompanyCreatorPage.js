@@ -34,7 +34,6 @@ class CompanyCreator extends PureComponent {
 
 	render() {
 		const { company } = this.props
-		console.log(company)
 
 		if (this.props.user && this.props.user.role === 'External')
 			return <Redirect to="/login" />

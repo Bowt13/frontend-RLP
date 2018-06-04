@@ -60,7 +60,7 @@ class OrderAdressForm extends PureComponent {
 
 	render() {
 		const { handleChange } = this
-		console.log(this.state)
+
 		return (
 			<div
 				style={{

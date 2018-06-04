@@ -25,7 +25,7 @@ class contactCreator extends PureComponent {
 
 	handleSubmit = e => {
 		e.preventDefault()
-		console.log(this.state)
+
 		this.props.createContact(this.props.match.params.companyId, this.state)
 		this.props.history.push(`/flexicon/klanten`)
 	}

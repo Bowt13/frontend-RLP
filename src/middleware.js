@@ -16,9 +16,7 @@ export const storeJwt = store => next => action => {
 		if (action.type === USER_LOGOUT) {
 			sessionStorage.removeItem(sessionStorageJwtKey)
 		}
-	} catch (e) {
-		console.log(`Interaction with LocalStorage went wrong`, e)
-	}
+	} catch (e) {}
 
 	next(action)
 }

@@ -11,8 +11,6 @@ import {
 } from './types'
 
 export const signup = (jwt, password) => dispatch => {
-	console.log(jwt)
-	console.log(password)
 	request
 		.patch(`${baseUrl}/signup/${jwt}`)
 		.send({ password })

@@ -5,7 +5,6 @@ export default class SocketIO {
 	socket = null
 
 	connect(dispatch, jwt) {
-		console.log('Connecting websocket' + `${jwt}`)
 		this.socket = io.connect(
 			baseUrl,
 			{
@@ -16,7 +15,6 @@ export default class SocketIO {
 	}
 
 	disconnect() {
-		console.log('Disconnecting websocket')
 		this.socket.disconnect()
 	}
 }

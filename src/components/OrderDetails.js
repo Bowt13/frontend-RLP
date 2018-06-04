@@ -50,13 +50,13 @@ class OrderDetails extends PureComponent {
 	}
 
 	handleFileChange = e => {
-		console.log('yes')
+
 		this.props.addPhoto(this.props.order.id, e.target.files[0])
 	}
 
 	handleToggle = () => {
 		this.setState({ openProfile: !this.state.openProfile }, () =>
-			console.log(this.state.openProfile)
+
 		)
 	}
 
@@ -66,13 +66,13 @@ class OrderDetails extends PureComponent {
 	}
 
 	handleOpen = () => {
-		console.log('test')
+
 		this.setState({ dialog: true })
 	}
 
 	handleClose = () => {
 		this.setState({ dialog: false })
-		console.log(this.state)
+
 	}
 
 	componentWillMount() {

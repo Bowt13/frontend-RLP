@@ -11,9 +11,7 @@ try {
 	if (jwt) {
 		initialState = { jwt }
 	}
-} catch (e) {
-	console.log(`Error retrieving data from local storage`, e)
-}
+} catch (e) {}
 
 export default function(state = initialState, { type, payload }) {
 	switch (type) {

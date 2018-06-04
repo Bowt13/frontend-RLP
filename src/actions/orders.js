@@ -8,7 +8,6 @@ const orderAPIurl =
 export const addOrder = (order, addresses, photo) => (dispatch, getState) => {
 	const state = getState()
 	const jwt = state.currentUser.jwt
-	console.log(order)
 	request
 		.post(`${baseUrl}/orders`)
 		.field('order', JSON.stringify(order))
@@ -26,7 +25,7 @@ export const addOrder = (order, addresses, photo) => (dispatch, getState) => {
 
 export const addOrderNewAPI = order => (dispatch, getState) => {
 	const state = getState()
-	console.log(order)
+
 	request
 		.post(orderAPIurl)
 		.auth('crpi_api_helper_user@rest_client_id', 'codaisseur')

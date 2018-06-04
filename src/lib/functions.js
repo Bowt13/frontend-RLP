@@ -1,7 +1,6 @@
 export const searchForOrder = (orders, text) => {
-	console.log(text)
 	if (text === '') return orders
-	console.log(orders)
+
 	return orders.filter(order => order.shortDescription.includes(text))
 }
 

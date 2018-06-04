@@ -52,7 +52,6 @@ class OrderRemarkForm extends PureComponent {
 	}
 
 	render() {
-		console.log(this.state.files)
 		return (
 			<div
 				style={{

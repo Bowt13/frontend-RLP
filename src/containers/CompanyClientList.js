@@ -44,7 +44,6 @@ class CustomerList extends PureComponent {
 		let company
 		if (this.state.props) company = this.props.company
 		if (!this.state.props) company = this.state.company
-		console.log(this.props.user)
 
 		if (this.props.user && this.props.user.role === 'External')
 			return <Redirect to="/login" />

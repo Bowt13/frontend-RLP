@@ -35,7 +35,7 @@ class OrdersPage extends PureComponent {
 
 	handleToggle = () => {
 		this.setState({ openProfile: !this.state.openProfile }, () =>
-			console.log(this.state.openProfile)
+
 		)
 	}
 
@@ -45,7 +45,7 @@ class OrdersPage extends PureComponent {
 		let orders
 		if (this.state.props) orders = this.props.orders
 		if (!this.state.props) orders = this.state.orders
-		console.log(orders)
+
 
 		return (
 			<div>
@@ -87,7 +87,7 @@ class OrdersPage extends PureComponent {
 							{orders &&
 								orders.map(order => (
 									<div>
-										{console.log(order)}
+										{
 										<Divider />
 										<ListItem
 											hoverColor="#f4b357"

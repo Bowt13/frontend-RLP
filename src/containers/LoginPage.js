@@ -43,12 +43,9 @@ class LoginPage extends PureComponent {
 
 	handleChange = event => {
 		const { name, value } = event.target
-		this.setState(
-			{
-				[name]: value
-			},
-			console.log(this.state)
-		)
+		this.setState({
+			[name]: value
+		})
 	}
 
 	render() {
